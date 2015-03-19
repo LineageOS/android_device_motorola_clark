@@ -123,6 +123,18 @@ on enable-low-power
     # android background processes are set to nice 10. Never schedule these on the a57s.
     write /proc/sys/kernel/sched_upmigrate_min_nice 9
 
+    # Disable CPU retention
+    write /sys/module/lpm_levels/system/a53/cpu0/retention/idle_enabled 0
+    write /sys/module/lpm_levels/system/a53/cpu1/retention/idle_enabled 0
+    write /sys/module/lpm_levels/system/a53/cpu2/retention/idle_enabled 0
+    write /sys/module/lpm_levels/system/a53/cpu3/retention/idle_enabled 0
+    write /sys/module/lpm_levels/system/a57/cpu4/retention/idle_enabled 0
+    write /sys/module/lpm_levels/system/a57/cpu5/retention/idle_enabled 0
+
+    # Disable L2 retention
+    write /sys/module/lpm_levels/system/a53/a53-l2-retention/idle_enabled 0
+    write /sys/module/lpm_levels/system/a57/a57-l2-retention/idle_enabled 0
+
     start perfd
 
 on property:sys.boot_completed=1
