@@ -5,3 +5,5 @@ type adspd_socket, file_type;
 
 #fsg
 type fsg_file, fs_type, contextmount_type;
+
+type vibeamp_sysfs, sysfs_type, file_type;

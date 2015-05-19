@@ -14,5 +14,7 @@
 
 /dev/ttyHS0                   u:object_r:hci_attach_dev:s0
 
+/sys/vibrator/pwmvalue        u:object_r:vibeamp_sysfs:s0
+
 # ril
 /dev/mot_hob_ram              u:object_r:radio_data_file:s0

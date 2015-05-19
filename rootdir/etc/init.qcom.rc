@@ -350,6 +350,9 @@ on post-fs-data
     mkdir /data/audio/acdbdata 0770 media audio
     mkdir /data/audio/acdbdata/delta 0770 media audio
 
+    chown system system /sys/vibrator/pwmvalue
+    chmod 0644 /sys/vibrator/pwmvalue
+
     setprop vold.post_fs_data_done 1
 
     # Create a folder for SRS to be able to create a usercfg file

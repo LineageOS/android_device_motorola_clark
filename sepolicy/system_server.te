@@ -1,1 +1,2 @@
 allow system_server device:chr_file ioctl;
+allow system_server vibeamp_sysfs:file rw_file_perms;
