@@ -121,6 +121,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sf.lcd_density=560
 
+# Include IMSEnabler
+PRODUCT_PACKAGES += \
+    IMSEnabler
+
 # Rich Communications Service is disabled in 5.1
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.rcs.supported=0
