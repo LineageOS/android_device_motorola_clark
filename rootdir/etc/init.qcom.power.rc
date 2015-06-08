@@ -120,6 +120,9 @@ on enable-low-power
     write /sys/module/cpu_boost/parameters/input_boost_freq 0:1248000
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
+    # android background processes are set to nice 10. Never schedule these on the a57s.
+    write /proc/sys/kernel/sched_upmigrate_min_nice 9
+
     start perfd
 
 on property:sys.boot_completed=1
