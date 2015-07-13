@@ -46,7 +46,6 @@ PRODUCT_PACKAGES += \
     android.hardware.audio.effect@2.0-impl
 
 PRODUCT_PACKAGES += \
-    audio_policy.msm8992 \
     audio.a2dp.default \
     audio.primary.msm8992 \
     audio.r_submix.default \
