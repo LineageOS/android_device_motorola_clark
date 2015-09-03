@@ -59,6 +59,12 @@ on boot
     chown root mot_tcmd /sys/class/graphics/fb0/frame_counter
     chown system system /sys/class/graphics/fb0/hbm
     chown system system /sys/class/graphics/fb0/cabc_mode
+    chown system graphics /sys/class/graphics/fb0/dynamic_fps
+    chmod 0664 /sys/class/graphics/fb0/dynamic_fps
+    chown system graphics /sys/class/graphics/fb0/idle_notify
+    chmod 0664 /sys/class/graphics/fb0/idle_notify
+    chown system graphics /sys/class/graphics/fb0/idle_time
+    chmod 0664 /sys/class/graphics/fb0/idle_time
 
     # update foreground cpuset now that processors are up
     write /dev/cpuset/foreground/cpus 0-5
