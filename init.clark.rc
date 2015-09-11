@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-import init.shamu.usb.rc
+import init.clark.usb.rc
 
 on early-init
     mkdir /firmware 0771 system system
@@ -42,7 +42,7 @@ on init
     symlink /mnt/shell/emulated/0 /storage/emulated/legacy
 
 on fs
-    mount_all fstab.shamu
+    mount_all fstab.clark
     restorecon_recursive /persist
     setprop ro.crypto.fuse_sdcard true
 

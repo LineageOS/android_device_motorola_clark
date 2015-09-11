@@ -14,14 +14,14 @@
 # limitations under the License.
 #
 
-# This file includes all definitions that apply to ALL shamu devices, and
-# are also specific to shamu devices
+# This file includes all definitions that apply to ALL clark devices, and
+# are also specific to clark devices
 #
 # Everything in this directory will become public
 
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/moto/shamu-kernel/zImage-dtb
+LOCAL_KERNEL := device/moto/clark-kernel/zImage-dtb
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -31,25 +31,25 @@ PRODUCT_COPY_FILES := \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-    device/moto/shamu/init.shamu.rc:root/init.shamu.rc \
-    device/moto/shamu/init.shamu.usb.rc:root/init.shamu.usb.rc \
-    device/moto/shamu/fstab.shamu:root/fstab.shamu \
-    device/moto/shamu/ueventd.shamu.rc:root/ueventd.shamu.rc
+    device/moto/clark/init.clark.rc:root/init.clark.rc \
+    device/moto/clark/init.clark.usb.rc:root/init.clark.usb.rc \
+    device/moto/clark/fstab.clark:root/fstab.clark \
+    device/moto/clark/ueventd.clark.rc:root/ueventd.clark.rc
 
-# Input device files for shamu
+# Input device files for clark
 PRODUCT_COPY_FILES += \
-    device/moto/shamu/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
-
-PRODUCT_COPY_FILES += \
-    device/moto/shamu/audio_policy.conf:system/etc/audio_policy.conf \
-    device/moto/shamu/audio_effects.conf:system/etc/audio_effects.conf
+    device/moto/clark/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_COPY_FILES += \
-    device/moto/shamu/media_profiles.xml:system/etc/media_profiles.xml \
-    device/moto/shamu/media_codecs.xml:system/etc/media_codecs.xml
+    device/moto/clark/audio_policy.conf:system/etc/audio_policy.conf \
+    device/moto/clark/audio_effects.conf:system/etc/audio_effects.conf
 
 PRODUCT_COPY_FILES += \
-    device/moto/shamu/mixer_paths.xml:system/etc/mixer_paths.xml
+    device/moto/clark/media_profiles.xml:system/etc/media_profiles.xml \
+    device/moto/clark/media_codecs.xml:system/etc/media_codecs.xml
+
+PRODUCT_COPY_FILES += \
+    device/moto/clark/mixer_paths.xml:system/etc/mixer_paths.xml
 
 PRODUCT_PACKAGES += atmel.fw.apq8084
 
@@ -65,7 +65,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 PRODUCT_CHARACTERISTICS := nosdcard
 
 DEVICE_PACKAGE_OVERLAYS := \
-    device/moto/shamu/overlay
+    device/moto/clark/overlay
 
 PRODUCT_PACKAGES := \
     libwpa_client \
@@ -112,7 +112,7 @@ PRODUCT_PACKAGES += \
     libqomx_core \
     libmmcamera_interface \
     libmmjpeg_interface \
-    camera.shamu \
+    camera.clark \
     mm-jpeg-interface-test \
     mm-qcamera-app
 
