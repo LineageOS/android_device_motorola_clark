@@ -79,9 +79,9 @@ PRODUCT_PACKAGES += \
     librs_jni
 
 PRODUCT_PACKAGES += \
-    gralloc.msm8084 \
-    hwcomposer.msm8084 \
-    memtrack.msm8084 \
+    gralloc.msm8992 \
+    hwcomposer.msm8992 \
+    memtrack.msm8992 \
     libqdutils \
     libqdMetaData
 
@@ -95,7 +95,7 @@ PRODUCT_PACKAGES += \
     libOmxVenc
 
 PRODUCT_PACKAGES += \
-    audio.primary.msm8084 \
+    audio.primary.msm8992 \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default \
