@@ -31,7 +31,6 @@ PRODUCT_DEVICE := clark
 PRODUCT_BRAND := Android
 PRODUCT_MODEL := XT1575
 PRODUCT_MANUFACTURER := motorola
-PRODUCT_RESTRICT_VENDOR_FILES := true
 
 $(call inherit-product, device/moto/clark/device.mk)
 $(call inherit-product-if-exists, vendor/moto/clark/device-vendor.mk)
