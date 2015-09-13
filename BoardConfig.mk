@@ -98,6 +98,8 @@ HAVE_ADRENO_SOURCE:= false
 OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 
+BOARD_SUPPRESS_SECURE_ERASE := true
+
 # TWRP definitions
 DEVICE_RESOLUTION := 1440x2560
 TW_BOARD_CUSTOM_GRAPHICS := ../../../device/moto/clark/recovery/graphics.c
