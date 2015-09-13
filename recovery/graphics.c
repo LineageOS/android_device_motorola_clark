@@ -184,6 +184,8 @@ static int get_framebuffer(GGLSurface *fb)
         return -1;
     }
 
+#if 0
+
     fprintf(stderr, "Pixel format: %dx%d @ %dbpp\n", vi.xres, vi.yres, vi.bits_per_pixel);
 
     vi.bits_per_pixel = PIXEL_SIZE * 8;
@@ -237,6 +239,7 @@ static int get_framebuffer(GGLSurface *fb)
         close(fd);
         return -1;
     }
+#endif
 
     vi.vmode = FB_VMODE_NONINTERLACED;
     vi.activate = FB_ACTIVATE_NOW | FB_ACTIVATE_FORCE;
