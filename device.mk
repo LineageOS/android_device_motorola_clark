@@ -28,6 +28,7 @@ PRODUCT_COPY_FILES += \
     device/moto/clark/init.clark.rc:root/init.clark.rc \
     device/moto/clark/init.clark.usb.rc:root/init.clark.usb.rc \
     device/moto/clark/fstab.qcom:root/fstab.qcom \
+    device/moto/clark/twrp.fstab:recovery/root/etc/twrp.fstab \
     device/moto/clark/ueventd.clark.rc:root/ueventd.clark.rc
 
 # Input device files for clark
