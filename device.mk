@@ -19,13 +19,7 @@
 #
 # Everything in this directory will become public
 
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := device/moto/clark-kernel/zImage-dtb
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
+LOCAL_KERNEL := device/moto/clark/kernel
 
 PRODUCT_COPY_FILES := \
     $(LOCAL_KERNEL):kernel
