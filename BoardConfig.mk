@@ -91,7 +91,7 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-TARGET_RECOVERY_FSTAB = device/moto/clark/twrp.fstab
+TARGET_RECOVERY_FSTAB = device/moto/clark/fstab.qcom
 
 HAVE_ADRENO_SOURCE:= false
 

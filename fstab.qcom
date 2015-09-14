@@ -6,6 +6,8 @@
 # Currently we dont have e2fsck compiled. So fs check would failed.
 
 #<src>                                                <mnt_point>  <type>  <mnt_flags and options>                     <fs_mgr_flags>
+/dev/block/bootdevice/by-name/boot             /boot               emmc    defaults     defaults
+/dev/block/bootdevice/by-name/recovery         /recovery           emmc    defaults     defaults
 /dev/block/bootdevice/by-name/system    /system      ext4    ro,barrier=1                                wait
 /dev/block/bootdevice/by-name/userdata  /data        f2fs    rw,discard,nosuid,nodev,noatime,nodiratime,nobarrier,inline_xattr,inline_data  wait,check,encryptable=/dev/block/bootdevice/by-name/metadata
 /devices/soc.0/f98a4900.sdhci/mmc_host  /storage/sdcard1   auto    nosuid,nodev                          wait,voldmanaged=sdcard1:auto,noemulatedsd
