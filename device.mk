@@ -25,11 +25,44 @@ PRODUCT_COPY_FILES := \
     $(LOCAL_KERNEL):kernel
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/init.clark.rc:root/init.clark.rc \
-    device/moto/clark/init.clark.usb.rc:root/init.clark.usb.rc \
     device/moto/clark/fstab.qcom:root/fstab.qcom \
-    device/moto/clark/twrp.fstab:recovery/root/etc/twrp.fstab \
-    device/moto/clark/ueventd.clark.rc:root/ueventd.clark.rc
+    device/moto/clark/twrp.fstab:recovery/root/etc/twrp.fstab
+
+PRODUCT_COPY_FILES += \
+    device/moto/clark/rootdir/init:root/init \
+    device/moto/clark/rootdir/init.class_main.sh:root/init.class_main.sh \
+    device/moto/clark/rootdir/init.environ.rc:root/init.environ.rc \
+    device/moto/clark/rootdir/init.mdm.sh:root/init.mdm.sh \
+    device/moto/clark/rootdir/init.mmi.block_perm.sh:root/init.mmi.block_perm.sh \
+    device/moto/clark/rootdir/init.mmi.boot.sh:root/init.mmi.boot.sh \
+    device/moto/clark/rootdir/init.mmi.debug.rc:root/init.mmi.debug.rc \
+    device/moto/clark/rootdir/init.mmi.diag.rc:root/init.mmi.diag.rc \
+    device/moto/clark/rootdir/init.mmi.diag_mdlog.rc:root/init.mmi.diag_mdlog.rc \
+    device/moto/clark/rootdir/init.mmi.early_boot.sh:root/init.mmi.early_boot.sh \
+    device/moto/clark/rootdir/init.mmi.rc:root/init.mmi.rc \
+    device/moto/clark/rootdir/init.mmi.touch.sh:root/init.mmi.touch.sh \
+    device/moto/clark/rootdir/init.mmi.usb.rc:root/init.mmi.usb.rc \
+    device/moto/clark/rootdir/init.mmi.usb.sh:root/init.mmi.usb.sh \
+    device/moto/clark/rootdir/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
+    device/moto/clark/rootdir/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
+    device/moto/clark/rootdir/init.qcom.rc:root/init.qcom.rc \
+    device/moto/clark/rootdir/init.qcom.sh:root/init.qcom.sh \
+    device/moto/clark/rootdir/init.qcom.syspart_fixup.sh:root/init.qcom.syspart_fixup.sh \
+    device/moto/clark/rootdir/init.target.rc:root/init.target.rc \
+    device/moto/clark/rootdir/module_hashes:root/module_hashes \
+    device/moto/clark/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    device/moto/clark/rootdir/etc/init.ath3k.bt.sh:system/etc/init.ath3k.bt.sh \
+    device/moto/clark/rootdir/etc/init.crda.sh:system/etc/init.crda.sh \
+    device/moto/clark/rootdir/etc/init.qcom.audio.sh:system/etc/init.qcom.audio.sh \
+    device/moto/clark/rootdir/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+    device/moto/clark/rootdir/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
+    device/moto/clark/rootdir/etc/init.qcom.debug.sh:system/etc/init.qcom.debug.sh \
+    device/moto/clark/rootdir/etc/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh \
+    device/moto/clark/rootdir/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
+    device/moto/clark/rootdir/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
+    device/moto/clark/rootdir/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
+    device/moto/clark/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
+    device/moto/clark/rootdir/etc/init.wifi.mac.sh:system/etc/init.wifi.mac.sh
 
 # Input device files for clark
 PRODUCT_COPY_FILES += \
