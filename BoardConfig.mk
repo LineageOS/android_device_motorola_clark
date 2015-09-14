@@ -56,6 +56,8 @@ BOARD_EGL_CFG := device/moto/clark/egl.cfg
 
 BOARD_USES_ALSA_AUDIO := true
 
+BOARD_USES_QCOM_HARDWARE := true
+
 # Wifi related defines
 #WPA_SUPPLICANT_VERSION      := VER_0_8_X
 #BOARD_WLAN_DEVICE           := bcmdhd
