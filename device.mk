@@ -29,7 +29,6 @@ PRODUCT_COPY_FILES += \
     device/moto/clark/twrp.fstab:recovery/root/etc/twrp.fstab
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/rootdir/init:root/init \
     device/moto/clark/rootdir/init.class_main.sh:root/init.class_main.sh \
     device/moto/clark/rootdir/init.mdm.sh:root/init.mdm.sh \
     device/moto/clark/rootdir/init.mmi.block_perm.sh:root/init.mmi.block_perm.sh \
