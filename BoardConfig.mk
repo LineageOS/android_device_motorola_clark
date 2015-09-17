@@ -40,6 +40,9 @@ BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 an
 
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset BOARD_RAMDISK_OFFSET --tags_offset BOARD_KERNEL_TAGS_OFFSET --dt device/moto/clark/dt.img
 
+# QCOM sepolicy
+include device/qcom/sepolicy/sepolicy.mk
+
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Shader cache config options
