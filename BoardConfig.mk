@@ -33,8 +33,14 @@ BOARD_KERNEL_PAGESIZE :=  2048
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100
 BOARD_RAMDISK_OFFSET     := 0x01000000
 
-TARGET_PREBUILT_KERNEL := device/moto/clark/kernel
-TARGET_SPECIFIC_HEADER_PATH := device/moto/clark/include
+#BOARD_KERNEL_SEPARATED_DT := true
+#BOARD_CUSTOM_BOOTIMG_MK := device/moto/clark/mkbootimg.mk
+TARGET_KERNEL_SOURCE := kernel/moto/clark
+TARGET_KERNEL_CONFIG := msm8994-perf_defconfig
+TARGET_KERNEL_HEADER_ARCH := arm64
+TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+TARGET_KERNEL_ARCH := arm64
+TARGET_USES_UNCOMPRESSED_KERNEL := true
 
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x37 ehci-hcd.park=3 lpm_levels.sleep_disabled=1 earlyprintk=msm_hsl_uart,0xf991e000 utags.blkdev=/dev/block/bootdevice/by-name/utags utags.backup=/dev/block/bootdevice/by-name/utagsBackup androidboot.selinux=permissive
 
