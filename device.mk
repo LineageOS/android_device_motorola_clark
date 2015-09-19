@@ -57,6 +57,9 @@ PRODUCT_COPY_FILES += \
     device/moto/clark/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
     device/moto/clark/rootdir/etc/init.wifi.mac.sh:system/etc/init.wifi.mac.sh
 
+PRODUCT_COPY_FILES += \
+    device/moto/clark/sec_config:system/etc/sec_config
+
 # Input device files for clark
 PRODUCT_COPY_FILES += \
     device/moto/clark/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
