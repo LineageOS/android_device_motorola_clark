@@ -107,14 +107,14 @@ on boot
 on fs
     # Mount modem FSG partition
     wait /dev/block/bootdevice/by-name/fsg
-    mount ext4 /dev/block/bootdevice/by-name/fsg /fsg ro nosuid nodev barrier=0 context=u:object_r:fsg_file:s0
+    mount ext4 /dev/block/bootdevice/by-name/fsg /fsg ro nosuid nodev barrier=0
 
     # use /persist as phony PDS partition
     symlink /persist /pds
 
     #Mount customize partion
     wait /dev/block/bootdevice/by-name/customize
-    mount ext4 /dev/block/bootdevice/by-name/customize /customize ro discard nosuid nodev noatime nodiratime noexec defcontext=u:object_r:user_config_file:s0
+    mount ext4 /dev/block/bootdevice/by-name/customize /customize ro discard nosuid nodev noatime nodiratime noexec
 
 on post-fs
     mkdir /persist/camera 02755 mot_tcmd mot_tcmd
