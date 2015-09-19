@@ -213,6 +213,16 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.speaker=true \
     audio.offload.gapless.enabled=true
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
+    rild.libargs=-d /dev/smd0 \
+    ril.subscription.types=NV,RUIM \
+    ril.subscription.types=RUIM \
+    persist.radio.apm_sim_not_pwdn=1 \
+    persist.radio.no_wait_for_card=1 \
+    persist.radio.mode_pref_nv10=1 \
+    persist.radio.force_get_pref=1
+
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
