@@ -229,7 +229,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.apm_sim_not_pwdn=1 \
     persist.radio.no_wait_for_card=1 \
     persist.radio.mode_pref_nv10=1 \
-    persist.radio.force_get_pref=1
+    persist.radio.force_get_pref=1 \
+    ro.telephony.default_network=10
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.crypto.fuse_sdcard=true \
