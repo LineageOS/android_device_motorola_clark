@@ -231,6 +231,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.mode_pref_nv10=1 \
     persist.radio.force_get_pref=1
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.crypto.fuse_sdcard=true \
+    persist.fuse_sdcard=true
+
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
