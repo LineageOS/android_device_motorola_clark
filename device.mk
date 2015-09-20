@@ -73,6 +73,11 @@ PRODUCT_COPY_FILES += \
     device/moto/clark/media_codecs.xml:system/etc/media_codecs.xml
 
 PRODUCT_COPY_FILES += \
+    device/moto/clark/configs/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
+    device/moto/clark/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    device/moto/clark/configs/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
+
+PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
@@ -125,10 +130,10 @@ DEVICE_PACKAGE_OVERLAYS := \
     device/moto/clark/overlay
 
 PRODUCT_PACKAGES := \
+    wifi_symlinks \
     libwpa_client \
     hostapd \
-    wpa_supplicant \
-    wpa_supplicant.conf
+    wpa_supplicant
 
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
