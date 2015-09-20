@@ -127,7 +127,7 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi xxhdpi 560dpi xxxhdpi
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
 
-PRODUCT_CHARACTERISTICS := nosdcard
+PRODUCT_CHARACTERISTICS := default
 
 DEVICE_PACKAGE_OVERLAYS := \
     device/moto/clark/overlay
