@@ -64,13 +64,24 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/audio_policy.conf:system/etc/audio_policy.conf \
-    $(LOCAL_PATH)/audio_effects.conf:system/etc/audio_effects.conf
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
-    $(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml
+    $(LOCAL_PATH)/audio/acdbdata/MTP_Bluetooth_cal.acdb:system/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb \
+    $(LOCAL_PATH)/audio/acdbdata/MTP_General_cal.acdb:system/etc/acdbdata/MTP/MTP_General_cal.acdb \
+    $(LOCAL_PATH)/audio/acdbdata/MTP_Global_cal.acdb:system/etc/acdbdata/MTP/MTP_Global_cal.acdb \
+    $(LOCAL_PATH)/audio/acdbdata/MTP_Handset_cal.acdb:system/etc/acdbdata/MTP/MTP_Handset_cal.acdb \
+    $(LOCAL_PATH)/audio/acdbdata/MTP_Hdmi_cal.acdb:system/etc/acdbdata/MTP/MTP_Hdmi_cal.acdb \
+    $(LOCAL_PATH)/audio/acdbdata/MTP_Headset_cal.acdb:system/etc/acdbdata/MTP/MTP_Headset_cal.acdb \
+    $(LOCAL_PATH)/audio/acdbdata/MTP_Speaker_cal.acdb:system/etc/acdbdata/MTP/MTP_Speaker_cal.acdb \
+    $(LOCAL_PATH)/audio/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+    $(LOCAL_PATH)/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml \
+    $(LOCAL_PATH)/audio/audio_platform_info.xml:system/etc/audio_platform_info.xml \
+    $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
+    $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
+
+#PRODUCT_COPY_FILES += \
+#    $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
+#    $(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
