@@ -25,20 +25,6 @@ vendor/lib64/libadsprpc.so
 #vendor/lib/libmm-qdcm.so
 
 # Audio
-bin/adsprpcd
-#lib/libspeakerbundle.so
-vendor/lib64/libacdbloader.so
-vendor/lib64/libacdbmapper.so
-vendor/lib64/libacdbrtac.so
-vendor/lib64/libadiertac.so
-vendor/lib64/libaudcal.so
-vendor/lib/libacdbloader.so
-vendor/lib/libacdbmapper.so
-vendor/lib/libacdbrtac.so
-vendor/lib/libadiertac.so
-vendor/lib/libaudcal.so
-
-# Audio
 bin/fm_qsoc_patches
 vendor/bin/audioflacapp
 vendor/lib/libacdb-fts.so
@@ -58,7 +44,6 @@ vendor/lib64/libacdbrtac.so
 vendor/lib64/libadiertac.so
 vendor/lib64/libaudcal.so
 vendor/lib64/libaudioalsa.so
-
 etc/acdbdata/Bluetooth_cal.acdb
 etc/acdbdata/Global_cal.acdb
 etc/acdbdata/Headset_cal.acdb
@@ -107,6 +92,7 @@ vendor/lib/soundfx/libqcreverb.so
 bin/btnvtool
 bin/hci_qcomm_init
 vendor/lib/libbtnv.so
+vendor/lib64/libbtnv.so
 
 # Camera
 bin/mm-qcamera-app
@@ -131,6 +117,7 @@ vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera_isp_chroma_enhan40.so
 vendor/lib/libmmcamera_cac2_lib.so
 vendor/lib/libmmcamera2_imglib_modules.so
+vendor/lib/libmmcamera2_q3a_core.so
 vendor/lib/libmmcamera2_sensor_debug.so
 vendor/lib/libmmcamera_isp_clamp_viewfinder40.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
@@ -183,6 +170,21 @@ vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc_pipe.so
 vendor/lib/libqomx_jpegenc.so
 
+lib/libadvalgcore.so
+lib/libAisAdapter.so
+lib/libAlAisLib.so
+lib/libAlAisTune.so
+lib/libAlAisWrap.so
+lib/libbson.so
+lib/libcamerabgproc-jni.so
+lib/libcamerabgprocservice.so
+lib/libjscore.so
+lib/libjustshoot.so
+lib/libmmjpeg_interface.so
+lib/libmm-qcamera.so
+lib/libmot_sensorlistener.so
+lib/libmot-qc-fd-offline.so
+
 # Chromatix
 vendor/lib/libchromatix_mot_imx230_common.so
 vendor/lib/libchromatix_mot_imx230_common_ihdr.so
@@ -223,6 +225,8 @@ vendor/lib/libchromatix_ov5693_video.so
 bin/thermal-engine
 vendor/lib64/libthermalioctl.so
 vendor/lib64/libthermalclient.so
+vendor/lib/libqti-perfd-client.so
+vendor/lib64/libqti-perfd-client.so
 
 # DRM
 # TZBSP
@@ -246,6 +250,7 @@ vendor/lib64/libtzdrmgenprov.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/libmasc.so
+vendor/lib/liboemcrypto.so
 vendor/lib/libpvr.so
 vendor/lib/libQSEEComAPI.so
 vendor/lib/librmp.so
@@ -419,6 +424,11 @@ vendor/lib64/egl/libq3dtools_esx.so
 vendor/lib64/egl/libQTapGLES.so
 
 # Media
+etc/firmware/dxhdcp2.b00
+etc/firmware/dxhdcp2.b01
+etc/firmware/dxhdcp2.b02
+etc/firmware/dxhdcp2.b03
+etc/firmware/dxhdcp2.mdt
 etc/firmware/venus.b03
 etc/firmware/venus.b04
 etc/firmware/venus.b01
@@ -438,6 +448,7 @@ vendor/lib64/libOmxAmrwbplusDec.so
 vendor/lib64/libOmxWmaDec.so
 vendor/lib64/libSHIMDivxDrm.so
 vendor/lib/libDivxDrm.so
+vendor/lib/libDxHdcp.so
 vendor/lib/libExtendedExtractor.so
 vendor/lib/libFlacSwDec.so
 vendor/lib/libI420colorconvert.so
@@ -467,6 +478,8 @@ vendor/lib/libsensor1.so
 
 # Qualcomm framework
 bin/irsc_util
+lib/librmnetctl.so
+lib64/librmnetctl.so
 vendor/lib/libdsutils.so
 vendor/lib/libdsi_netctrl.so
 vendor/lib/libidl.so
@@ -475,7 +488,6 @@ vendor/lib/libqmi.so
 vendor/lib/libdiag.so
 vendor/lib/libqdi.so
 vendor/lib/libqdp.so
-
 vendor/lib64/libdsutils.so
 vendor/lib64/libdsi_netctrl.so
 vendor/lib64/libidl.so
@@ -541,13 +553,13 @@ bin/radish
 #bin/rild:bin/rild.mmi
 bin/rfs_access
 bin/rmt_storage
-#lib/libadropbox.so
 lib/libcnefeatureconfig.so
 lib/libmdmcutback.so
 #lib/libmdmdetect.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
 lib/libril.so
+lib64/libadropbox.so
 vendor/lib/libconfigdb.so
 vendor/lib/libcneapiclient.so
 vendor/lib/libsystem_health_mon.so
@@ -557,17 +569,26 @@ vendor/lib/libril-qcril-hook-oem.so
 vendor/lib/libsmemlog.so
 vendor/lib/libtime_genoff.so
 vendor/lib/libxml.so
+vendor/lib64/libmdmdetect.so
+vendor/lib64/libnetmgr.so
+vendor/lib64/libxml.so
+
+# Touchscreen firmware
+etc/firmware/synaptics-s2726-15052160-1d19d9-clark.tdat
+etc/firmware/synaptics-s3528-15071401-1e29b4-clark.tdat
+etc/firmware/synaptics-s3528ar-15071401-1e29b4-clark.tdat
 
 # Sensors
 etc/firmware/sensorhubfw.bin
 lib/hw/sensors.msm8992.so
 lib64/hw/sensors.msm8992.so
+lib64/hw/sensorhub.msm8992.so
 
 # Lights
 lib64/hw/lights.msm8992.so
 lib/hw/lights.msm8992.so
 
-# Time
+# Time (Linked to radio)
 bin/time_daemon
 
 vendor/lib/hw/flp.default.so
