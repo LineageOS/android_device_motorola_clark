@@ -20,65 +20,65 @@
 # Everything in this directory will become public
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/fstab.qcom:root/fstab.qcom \
-    device/moto/clark/twrp.fstab:recovery/root/etc/twrp.fstab
+    $(LOCAL_PATH)/fstab.qcom:root/fstab.qcom \
+    $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/rootdir/init.class_main.sh:root/init.class_main.sh \
-    device/moto/clark/rootdir/init.mdm.sh:root/init.mdm.sh \
-    device/moto/clark/rootdir/init.mmi.block_perm.sh:root/init.mmi.block_perm.sh \
-    device/moto/clark/rootdir/init.mmi.boot.sh:root/init.mmi.boot.sh \
-    device/moto/clark/rootdir/init.mmi.debug.rc:root/init.mmi.debug.rc \
-    device/moto/clark/rootdir/init.mmi.diag.rc:root/init.mmi.diag.rc \
-    device/moto/clark/rootdir/init.mmi.diag_mdlog.rc:root/init.mmi.diag_mdlog.rc \
-    device/moto/clark/rootdir/init.mmi.early_boot.sh:root/init.mmi.early_boot.sh \
-    device/moto/clark/rootdir/init.mmi.rc:root/init.mmi.rc \
-    device/moto/clark/rootdir/init.mmi.touch.sh:root/init.mmi.touch.sh \
-    device/moto/clark/rootdir/init.mmi.usb.rc:root/init.mmi.usb.rc \
-    device/moto/clark/rootdir/init.mmi.usb.sh:root/init.mmi.usb.sh \
-    device/moto/clark/rootdir/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
-    device/moto/clark/rootdir/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
-    device/moto/clark/rootdir/init.qcom.rc:root/init.qcom.rc \
-    device/moto/clark/rootdir/init.qcom.sh:root/init.qcom.sh \
-    device/moto/clark/rootdir/init.qcom.syspart_fixup.sh:root/init.qcom.syspart_fixup.sh \
-    device/moto/clark/rootdir/init.target.rc:root/init.target.rc \
-    device/moto/clark/rootdir/module_hashes:root/module_hashes \
-    device/moto/clark/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
-    device/moto/clark/rootdir/etc/init.ath3k.bt.sh:system/etc/init.ath3k.bt.sh \
-    device/moto/clark/rootdir/etc/init.crda.sh:system/etc/init.crda.sh \
-    device/moto/clark/rootdir/etc/init.qcom.audio.sh:system/etc/init.qcom.audio.sh \
-    device/moto/clark/rootdir/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
-    device/moto/clark/rootdir/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
-    device/moto/clark/rootdir/etc/init.qcom.debug.sh:system/etc/init.qcom.debug.sh \
-    device/moto/clark/rootdir/etc/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh \
-    device/moto/clark/rootdir/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
-    device/moto/clark/rootdir/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
-    device/moto/clark/rootdir/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
-    device/moto/clark/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
-    device/moto/clark/rootdir/etc/init.wifi.mac.sh:system/etc/init.wifi.mac.sh
+    $(LOCAL_PATH)/rootdir/init.class_main.sh:root/init.class_main.sh \
+    $(LOCAL_PATH)/rootdir/init.mdm.sh:root/init.mdm.sh \
+    $(LOCAL_PATH)/rootdir/init.mmi.block_perm.sh:root/init.mmi.block_perm.sh \
+    $(LOCAL_PATH)/rootdir/init.mmi.boot.sh:root/init.mmi.boot.sh \
+    $(LOCAL_PATH)/rootdir/init.mmi.debug.rc:root/init.mmi.debug.rc \
+    $(LOCAL_PATH)/rootdir/init.mmi.diag.rc:root/init.mmi.diag.rc \
+    $(LOCAL_PATH)/rootdir/init.mmi.diag_mdlog.rc:root/init.mmi.diag_mdlog.rc \
+    $(LOCAL_PATH)/rootdir/init.mmi.early_boot.sh:root/init.mmi.early_boot.sh \
+    $(LOCAL_PATH)/rootdir/init.mmi.rc:root/init.mmi.rc \
+    $(LOCAL_PATH)/rootdir/init.mmi.touch.sh:root/init.mmi.touch.sh \
+    $(LOCAL_PATH)/rootdir/init.mmi.usb.rc:root/init.mmi.usb.rc \
+    $(LOCAL_PATH)/rootdir/init.mmi.usb.sh:root/init.mmi.usb.sh \
+    $(LOCAL_PATH)/rootdir/init.qcom.class_core.sh:root/init.qcom.class_core.sh \
+    $(LOCAL_PATH)/rootdir/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
+    $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
+    $(LOCAL_PATH)/rootdir/init.qcom.sh:root/init.qcom.sh \
+    $(LOCAL_PATH)/rootdir/init.qcom.syspart_fixup.sh:root/init.qcom.syspart_fixup.sh \
+    $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
+    $(LOCAL_PATH)/rootdir/module_hashes:root/module_hashes \
+    $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
+    $(LOCAL_PATH)/rootdir/etc/init.ath3k.bt.sh:system/etc/init.ath3k.bt.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.crda.sh:system/etc/init.crda.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.audio.sh:system/etc/init.qcom.audio.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.bt.sh:system/etc/init.qcom.bt.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.coex.sh:system/etc/init.qcom.coex.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.debug.sh:system/etc/init.qcom.debug.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
+    $(LOCAL_PATH)/rootdir/etc/init.wifi.mac.sh:system/etc/init.wifi.mac.sh
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/sec_config:system/etc/sec_config
+    $(LOCAL_PATH)/sec_config:system/etc/sec_config
 
 # Input device files for clark
 PRODUCT_COPY_FILES += \
-    device/moto/clark/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
+    $(LOCAL_PATH)/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/audio_policy.conf:system/etc/audio_policy.conf \
-    device/moto/clark/audio_effects.conf:system/etc/audio_effects.conf
+    $(LOCAL_PATH)/audio_policy.conf:system/etc/audio_policy.conf \
+    $(LOCAL_PATH)/audio_effects.conf:system/etc/audio_effects.conf
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/media_profiles.xml:system/etc/media_profiles.xml \
-    device/moto/clark/media_codecs.xml:system/etc/media_codecs.xml
+    $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/configs/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
-    device/moto/clark/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    device/moto/clark/configs/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
+    $(LOCAL_PATH)/configs/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
+    $(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
+    $(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/configs/sensors/sensorhub-blacklist.txt:system/etc/firmware/sensorhub-blacklist.txt
+    $(LOCAL_PATH)/configs/sensors/sensorhub-blacklist.txt:system/etc/firmware/sensorhub-blacklist.txt
 
 PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
@@ -109,7 +109,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
 
 PRODUCT_COPY_FILES += \
-    device/moto/clark/mixer_paths.xml:system/etc/mixer_paths.xml
+    $(LOCAL_PATH)/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # NFC access control + feature files + configuration
 PRODUCT_COPY_FILES += \
@@ -130,7 +130,7 @@ PRODUCT_AAPT_PREF_CONFIG := 560dpi
 PRODUCT_CHARACTERISTICS := default
 
 DEVICE_PACKAGE_OVERLAYS := \
-    device/moto/clark/overlay
+    $(LOCAL_PATH)/overlay
 
 PRODUCT_PACKAGES := \
     wifi_symlinks \
@@ -239,5 +239,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # setup dalvik vm configs.
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 
-$(call inherit-product-if-exists, hardware/qcom/msm8x84/msm8x84.mk)
-$(call inherit-product-if-exists, vendor/qcom/gpu/msm8x84/msm8x84-gpu-vendor.mk)
+$(call inherit-product-if-exists, hardware/qcom/msm8x94/msm8x84.mk)
+$(call inherit-product-if-exists, vendor/qcom/gpu/msm8x94/msm8x84-gpu-vendor.mk)
