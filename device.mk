@@ -125,11 +125,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/mixer_paths.xml:system/etc/mixer_paths.xml
 
-# NFC access control + feature files + configuration
-PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
-    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
-
 PRODUCT_PACKAGES += atmel.fw.apq8084
 
 PRODUCT_TAGS += dalvik.gc.type-precise
@@ -185,6 +180,19 @@ PRODUCT_PACKAGES += \
     audio.usb.default \
     audio.r_submix.default \
     libaudio-resampler
+
+# NFC packages
+PRODUCT_PACKAGES += \
+    com.android.nfc_extras \
+    nfc_nci.bcm2079x.default \
+    NfcNci \
+    Tag
+
+PRODUCT_COPY_FILES += \
+    frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+    frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
+    device/moto/clark/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    device/moto/clark/nfc/libnfc-brcm-20795a20.conf:system/etc/libnfc-brcm-20795a20.conf
 
 # Audio effects
 PRODUCT_PACKAGES += \
