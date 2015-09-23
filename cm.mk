@@ -12,9 +12,9 @@ $(call inherit-product, vendor/cm/config/common_full_phone.mk)
 $(call inherit-product, vendor/cm/config/nfc_enhanced.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/moto/clark/aosp_clark.mk)
+$(call inherit-product, device/motorola/clark/aosp_clark.mk)
 
-DEVICE_PACKAGE_OVERLAYS += device/moto/clark/overlay
+DEVICE_PACKAGE_OVERLAYS += device/motorola/clark/overlay
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_NAME := cm_clark

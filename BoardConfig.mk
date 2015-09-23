@@ -14,7 +14,7 @@
 # limitations under the License.
 #
 
-DEVICE_PATH := device/moto/clark
+DEVICE_PATH := device/motorola/clark
 
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_SMP := true
@@ -85,8 +85,8 @@ WPA_SUPPLICANT_VERSION := VER_0_8_X
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/moto/clark/bluetooth
-BOARD_BLUEDROID_VENDOR_CONF := device/moto/clark/bluetooth/libbt_vndcfg.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
+BOARD_BLUEDROID_VENDOR_CONF := $(DEVICE_PATH)/bluetooth/libbt_vndcfg.txt
 
 TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := msm8992
