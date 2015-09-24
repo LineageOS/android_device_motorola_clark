@@ -213,7 +213,7 @@ PRODUCT_PACKAGES += \
     mm-qcamera-app
 
 PRODUCT_PACKAGES += \
-    lights.clark
+    lights.msm8992
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
