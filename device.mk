@@ -191,8 +191,8 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
     frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
-    device/moto/clark/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    device/moto/clark/nfc/libnfc-brcm-20795a20.conf:system/etc/libnfc-brcm-20795a20.conf
+    $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    $(LOCAL_PATH)/nfc/libnfc-brcm-20795a20.conf:system/etc/libnfc-brcm-20795a20.conf
 
 # Audio effects
 PRODUCT_PACKAGES += \
@@ -209,7 +209,7 @@ PRODUCT_PACKAGES += \
     mm-qcamera-app
 
 PRODUCT_PACKAGES += \
-    lights.msm8992
+    lights.clark
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
