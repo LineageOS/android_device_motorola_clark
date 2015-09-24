@@ -1,9 +1,5 @@
 # Moto USB configuration
 import init.mmi.usb.rc
-import init.mmi.debug.rc
-
-# Moto VT, the file isn't exit in non VT devices
-import init.mmi.volte.rc
 
 # Moto diag_mdlog configuration
 import init.mmi.diag_mdlog.rc
@@ -190,12 +186,12 @@ on post-fs-data
     chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_usb_suspend
     chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_fail_clear
     chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_usb_otg_ctl
-	chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_auto_enable
+    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_auto_enable
     chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_ibatt
-	chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_itrick
-	chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_iusb
-	chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_usb_suspend
-	chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_fail_clear
+    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_itrick
+    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_iusb
+    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_usb_suspend
+    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_fail_clear
 
     # Create directory for cutback
     mkdir /data/misc/cutback 0770 radio wifi

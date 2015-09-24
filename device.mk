@@ -25,11 +25,8 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.class_main.sh:root/init.class_main.sh \
-    $(LOCAL_PATH)/rootdir/init.mdm.sh:root/init.mdm.sh \
     $(LOCAL_PATH)/rootdir/init.mmi.block_perm.sh:root/init.mmi.block_perm.sh \
     $(LOCAL_PATH)/rootdir/init.mmi.boot.sh:root/init.mmi.boot.sh \
-    $(LOCAL_PATH)/rootdir/init.mmi.debug.rc:root/init.mmi.debug.rc \
-    $(LOCAL_PATH)/rootdir/init.mmi.diag.rc:root/init.mmi.diag.rc \
     $(LOCAL_PATH)/rootdir/init.mmi.diag_mdlog.rc:root/init.mmi.diag_mdlog.rc \
     $(LOCAL_PATH)/rootdir/init.mmi.early_boot.sh:root/init.mmi.early_boot.sh \
     $(LOCAL_PATH)/rootdir/init.mmi.rc:root/init.mmi.rc \
@@ -40,9 +37,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.qcom.early_boot.sh:root/init.qcom.early_boot.sh \
     $(LOCAL_PATH)/rootdir/init.qcom.rc:root/init.qcom.rc \
     $(LOCAL_PATH)/rootdir/init.qcom.sh:root/init.qcom.sh \
-    $(LOCAL_PATH)/rootdir/init.qcom.syspart_fixup.sh:root/init.qcom.syspart_fixup.sh \
-    $(LOCAL_PATH)/rootdir/init.target.rc:root/init.target.rc \
-    $(LOCAL_PATH)/rootdir/module_hashes:root/module_hashes \
     $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
     $(LOCAL_PATH)/rootdir/etc/init.ath3k.bt.sh:system/etc/init.ath3k.bt.sh \
     $(LOCAL_PATH)/rootdir/etc/init.crda.sh:system/etc/init.crda.sh \
@@ -53,8 +47,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.efs.sync.sh:system/etc/init.qcom.efs.sync.sh \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.fm.sh:system/etc/init.qcom.fm.sh \
     $(LOCAL_PATH)/rootdir/etc/init.qcom.post_boot.sh:system/etc/init.qcom.post_boot.sh \
-    $(LOCAL_PATH)/rootdir/etc/init.qcom.sdio.sh:system/etc/init.qcom.sdio.sh \
-    $(LOCAL_PATH)/rootdir/etc/init.qcom.wifi.sh:system/etc/init.qcom.wifi.sh \
     $(LOCAL_PATH)/rootdir/etc/init.wifi.mac.sh:system/etc/init.wifi.mac.sh
 
 PRODUCT_COPY_FILES += \
@@ -79,14 +71,18 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/audio/audio_policy.conf:system/etc/audio_policy.conf
 
-#PRODUCT_COPY_FILES += \
-#    $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml \
-#    $(LOCAL_PATH)/media_codecs.xml:system/etc/media_codecs.xml
-
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wifi/p2p_supplicant.conf:system/etc/wifi/p2p_supplicant.conf \
-    $(LOCAL_PATH)/configs/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    $(LOCAL_PATH)/configs/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini
+    $(LOCAL_PATH)/audio/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/audio/media_codecs.xml:system/etc/media_codecs.xml
+
+# WiFi
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/wifi/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
+    $(LOCAL_PATH)/wifi/WCNSS_qcom_wlan_nv.bin:system/etc/firmware/wlan/qca_cld/WCNSS_qcom_wlan_nv.bin \
+    $(LOCAL_PATH)/wifi/lowi.conf:system/etc/lowi.conf \
+    $(LOCAL_PATH)/wifi/msap.conf:system/etc/msap.conf \
+    $(LOCAL_PATH)/wifi/xtwifi.conf:system/etc/xtwifi.conf
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-clark.conf:system/etc/thermal-engine-clark.conf
@@ -141,11 +137,20 @@ PRODUCT_CHARACTERISTICS := default
 DEVICE_PACKAGE_OVERLAYS := \
     $(LOCAL_PATH)/overlay
 
-PRODUCT_PACKAGES := \
-    wifi_symlinks \
+PRODUCT_PACKAGES += \
+    dhcpcd.conf \
     libwpa_client \
     hostapd \
-    wpa_supplicant
+    wpa_supplicant \
+    wpa_supplicant.conf \
+    wpa_supplicant_overlay.conf \
+    p2p_supplicant_overlay.conf \
+    hostapd_default.conf \
+    hostapd.accept \
+    hostapd.deny
+
+PRODUCT_PACKAGES += \
+    wcnss_service
 
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
