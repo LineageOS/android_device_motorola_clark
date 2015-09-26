@@ -146,7 +146,7 @@ TARGET_POWERHAL_VARIANT := qcom
 include device/qcom/sepolicy/sepolicy.mk
 
 # Time services
-BOARD_USES_QC_TIME_SERVICES := true
+# BOARD_USES_QC_TIME_SERVICES := true
 
 # TWRP definitions
 DEVICE_RESOLUTION := 1440x2560
