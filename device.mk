@@ -29,7 +29,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.mmi.boot.sh:root/init.mmi.boot.sh \
     $(LOCAL_PATH)/rootdir/init.mmi.diag_mdlog.rc:root/init.mmi.diag_mdlog.rc \
     $(LOCAL_PATH)/rootdir/init.mmi.early_boot.sh:root/init.mmi.early_boot.sh \
-    $(LOCAL_PATH)/rootdir/init.mmi.rc:root/init.mmi.rc \
     $(LOCAL_PATH)/rootdir/init.mmi.touch.sh:root/init.mmi.touch.sh \
     $(LOCAL_PATH)/rootdir/init.mmi.usb.rc:root/init.mmi.usb.rc \
     $(LOCAL_PATH)/rootdir/init.mmi.usb.sh:root/init.mmi.usb.sh \

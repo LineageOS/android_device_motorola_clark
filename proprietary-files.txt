@@ -13,6 +13,8 @@ etc/firmware/rampatch_tlv_2.1.tlv
 etc/firmware/rampatch_tlv_3.0.tlv
 etc/firmware/rampatch_tlv_3.2.tlv
 vendor/lib64/libbtnv.so
+vendor/lib64/libqcci_legacy.so
+vendor/lib/libqcci_legacy.so
 vendor/lib/libbtnv.so
 
 

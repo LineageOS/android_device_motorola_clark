@@ -1,32 +1,22 @@
-# Copyright (c) 2009-2012, 2014, The Linux Foundation. All rights reserved.
-#
-# Redistribution and use in source and binary forms, with or without
-# modification, are permitted provided that the following conditions are met:
-#     * Redistributions of source code must retain the above copyright
-#       notice, this list of conditions and the following disclaimer.
-#     * Redistributions in binary form must reproduce the above copyright
-#       notice, this list of conditions and the following disclaimer in the
-#       documentation and/or other materials provided with the distribution.
-#     * Neither the name of The Linux Foundation nor
-#       the names of its contributors may be used to endorse or promote
-#       products derived from this software without specific prior written
-#       permission.
-#
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-# NON-INFRINGEMENT ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
-# CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
-# EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
-# PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS;
-# OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
-# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
-# OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
-# ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-
-# use init.mmi.usb.rc
 import init.mmi.rc
+import init.mmi.usb.rc
+import init.mmi.diag_mdlog.rc
+
+on charger
+    trigger early-fs
+    trigger fs
+    trigger post-fs
+    trigger post-fs-data
+    trigger moto-charger
+    class_stop main
+    class_stop late_start
+
+on moto-charger
+    setprop ro.board.platform msm8992
+    start  qcom-post-boot
+    start charge_only_mode
+    start batt_health
+    start thermal-com
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -35,26 +25,33 @@ on early-init
     mkdir /bt_firmware 0771 system system
     symlink /data/tombstones /tombstones
 
-on fs
-    mount_all fstab.qcom
-    swapon_all fstab.qcom
+    # Create modem FSG mount point
+    mkdir /fsg 755 root root
 
-    wait /dev/block/bootdevice/by-name/cache
-    mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
+    # Mount point for Digital Personalization partition
+    mkdir /customize 0500 root root
 
-    wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
-    restorecon_recursive /persist
-
-    wait /dev/block/bootdevice/by-name/modem
-    mount ext4 /dev/block/bootdevice/by-name/modem /firmware ro nosuid nodev
-
-    wait /dev/block/bootdevice/by-name/bluetooth
-    mount ext4 /dev/block/bootdevice/by-name/bluetooth /bt_firmware ro nosuid nodev
+    # boot with max cpu frequency, would restore on post boot
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 10485760
 
 on init
+    chown system log /sys/fs/pstore/annotate-ramoops
+    chmod 0640 /sys/fs/pstore/annotate-ramoops
+
+    # Setup kernel dropbox permissions so that dropboxd can utilize it
+    chown root diag /sys/kernel/dropbox/event
+    chown root diag /sys/kernel/dropbox/data
+
+    # Configure coredump
+    write /proc/sys/kernel/core_pattern "|/system/bin/coredump %e %p %t"
+    write /proc/self/coredump_filter "0x7f"
+
+    # ESDFS
+    chown mot_esdfs root /proc/fs/esdfs/packages
+
     # Set permissions for persist partition
     mkdir /persist 0771 system system
+
     # See storage config details at http://source.android.com/tech/storage/
     mkdir /mnt/shell/emulated 0700 shell shell
     mkdir /storage/emulated 0555 root root
@@ -73,6 +70,31 @@ on init
     symlink /storage/emulated/legacy /mnt/sdcard
     symlink /storage/emulated/legacy /storage/sdcard0
 
+on fs
+    mount_all fstab.qcom
+    swapon_all fstab.qcom
+
+    # Mount modem FSG partition
+    wait /dev/block/bootdevice/by-name/fsg
+    mount ext4 /dev/block/bootdevice/by-name/fsg /fsg ro nosuid nodev barrier=0
+
+    # use /persist as phony PDS partition
+    symlink /persist /pds
+
+    #Mount customize partion
+    wait /dev/block/bootdevice/by-name/customize
+    mount ext4 /dev/block/bootdevice/by-name/customize /customize ro discard nosuid nodev noatime nodiratime noexec
+
+    wait /dev/block/bootdevice/by-name/persist
+    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
+    restorecon_recursive /persist
+
+    wait /dev/block/bootdevice/by-name/modem
+    mount ext4 /dev/block/bootdevice/by-name/modem /firmware ro nosuid nodev
+
+    wait /dev/block/bootdevice/by-name/bluetooth
+    mount ext4 /dev/block/bootdevice/by-name/bluetooth /bt_firmware ro nosuid nodev
+
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
@@ -84,6 +106,41 @@ on early-boot
     write /sys/kernel/boot_adsp/boot 1
 
 on boot
+    chown system system /sys/class/backlight/lcd-backlight:0/brightness
+    chown system system /sys/class/backlight/lcd-backlight:0/max_brightness
+    chown system system /sys/class/leds/charging/brightness
+
+    chmod 0664 /sys/class/backlight/lcd-backlight:0/brightness
+    chmod 0664 /sys/class/backlight/lcd-backlight:0/max_brightness
+    chmod 0664 /sys/class/leds/lcd-backlight/brightness
+    chmod 0664 /sys/class/leds/charging/brightness
+
+    # Change the ownership of display TE files for tcmds
+    chown root mot_tcmd /sys/class/graphics/fb0/te_enable
+    chown root mot_tcmd /sys/class/graphics/fb0/frame_counter
+
+    # Set ownership for high brightness mode feature
+    chown system system /sys/class/graphics/fb0/hbm
+
+    # motosh irq_disable parameter permissions
+    chown root mot_tcmd /sys/module/motosh/parameters/irq_disable
+    chmod 0660 /sys/module/motosh/parameters/irq_disable
+
+    # Quiet binder logs
+    write /sys/module/binder/parameters/debug_mask 0x5
+
+    # create the necessary data dirs for tpapi with proper permission
+    mkdir /dev/tpapi 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi/etc 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi/etc/tpa 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi/etc/tpa/persistent 02770 mot_tpapi mot_tpapi
+
+    # Create moodle directory that MOT_MOODLE can write to
+    mkdir /data/local/moodle 0770 graphics mot_tcmd
+
+    # set permission for Dynamic-CABC feature
+    chown system system /sys/class/graphics/fb0/cabc_mode
 
     start rmt_storage
     start rfs_access
@@ -140,22 +197,16 @@ on boot
 
     setprop wifi.interface wlan0
 
-#   Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-    setprop net.tcp.buffersize.wifi    524288,2097152,4194304,262144,524288,1048576
-
-
     setprop ro.telephony.call_ring.multiple false
 
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
-
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
-
 
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+    setprop net.tcp.buffersize.wifi    524288,2097152,4194304,262144,524288,1048576
     setprop net.tcp.buffersize.default 4096,87380,524288,4096,16384,110208
     setprop net.tcp.buffersize.lte     2097152,4194304,8388608,262144,524288,1048576
     setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
@@ -216,7 +267,113 @@ on boot
     chown radio radio /data/misc/radio/copy_complete
     chmod 0660 /data/misc/radio/copy_complete
 
+on post-fs
+    mkdir /persist/camera 02755 mot_tcmd mot_tcmd
+    mkdir /persist/camera/ledcal 0755 camera mot_tcmd
+    mkdir /persist/factory 0755 mot_tcmd mot_tcmd
+    mkdir /persist/public 0755 mot_tcmd mot_tcmd
+    mkdir /persist/public/atvc 0770 mot_atvc shell
+    mkdir /persist/public/battd 0755 mot_accy mot_tcmd
+    mkdir /persist/public/hiddenmenu 0755 radio radio
+    mkdir /persist/public/hiddenmenu/data 0775 system mot_tcmd
+    mkdir /persist/public/locale 0700 system system
+    mkdir /persist/public/omadm 0700 radio radio
+    mkdir /persist/public/svcs 0770 system system
+    mkdir /persist/wifi 0755 mot_tcmd mot_tcmd
+    mkdir /persist/bt 0755 mot_tcmd bluetooth
+    mkdir /persist/wmdrm 0775 mot_drm mot_drm
+    mkdir /persist/batt_health 0755 mot_pwric mot_pwric
+    mkdir /persist/mdm 0770 radio radio
+
+    chown mot_tcmd mot_tcmd /persist/factory/fti
+    chmod 0660 /persist/factory/fti
+    chown mot_tcmd mot_tcmd /persist/factory/byte
+    chmod 0660 /persist/factory/byte
+    chmod 0660 /persist/wifi/wlan_mac.bin
+    chown mot_tcmd mot_tcmd /persist/bt/bt_bdaddr
+    chmod 0664 /persist/bt/bt_bdaddr
+    chmod 0600 /persist/whisper/whisper_only/vector0.bin
+
+    # ensure /persist/antcap exists and has correct permissions for motosh to access
+    mkdir /persist/antcap 0755 mot_tcmd mot_tcmd
+    chown mot_tcmd mot_tcmd /persist/antcap
+    chmod 0755              /persist/antcap
+
+    # move /persist/captouch_caldata.bin to /persist/antcap (if necessary)
+    copy  /persist/captouch_caldata.bin /persist/antcap/captouch_caldata.bin
+    chown mot_tcmd mot_tcmd /persist/antcap/captouch_caldata.bin
+    chmod 0644              /persist/antcap/captouch_caldata.bin
+    rm    /persist/captouch_caldata.bin
+
+    # move /persist/captouch_basedata.bin to /persist/antcap (if necessary)
+    copy  /persist/captouch_basedata.bin /persist/antcap/captouch_basedata.bin
+    chown mot_tcmd mot_tcmd /persist/antcap/captouch_basedata.bin
+    chmod 0644              /persist/antcap/captouch_basedata.bin
+    rm    /persist/captouch_basedata.bin
+
+    # Permissions CapSense firmware update & reset
+    chown mot_tcmd mot_tcmd /sys/class/capsense/fw_update
+    chmod 0660 /sys/class/capsense/fw_update
+    chown mot_tcmd mot_tcmd /sys/class/capsense/reset
+    chmod 0660 /sys/class/capsense/reset
+
 on post-fs-data
+    # Setup folders for security
+    mkdir /persist/security 02770 mot_tpapi mot_tpapi
+    mkdir /data/local/dbvc 0750 mot_tcmd shell
+
+    # Setup folder for native to transfer data to NativeDropBoxAgent
+    mkdir /data/system/dropbox-add 0730 system diag
+
+   # Create directory used by power_supply_logger
+    mkdir /data/power_supply_logger 0750 mot_pwric log
+
+    # Permissions for Factory Test of Charging Paths
+    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_auto_enable
+    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_ibatt
+    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_itrick
+    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_iusb
+    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_usb_suspend
+    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_fail_clear
+    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_usb_otg_ctl
+    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_auto_enable
+    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_ibatt
+    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_itrick
+    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_iusb
+    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_usb_suspend
+    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_fail_clear
+
+    # Create directory for cutback
+    mkdir /data/misc/cutback 0770 radio wifi
+
+    #setup folder for WLAN WAPI
+    mkdir /data/wapi_certificate 0750 system wifi
+
+    # Subsystem RAM-dumps
+    mkdir /data/ss-ram-dumps 0750 radio log
+    mkdir /data/ss-ram-dumps/bp-dumps 0750 radio log
+    mkdir /data/ss-ram-dumps/riva-dumps 0750 radio log
+
+    # folder for Blueooth ramdump
+    mkdir /data/bt-ram-dumps 0750 bluetooth log
+
+    # Change ownership of aov related sysfs entries
+    chown audio audio /sys/kernel/aov/trigger
+    chown audio audio /sys/kernel/aov/register
+    chown audio audio /sys/kernel/aov/event
+
+    # Create directory for adspd
+    mkdir /data/adspd/ 0770 audio diag
+
+    # Sensor Hub calibration data directory
+    mkdir /data/misc/sensorhub 0770 system compass
+
+    # Setup folder for camera HAL subsystem
+    mkdir /data/camera_dump 0750 media media
+
+    # Create bug2go folder
+    mkdir /data/bug2go 0750 log log
+
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -235,14 +392,6 @@ on post-fs-data
     chown media_rw media_rw /data/media
 
     mkdir /data/misc/ipa 0700 net_admin net_admin
-
-    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
-
-    # Create the directories used by the Wireless subsystem
-    mkdir /data/misc/wifi 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
-    mkdir /data/misc/dhcp 0750 dhcp system
 
     # Create the directories used by CnE subsystem
     mkdir /data/connectivity 0771 system system
@@ -289,7 +438,6 @@ on post-fs-data
 
     #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
-    #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
     #Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
@@ -324,124 +472,22 @@ on post-fs-data
     #Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
 
-    #Create PERFD deamon related dirs
-    mkdir /data/misc/perfd 0755 root system
-    chmod 2755 /data/misc/perfd
-    mkdir /data/system/perfd 0770 root system
-    chmod 2770 /data/system/perfd
-
-
-on ffbm
-    trigger early-fs
-    trigger fs
-    trigger post-fs
-    trigger post-fs-data
-
-    # Load properties from /system/ + /factory after fs mount. Place
-    # this in another action so that the load will be scheduled after the prior
-    # issued fs triggers have completed.
-    trigger load_all_props_action
-
-    trigger early-boot
-    trigger mmi
-
-service ssr_setup /system/bin/ssr_setup
-    oneshot
-    disabled
-
-service ss_ramdump /system/bin/subsystem_ramdump
-    class main
-    user system
-    group system
-    disabled
-
-on property:persist.sys.ssr.restart_level=*
-    start ssr_setup
-
-on property:persist.sys.ssr.enable_ramdumps=1
-    write /sys/module/subsystem_restart/parameters/enable_ramdumps 1
-    start ss_ramdump
-
-on property:persist.sys.ssr.enable_ramdumps=0
-    write /sys/module/subsystem_restart/parameters/enable_ramdumps 0
-
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
-
-on property:persist.radio.atfwd.start=false
-    stop atfwd
-
-on property:radio.atfwd.start=false
-    stop atfwd
-
-# corefile limit and ETB enabling
-on property:persist.debug.trace=1
-    mkdir /data/core 0777 root root
-    write /proc/sys/kernel/core_pattern "/data/core/%E.%p.%e"
-    write /sys/devices/system/cpu/cpu1/online 1
-    write /sys/devices/system/cpu/cpu2/online 1
-    write /sys/devices/system/cpu/cpu3/online 1
-    write /sys/bus/coresight/devices/coresight-etm0/enable 0
-    write /sys/bus/coresight/devices/coresight-etm1/enable 0
-    write /sys/bus/coresight/devices/coresight-etm2/enable 0
-    write /sys/bus/coresight/devices/coresight-etm3/enable 0
-    write /sys/bus/coresight/devices/coresight-etm0/reset 1
-    write /sys/bus/coresight/devices/coresight-etm1/reset 1
-    write /sys/bus/coresight/devices/coresight-etm2/reset 1
-    write /sys/bus/coresight/devices/coresight-etm3/reset 1
-    write /sys/bus/coresight/devices/coresight-etm0/enable 1
-    write /sys/bus/coresight/devices/coresight-etm1/enable 1
-    write /sys/bus/coresight/devices/coresight-etm2/enable 1
-    write /sys/bus/coresight/devices/coresight-etm3/enable 1
-    write /sys/module/coresight_event/parameters/event_abort_enable 1
-
-on property:init.svc.wpa_supplicant=stopped
-    stop dhcpcd
-
-on property:bluetooth.isEnabled=true
-    start btwlancoex
-    write /sys/class/bluetooth/hci0/idle_timeout 7000
-
-on property:ro.bluetooth.ftm_enabled=true
-    start ftmd
+    start qe
+    setprop sys.io.scheduler cfq
+    start qcom-post-boot
+    start batt_health
 
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
     start config_bluetooth
-
-on property:persist.env.fastdorm.enabled=true
-    setprop persist.radio.data_no_toggle 1
-
-on property:wc_transport.start_hci=true
-    start start_hci_filter
-
-on property:wc_transport.start_hci=false
-    stop start_hci_filter
 
 on property:bluetooth.hciattach=true
     start hciattach
 
 on property:bluetooth.hciattach=false
     setprop bluetooth.status off
-
-on property:sys.boot_completed=1
-    start qcom-post-boot
-
-on property:ro.data.large_tcp_window_size=true
-    # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
-    write /proc/sys/net/ipv4/tcp_adv_win_scale  1
-
-on property:ro.use_data_netmgrd=false
-    # netmgr not supported on specific target
-    stop netmgrd
-
-# Adjust socket buffer to enlarge TCP receive window for high bandwidth
-# but only if ro.data.large_tcp_window_size property is set.
-on property:ro.data.large_tcp_window_size=true
-    write /proc/sys/net/ipv4/tcp_adv_win_scale  1
-
-on property:sys.sysctl.tcp_adv_win_scale=*
-    write /proc/sys/net/ipv4/tcp_adv_win_scale ${sys.sysctl.tcp_adv_win_scale}
 
 # Binding fuse mount point to /storage/emulated/legacy
 on property:init.svc.sdcard=running
@@ -454,9 +500,48 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-
 on property:init.svc.surfaceflinger=stopped
     stop ppd
+
+on property:persist.qe.trigger=1
+    start qe_broadcast
+
+on property:ro.kick.logcopy=coldboot
+    start apanic_copy
+
+on property:ro.secure=0
+    # disable dmesg restrict for insecure builds
+    write /proc/sys/kernel/dmesg_restrict 0
+
+on property:ro.debuggable=1
+    # disable dmesg restrict in eng/userdebug build
+    write /proc/sys/kernel/dmesg_restrict 0
+    # enable group read/write to /dev/log/kernel
+    chmod 0660 /dev/log/kernel
+    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+
+on property:persist.sys.qc.sub.rdump.on=1
+   write /sys/module/subsystem_restart/parameters/enable_ramdumps ${persist.sys.qc.sub.rdump.on}
+
+on property:ro.fuse_sdcard=true
+    start sdcard
+
+on nonencrypted
+    setprop ro.esdfs_sdcard ${persist.esdfs_sdcard}
+    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
+    setprop ro.kick.logcopy ${ro.bootreason}
+
+on property:vold.decrypt=trigger_restart_framework
+    setprop ro.esdfs_sdcard ${persist.esdfs_sdcard}
+    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
+    setprop ro.kick.logcopy ${ro.bootreason}
+
+# Set RPS Mask for Wifi Hotspot
+on property:sys.wifi.tethering=true
+    write /sys/class/net/wlan0/queues/rx-0/rps_cpus ${sys.usb.rps_mask}
+    write /sys/class/net/wlan0/queues/rx-1/rps_cpus ${sys.usb.rps_mask}
+    write /sys/class/net/wlan0/queues/rx-2/rps_cpus ${sys.usb.rps_mask}
+    write /sys/class/net/wlan0/queues/rx-3/rps_cpus ${sys.usb.rps_mask}
 
 service qcom-c_core-sh /system/bin/sh /init.qcom.class_core.sh
     class core
@@ -491,12 +576,6 @@ service rfs_access /system/bin/rfs_access
    user root
    group system net_raw
 
-service start_hci_filter /system/bin/wcnss_filter
-    class late_start
-    user root
-    group bluetooth qcom_diag diag log
-    disabled
-
 service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
     class core
     user bluetooth
@@ -507,13 +586,6 @@ service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
     user bluetooth
     group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-service ftmd /system/bin/ftmdaemon
-    class late_start
-    user system
-    group system bluetooth inet net_bt_admin misc net_admin net_bt_stack qcom_diag
     disabled
     oneshot
 
@@ -550,13 +622,6 @@ service qti /system/vendor/bin/qti
     user radio
     group radio net_raw qcom_diag usb net_admin
     disabled
-
-service btwlancoex /system/bin/sh /system/etc/init.qcom.coex.sh
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin inet net_admin net_raw
-    disabled
-    oneshot
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
@@ -663,10 +728,6 @@ service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
     disabled
     oneshot
 
-on property:crypto.driver.load=1
-     insmod /system/lib/modules/qce.ko
-     insmod /system/lib/modules/qcedev.ko
-
 service qcom-sh /system/bin/sh /init.qcom.sh
     class late_start
     user root
@@ -689,7 +750,6 @@ service hostapd /system/bin/hostapd -dd /data/misc/wifi/hostapd.conf
     group root
     oneshot
     disabled
-
 
 service ril-daemon2 /system/bin/rild -c 2
     class main
@@ -737,13 +797,6 @@ service vm_bms /system/bin/vm_bms
     group root
     disabled
 
-service msm_irqbalance /system/bin/msm_irqbalance -f /system/vendor/etc/msm_irqbalance.conf
-    socket msm_irqbalance seqpacket 660 root system
-    class core
-    user root
-    group root
-    disabled
-
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
@@ -753,11 +806,6 @@ service qseecomd /system/bin/qseecomd
    class core
    user root
    group root
-
-service perfd /system/bin/perfd
-   class main
-   user root
-   disabled
 
 service per_mgr /system/bin/pm-service
     class core
@@ -804,4 +852,148 @@ service energy-awareness /system/bin/energy-awareness
     user root
     group system
     oneshot
+
+service mmi-block-perm /system/bin/sh /init.mmi.block_perm.sh
+    class main
+    user root
+    oneshot
+
+service batt_health /system/bin/batt_health
+    class late_start
+    user mot_pwric
+    group mot_pwric cache net_admin log
+    disabled
+
+service apanic_copy /system/bin/sh /system/bin/apanic_copy.sh
+    class late_start
+    group log
+    oneshot
+    disabled
+
+service apanic_annotate /system/bin/sh /system/bin/apanic_save.sh build
+    class late_start
+    group log
+    oneshot
+    disabled
+
+service charge_only_mode /system/bin/charge_only_mode
+    user root
+    group graphics system input
+    disabled
+
+service qe /xbin/qe /system
+    class main
+    seclabel u:r:qe:s0
+    oneshot
+    disabled
+
+service qe_broadcast /xbin/qe /system -b
+    class main
+    seclabel u:r:qe:s0
+    oneshot
+    disabled
+
+service ftmipcd /system/bin/ftmipcd
+    user radio
+    group radio net_raw inet qcom_diag
+    disabled
+    oneshot
+
+service tcmd /system/bin/tcmd
+    class core
+    group mot_tcmd radio mot_pwric input system log camera graphics mot_accy sdcard_r sdcard_rw audio inet bluetooth wifi compass net_bt_admin mot_tombstone mot_tpapi mount net_raw net_admin media shell mot_usb nfc qcom_diag mot_dbvc cache media_rw
+    socket local_tcmd stream 0660 mot_tcmd mot_tcmd
+    socket batch_socket stream 0600 mot_tcmd mot_tcmd
+    oneshot
+    disabled
+
+service tcmdhelp /system/bin/tcmdhelp
+    class main
+    socket tcmdhelp stream 0600 mot_tcmd mot_tcmd
+    oneshot
+    disabled
+
+#start Sensor daemon
+service motosh /system/bin/motosh boot
+    class late_start
+    user compass
+    group compass misc input mot_tcmd
+    oneshot
+
+service mmi-boot-sh /system/bin/sh /init.mmi.boot.sh
+    class core
+    user root
+    oneshot
+
+service mmi-early_boot-sh /system/bin/sh /init.mmi.early_boot.sh
+    class late_start
+    user root
+    oneshot
+
+service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh synaptics
+    class core
+    user root
+    oneshot
+
+service hw_revs /system/bin/sh /system/bin/hardware_revisions.sh
+    class late_start
+    user system
+    group system
+    oneshot
+
+service mbm_spy /system/bin/mbm_spy
+    class late_start
+    user system
+    group system
+    oneshot
+
+service dropboxd /system/bin/dropboxd
+    class late_start
+    user diag
+    group diag
+
+service wifi_mac /system/bin/sh /system/etc/init.wifi.mac.sh
+    class main
+    user wifi
+    group system
+    oneshot
+
+service qe /xbin/qe /system
+    seclabel u:r:qe:s0
+    class main
+    oneshot
+    disabled
+
+service qe_broadcast /xbin/qe /system -b
+    seclabel u:r:qe:s0
+    class main
+    oneshot
+    disabled
+
+service ss_rdump /system/bin/subsystem_ramdump 1 0
+   class late_start
+   user radio
+   group log sdcard_rw sdcard_r diag
+
+service adspd /system/bin/adspd
+   class late_start
+   socket adspdsock stream 0660 system audio
+   user audio
+   group audio input diag
+
+# DHCP service for Ethernet
+service dhcpcd_eth0 /system/bin/dhcpcd -G
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_eth0 /system/bin/dhcpcd -nBK
+    class late_start
+    disabled
+    oneshot
+
+service thermal-com /system/bin/thermal-engine --minimode
+    class main
+    user root
+    disabled
 
