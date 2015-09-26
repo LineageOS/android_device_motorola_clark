@@ -1,6 +1,4 @@
-import init.mmi.rc
 import init.mmi.usb.rc
-import init.mmi.diag_mdlog.rc
 
 on charger
     trigger early-fs
@@ -554,14 +552,6 @@ service qcom-c_main-sh /system/bin/sh /init.class_main.sh
     group radio
     oneshot
 
-service cnd /system/bin/cnd
-    class late_start
-    socket cnd stream 660 root inet
-
-service dpmd /system/bin/dpmd
-    class late_start
-    socket dpmd stream 660 root system
-
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
     user root
@@ -575,19 +565,6 @@ service rfs_access /system/bin/rfs_access
    class core
    user root
    group system net_raw
-
-service config_bluetooth /system/bin/sh /system/etc/init.qcom.bt.sh "onboot"
-    class core
-    user bluetooth
-    group bluetooth system
-    oneshot
-
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
 
 service port-bridge /system/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
     class main
@@ -683,9 +660,6 @@ service wlan_logging /system/bin/cnss_diag
     disabled
     oneshot
 
-service cnss-daemon /system/bin/cnss-daemon -n -l
-    class late_start
-
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
     class late_start
     disabled
@@ -716,27 +690,9 @@ service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
 
-service loc_launcher /system/bin/loc_launcher
-    #loc_launcher will start as root and set its uid to gps
-    class late_start
-    group gps inet net_raw qcom_diag net_admin wifi
-
-service fm_dl /system/bin/sh /system/etc/init.qcom.fm.sh
-    class late_start
-    user root
-    group system
-    disabled
-    oneshot
-
 service qcom-sh /system/bin/sh /init.qcom.sh
     class late_start
     user root
-    oneshot
-
-service qcom-post-boot /system/bin/sh /system/etc/init.qcom.post_boot.sh
-    class late_start
-    user root
-    disabled
     oneshot
 
 service atfwd /system/bin/ATFWD-daemon
@@ -766,12 +722,6 @@ service ril-daemon3 /system/bin/rild -c 3
     user root
     disabled
     group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
-
-service usb_uicc_daemon /system/bin/usb_uicc_client
-    class main
-    user system
-    group system log net_raw
-    oneshot
 
 # virtual sdcard daemon running as media_rw (1023)
 service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
@@ -835,11 +785,6 @@ service adsprpcd /system/bin/adsprpcd
    class main
    user media
    group media
-
-#service wcnss-service /system/bin/wcnss_service
-#    class main
-#    user system
-#    group system wifi radio
 
 service ppd /system/bin/mm-pp-daemon
     class late_start
@@ -951,12 +896,6 @@ service dropboxd /system/bin/dropboxd
     class late_start
     user diag
     group diag
-
-service wifi_mac /system/bin/sh /system/etc/init.wifi.mac.sh
-    class main
-    user wifi
-    group system
-    oneshot
 
 service qe /xbin/qe /system
     seclabel u:r:qe:s0
