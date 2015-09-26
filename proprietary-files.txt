@@ -80,8 +80,6 @@ etc/firmware/rampatch_tlv_2.1.tlv
 etc/firmware/rampatch_tlv_3.0.tlv
 vendor/lib/libbtnv.so
 vendor/lib64/libbtnv.so
-lib/libbt-vendor.so
-lib64/libbt-vendor.so
 
 # Camera
 bin/mm-qcamera-app
