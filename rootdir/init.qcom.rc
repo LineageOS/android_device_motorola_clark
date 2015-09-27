@@ -614,6 +614,12 @@ service qcom-sh /system/bin/sh /init.qcom.sh
     user root
     oneshot
 
+on property:persist.radio.atfwd.start=false
+    stop atfwd
+
+on property:radio.atfwd.start=false
+    stop atfwd
+
 service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
