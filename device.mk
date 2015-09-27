@@ -20,8 +20,8 @@
 # Everything in this directory will become public
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/fstab.qcom:root/fstab.qcom \
-    $(LOCAL_PATH)/twrp.fstab:recovery/root/etc/twrp.fstab
+    $(LOCAL_PATH)/rootdir/fstab.qcom:root/fstab.qcom \
+    $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/init.class_main.sh:root/init.class_main.sh \
@@ -39,7 +39,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/rootdir/ueventd.qcom.rc:root/ueventd.qcom.rc \
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sec_config:system/etc/sec_config
+    $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 
 # Input device files for clark
 PRODUCT_COPY_FILES += \
@@ -77,29 +77,52 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     librs_jni
 
+# Display
 PRODUCT_PACKAGES += \
     gralloc.msm8992 \
     hwcomposer.msm8992 \
     copybit.msm8992 \
     memtrack.msm8992 \
+    liboverlay \
     libqdutils \
     libqdMetaData
 
+# Filesystem management tools
+PRODUCT_PACKAGES += \
+    e2fsck \
+    make_ext4fs \
+    setup_fs
+
+# Media
 PRODUCT_PACKAGES += \
     libc2dcolorconvert \
-    libstagefrighthw \
+    libdivxdrmdecrypt \
+    libdashplayer \
+    libOmxAacEnc \
+    libOmxAmrEnc \
     libOmxCore \
-    libmm-omxcore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
     libOmxVdec \
     libOmxVdecHevc \
-    libOmxVenc
+    libOmxVenc \
+    libstagefrighthw \
+    qcmediaplayer
+
+PRODUCT_BOOT_JARS += qcmediaplayer
 
 PRODUCT_PACKAGES += \
     audio.primary.msm8992 \
+    audio_policy.msm8992 \
     audio.a2dp.default \
     audio.usb.default \
-    audio.r_submix.default \
-    libaudio-resampler
+    audio.r_submix.default
+
+PRODUCT_PACKAGES += \
+    libaudio-resampler \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessing
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -146,21 +169,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    persist.audio.calfile0=/etc/acdbdata/Bluetooth_cal.acdb \
-    persist.audio.calfile1=/etc/acdbdata/General_cal.acdb \
-    persist.audio.calfile2=/etc/acdbdata/Global_cal.acdb \
-    persist.audio.calfile3=/etc/acdbdata/Handset_cal.acdb \
-    persist.audio.calfile4=/etc/acdbdata/Hdmi_cal.acdb \
-    persist.audio.calfile5=/etc/acdbdata/Headset_cal.acdb \
-    persist.audio.calfile6=/etc/acdbdata/Speaker_cal.acdb \
-    persist.audio.dualmic.config=endfire \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.voicecomm=true \
-    persist.audio.fluence.voicecall=true \
-    persist.audio.fluence.speaker=true \
-    audio.offload.gapless.enabled=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     rild.libargs=-d /dev/smd0 \
     ril.subscription.types=NV,RUIM \
@@ -194,6 +202,10 @@ PRODUCT_COPY_FILES += \
 
 ## Below here are confirmed important things 
 ## Do not edit
+# CMActions
+PRODUCT_PACKAGES += \
+    CMActions
+
 # Wifi Firmware
 PRODUCT_COPY_FILES += \
     kernel/motorola/msm8992/drivers/staging/qcacld-2.0/firmware_bin/WCNSS_cfg.dat:system/etc/firmware/wlan/qca_cld/WCNSS_cfg.dat \

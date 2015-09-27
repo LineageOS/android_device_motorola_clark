@@ -36,10 +36,6 @@ on init
     chown system log /sys/fs/pstore/annotate-ramoops
     chmod 0640 /sys/fs/pstore/annotate-ramoops
 
-    # Setup kernel dropbox permissions so that dropboxd can utilize it
-    chown root diag /sys/kernel/dropbox/event
-    chown root diag /sys/kernel/dropbox/data
-
     # Configure coredump
     write /proc/sys/kernel/core_pattern "|/system/bin/coredump %e %p %t"
     write /proc/self/coredump_filter "0x7f"
@@ -72,26 +68,10 @@ on fs
     mount_all fstab.qcom
     swapon_all fstab.qcom
 
-    # Mount modem FSG partition
-    wait /dev/block/bootdevice/by-name/fsg
-    mount ext4 /dev/block/bootdevice/by-name/fsg /fsg ro nosuid nodev barrier=0
-
     # use /persist as phony PDS partition
     symlink /persist /pds
 
-    #Mount customize partion
-    wait /dev/block/bootdevice/by-name/customize
-    mount ext4 /dev/block/bootdevice/by-name/customize /customize ro discard nosuid nodev noatime nodiratime noexec
-
-    wait /dev/block/bootdevice/by-name/persist
-    mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
     restorecon_recursive /persist
-
-    wait /dev/block/bootdevice/by-name/modem
-    mount ext4 /dev/block/bootdevice/by-name/modem /firmware ro nosuid nodev
-
-    wait /dev/block/bootdevice/by-name/bluetooth
-    mount ext4 /dev/block/bootdevice/by-name/bluetooth /bt_firmware ro nosuid nodev
 
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
@@ -223,28 +203,6 @@ on boot
     write /proc/sys/net/core/rmem_max  8388608
     write /proc/sys/net/core/wmem_max  8388608
 
-    #To allow interfaces to get v6 address when tethering is enabled
-    write /proc/sys/net/ipv6/conf/rmnet0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet3/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet4/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet5/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet6/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet7/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio3/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio4/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio5/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio6/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_sdio7/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb0/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb1/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb2/accept_ra 2
-    write /proc/sys/net/ipv6/conf/rmnet_usb3/accept_ra 2
-
     # To prevent out of order acknowledgements from making
     # connection tracking to treat them as not belonging to
     # the connection they belong to.
@@ -282,20 +240,19 @@ on post-fs
     mkdir /persist/wmdrm 0775 mot_drm mot_drm
     mkdir /persist/batt_health 0755 mot_pwric mot_pwric
     mkdir /persist/mdm 0770 radio radio
+    mkdir /persist/antcap 0755 mot_tcmd mot_tcmd
 
     chown mot_tcmd mot_tcmd /persist/factory/fti
-    chmod 0660 /persist/factory/fti
     chown mot_tcmd mot_tcmd /persist/factory/byte
+    chown mot_tcmd mot_tcmd /persist/bt/bt_bdaddr
+    chown mot_tcmd mot_tcmd /persist/antcap
+
+    chmod 0660 /persist/factory/fti
     chmod 0660 /persist/factory/byte
     chmod 0660 /persist/wifi/wlan_mac.bin
-    chown mot_tcmd mot_tcmd /persist/bt/bt_bdaddr
     chmod 0664 /persist/bt/bt_bdaddr
     chmod 0600 /persist/whisper/whisper_only/vector0.bin
-
-    # ensure /persist/antcap exists and has correct permissions for motosh to access
-    mkdir /persist/antcap 0755 mot_tcmd mot_tcmd
-    chown mot_tcmd mot_tcmd /persist/antcap
-    chmod 0755              /persist/antcap
+    chmod 0755 /persist/antcap
 
     # move /persist/captouch_caldata.bin to /persist/antcap (if necessary)
     copy  /persist/captouch_caldata.bin /persist/antcap/captouch_caldata.bin
@@ -316,14 +273,8 @@ on post-fs
     chmod 0660 /sys/class/capsense/reset
 
 on post-fs-data
-    # Setup folders for security
     mkdir /persist/security 02770 mot_tpapi mot_tpapi
     mkdir /data/local/dbvc 0750 mot_tcmd shell
-
-    # Setup folder for native to transfer data to NativeDropBoxAgent
-    mkdir /data/system/dropbox-add 0730 system diag
-
-   # Create directory used by power_supply_logger
     mkdir /data/power_supply_logger 0750 mot_pwric log
 
     # Permissions for Factory Test of Charging Paths
@@ -347,14 +298,6 @@ on post-fs-data
     #setup folder for WLAN WAPI
     mkdir /data/wapi_certificate 0750 system wifi
 
-    # Subsystem RAM-dumps
-    mkdir /data/ss-ram-dumps 0750 radio log
-    mkdir /data/ss-ram-dumps/bp-dumps 0750 radio log
-    mkdir /data/ss-ram-dumps/riva-dumps 0750 radio log
-
-    # folder for Blueooth ramdump
-    mkdir /data/bt-ram-dumps 0750 bluetooth log
-
     # Change ownership of aov related sysfs entries
     chown audio audio /sys/kernel/aov/trigger
     chown audio audio /sys/kernel/aov/register
@@ -369,9 +312,6 @@ on post-fs-data
     # Setup folder for camera HAL subsystem
     mkdir /data/camera_dump 0750 media media
 
-    # Create bug2go folder
-    mkdir /data/bug2go 0750 log log
-
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -382,8 +322,8 @@ on post-fs-data
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
-    # we will remap this as /mnt/sdcard with the sdcard fuse tool
-    #Create folder for mm-qcamera-daemon
+    # We will remap this as /mnt/sdcard with the sdcard fuse tool
+    # Create folder for mm-qcamera-daemon
     mkdir /data/misc/camera 0770 camera camera
 
     mkdir /data/media 0770 media_rw media_rw
@@ -434,10 +374,10 @@ on post-fs-data
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
-    #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
+    # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
 
-    #Create directories for Location services
+    # Create directories for Location services
     mkdir /data/misc/location 0770 gps gps
     mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/misc/location/xtwifi 0770 gps gps
@@ -445,15 +385,15 @@ on post-fs-data
     mkdir /data/misc/location/quipc 0770 gps system
     mkdir /data/misc/location/gsiff 0770 gps gps
 
-    #Create directory from IMS services
+    # Create directory from IMS services
     mkdir /data/shared 0755
     chown system system /data/shared
 
-    #Create directory for FOTA
+    # Create directory for FOTA
     mkdir /data/fota 0771
     chown system system /data/fota
 
-    #Create directory for hostapd
+    # Create directory for hostapd
     mkdir /data/hostapd 0770 system wifi
 
     # Create /data/time folder for time-services
@@ -467,25 +407,20 @@ on post-fs-data
 
     setprop vold.post_fs_data_done 1
 
-    #Create a folder for SRS to be able to create a usercfg file
+    # Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
 
 on property:sys.boot_completed=1
     write /dev/kmsg "Boot completed "
-    start qe
     setprop sys.io.scheduler cfq
     start qcom-post-boot
     start batt_health
 
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
-    start config_bluetooth
-
-on property:bluetooth.hciattach=true
-    start hciattach
-
-on property:bluetooth.hciattach=false
-    setprop bluetooth.status off
+    setprop ro.esdfs_sdcard ${persist.esdfs_sdcard}
+    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
+    setprop ro.kick.logcopy ${ro.bootreason}
 
 # Binding fuse mount point to /storage/emulated/legacy
 on property:init.svc.sdcard=running
@@ -501,12 +436,6 @@ on property:sys.shutdown.requested=*
 on property:init.svc.surfaceflinger=stopped
     stop ppd
 
-on property:persist.qe.trigger=1
-    start qe_broadcast
-
-on property:ro.kick.logcopy=coldboot
-    start apanic_copy
-
 on property:ro.secure=0
     # disable dmesg restrict for insecure builds
     write /proc/sys/kernel/dmesg_restrict 0
@@ -518,18 +447,10 @@ on property:ro.debuggable=1
     chmod 0660 /dev/log/kernel
     chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
 
-on property:persist.sys.qc.sub.rdump.on=1
-   write /sys/module/subsystem_restart/parameters/enable_ramdumps ${persist.sys.qc.sub.rdump.on}
-
 on property:ro.fuse_sdcard=true
     start sdcard
 
 on nonencrypted
-    setprop ro.esdfs_sdcard ${persist.esdfs_sdcard}
-    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-    setprop ro.kick.logcopy ${ro.bootreason}
-
-on property:vold.decrypt=trigger_restart_framework
     setprop ro.esdfs_sdcard ${persist.esdfs_sdcard}
     setprop ro.fuse_sdcard ${persist.fuse_sdcard}
     setprop ro.kick.logcopy ${ro.bootreason}
@@ -597,25 +518,6 @@ service qmuxd /system/bin/qmuxd
 
 service netmgrd /system/bin/netmgrd
     class main
-
-service ipacm-diag /system/bin/ipacm-diag
-    class main
-    user system
-    socket ipacm_log_file dgram 660 system net_admin
-    group net_admin qcom_diag
-    disabled
-
-service ipacm /system/bin/ipacm
-    class main
-    user net_admin
-    group net_admin inet
-    disabled
-
-service qti /system/vendor/bin/qti
-    class main
-    user radio
-    group radio net_raw qcom_diag usb net_admin
-    disabled
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
@@ -809,12 +711,6 @@ service ppd /system/bin/mm-pp-daemon
     socket pps stream 0660 system system
     group system graphics
 
-service energy-awareness /system/bin/energy-awareness
-    class main
-    user root
-    group system
-    oneshot
-
 service mmi-block-perm /system/bin/sh /init.mmi.block_perm.sh
     class main
     user root
@@ -826,33 +722,9 @@ service batt_health /system/bin/batt_health
     group mot_pwric cache net_admin log
     disabled
 
-service apanic_copy /system/bin/sh /system/bin/apanic_copy.sh
-    class late_start
-    group log
-    oneshot
-    disabled
-
-service apanic_annotate /system/bin/sh /system/bin/apanic_save.sh build
-    class late_start
-    group log
-    oneshot
-    disabled
-
 service charge_only_mode /system/bin/charge_only_mode
     user root
     group graphics system input
-    disabled
-
-service qe /xbin/qe /system
-    class main
-    seclabel u:r:qe:s0
-    oneshot
-    disabled
-
-service qe_broadcast /xbin/qe /system -b
-    class main
-    seclabel u:r:qe:s0
-    oneshot
     disabled
 
 service ftmipcd /system/bin/ftmipcd
@@ -860,20 +732,6 @@ service ftmipcd /system/bin/ftmipcd
     group radio net_raw inet qcom_diag
     disabled
     oneshot
-
-service tcmd /system/bin/tcmd
-    class core
-    group mot_tcmd radio mot_pwric input system log camera graphics mot_accy sdcard_r sdcard_rw audio inet bluetooth wifi compass net_bt_admin mot_tombstone mot_tpapi mount net_raw net_admin media shell mot_usb nfc qcom_diag mot_dbvc cache media_rw
-    socket local_tcmd stream 0660 mot_tcmd mot_tcmd
-    socket batch_socket stream 0600 mot_tcmd mot_tcmd
-    oneshot
-    disabled
-
-service tcmdhelp /system/bin/tcmdhelp
-    class main
-    socket tcmdhelp stream 0600 mot_tcmd mot_tcmd
-    oneshot
-    disabled
 
 #start Sensor daemon
 service motosh /system/bin/motosh boot
@@ -903,34 +761,6 @@ service hw_revs /system/bin/sh /system/bin/hardware_revisions.sh
     group system
     oneshot
 
-service mbm_spy /system/bin/mbm_spy
-    class late_start
-    user system
-    group system
-    oneshot
-
-service dropboxd /system/bin/dropboxd
-    class late_start
-    user diag
-    group diag
-
-service qe /xbin/qe /system
-    seclabel u:r:qe:s0
-    class main
-    oneshot
-    disabled
-
-service qe_broadcast /xbin/qe /system -b
-    seclabel u:r:qe:s0
-    class main
-    oneshot
-    disabled
-
-service ss_rdump /system/bin/subsystem_ramdump 1 0
-   class late_start
-   user radio
-   group log sdcard_rw sdcard_r diag
-
 service adspd /system/bin/adspd
    class late_start
    socket adspdsock stream 0660 system audio
@@ -952,4 +782,3 @@ service thermal-com /system/bin/thermal-engine --minimode
     class main
     user root
     disabled
-

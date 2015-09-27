@@ -570,8 +570,8 @@ lib64/hw/sensors.msm8992.so
 lib64/hw/sensorhub.msm8992.so
 
 # Lights
-lib64/hw/lights.msm8992.so
-lib/hw/lights.msm8992.so
+# lib64/hw/lights.msm8992.so
+# lib/hw/lights.msm8992.so
 
 # Time (Linked to radio)
 bin/time_daemon
