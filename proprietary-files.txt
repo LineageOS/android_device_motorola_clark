@@ -348,6 +348,7 @@ vendor/lib/libvoice-svc.so
 
 # GPS
 -app/MotGeoFenceSvc/MotGeoFenceSvc.apk
+bin/loc_launcher
 bin/gpsone_daemon
 etc/permissions/com.qualcomm.location.xml
 etc/gps.conf
@@ -376,7 +377,8 @@ vendor/lib64/libloc_ext.so
 vendor/lib64/liblocationservice.so
 vendor/lib64/libquipc_os_api.so
 vendor/lib64/libulp2.so
-
+lib/libloc_eng.so
+lib64/libloc_eng.so
 vendor/lib/libizat_core.so
 vendor/lib64/libizat_core.so
 
