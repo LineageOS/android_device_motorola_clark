@@ -377,6 +377,8 @@ vendor/lib64/libloc_ext.so
 vendor/lib64/liblocationservice.so
 vendor/lib64/libquipc_os_api.so
 vendor/lib64/libulp2.so
+lib/libloc_core.so
+lib64/libloc_core.so
 lib/libloc_eng.so
 lib64/libloc_eng.so
 vendor/lib/libizat_core.so
