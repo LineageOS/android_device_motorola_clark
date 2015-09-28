@@ -20,7 +20,7 @@
 # Everything in this directory will become public
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/twrp.fstab:recovery/root/etc/twrp.fstab
+    $(LOCAL_PATH)/rootdir/etc/twrp.fstab:recovery/root/etc/twrp.fstab
 
 PRODUCT_PACKAGES += \
     init.class_main.sh \
