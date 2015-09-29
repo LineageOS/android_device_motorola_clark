@@ -5,16 +5,13 @@ on charger
     trigger fs
     trigger post-fs
     trigger post-fs-data
-    trigger moto-charger
-    class_stop main
-    class_stop late_start
-
-on moto-charger
     setprop ro.board.platform msm8992
-    start  qcom-post-boot
+    setprop sys.perf.profile 0
     start charge_only_mode
     start batt_health
     start thermal-com
+    class_stop main
+    class_stop late_start
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -74,17 +71,12 @@ on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
     # Allow subsystem (modem etc) debugging
-    write /sys/module/subsystem_restart/parameters/enable_debug ${persist.sys.ssr.enable_debug}
-    write /sys/module/pil_msa/parameters/pbl_mba_boot_timeout_ms ${persist.sys.mba_boot_timeout}
-    write /sys/module/pil_msa/parameters/modem_auth_timeout_ms ${persist.sys.modem_auth_timeout}
-    write /sys/module/peripheral_loader/parameters/proxy_timeout_ms ${persist.sys.pil_proxy_timeout}
     write /sys/kernel/boot_adsp/boot 1
 
 on boot
     chown system system /sys/class/backlight/lcd-backlight:0/brightness
     chown system system /sys/class/backlight/lcd-backlight:0/max_brightness
     chown system system /sys/class/leds/charging/brightness
-
     chmod 0664 /sys/class/backlight/lcd-backlight:0/brightness
     chmod 0664 /sys/class/backlight/lcd-backlight:0/max_brightness
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
@@ -120,55 +112,24 @@ on boot
     start rmt_storage
     start rfs_access
 
-    # access permission for secure touch
-    chmod 0660 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch_enable
-    chmod 0440 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch
-    chmod 0660 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-004a/secure_touch_enable
-    chmod 0440 /sys/devices/soc.0/f9924000.i2c/i2c-2/2-004a/secure_touch
-    chown system drmrpc /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch_enable
-    chown system drmrpc /sys/devices/soc.0/f9924000.i2c/i2c-2/2-0020/input/input0/secure_touch
-    chown system drmrpc /sys/devices/soc.0/f9924000.i2c/i2c-2/2-004a/secure_touch_enable
-    chown system drmrpc /sys/devices/soc.0/f9924000.i2c/i2c-2/2-004a/secure_touch
-    write /proc/sys/kernel/sched_boost 1
-
-    chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /proc/bluetooth/sleep/proto
     chown bluetooth bluetooth /proc/bluetooth/sleep/lpm
     chown bluetooth bluetooth /proc/bluetooth/sleep/btwrite
-    chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_lpm
-    chown bluetooth bluetooth /sys/module/hci_uart/parameters/ath_btwrite
-    chown system system /sys/module/sco/parameters/disable_esco
-    chown bluetooth bluetooth /sys/module/hci_smd/parameters/hcismd_set
-    chmod 0660 /sys/module/bluetooth_power/parameters/power
-    chmod 0660 /sys/module/hci_smd/parameters/hcismd_set
+    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/device/extldo
+    chown bluetooth net_bt_stack /dev/ttyHS0
     chmod 0660 /sys/class/rfkill/rfkill0/state
     chmod 0660 /proc/bluetooth/sleep/proto
-    chown bluetooth net_bt_stack /dev/ttyHS0
-    chmod 0660 /sys/module/hci_uart/parameters/ath_lpm
-    chmod 0660 /sys/module/hci_uart/parameters/ath_btwrite
     chmod 0660 /dev/ttyHS0
-    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
-    chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
-
-    chmod 0660 /dev/ttyHS2
-    chown bluetooth bluetooth /dev/ttyHS2
-
-    chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/device/extldo
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
 
     #Create QMUX deamon socket area
-    mkdir /dev/socket/qmux_radio 0770 radio radio
-    chmod 2770 /dev/socket/qmux_radio
-    mkdir /dev/socket/qmux_audio 0770 media audio
-    chmod 2770 /dev/socket/qmux_audio
-    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
-    chmod 2770 /dev/socket/qmux_bluetooth
-    mkdir /dev/socket/qmux_gps 0770 gps gps
-    chmod 2770 /dev/socket/qmux_gps
-    mkdir /dev/socket/qmux_nfc 0770 nfc nfc
-    chmod 2770 /dev/socket/qmux_nfc
+    mkdir /dev/socket/qmux_radio 2770 radio radio
+    mkdir /dev/socket/qmux_audio 2770 media audio
+    mkdir /dev/socket/qmux_bluetooth 2770 bluetooth bluetooth
+    mkdir /dev/socket/qmux_gps 2770 gps gps
+    mkdir /dev/socket/qmux_nfc 2770 nfc nfc
 
     setprop wifi.interface wlan0
 
@@ -251,22 +212,20 @@ on post-fs
     chmod 0600 /persist/whisper/whisper_only/vector0.bin
     chmod 0755 /persist/antcap
 
-    # move /persist/captouch_caldata.bin to /persist/antcap (if necessary)
-    copy  /persist/captouch_caldata.bin /persist/antcap/captouch_caldata.bin
+    # Move /persist/captouch_*.bin to /persist/antcap (if necessary)
+    copy /persist/captouch_caldata.bin /persist/antcap/captouch_caldata.bin
+    copy /persist/captouch_basedata.bin /persist/antcap/captouch_basedata.bin
     chown mot_tcmd mot_tcmd /persist/antcap/captouch_caldata.bin
-    chmod 0644              /persist/antcap/captouch_caldata.bin
-    rm    /persist/captouch_caldata.bin
-
-    # move /persist/captouch_basedata.bin to /persist/antcap (if necessary)
-    copy  /persist/captouch_basedata.bin /persist/antcap/captouch_basedata.bin
     chown mot_tcmd mot_tcmd /persist/antcap/captouch_basedata.bin
-    chmod 0644              /persist/antcap/captouch_basedata.bin
-    rm    /persist/captouch_basedata.bin
+    chmod 0644 /persist/antcap/captouch_basedata.bin
+    chmod 0644 /persist/antcap/captouch_caldata.bin
+    rm /persist/captouch_caldata.bin
+    rm /persist/captouch_basedata.bin
 
     # Permissions CapSense firmware update & reset
     chown mot_tcmd mot_tcmd /sys/class/capsense/fw_update
-    chmod 0660 /sys/class/capsense/fw_update
     chown mot_tcmd mot_tcmd /sys/class/capsense/reset
+    chmod 0660 /sys/class/capsense/fw_update
     chmod 0660 /sys/class/capsense/reset
 
 on post-fs-data
@@ -274,25 +233,10 @@ on post-fs-data
     mkdir /data/local/dbvc 0750 mot_tcmd shell
     mkdir /data/power_supply_logger 0750 mot_pwric log
 
-    # Permissions for Factory Test of Charging Paths
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_auto_enable
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_ibatt
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_itrick
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_iusb
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_usb_suspend
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_fail_clear
-    chown mot_pwric mot_pwric /sys/class/power_supply/battery/device/force_chg_usb_otg_ctl
-    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_auto_enable
-    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_ibatt
-    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_itrick
-    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_iusb
-    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_usb_suspend
-    chown mot_pwric mot_pwric /sys/class/power_supply/usb-parallel/device/force_chg_fail_clear
-
     # Create directory for cutback
     mkdir /data/misc/cutback 0770 radio wifi
 
-    #setup folder for WLAN WAPI
+    # Setup folder for WLAN WAPI
     mkdir /data/wapi_certificate 0750 system wifi
 
     # Change ownership of aov related sysfs entries
@@ -319,13 +263,10 @@ on post-fs-data
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
-    # We will remap this as /mnt/sdcard with the sdcard fuse tool
     # Create folder for mm-qcamera-daemon
     mkdir /data/misc/camera 0770 camera camera
 
     mkdir /data/media 0770 media_rw media_rw
-    chown media_rw media_rw /data/media
-
     mkdir /data/misc/ipa 0700 net_admin net_admin
 
     # Create the directories used by CnE subsystem
@@ -334,13 +275,8 @@ on post-fs-data
 
     # Create the directories used by DPM subsystem
     mkdir /data/dpm 0771 system system
-    chown system system /data/dpm
-
     mkdir /data/dpm/fdMgr 0771 system system
-    chown system system /data/dpm/fdMgr
-
     mkdir /data/dpm/nsrm 0771 system system
-    chown system system /data/dpm/nsrm
 
     # Create directory used by audio subsystem
     mkdir /data/misc/audio 0770 audio audio
@@ -383,12 +319,10 @@ on post-fs-data
     mkdir /data/misc/location/gsiff 0770 gps gps
 
     # Create directory from IMS services
-    mkdir /data/shared 0755
-    chown system system /data/shared
+    mkdir /data/shared 0755 system system
 
     # Create directory for FOTA
-    mkdir /data/fota 0771
-    chown system system /data/fota
+    mkdir /data/fota 0771 system system
 
     # Create directory for hostapd
     mkdir /data/hostapd 0770 system wifi
@@ -396,9 +330,8 @@ on post-fs-data
     # Create /data/time folder for time-services
     mkdir /data/time/ 0700 system system
 
+    # Create folders for audio files
     mkdir /data/audio/ 0770 media audio
-
-    # Create a folder for audio delta files
     mkdir /data/audio/acdbdata 0770 media audio
     mkdir /data/audio/acdbdata/delta 0770 media audio
 
@@ -406,6 +339,11 @@ on post-fs-data
 
     # Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
+
+on nonencrypted
+    setprop ro.esdfs_sdcard ${persist.esdfs_sdcard}
+    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
+    setprop ro.kick.logcopy ${ro.bootreason}
 
 on property:init.svc.bootanim=running
     # Switch to performance mode while booting
@@ -417,12 +355,6 @@ on property:sys.boot_completed=1
     # Available Freqs in stock kernel
     # Little: 384000 460800 600000 672000 787200 864000 960000 1248000 1440000
     # Bit: 384000 480000 633600 768000 864000 960000 1248000 1344000 1440000 1536000 1632000 1689600 1824000
-    # disable thermal core_control to update scaling_min_freq
-    write /sys/module/msm_thermal/core_control/enabled 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
-    # enable thermal core_control now
-    write /sys/module/msm_thermal/core_control/enabled 1
-
     write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/sync_threshold 960000
     write /sys/module/cpu_boost/parameters/input_boost_freq 0:1248000
@@ -454,42 +386,20 @@ on property:sys.shutdown.requested=*
 on property:init.svc.surfaceflinger=stopped
     stop ppd
 
-on property:ro.secure=0
-    # disable dmesg restrict for insecure builds
-    write /proc/sys/kernel/dmesg_restrict 0
+on property:persist.radio.atfwd.start=false
+    stop atfwd
 
-on property:ro.debuggable=1
-    # disable dmesg restrict in eng/userdebug build
-    write /proc/sys/kernel/dmesg_restrict 0
-    # enable group read/write to /dev/log/kernel
-    chmod 0660 /dev/log/kernel
-    chmod 0664 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
+on property:radio.atfwd.start=false
+    stop atfwd
 
 on property:ro.fuse_sdcard=true
     start sdcard
 
-on nonencrypted
-    setprop ro.esdfs_sdcard ${persist.esdfs_sdcard}
-    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-    setprop ro.kick.logcopy ${ro.bootreason}
+on property:wc_transport.start_hci=true
+    start start_hci_filter
 
-# Set RPS Mask for Wifi Hotspot
-on property:sys.wifi.tethering=true
-    write /sys/class/net/wlan0/queues/rx-0/rps_cpus ${sys.usb.rps_mask}
-    write /sys/class/net/wlan0/queues/rx-1/rps_cpus ${sys.usb.rps_mask}
-    write /sys/class/net/wlan0/queues/rx-2/rps_cpus ${sys.usb.rps_mask}
-    write /sys/class/net/wlan0/queues/rx-3/rps_cpus ${sys.usb.rps_mask}
-
-service qcom-c_core-sh /system/bin/sh /init.qcom.class_core.sh
-    class core
-    user root
-    oneshot
-
-service qcom-c_main-sh /system/bin/sh /init.class_main.sh
-    class main
-    user radio
-    group radio
-    oneshot
+on property:wc_transport.start_hci=false
+    stop start_hci_filter
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
@@ -501,15 +411,9 @@ service rmt_storage /system/bin/rmt_storage
     user root
 
 service rfs_access /system/bin/rfs_access
-   class core
-   user root
-   group system net_raw
-
-on property:wc_transport.start_hci=true
-    start start_hci_filter
-
-on property:wc_transport.start_hci=false
-    stop start_hci_filter
+    class core
+    user root
+    group system net_raw
 
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
@@ -518,17 +422,9 @@ service start_hci_filter /system/bin/wcnss_filter
     disabled
 
 service loc_launcher /system/bin/loc_launcher
-    #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet net_raw qcom_diag net_admin wifi
 
-service port-bridge /system/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
-    class main
-    user radio system
-    group radio system inet
-    disabled
-
-# QMUX must be in multiple groups to support external process connections
 service qmuxd /system/bin/qmuxd
     class main
     user root
@@ -541,7 +437,7 @@ service p2p_supplicant /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
     -iwlan0 -Dnl80211 -c/data/misc/wifi/wpa_supplicant.conf \
     -O/data/misc/wifi/sockets -puse_p2p_group_interface=1 -dd \
-    -e/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
+    -ew/data/misc/wifi/entropy.bin -g@android:wpa_wlan0
     #   we will start as root and wpa_supplicant will switch to user wifi
     #   after setting up the capabilities required for WEXT
     #   user wifi
@@ -574,35 +470,12 @@ service dhcpcd_p2p /system/bin/dhcpcd -ABKLG
     disabled
     oneshot
 
-service iprenew_wlan0 /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_p2p /system/bin/dhcpcd -n
-    class late_start
-    disabled
-    oneshot
-
-service ftm_ffbm /system/bin/ftmdaemon
-    user system
-    group system
-    disabled
-    oneshot
-
-service wlan_logging /system/bin/cnss_diag
-    class main
-    user root
-    group root
-    disabled
-    oneshot
-
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
     class late_start
     disabled
     oneshot
 
-service iprenew_bt-pan /system/bin/dhcpcd -n
+service dhcpcd_eth0 /system/bin/dhcpcd -G
     class late_start
     disabled
     oneshot
@@ -627,16 +500,25 @@ service dhcpcd_bnep4 /system/bin/dhcpcd -BKLG
     disabled
     oneshot
 
-service qcom-sh /system/bin/sh /init.qcom.sh
+service iprenew_wlan0 /system/bin/dhcpcd -n
     class late_start
-    user root
+    disabled
     oneshot
 
-on property:persist.radio.atfwd.start=false
-    stop atfwd
+service iprenew_p2p /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
 
-on property:radio.atfwd.start=false
-    stop atfwd
+service iprenew_eth0 /system/bin/dhcpcd -nBK
+    class late_start
+    disabled
+    oneshot
+
+service iprenew_bt-pan /system/bin/dhcpcd -n
+    class late_start
+    disabled
+    oneshot
 
 service atfwd /system/bin/ATFWD-daemon
     class late_start
@@ -679,26 +561,15 @@ service fuse_uicc1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/u
     class late_start
     disabled
 
-service ssr_diag /system/bin/ssr_diag
-    class late_start
-    user system
-    group system
-    disabled
-
-service vm_bms /system/bin/vm_bms
-    user root
-    group root
-    disabled
-
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
 
 service qseecomd /system/bin/qseecomd
-   class core
-   user root
-   group root
+    class core
+    user root
+    group root
 
 service per_mgr /system/bin/pm-service
     class core
@@ -712,33 +583,28 @@ service per_proxy /system/bin/pm-proxy
     disabled
 
 service thermal-engine /system/bin/thermal-engine
-   class main
-   user root
-   socket thermal-send-client stream 0666 system system
-   socket thermal-recv-client stream 0660 system system
-   socket thermal-recv-passive-client stream 0666 system system
-   group root
+    class main
+    user root
+    socket thermal-send-client stream 0666 system system
+    socket thermal-recv-client stream 0660 system system
+    socket thermal-recv-passive-client stream 0666 system system
+    group root
 
 service time_daemon /system/bin/time_daemon
-   class late_start
-   user root
-   group root
+    class late_start
+    user root
+    group root
 
 service adsprpcd /system/bin/adsprpcd
-   class main
-   user media
-   group media
+    class main
+    user media
+    group media
 
 service ppd /system/bin/mm-pp-daemon
     class late_start
     user system
     socket pps stream 0660 system system
     group system graphics
-
-service mmi-block-perm /system/bin/sh /init.mmi.block_perm.sh
-    class main
-    user root
-    oneshot
 
 service batt_health /system/bin/batt_health
     class late_start
@@ -757,11 +623,31 @@ service ftmipcd /system/bin/ftmipcd
     disabled
     oneshot
 
-#start Sensor daemon
 service motosh /system/bin/motosh boot
     class late_start
     user compass
     group compass misc input mot_tcmd
+    oneshot
+
+service qcom-c_core-sh /system/bin/sh /init.qcom.class_core.sh
+    class core
+    user root
+    oneshot
+
+service qcom-c_main-sh /system/bin/sh /init.class_main.sh
+    class main
+    user radio
+    group radio
+    oneshot
+
+service qcom-sh /system/bin/sh /init.qcom.sh
+    class late_start
+    user root
+    oneshot
+
+service mmi-block-perm /system/bin/sh /init.mmi.block_perm.sh
+    class main
+    user root
     oneshot
 
 service mmi-boot-sh /system/bin/sh /init.mmi.boot.sh
@@ -790,17 +676,6 @@ service adspd /system/bin/adspd
    socket adspdsock stream 0660 system audio
    user audio
    group audio input diag
-
-# DHCP service for Ethernet
-service dhcpcd_eth0 /system/bin/dhcpcd -G
-    class late_start
-    disabled
-    oneshot
-
-service iprenew_eth0 /system/bin/dhcpcd -nBK
-    class late_start
-    disabled
-    oneshot
 
 service perfd /system/bin/perfd
     class main

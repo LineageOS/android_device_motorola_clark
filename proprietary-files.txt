@@ -82,7 +82,7 @@ vendor/lib/libbtnv.so
 vendor/lib64/libbtnv.so
 
 # Camera
-bin/mm-qcamera-app
+# bin/mm-qcamera-app
 bin/mm-qcamera-daemon
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
@@ -94,17 +94,17 @@ lib/hw/camera.msm8992.so
 lib/libadvalgcore.so
 lib/libAisAdapter.so
 lib/libAlAisLib.so
-lib/libbson.so
+#lib/libbson.so
 lib/libcamerabgproc-jni.so
 lib/libcamerabgprocservice.so
 lib/libjscore.so
 lib/libjustshoot.so
-lib/libmmcamera_interface.so
-lib/libmmjpeg_interface.so
+#lib/libmmcamera_interface.so
+#lib/libmmjpeg_interface.so
 lib/libmot_sensorlistener.so
 lib/libmot-qc-fd-offline.so
 lib/libmm-qcamera.so
-lib/libqomx_core.so
+#lib/libqomx_core.so
 vendor/lib/libC2D2.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libflash_pmic.so
@@ -502,8 +502,8 @@ vendor/lib64/libqcci_legacy.so
 vendor/lib64/libdiag.so
 
 # CNE / DPM
-lib64/libcnefeatureconfig.so
-lib/libcnefeatureconfig.so
+#lib64/libcnefeatureconfig.so
+#lib/libcnefeatureconfig.so
 vendor/lib64/libcneapiclient.so
 vendor/lib64/libcneconn.so
 vendor/lib64/libcneqmiutils.so
@@ -612,7 +612,7 @@ vendor/lib/libactuator_mot_lc898212xd.so
 lib/libmbs.so
 lib/libmot_lux_standardization.so
 lib64/libcamerabgproc-jni.so
-lib64/libbson.so
+#lib64/libbson.so
 vendor/lib/rfsa/adsp/libscveBlobDescriptor_skel.so
 vendor/lib/rfsa/adsp/libpanorama_skel.so
 vendor/lib/rfsa/adsp/libscveTextReco_skel.so

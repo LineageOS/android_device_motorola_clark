@@ -20,25 +20,6 @@
 # Everything in this directory will become public
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/twrp.fstab:recovery/root/etc/twrp.fstab
-
-PRODUCT_PACKAGES += \
-    init.class_main.sh \
-    fstab.qcom \
-    init.mmi.boot.sh \
-    init.mmi.dtv.sh \
-    init.mmi.early_boot.sh \
-    init.mmi.touch.sh \
-    init.mmi.usb.rc \
-    init.mmi.usb.sh \
-    init.qcom.rc \
-    init.mmi.block_perm.sh \
-    init.mmi.diag_mdlog.rc \
-    init.qcom.class_core.sh \
-    init.qcom.sh \
-    ueventd.qcom.rc
-
-PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 
 # Input device files for clark
@@ -70,6 +51,12 @@ DEVICE_PACKAGE_OVERLAYS := \
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     libqsap_sdk \
+    ebtables \
+    ethertypes \
+    curl \
+    libnl_2 \
+    libbson \
+    libtinyxml \
     libxml2
 
 # Live Wallpapers
@@ -77,51 +64,21 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     librs_jni
 
-# Display
-PRODUCT_PACKAGES += \
-    gralloc.msm8992 \
-    hwcomposer.msm8992 \
-    copybit.msm8992 \
-    memtrack.msm8992 \
-    liboverlay \
-    libqdutils \
-    libqdMetaData
-
 # Filesystem management tools
 PRODUCT_PACKAGES += \
     e2fsck \
     make_ext4fs \
     setup_fs
 
-# Media
+# Power
 PRODUCT_PACKAGES += \
-    libc2dcolorconvert \
-    libdivxdrmdecrypt \
-    libdashplayer \
-    libOmxAacEnc \
-    libOmxAmrEnc \
-    libOmxCore \
-    libOmxEvrcEnc \
-    libOmxQcelp13Enc \
-    libOmxVdec \
-    libOmxVdecHevc \
-    libOmxVenc \
-    libstagefrighthw \
-    qcmediaplayer
-
-PRODUCT_BOOT_JARS += qcmediaplayer
-
-PRODUCT_PACKAGES += \
-    audio.primary.msm8992 \
-    audio_policy.msm8992 \
-    audio.a2dp.default \
-    audio.usb.default \
-    audio.r_submix.default
+    power.msm8992
 
 PRODUCT_PACKAGES += \
     libaudio-resampler \
     libqcompostprocbundle \
     libqcomvisualizer \
+    libqcomvoiceprocessingdescriptors \
     libqcomvoiceprocessing
 
 # NFC packages
@@ -131,26 +88,14 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag
 
-# Audio effects
+# Camera
 PRODUCT_PACKAGES += \
-    libqcomvisualizer \
-    libqcomvoiceprocessing \
-    libqcomvoiceprocessingdescriptors
-
-PRODUCT_PACKAGES += \
+    camera.clark \
     libqomx_core \
     libmmcamera_interface \
     libmmjpeg_interface \
-    camera.clark \
     mm-jpeg-interface-test \
     mm-qcamera-app
-
-PRODUCT_PACKAGES += \
-    lights.msm8992
-
-# Filesystem management tools
-PRODUCT_PACKAGES += \
-    e2fsck
 
 # for off charging mode
 PRODUCT_PACKAGES += \
@@ -183,7 +128,67 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.crypto.fuse_sdcard=true \
     persist.fuse_sdcard=true
 
+## Below here are confirmed important things 
+## Do not edit
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/rootdir/etc/twrp.fstab:recovery/root/etc/twrp.fstab
+
+PRODUCT_PACKAGES += \
+    init.class_main.sh \
+    fstab.qcom \
+    init.mmi.boot.sh \
+    init.mmi.dtv.sh \
+    init.mmi.early_boot.sh \
+    init.mmi.touch.sh \
+    init.mmi.usb.rc \
+    init.mmi.usb.sh \
+    init.qcom.rc \
+    init.mmi.block_perm.sh \
+    init.mmi.diag_mdlog.rc \
+    init.qcom.class_core.sh \
+    init.qcom.sh \
+    ueventd.qcom.rc
+
+# Display
+PRODUCT_PACKAGES += \
+    gralloc.msm8992 \
+    hwcomposer.msm8992 \
+    copybit.msm8992 \
+    memtrack.msm8992 \
+    liboverlay \
+    libqdutils \
+    libqdMetaData
+
+# Media
+PRODUCT_PACKAGES += \
+    libc2dcolorconvert \
+    libdivxdrmdecrypt \
+    libdashplayer \
+    libOmxAacEnc \
+    libOmxAmrEnc \
+    libOmxCore \
+    libOmxEvrcEnc \
+    libOmxQcelp13Enc \
+    libOmxVdec \
+    libOmxVdecHevc \
+    libOmxVenc \
+    libstagefrighthw \
+    qcmediaplayer
+
+PRODUCT_BOOT_JARS += qcmediaplayer
+
+# Lights
+PRODUCT_PACKAGES += \
+    lights.msm8992
+
 # Audio
+PRODUCT_PACKAGES += \
+    audio.primary.msm8992 \
+    audio_policy.msm8992 \
+    audio.a2dp.default \
+    audio.usb.default \
+    audio.r_submix.default
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/acdbdata/Bluetooth_cal.acdb:system/etc/acdbdata/Bluetooth_cal.acdb \
     $(LOCAL_PATH)/audio/acdbdata/General_cal.acdb:system/etc/acdbdata/General_cal.acdb \
@@ -200,8 +205,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/audio/media_codecs.xml:system/etc/media_codecs.xml
 
-## Below here are confirmed important things 
-## Do not edit
 # CMActions
 PRODUCT_PACKAGES += \
     CMActions
