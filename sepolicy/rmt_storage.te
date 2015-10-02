@@ -1,0 +1,5 @@
+allow rmt_storage firmware_file:file { read open };
+allow rmt_storage firmware_file:dir { search read };
+allow rmt_storage default_prop:property_service set;
+allow rmt_storage property_socket:sock_file write;
+allow rmt_storage init:unix_stream_socket connectto;

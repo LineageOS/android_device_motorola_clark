@@ -1,0 +1,1 @@
+allow init_shell mmc_block_device:blk_file { read open getattr setattr };

@@ -164,6 +164,25 @@ TARGET_POWERHAL_VARIANT := qcom
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
 
+BOARD_SEPOLICY_DIRS += \
+    $(DEVICE_PATH)/sepolicy
+
+BOARD_SEPOLICY_UNION += \
+    atfwd.te \
+    batt_health.te \
+    bluetooth.te \
+    file_contexts \
+    healthd.te \
+    init.te \
+    init_shell.te \
+    mm-qcamerad.te \
+    qmuxd.te \
+    rild.te \
+    rmt_storage.te \
+    sysinit.te \
+    system_server.te \
+    vold.te
+
 # Time services
 # BOARD_USES_QC_TIME_SERVICES := true
 
