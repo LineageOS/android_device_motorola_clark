@@ -351,10 +351,6 @@ vendor/lib/libvoice-svc.so
 bin/loc_launcher
 bin/gpsone_daemon
 etc/permissions/com.qualcomm.location.xml
-etc/gps.conf
-etc/izat.conf
-etc/quipc.conf
-etc/sap.conf
 lib/libloc_api_v02.so
 lib/libloc_ds_api.so
 vendor/lib/libalarmservice_jni.so
@@ -365,8 +361,6 @@ vendor/lib/libloc_ext.so
 vendor/lib/liblocationservice.so
 vendor/lib/libquipc_os_api.so
 vendor/lib/libulp2.so
-lib/libgps.utils.so
-lib64/libgps.utils.so
 lib64/libloc_api_v02.so
 lib64/libloc_ds_api.so
 vendor/lib64/libalarmservice_jni.so
@@ -377,8 +371,6 @@ vendor/lib64/libloc_ext.so
 vendor/lib64/liblocationservice.so
 vendor/lib64/libquipc_os_api.so
 vendor/lib64/libulp2.so
-lib/libloc_core.so
-lib64/libloc_core.so
 lib/libloc_eng.so
 lib64/libloc_eng.so
 vendor/lib/libizat_core.so
