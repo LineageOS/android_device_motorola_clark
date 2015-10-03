@@ -284,21 +284,6 @@
             <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
 	</path>
 
-        <!-- zhiguang.su@MultiMedia.AudioDrv 2015-03-05 These are audio route (FE to BE) specific mixer settings  -->
-        <path name="deep-buffer-playback speaker">
-            <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
-        </path>
-
-        <path name="deep-buffer-playback voice-speaker">
-            <ctl name="deep-buffer-playback speaker" />
-        </path>
-    
-        <!--wangdongdong@MultiMedia.AudioDrv,2015-03-30,add for speaker and headphone play ring-->
-        <path name="deep-buffer-playback speaker-and-headphones">
-            <ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia1" value="1" />
-            <ctl name="QUAT_MI2S_RX Audio Mixer MultiMedia1" value="1" />
-        </path>
-
 	<path name="echo-reference">
 		<ctl name="AUDIO_REF_EC_UL1 MUX" value="SLIM_RX" />
 	</path>
@@ -742,16 +727,7 @@
 	</path>
 
 	<path name="voice-speaker">
-		<ctl name="SLIM_0_RX Channels" value="One" />
-		<ctl name="SLIM_0_TX Channels" value="One" />
-		<!-- select (l + r)/2 -->
-		<ctl name="NXP Right Ch Select" value="3" />
-		<!-- Enable earpiece mode this toggles gpio -->
-		<ctl name="TFA9890 earpiece mode" value="Off" />
-		<ctl name="AIF1TX2 Input 1" value="SLIMRX1" />
-		<ctl name="SLIMTX5 Input 1" value="AIF1RX2" />
-		<ctl name="VOC_EXT_EC MUX" value="SLIMBUS_1_TX" />
-		<ctl name="Left SPK Mux" value="Off" />
+		<path name="speaker" />
 	</path>
 
 	<path name="voice-speaker-mic">
