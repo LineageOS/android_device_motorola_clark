@@ -169,8 +169,12 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
     atfwd.te \
+    file.te \
+    device.te \
+    adspd.te \
     batt_health.te \
     bluetooth.te \
+    wcnss_filter.te \
     file_contexts \
     healthd.te \
     init.te \

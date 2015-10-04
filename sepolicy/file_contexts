@@ -11,3 +11,5 @@
 /dev/motosh_ms                u:object_r:sensors_device:s0
 
 /system/bin/batt_health       u:object_r:batt_health_exec:s0
+
+/dev/ttyHS0                   u:object_r:hci_attach_dev:s0

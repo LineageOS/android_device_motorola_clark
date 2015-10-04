@@ -27,7 +27,7 @@ ro.usb.bpt=0x2ee5
 ro.usb.bpt_adb=0x2ee6
 ro.usb.bpteth=0x2ee7
 ro.usb.bpteth_adb=0x2ee8
-persist.sys.isUsbOtgEnabled
+persist.sys.isUsbOtgEnabled=true
 
 # QCOM
 ro.vendor.extension_library=libqti-perfd-client.so
