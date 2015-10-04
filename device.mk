@@ -77,7 +77,8 @@ PRODUCT_PACKAGES += \
     libqcompostprocbundle \
     libqcomvisualizer \
     libqcomvoiceprocessingdescriptors \
-    libqcomvoiceprocessing
+    libqcomvoiceprocessing \
+    tinymix
 
 # NFC packages
 PRODUCT_PACKAGES += \
