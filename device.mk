@@ -22,6 +22,9 @@
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/qcril.db:system/etc/motorola/qcril.db
+
 # Input device files for clark
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
@@ -117,17 +120,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
-    rild.libargs=-d /dev/smd0 \
-    ril.subscription.types=NV,RUIM \
-    ril.subscription.types=RUIM \
-    persist.radio.apm_sim_not_pwdn=1 \
-    persist.radio.no_wait_for_card=1 \
-    persist.radio.mode_pref_nv10=1 \
-    persist.radio.force_get_pref=1 \
-    ro.telephony.default_network=10
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.crypto.fuse_sdcard=true \
