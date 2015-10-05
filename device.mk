@@ -112,6 +112,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     bdAddrLoader
 
+PRODUCT_PACKAGES += \
+    pp_calib_data_mipi_mot_cmd_inx_QHD_0_570_v0.xml
+
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196608
 
