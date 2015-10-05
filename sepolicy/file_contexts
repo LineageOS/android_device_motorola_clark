@@ -13,3 +13,6 @@
 /system/bin/batt_health       u:object_r:batt_health_exec:s0
 
 /dev/ttyHS0                   u:object_r:hci_attach_dev:s0
+
+# ril
+/dev/mot_hob_ram              u:object_r:radio_data_file:s0
