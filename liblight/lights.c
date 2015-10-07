@@ -36,7 +36,9 @@
 
 static pthread_once_t g_init = PTHREAD_ONCE_INIT;
 static pthread_mutex_t g_lock = PTHREAD_MUTEX_INITIALIZER;
+
 static struct light_state_t g_battery;
+static struct light_state_t g_notification;
 
 char const*const CHARGING_LED_FILE
         = "/sys/class/leds/charging/brightness";
@@ -103,7 +105,8 @@ set_light_backlight(struct light_device_t* dev,
 }
 
 static int
-set_speaker_light_locked(struct light_state_t const* state)
+set_speaker_light_locked(struct light_device_t* dev,
+        struct light_state_t const* state)
 {
     int brightness_level;
 
@@ -115,10 +118,14 @@ set_speaker_light_locked(struct light_state_t const* state)
     return write_int(CHARGING_LED_FILE, brightness_level);
 }
 
-static int
-handle_speaker_battery_locked()
+static void
+handle_speaker_battery_locked(struct light_device_t* dev)
 {
-    return set_speaker_light_locked(&g_battery);
+    if (is_lit(&g_notification)) {
+        set_speaker_light_locked(dev, &g_notification);
+    } else {
+        set_speaker_light_locked(dev, &g_battery);
+    }
 }
 
 static int
@@ -128,7 +135,19 @@ set_light_battery(struct light_device_t* dev,
     int err = 0;
     pthread_mutex_lock(&g_lock);
     g_battery = *state;
-    err = handle_speaker_battery_locked();
+    handle_speaker_battery_locked(dev);
+    pthread_mutex_unlock(&g_lock);
+    return err;
+}
+
+static int
+set_light_notifications(struct light_device_t* dev,
+        struct light_state_t const* state)
+{
+    int err = 0;
+    pthread_mutex_lock(&g_lock);
+    g_notification = *state;
+    handle_speaker_battery_locked(dev);
     pthread_mutex_unlock(&g_lock);
     return err;
 }
@@ -161,6 +180,8 @@ static int open_lights(const struct hw_module_t* module, char const* name,
 
     if (0 == strcmp(LIGHT_ID_BACKLIGHT, name))
         set_light = set_light_backlight;
+    else if (0 == strcmp(LIGHT_ID_NOTIFICATIONS, name))
+        set_light = set_light_notifications;
     else if (0 == strcmp(LIGHT_ID_BATTERY, name))
         set_light = set_light_battery;
     else
