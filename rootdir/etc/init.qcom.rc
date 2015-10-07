@@ -435,7 +435,7 @@ service rfs_access /system/bin/rfs_access
 
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
-    user root
+    user bluetooth
     group bluetooth qcom_diag diag log
     disabled
 
