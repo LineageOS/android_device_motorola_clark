@@ -464,9 +464,3 @@ vendor/lib/libactuator_mot_lc898212xd_camcorder.so
 vendor/lib/libactuator_mot_lc898212xd_camera.so
 vendor/lib/libactuator_mot_lc898212xd.so
 lib/libmot_lux_standardization.so
-
-# Move to device tree soon
-etc/data/dsi_config.xml
-etc/data/netmgr_config.xml
-etc/data/qmi_config.xml
-

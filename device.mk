@@ -33,6 +33,11 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-clark.conf:system/etc/thermal-engine-clark.conf
 
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/qmi_config.xml:system/etc/data/qmi_config.xml \
+    $(LOCAL_PATH)/configs/dsi_config.xml:system/etc/data/dsi_config.xml \
+    $(LOCAL_PATH)/configs/netmgr_config.xml:system/etc/data/netmgr_config.xml
+
+PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensors/sensorhub-blacklist.txt:system/etc/firmware/sensorhub-blacklist.txt
 
 PRODUCT_TAGS += dalvik.gc.type-precise
