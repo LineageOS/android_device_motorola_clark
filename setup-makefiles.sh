@@ -43,6 +43,16 @@ for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
     if [ -n "$DEST" ]; then
       FILE=$DEST
     fi
+    # add 64bit files
+    if [[ $FILE == *"lib"* ]]  && [[ $FILE != *"lib64"* ]]; then
+       FILE64="${FILE/lib/lib64}"
+       if [ ! -f "../../../$OUTDIR/proprietary/$FILE64" ]; then
+          echo "../../../$OUTDIR/proprietary/$FILE64 not found!"
+       else
+          echo "adding 64bit file"
+          echo "    $OUTDIR/proprietary/$FILE64:system/$FILE64$LINEEND" >> $MAKEFILE
+       fi
+    fi
     echo "    $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
   fi
 done

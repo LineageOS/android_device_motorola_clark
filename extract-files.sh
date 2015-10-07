@@ -42,6 +42,14 @@ for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
     if [ "$?" != "0" ]; then
         adb pull /system/$FILE $BASE/$DEST
     fi
+    # if lib, try to pull lib64 too
+    # dont do this on lib64 mentions
+    if [[ $FILE == *"lib"* ]]  && [[ $FILE != *"lib64"* ]]; then
+       echo "Attempting to get 64Bit file"
+       FILE64="${FILE/lib/lib64}"
+       DEST64="${DEST/lib/lib64}"
+       adb pull /system/$FILE64 $BASE/$DEST64
+    fi
   else
     if [ -r $SRC/system/$DEST ]; then
         cp $SRC/system/$DEST $BASE/$DEST
