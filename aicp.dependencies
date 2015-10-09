@@ -1,0 +1,12 @@
+[
+  {
+    "repository": "AICP/kernel_motorola_msm8992",
+    "target_path": "kernel/motorola/msm8992",
+    "branch":      "lp5.1"
+  },
+  {
+    "repository": "AICP/proprietary_vendor_motorola",
+    "target_path": "vendor/motorola",
+    "branch":      "lp5.1"
+  }
+]
