@@ -1,4 +1,5 @@
 allow rild system_data_file:sock_file { create setattr unlink };
-allow rild radio_data_file:chr_file { create read write };
+allow rild radio_data_file:chr_file { create open read write };
 allow rild sensors_device:chr_file { ioctl open read write };
 allow rild wpa_socket:sock_file write;
+allow rild block_device:dir search;
