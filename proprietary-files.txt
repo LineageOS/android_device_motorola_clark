@@ -414,13 +414,11 @@ bin/netmgrd
 bin/qmi_motext_hook
 bin/qmuxd
 bin/radish
-bin/rild
 bin/rfs_access
 bin/rmt_storage
 lib/libmdmcutback.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
-lib/libril.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libnetmgr.so
 vendor/lib/libril-qc-qmi-1.so
