@@ -302,6 +302,7 @@ vendor/lib/libvoice-svc.so
 
 # GPS
 -app/MotGeoFenceSvc/MotGeoFenceSvc.apk
+-priv-app/com.qualcomm.location/com.qualcomm.location.apk
 bin/loc_launcher
 bin/gpsone_daemon
 etc/permissions/com.qualcomm.location.xml
@@ -399,7 +400,13 @@ vendor/lib/libdsutils.so
 vendor/lib/libqcci_legacy.so
 
 # CNE / DPM
+etc/cne/andsfCne.xml
+etc/cne/SwimConfig.xml
 lib/libcnefeatureconfig.so
+framework/cneapiclient.jar
+framework/com.motorola.motosignature.jar
+framework/com.quicinc.cne.jar
+-priv-app/CNEService.apk
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
 vendor/lib/libcneqmiutils.so
@@ -413,15 +420,58 @@ vendor/lib/libvendorconn.so
 vendor/lib/libwqe.so
 
 # Radio
+-app/ims/ims.apk
+-app/atfwd/atfwd.apk
+bin/charge_only_mode
+bin/diag_klog
+bin/diag_mdlog
+bin/diag_mdlog-getlogs
+bin/diag_mdlog-wrap
+bin/diag_qshrink4_daemon
+bin/port-bridge
+bin/tcmd
+bin/test_diag
+bin/PktRspTest
 bin/netmgrd
 bin/qmi_motext_hook
 bin/qmuxd
 bin/radish
 bin/rfs_access
 bin/rmt_storage
+etc/diag_mdlog/Bluetooth_audio_V1.cfg
+etc/diag_mdlog/Bluetooth_V1.cfg
+etc/diag_mdlog/Connection_Issues_V8.cfg
+etc/diag_mdlog/default.cfg
+etc/diag_mdlog/default.opts
+etc/diag_mdlog/FIT_V17_1.cfg
+etc/diag_mdlog/FIT_V17_2_volte_full_ip.cfg
+etc/diag_mdlog/FIT_V17_3_audio.cfg
+etc/diag_mdlog/GNSS_SUPL_V4.cfg
+etc/diag_mdlog/GNSS_V4.cfg
+etc/diag_mdlog/Vzw_Connection_Issues_V1.cfg
+etc/diag_mdlog/WLAN_V1.cfg
+etc/permissions/cneapiclient.xml
+etc/permissions/com.motorola.hw.sensorhub.xml
+etc/permissions/com.motorola.motosignature.xml
+etc/permissions/com.quicinc.cne.xml
+etc/permissions/com.verizon.ims.xml
+etc/permissions/ims.xml
+etc/permissions/org.simalliance.openmobileapi.xml
+etc/permissions/qcnvitems.xml
+etc/permissions/qcrilhook.xml
+etc/sensors/sensor_def_qcomdev.conf
+framework/qcnvitems.jar
+framework/qcrilhook.jar
+framework/com.verizon.ims.jar
+framework/org.simalliance.openmobileapi.jar
+lib/libadspd.so
 lib/libmdmcutback.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
+-priv-app/MotoSignatureApp.apk
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+vendor/lib/libimscamera_jni.so
+vendor/lib/libimsmedia_jni.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libnetmgr.so
 vendor/lib/libril-qc-qmi-1.so
@@ -440,9 +490,12 @@ vendor/lib/libsensor_reg.so
 bin/motosh
 etc/firmware/sensorhubfw.bin
 lib/hw/sensors.msm8992.so
+vendor/lib/libsubsystem_control.so
+vendor/lib/libSubSystemShutdown.so
 lib64/hw/sensorhub.msm8992.so
 
 # Time (Linked to radio)
+-app/TimeService/TimeService.apk
 bin/time_daemon
 vendor/lib/libTimeService.so
 
