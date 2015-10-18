@@ -705,7 +705,7 @@ service hw_revs /system/bin/sh /system/bin/hardware_revisions.sh
     oneshot
 
 service adspd /system/bin/adspd
-   class late_start
+   class main
    socket adspdsock stream 0660 system audio
    user audio
    group audio input diag
