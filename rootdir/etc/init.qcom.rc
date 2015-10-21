@@ -45,7 +45,7 @@ on init
     symlink /sdcard /storage/sdcard0
 
     # Symbols required for motorola blobs
-    export LD_PRELOAD /system/lib/libmoto.so
+    export LD_PRELOAD "/system/lib/libmoto.so /system/lib/libboringssl-compat.so"
 
 on fs
     mount_all fstab.qcom
