@@ -82,6 +82,8 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_PACKAGES += \
     libaudio-resampler \
+    libqcompostprocbundle \
+    libqcomvisualizer \
     libqcomvoiceprocessingdescriptors \
     libqcomvoiceprocessing \
     tinymix
