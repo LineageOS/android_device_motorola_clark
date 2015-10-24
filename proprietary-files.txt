@@ -1,6 +1,7 @@
 # ADSP /ADSP-RPC / Vision
 bin/adspd
 bin/adsprpcd
+lib/libadspd.so
 vendor/lib/libadsprpc.so
 vendor/lib/libmdsprpc.so
 vendor/lib/libfastcvopt.so
@@ -41,6 +42,8 @@ etc/acdbdata/Headset_cal.acdb
 etc/acdbdata/Handset_cal.acdb
 etc/acdbdata/Hdmi_cal.acdb
 etc/acdbdata/Speaker_cal.acdb
+etc/firmware/florida-dsp2-aov-frontend.wmfw
+etc/firmware/florida-dsp3-aov-control.wmfw
 
 # Audio firmware
 etc/firmware/left.tfa9890.music.config
