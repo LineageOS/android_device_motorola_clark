@@ -67,6 +67,7 @@ persist.ims.disableDebugLogs=0
 persist.ims.disableQXDMLogs=0
 persist.ims.disableIMSLogs=0
 telephony.lteOnCdmaDevice=1
+net.tethering.noprovisioning=true
 
 # HWUI
 debug.sf.hw=1
