@@ -5,6 +5,11 @@
     "branch":      "lp5.1"
   },
   {
+    "repository": "CyanogenMod/android_external_mm-dash",
+    "target_path": "external/mm-dash",
+    "branch":      "cm-12.1"
+  },
+  {
     "repository": "AICP/proprietary_vendor_motorola",
     "target_path": "vendor/motorola",
     "branch":      "lp5.1"
