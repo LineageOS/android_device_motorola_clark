@@ -305,6 +305,7 @@ vendor/lib/libvoice-svc.so
 -priv-app/com.qualcomm.location/com.qualcomm.location.apk
 bin/loc_launcher
 bin/gpsone_daemon
+bin/location-mq
 etc/permissions/com.qualcomm.location.xml
 lib/libloc_api_v02.so
 lib/libloc_ds_api.so
@@ -504,7 +505,10 @@ vendor/lib/hw/activity_recognition.msm8992.so
 vendor/lib/egl/libQTapGLES.so
 
 # Wifi Firmware
+bin/xtwifi-client
+bin/xtwifi-inet-agent
 etc/firmware/wlan/qca_cld/WCNSS_qcom_wlan_nv.bin
+etc/xtwifi.conf
 
 # Wat - weird files
 lib64/libadropbox.so
