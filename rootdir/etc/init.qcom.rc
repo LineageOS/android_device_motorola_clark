@@ -6,7 +6,7 @@ on charger
     trigger post-fs
     trigger post-fs-data
     setprop ro.board.platform msm8992
-    setprop sys.perf.profile 0
+    # setprop sys.perf.profile 0
     start charge_only_mode
     start batt_health
     start thermal-com
@@ -261,6 +261,12 @@ on post-fs-data
     # Setup folder for camera HAL subsystem
     mkdir /data/camera_dump 0750 media media
 
+    # Create PERFD deamon related dirs
+    mkdir /data/misc/perfd 0755 root system
+    chmod 2755 /data/misc/perfd
+    mkdir /data/system/perfd 0770 root system
+    chmod 2770 /data/system/perfd
+
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -365,7 +371,7 @@ on nonencrypted
 
 on property:init.svc.bootanim=running
     # Switch to performance mode while booting
-    setprop sys.perf.profile 2
+    # setprop sys.perf.profile 2
 
 on property:sys.boot_completed=1
     setprop sys.io.scheduler bfq
