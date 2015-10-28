@@ -10,7 +10,9 @@
 /dev/motosh_as                u:object_r:sensors_device:s0
 /dev/motosh_ms                u:object_r:sensors_device:s0
 
+# batt_health
 /system/bin/batt_health       u:object_r:batt_health_exec:s0
+/data/power_supply_logger(/.*)? u:object_r:batt_health_data_file:s0
 
 /dev/ttyHS0                   u:object_r:hci_attach_dev:s0
 

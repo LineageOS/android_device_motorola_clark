@@ -7,3 +7,10 @@ type adspd_socket, file_type;
 type fsg_file, fs_type, contextmount_type;
 
 type vibeamp_sysfs, sysfs_type, file_type;
+
+# batt_health
+type batt_health_data_file, file_type;
+type batt_health_sysfs, sysfs_type, fs_type;
+
+# PDS files
+type pds_file, file_type;
