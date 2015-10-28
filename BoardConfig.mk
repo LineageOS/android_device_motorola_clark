@@ -183,6 +183,11 @@ BOARD_SEPOLICY_UNION += \
 # Time services
 # BOARD_USES_QC_TIME_SERVICES := true
 
+# Vendor Init
+TARGET_UNIFIED_DEVICE := true
+TARGET_INIT_VENDOR_LIB := libinit_clark
+TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_clark.c
+
 # TWRP definitions
 DEVICE_RESOLUTION := 1440x2560
 TW_BOARD_CUSTOM_GRAPHICS := ../../../$(DEVICE_PATH)/recovery/graphics.c

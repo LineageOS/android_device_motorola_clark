@@ -17,7 +17,6 @@ persist.data.netmgrd.qos.enable=true
 persist.data.mode=concurrent
 ro.data.large_tcp_window_size=true
 telephony.lteOnCdmaDevice=1
-ro.telephony.default_network=10
 persist.radio.mcfg_enabled=1
 ro.mot.ignore_csim_appid=true
 ril.subscription.types=RUIM
@@ -68,8 +67,6 @@ persist.ims.disableQXDMLogs=0
 persist.ims.disableIMSLogs=0
 telephony.lteOnCdmaDevice=1
 net.tethering.noprovisioning=true
-ro.ril.force_eri_from_xml=true
-ro.telephony.get_imsi_from_sim=true
 
 # HWUI
 debug.sf.hw=1
