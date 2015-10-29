@@ -25,6 +25,17 @@ vendor/lib/rfsa/adsp/libmare_hexagon_skel.so
 # Audio
 bin/fm_qsoc_patches
 vendor/bin/audioflacapp
+lib/libaudioroute.so
+lib/hw/audio.primary.msm8992.so
+lib/hw/audio.motvr.default.so
+lib/libmotaudioutils.so
+lib/libtinyalsa.so
+lib/libtinycompress.so
+lib/libtinyxml.so
+bin/fmconfig
+bin/fmfactorytest
+bin/fmfactorytestserver
+lib/libqcomfm_jni.so
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbmapper.so
@@ -407,7 +418,7 @@ lib/libcnefeatureconfig.so
 framework/cneapiclient.jar
 framework/com.motorola.motosignature.jar
 framework/com.quicinc.cne.jar
--priv-app/CNEService.apk
+-priv-app/CNEService/CNEService.apk
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
 vendor/lib/libcneqmiutils.so
@@ -469,7 +480,7 @@ lib/libadspd.so
 lib/libmdmcutback.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
--priv-app/MotoSignatureApp.apk
+-priv-app/MotoSignatureApp/MotoSignatureApp.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/lib/libimscamera_jni.so
 vendor/lib/libimsmedia_jni.so
@@ -505,6 +516,15 @@ vendor/lib/hw/activity_recognition.msm8992.so
 vendor/lib/egl/libQTapGLES.so
 
 # Wifi Firmware
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/liblowi_client.so
+vendor/lib/libwifiscanner.so
+vendor/lib/libxtadapter.so
+vendor/lib/libxtwifi_ulp_adaptor.so
+vendor/lib/libxtwifi_zpp_adaptor.so
+vendor/lib/libquipc_ulp_adapter.so
+bin/lowi-server
+vendor/bin/slim_ap_daemon
 bin/xtwifi-client
 bin/xtwifi-inet-agent
 etc/firmware/wlan/qca_cld/WCNSS_qcom_wlan_nv.bin
@@ -513,6 +533,7 @@ etc/xtwifi.conf
 # Wat - weird files
 lib64/libadropbox.so
 lib/libspeakerbundle.so
+lib/libunshorten.so
 lib/soundfx/libmmieffectswrapper.so
 lib/libmbs.so
 vendor/lib/libmotocalibration.so
@@ -522,3 +543,9 @@ vendor/lib/libactuator_mot_lc898212xd_camcorder.so
 vendor/lib/libactuator_mot_lc898212xd_camera.so
 vendor/lib/libactuator_mot_lc898212xd.so
 lib/libmot_lux_standardization.so
+bin/cnd
+bin/cnss-daemon
+bin/dpmd
+bin/ftmdaemon
+bin/ssr_diag
+bin/ssr_setup
