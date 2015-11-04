@@ -68,10 +68,6 @@ service mmi-usb-sh /system/bin/sh /init.mmi.usb.sh
     user root
     oneshot
 
-service fuse_usbdisk /system/bin/sdcard -u 1023 -g 1023 /mnt/media_rw/usbdisk /storage/usbdisk
-    class late_start
-    disabled
-
 on property:tcmd.ctrl_adb=1
     stop mmi-usb-sh
     setprop usb.mmi-usb-sh.action tcmd.ctrl_adb

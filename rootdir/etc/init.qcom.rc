@@ -40,23 +40,9 @@ on init
     # Set permissions for persist partition
     mkdir /persist 0771 system system
 
-    # See storage config details at http://source.android.com/tech/storage/
-    mkdir /mnt/shell/emulated 0700 shell shell
-    mkdir /storage/emulated 0555 root root
-    mkdir /storage/emulated/legacy 0555 root root
-    mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /storage/sdcard1 0700 root root
-    mkdir /storage/uicc1 0700 root root
-
-    export EXTERNAL_STORAGE /storage/emulated/legacy
-    export SECONDARY_STORAGE /storage/sdcard1
-    export EMULATED_STORAGE_SOURCE /mnt/shell/emulated
-    export EMULATED_STORAGE_TARGET /storage/emulated
-
     # Support legacy paths
-    symlink /storage/emulated/legacy /sdcard
-    symlink /storage/emulated/legacy /mnt/sdcard
-    symlink /storage/emulated/legacy /storage/sdcard0
+    symlink /sdcard /mnt/sdcard
+    symlink /sdcard /storage/sdcard0
 
 on fs
     mount_all fstab.qcom
@@ -286,7 +272,6 @@ on post-fs-data
     # Create folder for mm-qcamera-daemon
     mkdir /data/misc/camera 0770 camera camera
 
-    mkdir /data/media 0770 media_rw media_rw
     mkdir /data/misc/ipa 0700 net_admin net_admin
 
     # Create the directories used by the Wireless subsystem
@@ -370,11 +355,6 @@ on post-fs-data
     # Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
 
-on nonencrypted
-    setprop ro.esdfs_sdcard ${persist.esdfs_sdcard}
-    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-    setprop ro.kick.logcopy ${ro.bootreason}
-
 on property:init.svc.bootanim=running
     # Switch to performance mode while booting
     # setprop sys.perf.profile 2
@@ -401,9 +381,6 @@ on property:init.svc.wpa_supplicant=stopped
 
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
-    setprop ro.esdfs_sdcard ${persist.esdfs_sdcard}
-    setprop ro.fuse_sdcard ${persist.fuse_sdcard}
-    setprop ro.kick.logcopy ${ro.bootreason}
 
 # Binding fuse mount point to /storage/emulated/legacy
 on property:init.svc.sdcard=running
@@ -616,19 +593,6 @@ service ril-daemon3 /system/bin/rild -c 3
     user root
     disabled
     group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
-
-# virtual sdcard daemon running as media_rw (1023)
-service sdcard /system/bin/sdcard -u 1023 -g 1023 -l /data/media /mnt/shell/emulated
-    class late_start
-    disabled
-
-service fuse_sdcard1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/sdcard1 /storage/sdcard1
-    class late_start
-    disabled
-
-service fuse_uicc1 /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/uicc1 /storage/uicc1
-    class late_start
-    disabled
 
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
