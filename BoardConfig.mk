@@ -143,6 +143,9 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 # Added to indicate that protobuf-c is supported in this build
 PROTOBUF_SUPPORTED := true
 
+#Camera
+USE_DEVICE_SPECIFIC_CAMERA := true
+
 TARGET_USES_AOSP := true
 # Force camera module to be compiled only in 32-bit mode on 64-bit systems
 # Once camera module can run in the native mode of the system (either
