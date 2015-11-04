@@ -45,7 +45,7 @@ on init
     symlink /sdcard /storage/sdcard0
 
     # Symbols required for motorola blobs
-    export LD_PRELOAD "/system/lib/libmoto.so /system/lib/libboringssl-compat.so"
+    export LD_PRELOAD "libmoto.so:libboringssl-compat.so"
 
 on fs
     mount_all fstab.qcom
@@ -615,14 +615,6 @@ service per_proxy /system/bin/pm-proxy
     group system net_raw
     disabled
 
-service thermal-engine /system/bin/thermal-engine
-    class main
-    user root
-    socket thermal-send-client stream 0666 system system
-    socket thermal-recv-client stream 0660 system system
-    socket thermal-recv-passive-client stream 0666 system system
-    group root
-
 service time_daemon /system/bin/time_daemon
     class late_start
     user root
@@ -745,11 +737,6 @@ service mmi-block-perm /system/bin/sh /init.mmi.block_perm.sh
 
 service mmi-boot-sh /system/bin/sh /init.mmi.boot.sh
     class core
-    user root
-    oneshot
-
-service mmi-early_boot-sh /system/bin/sh /init.mmi.early_boot.sh
-    class late_start
     user root
     oneshot
 

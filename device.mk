@@ -143,7 +143,6 @@ PRODUCT_PACKAGES += \
     init.class_main.sh \
     fstab.qcom \
     init.mmi.boot.sh \
-    init.mmi.early_boot.sh \
     init.mmi.touch.sh \
     init.mmi.usb.rc \
     init.mmi.usb.sh \
