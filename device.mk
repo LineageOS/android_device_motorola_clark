@@ -124,8 +124,8 @@ PRODUCT_PACKAGES += \
     pp_calib_data_mipi_mot_cmd_inx_QHD_0_570_v0.xml
 
 # Include IMSEnabler
-PRODUCT_PACKAGES += \
-    IMSEnabler
+#PRODUCT_PACKAGES += \
+#    IMSEnabler
 
 # Rich Communications Service is disabled in 5.1
 PRODUCT_PROPERTY_OVERRIDES += \
