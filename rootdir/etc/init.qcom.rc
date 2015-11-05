@@ -436,12 +436,12 @@ service loc_launcher /system/bin/loc_launcher
     group gps inet net_raw qcom_diag net_admin wifi
 
 service qmuxd /system/bin/qmuxd
-    class main
+    class core
     user root
     group radio audio bluetooth gps nfc qcom_diag
 
 service netmgrd /system/bin/netmgrd
-    class main
+    class core
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
