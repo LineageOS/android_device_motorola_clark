@@ -27,6 +27,10 @@ on early-init
     mkdir /customize 0500 root root
 
 on init
+
+    # Symbols required for motorola blobs
+    export LD_PRELOAD "/system/lib64/libmoto.so:/system/lib64/libboringssl-compat.so"
+
     chown system log /sys/fs/pstore/annotate-ramoops
     chmod 0640 /sys/fs/pstore/annotate-ramoops
 
@@ -43,9 +47,6 @@ on init
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
-
-    # Symbols required for motorola blobs
-    export LD_PRELOAD "libmoto.so:libboringssl-compat.so"
 
 on fs
     mount_all fstab.qcom
