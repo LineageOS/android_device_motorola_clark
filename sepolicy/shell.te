@@ -1,0 +1,1 @@
+allow shell batt_health_exec:file getattr;

@@ -1,0 +1,33 @@
+/data/power_supply_logger(/.*)?         u:object_r:battery_data_file:s0
+/data/hardware_revisions(/.*)?          u:object_r:hwrev_data_file:s0
+/data/chargeonlymode(/.*)?              u:object_r:chargeonly_data_file:s0
+
+/fsg/(.*)                               u:object_r:firmware_file:s0
+/bt_firmware/(.*)                       u:object_r:firmware_file:s0
+
+#/dev/block/mmcblk0p(.*)                u:object_r:mmc_block_device:s0
+#/dev/block/mmcblk1p(.*)                u:object_r:mmc_block_device:s0
+
+/dev/bcm2079x-i2c                       u:object_r:nfc_device:s0
+
+/dev/motosh                             u:object_r:sensors_device:s0
+/dev/motosh_as                          u:object_r:sensors_device:s0
+/dev/motosh_ms                          u:object_r:sensors_device:s0
+
+/system/bin/charge_only_mode            u:object_r:charge_only_mode_exec:s0
+/system/bin/batt_health                 u:object_r:batt_health_exec:s0
+/system/bin/perfd                       u:object_r:perfd_exec:s0
+
+
+/dev/ttyHS0                             u:object_r:hci_attach_dev:s0
+
+# ril
+/dev/mot_hob_ram                        u:object_r:radio_data_file:s0
+
+#CMHW
+/sys/vibrator/pwmvalue                  u:object_r:vibeamp_sysfs:s0
+
+/sys/class/leds/lcd-backlight/brightness        u:object_r:sysfs_light:s0
+/sys/power/autosleep                            u:object_r:sysfs_power:s0
+/sys/android_touch/doubletap2wake               u:object_r:sysfs_dt2w:s0
+

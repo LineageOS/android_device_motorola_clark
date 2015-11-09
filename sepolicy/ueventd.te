@@ -1,0 +1,1 @@
+allow ueventd radio_data_file:chr_file { create setattr };

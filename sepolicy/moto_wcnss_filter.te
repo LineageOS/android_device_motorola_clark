@@ -1,0 +1,12 @@
+type moto_wcnss_filter, domain;
+type moto_wcnss_filter_exec, exec_type, file_type;
+init_daemon_domain(moto_wcnss_filter)
+
+allow moto_wcnss_filter wcnss_filter_exec:file { entrypoint read };
+allow moto_wcnss_filter self:capability { dac_override setuid setgid };
+allow moto_wcnss_filter proc_sysrq:file { read write open };
+allow moto_wcnss_filter sysfs_msmuart_file:file { read write open };
+allow moto_wcnss_filter hci_attach_dev:chr_file { read write open ioctl };
+allow moto_wcnss_filter property_socket:sock_file write;
+allow moto_wcnss_filter init:unix_stream_socket connectto;
+allow moto_wcnss_filter bluetooth_prop:property_service set;

@@ -321,6 +321,7 @@ service wcnss_filter /system/bin/wcnss_filter
     class late_start
     user root
     group bluetooth qcom_diag log system
+    seclabel u:r:moto_wcnss_filter:s0
     disabled
 
 service loc_launcher /system/bin/loc_launcher
