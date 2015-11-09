@@ -1,0 +1,2 @@
+allow init firmware_file:dir mounton;
+#allow init device:file execute;

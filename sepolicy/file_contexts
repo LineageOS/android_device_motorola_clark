@@ -1,8 +1,8 @@
 /fsg/(.*)                     u:object_r:firmware_file:s0
 /bt_firmware/(.*)             u:object_r:firmware_file:s0
 
-/dev/block/mmcblk0p(.*)       u:object_r:mmc_block_device:s0
-/dev/block/mmcblk1p(.*)       u:object_r:mmc_block_device:s0
+#/dev/block/mmcblk0p(.*)       u:object_r:mmc_block_device:s0
+#/dev/block/mmcblk1p(.*)       u:object_r:mmc_block_device:s0
 
 /dev/bcm2079x-i2c             u:object_r:nfc_device:s0
 
@@ -14,7 +14,8 @@
 
 /dev/ttyHS0                   u:object_r:hci_attach_dev:s0
 
-/sys/vibrator/pwmvalue        u:object_r:vibeamp_sysfs:s0
-
 # ril
 /dev/mot_hob_ram              u:object_r:radio_data_file:s0
+
+#CMHW
+/sys/vibrator/pwmvalue        u:object_r:vibeamp_sysfs:s0
