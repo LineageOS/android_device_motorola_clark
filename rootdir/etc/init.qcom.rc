@@ -29,7 +29,8 @@ on early-init
 on init
 
     # Symbols required for motorola blobs
-    export LD_PRELOAD "/system/lib64/libmoto.so:/system/lib64/libboringssl-compat.so"
+    export LD_LIBRARY_PATH=/system/lib64:/system/lib
+    export LD_PRELOAD "libmoto.so:libboringssl-compat.so"
 
     chown system log /sys/fs/pstore/annotate-ramoops
     chmod 0640 /sys/fs/pstore/annotate-ramoops
