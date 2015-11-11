@@ -113,6 +113,10 @@ PRODUCT_PACKAGES += \
     libmoto \
     libboringssl-compat
 
+# Stlport
+PRODUCT_PACKAGES += \
+    libstlport
+
 # for off charging mode
 PRODUCT_PACKAGES += \
     charger_res_images
