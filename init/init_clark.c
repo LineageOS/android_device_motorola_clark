@@ -38,6 +38,7 @@ void vendor_load_properties()
 {
     char platform[PROP_VALUE_MAX];
     char sku[PROP_VALUE_MAX];
+    char car[PROP_VALUE_MAX];
     int rc;
 
     rc = property_get("ro.board.platform", platform);
@@ -45,20 +46,31 @@ void vendor_load_properties()
         return;
 
     property_get("ro.boot.hardware.sku", sku);
+    property_set("ro.boot.carrier", car);
 
     property_set("ro.product.model", sku);
 
-    if (strstr(sku, "XT1575")) {
+    if (strstr(sku, "XT1572")) {
+        property_set("ro.product.display", "Moto X Style");
+        property_set("ro.telephony.default_network", "9");
+    }
+
+    if (strstr(car, "retus")) {
+        /* US */
         property_set("ro.product.display", "Moto X Pure Edition");
         property_set("ro.ril.force_eri_from_xml", "true");
         property_set("ro.telephony.get_imsi_from_sim", "true");
         property_set("ro.telephony.default_network", "10");
         property_set("ro.build.description", "clark_retus-user 5.1.1 LPH23.116-18 18 release-keys");
         property_set("ro.build.fingerprint", "motorola/clark_retus/clark:5.1.1/LPH23.116-18/18:user/release-keys");
-    } else if (strstr(sku, "XT1572")) {
-        property_set("ro.product.display", "Moto X Style");
+    } else if (strstr(car, "retgb") || strstr(car, "retfr")) {
+        /* Britain & France */
+        property_set("ro.build.description", "clark_reteu-user 5.1.1 LPH23.116-18 23 release-keys");
+        property_set("ro.build.fingerprint", "motorola/clark_reteu/clark:5.1.1/LPH23.116-18/23:user/release-keys");
+
+    } else if (strstr(car, "retin")) {
+        /* India */
         property_set("persist.radio.multisim.config", "dsds");
-        property_set("ro.telephony.default_network", "9");
         property_set("ro.build.description", "clark_retasia_ds-user 5.1.1 LPH23.116-18 22 release-keys");
         property_set("ro.build.fingerprint", "motorola/clark_retasia_ds/clark_ds:5.1.1/LPH23.116-18/22:user/release-keys");
     }
