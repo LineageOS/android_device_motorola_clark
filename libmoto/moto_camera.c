@@ -125,3 +125,4 @@ void _ZN7android13SensorManager16createEventQueueEv(void **retVal, void *sensorM
 void _ZN7android8AMessageC1Eji() {}
 void _ZN7android10MediaCodec12CreateByTypeERKNS_2spINS_7ALooperEEEPKcbPi() {}
 void _ZN7android11AudioSourceC1E14audio_source_tjj() {}
+void _ZN7android5Fence4waitEj() {}
