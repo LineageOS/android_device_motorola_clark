@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 /*
-** Copyright 2014, The Android Open Source Project
+** Copyright 2015, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -21,9 +21,8 @@
      for different hardware and product builds. -->
 <resources>
 
-    <string-array translatable="false" name="config_default_vm_number">
-        <item>*86</item>
-    </string-array>
+    <!-- The VoiceMail default value is displayed to my own number if it is true -->
+    <bool name="config_telephony_use_own_number_for_voicemail">true</bool>
 
     <!-- Array of ConnectivityManager.TYPE_xxxx values allowable for tethering -->
     <!-- Common options are [1, 4] for TYPE_WIFI and TYPE_MOBILE_DUN or
@@ -35,10 +34,13 @@
         <item>9</item>
     </integer-array>
 
-    <!-- Use ERI text for network name on CDMA LTE -->
-    <bool name="config_LTE_eri_for_network_name">false</bool>
+    <!-- Default network policy warning threshold, in megabytes. -->
+    <integer name="config_networkPolicyDefaultWarning">51200</integer>
 
-    <!-- Values for GPS configuration (Verizon) -->
+    <!-- Sometimes, PDU has garbages. So, need to use valid index -->
+    <integer name="config_valid_wappush_index">4</integer>
+
+    <!-- Values for GPS configuration (Sprint) -->
     <string-array translatable="false" name="config_gpsParameters">
         <item>SUPL_HOST=supl.google.com</item>
         <item>SUPL_PORT=7275</item>
@@ -52,15 +54,18 @@
         <item>ERR_ESTIMATE=0</item>
         <item>INTERMEDIATE_POS=0</item>
         <item>GPS_LOCK=3</item>
-        <item>LPP_PROFILE=3</item>
+        <item>LPP_PROFILE=2</item>
         <item>SUPL_MODE=0</item>
-        <item>SUPL_ES=1</item>
+        <item>SUPL_ES=0</item>
     </string-array>
 
-    <!-- MMS user agent string -->
-    <string name="config_mms_user_agent" translatable="false">motoxt1575</string>
-
     <!-- MMS user agent prolfile url -->
-    <string name="config_mms_user_agent_profile_url" translatable="false">http://uaprof.vtext.com/mot/motoxt1575/motoxt1575.xml</string>
+    <string name="config_mms_user_agent_profile_url" translatable="false">http://device.sprintpcs.com/Motorola/XT1575-SPRINT/motoxt1575.rdf</string>
+
+    <!-- sms encoded as octet is decoded by utf8 decoder. if it is true -->
+    <bool name="config_sms_utf8_support">true</bool>
+
+    <!-- Sprint need a 3s delay for 3way call -->
+    <integer name="config_cdma_3waycall_flash_delay">300</integer>
 
 </resources>
