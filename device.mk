@@ -19,6 +19,9 @@
 #
 # Everything in this directory will become public
 
+# System properties
+include $(LOCAL_PATH)/system_prop.mk
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config \
     $(LOCAL_PATH)/configs/msm_irqbalance.conf:system/etc/msm_irqbalance.conf
@@ -115,26 +118,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     pp_calib_data_mipi_mot_cmd_inx_QHD_0_570_v0.xml
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.opengles.version=196608
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sf.lcd_density=560
-
 # Include IMSEnabler
 PRODUCT_PACKAGES += \
     IMSEnabler
-
-# Rich Communications Service is disabled in 5.1
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.rcs.supported=0
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.hwc.mdpcomp.enable=true
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.crypto.fuse_sdcard=true \
-    persist.fuse_sdcard=true
 
 ## Below here are confirmed important things 
 ## Do not edit
