@@ -108,6 +108,10 @@ PRODUCT_PACKAGES += \
     mm-jpeg-interface-test \
     mm-qcamera-app
 
+# Motorola
+PRODUCT_PACKAGES += \
+    libmoto
+
 # for off charging mode
 PRODUCT_PACKAGES += \
     charger_res_images
