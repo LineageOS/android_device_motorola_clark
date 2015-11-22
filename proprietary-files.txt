@@ -459,6 +459,7 @@ etc/diag_mdlog/GNSS_V4.cfg
 etc/diag_mdlog/Vzw_Connection_Issues_V1.cfg
 etc/diag_mdlog/WLAN_V1.cfg
 etc/permissions/cneapiclient.xml
+etc/permissions/com.google.widevine.software.drm.xml
 etc/permissions/com.motorola.hw.sensorhub.xml
 etc/permissions/com.motorola.motosignature.xml
 etc/permissions/com.quicinc.cne.xml
@@ -468,9 +469,9 @@ etc/permissions/org.simalliance.openmobileapi.xml
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 etc/sensors/sensor_def_qcomdev.conf
+framework/com.google.widevine.software.drm.jar
 framework/qcnvitems.jar
 framework/qcrilhook.jar
-framework/com.verizon.ims.jar
 framework/org.simalliance.openmobileapi.jar
 lib/libadspd.so
 lib/libmdmcutback.so
