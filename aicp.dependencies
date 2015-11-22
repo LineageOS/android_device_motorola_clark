@@ -2,16 +2,16 @@
   {
     "repository": "AICP/kernel_motorola_msm8992",
     "target_path": "kernel/motorola/msm8992",
-    "branch":      "lp5.1"
+    "branch":      "mm6.0"
   },
   {
-    "repository": "CyanogenMod/android_external_mm-dash",
-    "target_path": "external/mm-dash",
-    "branch":      "cm-12.1"
+    "repository": "CyanogenMod/android_external_sony_boringssl-compat",
+    "target_path": "external/sony/boringssl-compat",
+    "branch":      "cm-13.0"
   },
   {
     "repository": "AICP/proprietary_vendor_motorola",
     "target_path": "vendor/motorola",
-    "branch":      "lp5.1"
+    "branch":      "mm6.0"
   }
 ]

@@ -251,10 +251,8 @@ vendor/lib/libqti-perfd-client.so
 # DRM
 # TZBSP
 bin/qseecomd
-lib/libdrmdecrypt.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
-vendor/lib/libmasc.so
 vendor/lib/liboemcrypto.so
 vendor/lib/libpvr.so
 vendor/lib/libQSEEComAPI.so
@@ -393,7 +391,6 @@ bin/dbvc_atvc_property_set
 bin/hardware_revisions.sh
 
 # NFC
-etc/firmware/BCM20795A2_001.003.025.0005.0035_Generic_I2C_NCD_Signed_configdata.ncd
 # Postprocessing
 bin/mm-pp-daemon
 vendor/lib/libmm-abl.so
@@ -410,9 +407,7 @@ vendor/lib/libqcci_legacy.so
 etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
 lib/libcnefeatureconfig.so
-framework/cneapiclient.jar
 framework/com.motorola.motosignature.jar
-framework/com.quicinc.cne.jar
 -priv-app/CNEService/CNEService.apk
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
@@ -427,8 +422,6 @@ vendor/lib/libvendorconn.so
 vendor/lib/libwqe.so
 
 # Radio
--app/ims/ims.apk
--app/atfwd/atfwd.apk
 bin/charge_only_mode
 bin/diag_klog
 bin/diag_mdlog
@@ -448,13 +441,8 @@ bin/rfs_access
 bin/rmt_storage
 etc/diag_mdlog/Bluetooth_audio_V1.cfg
 etc/diag_mdlog/Bluetooth_V1.cfg
-etc/diag_mdlog/Connection_Issues_V8.cfg
 etc/diag_mdlog/default.cfg
 etc/diag_mdlog/default.opts
-etc/diag_mdlog/FIT_V17_1.cfg
-etc/diag_mdlog/FIT_V17_2_volte_full_ip.cfg
-etc/diag_mdlog/FIT_V17_3_audio.cfg
-etc/diag_mdlog/GNSS_SUPL_V4.cfg
 etc/diag_mdlog/GNSS_V4.cfg
 etc/diag_mdlog/Vzw_Connection_Issues_V1.cfg
 etc/diag_mdlog/WLAN_V1.cfg
@@ -462,9 +450,6 @@ etc/permissions/cneapiclient.xml
 etc/permissions/com.google.widevine.software.drm.xml
 etc/permissions/com.motorola.hw.sensorhub.xml
 etc/permissions/com.motorola.motosignature.xml
-etc/permissions/com.quicinc.cne.xml
-etc/permissions/com.verizon.ims.xml
-etc/permissions/ims.xml
 etc/permissions/org.simalliance.openmobileapi.xml
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
@@ -481,7 +466,7 @@ lib/libril.so
 -priv-app/MotoSignatureApp/MotoSignatureApp.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/lib/libimscamera_jni.so
-vendor/lib/libimsmedia_jni.so
+#vendor/lib/libimsmedia_jni.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libnetmgr.so
 vendor/lib/libril-qc-qmi-1.so
@@ -496,7 +481,6 @@ etc/firmware/synaptics-s3528-15071401-1e29b4-clark.tdat
 etc/firmware/synaptics-s3528ar-15071401-1e29b4-clark.tdat
 
 # Sensors
-vendor/lib/libsensor_reg.so
 bin/motosh
 etc/firmware/sensorhubfw.bin
 lib/hw/sensors.msm8992.so
@@ -510,7 +494,6 @@ bin/time_daemon
 vendor/lib/libTimeService.so
 -vendor/lib/libtime_geoff.so
 vendor/lib/hw/flp.default.so
-vendor/lib/hw/activity_recognition.msm8992.so
 vendor/lib/egl/libQTapGLES.so
 
 # Wifi Firmware
@@ -525,12 +508,10 @@ bin/lowi-server
 vendor/bin/slim_ap_daemon
 bin/xtwifi-client
 bin/xtwifi-inet-agent
-etc/firmware/wlan/qca_cld/WCNSS_qcom_wlan_nv.bin
 etc/xtwifi.conf
 
 # Wat - weird files
 lib64/libadropbox.so
-lib/libspeakerbundle.so
 lib/libunshorten.so
 lib/soundfx/libmmieffectswrapper.so
 lib/libmbs.so
