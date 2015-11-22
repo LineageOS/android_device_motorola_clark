@@ -122,6 +122,13 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     IMSEnabler
 
+# Rich Communications Service is disabled in 5.1
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.rcs.supported=0
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.hwc.mdpcomp.enable=true
+
 ## Below here are confirmed important things 
 ## Do not edit
 PRODUCT_COPY_FILES += \

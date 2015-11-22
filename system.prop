@@ -112,7 +112,6 @@ ro.gps.agps_provider=1
 ro.pip.gated=0
 
 # USB
-persist.esdfs_sdcard=true
 ro.usb.mtp=0x2e82
 ro.usb.mtp_adb=0x2e76
 ro.usb.ptp=0x2e83

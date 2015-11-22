@@ -402,9 +402,6 @@ on property:persist.radio.atfwd.start=false
 on property:radio.atfwd.start=false
     stop atfwd
 
-on property:ro.fuse_sdcard=true
-    start sdcard
-
 on property:wc_transport.start_hci=true
     start start_hci_filter
 
