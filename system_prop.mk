@@ -65,7 +65,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.data.netmgrd.qos.enable=true \
     persist.data.mode=concurrent \
     ro.data.large_tcp_window_size=true \
-    telephony.lteOnCdmaDevice=1 \
     persist.radio.mcfg_enabled=1 \
     ro.mot.ignore_csim_appid=true \
     ril.subscription.types=RUIM \
