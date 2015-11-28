@@ -305,8 +305,6 @@ vendor/lib/libsmemlog.so
 vendor/lib/libvoice-svc.so
 
 # GPS
--app/MotGeoFenceSvc/MotGeoFenceSvc.apk
--priv-app/com.qualcomm.location/com.qualcomm.location.apk
 bin/loc_launcher
 bin/gpsone_daemon
 bin/location-mq
@@ -407,8 +405,6 @@ vendor/lib/libqcci_legacy.so
 etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
 lib/libcnefeatureconfig.so
-framework/com.motorola.motosignature.jar
--priv-app/CNEService/CNEService.apk
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
 vendor/lib/libcneqmiutils.so
@@ -428,6 +424,8 @@ bin/diag_mdlog
 bin/diag_mdlog-getlogs
 bin/diag_mdlog-wrap
 bin/diag_qshrink4_daemon
+bin/ipacm
+bin/ipacm-diag
 bin/port-bridge
 bin/tcmd
 bin/test_diag
@@ -446,25 +444,13 @@ etc/diag_mdlog/default.opts
 etc/diag_mdlog/GNSS_V4.cfg
 etc/diag_mdlog/Vzw_Connection_Issues_V1.cfg
 etc/diag_mdlog/WLAN_V1.cfg
-etc/permissions/cneapiclient.xml
-etc/permissions/com.google.widevine.software.drm.xml
-etc/permissions/com.motorola.hw.sensorhub.xml
-etc/permissions/com.motorola.motosignature.xml
-etc/permissions/org.simalliance.openmobileapi.xml
-etc/permissions/qcnvitems.xml
-etc/permissions/qcrilhook.xml
 etc/sensors/sensor_def_qcomdev.conf
-framework/com.google.widevine.software.drm.jar
-framework/qcnvitems.jar
-framework/qcrilhook.jar
-framework/org.simalliance.openmobileapi.jar
 lib/libadspd.so
 lib/libmdmcutback.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
 lib/libril.so
--priv-app/MotoSignatureApp/MotoSignatureApp.apk
--priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
+vendor/bin/qti
 vendor/lib/libimscamera_jni.so
 #vendor/lib/libimsmedia_jni.so
 vendor/lib/libmdmdetect.so
@@ -489,7 +475,6 @@ vendor/lib/libSubSystemShutdown.so
 lib64/hw/sensorhub.msm8992.so
 
 # Time (Linked to radio)
--app/TimeService/TimeService.apk
 bin/time_daemon
 vendor/lib/libTimeService.so
 -vendor/lib/libtime_geoff.so
