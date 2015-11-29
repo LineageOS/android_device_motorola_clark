@@ -39,6 +39,7 @@
 /dev/ttyHSL0             0660   radio      system
 # logger should be world writable (for logging) but not readable
 /dev/log/*                0666   root       log
+/dev/pmsg0                0222   root       log
 
 # the DIAG device node is not world writable/readable.
 /dev/diag                 0660   system     qcom_diag
