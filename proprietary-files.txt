@@ -434,7 +434,6 @@ bin/netmgrd
 bin/qmi_motext_hook
 bin/qmuxd
 bin/radish
-bin/rild
 bin/rfs_access
 bin/rmt_storage
 etc/diag_mdlog/Bluetooth_V1.cfg
@@ -462,7 +461,6 @@ lib/libadspd.so
 lib/libmdmcutback.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
--lib/libril.so
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
 vendor/lib/libimscamera_jni.so
