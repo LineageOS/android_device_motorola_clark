@@ -301,6 +301,8 @@
 10:4294967295:1001
 /*IMSA*/
 33:4294967295:1001
+/* LTE */
+70:4294967295:1001
 /* Allow Data dpmd to access QMI DFS */
 48:4294967295:1000:3004
 /* <WLFW QMI Service ID - 0x45>:<WLFW QMI Instance ID - all instances>:<Client Group ID> */
