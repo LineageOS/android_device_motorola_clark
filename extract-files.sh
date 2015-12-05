@@ -23,6 +23,13 @@ fi
 BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
 rm -rf $BASE/*
 
+mkdir -p $BASE/lib64/hw
+mkdir -p $BASE/lib/hw
+mkdir -p $BASE/vendor/lib64/hw
+mkdir -p $BASE/vendor/lib/hw
+mkdir -p $BASE/vendor/lib64/egl
+mkdir -p $BASE/vendor/lib/egl
+
 for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
   FILE=`echo ${PARSING_ARRAY[0]} | sed -e "s/^-//g"`
