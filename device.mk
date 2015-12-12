@@ -213,8 +213,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # CMActions
-#PRODUCT_PACKAGES += \
-#    CMActions
+PRODUCT_PACKAGES += \
+    CMActions
 
 # Wifi Firmware
 PRODUCT_COPY_FILES += \
