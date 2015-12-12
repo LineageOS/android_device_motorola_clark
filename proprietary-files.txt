@@ -405,6 +405,8 @@ vendor/lib/libqcci_legacy.so
 etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
 lib/libcnefeatureconfig.so
+framework/com.motorola.motosignature.jar
+-priv-app/CNEService.apk
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
 vendor/lib/libcneqmiutils.so
@@ -418,6 +420,7 @@ vendor/lib/libvendorconn.so
 vendor/lib/libwqe.so
 
 # Radio
+-app/MotoSignatureApp/MotoSignatureApp.apk
 bin/charge_only_mode
 bin/diag_klog
 bin/diag_mdlog
@@ -451,20 +454,28 @@ etc/diag_mdlog/WLAN_V1.cfg
 etc/diag_mdlog/default.cfg
 etc/diag_mdlog/default.opts
 etc/sensors/sensor_def_qcomdev.conf
+etc/permissions/com.motorola.motosignature.xml
+etc/permissions/com.verizon.ims.xml
+etc/permissions/ims.xml
 etc/permissions/org.simalliance.openmobileapi.xml
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
 framework/qcnvitems.jar
 framework/qcrilhook.jar
+framework/com.verizon.ims.jar
 framework/org.simalliance.openmobileapi.jar
 lib/libadspd.so
 lib/libmdmcutback.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
+-priv-app/atfwd/atfwd.apk
+-priv-app/ims/ims.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
 vendor/lib/libimscamera_jni.so
-#vendor/lib/libimsmedia_jni.so
+vendor/lib/libimsmedia_jni.so
+vendor/lib64/libimscamera_jni.so:priv-app/ims/lib/arm64/libimscamera_jni.so
+vendor/lib64/libimsmedia_jni.so:priv-app/ims/lib/arm64/libimsmedia_jni.so
 vendor/lib/liblqe.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libnetmgr.so
