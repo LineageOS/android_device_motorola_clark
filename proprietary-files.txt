@@ -391,6 +391,7 @@ bin/hardware_revisions.sh
 # NFC
 # Postprocessing
 bin/mm-pp-daemon
+etc/firmware/BCM20795A2_001.003.025.0005.0048_Generic_I2C_NCD_Signed_configdata.ncd
 vendor/lib/libmm-abl.so
 vendor/lib/libmm-abl-oem.so
 vendor/lib/libdisp-aba.so
