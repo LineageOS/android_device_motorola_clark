@@ -85,6 +85,7 @@ etc/firmware/vrgain.bin
 bin/btnvtool
 bin/hci_qcomm_init
 bin/wcnss_filter
+etc/user_bhd_psy.conf
 etc/firmware/nvm_tlv.bin
 etc/firmware/nvm_tlv_1.3.bin
 etc/firmware/nvm_tlv_2.1.bin
