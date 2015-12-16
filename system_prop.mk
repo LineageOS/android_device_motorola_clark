@@ -31,10 +31,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.audio.fluence.speaker=true \
     audio.offload.gapless.enabled=true
 
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.crypto.fuse_sdcard=true \
-    persist.fuse_sdcard=true
-
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.HAL3.enabled=0
@@ -80,7 +76,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.qcril_uim_vcc_feature=1 \
     persist.data.qmi.adb_logmask=0 \
     persist.radio.0x9e_not_callname=1 \
-    persist.radio.mode_pref_nv10=1 \
     persist.radio.mt_sms_ack=30 \
     persist.radio.force_get_pref=1 \
     persist.sys.qc.sub.rdump.on=1 \
@@ -205,6 +200,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.gapless.enabled=false \
     av.offload.enable=false \
     mm.enable.qcom_parser=4643 \
+    persist.radio.mot_ecc_enabled=1 \
+    persist.radio.mot_ecc_custid=common \
     ro.media.enc.aud.fileformat=qcp \
     ro.media.enc.aud.codec=qcelp \
     ro.media.enc.aud.bps=13300 \
