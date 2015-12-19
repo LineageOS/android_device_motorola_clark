@@ -534,6 +534,7 @@ lib/libmot_lux_standardization.so
 bin/cnd
 bin/cnss-daemon
 bin/dpmd
+bin/fsck.exfat
 bin/ftmdaemon
 bin/ssr_diag
 bin/ssr_setup
