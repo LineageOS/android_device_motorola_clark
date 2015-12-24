@@ -250,6 +250,8 @@ vendor/lib/libqti-perfd-client.so
 # DRM
 # TZBSP
 bin/qseecomd
+etc/permissions/com.google.widevine.software.drm.xml
+framework/com.google.widevine.software.drm.jar
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
