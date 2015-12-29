@@ -234,8 +234,10 @@ PRODUCT_PACKAGES += \
     wpa_supplicant_overlay.conf \
     p2p_supplicant_overlay.conf \
 
+
+    #gps.msm8992 \
+
 PRODUCT_PACKAGES += \
-    gps.msm8992 \
     flp.conf \
     gps.conf \
     izat.conf \
