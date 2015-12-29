@@ -515,6 +515,7 @@ vendor/lib/libxtadapter.so
 vendor/lib/libxtwifi_ulp_adaptor.so
 vendor/lib/libxtwifi_zpp_adaptor.so
 vendor/lib/libquipc_ulp_adapter.so
+vendor/lib64/liblowi_wifihal.so
 bin/lowi-server
 vendor/bin/slim_ap_daemon
 bin/xtwifi-client
