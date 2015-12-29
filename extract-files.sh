@@ -29,6 +29,8 @@ mkdir -p $BASE/vendor/lib64/hw
 mkdir -p $BASE/vendor/lib/hw
 mkdir -p $BASE/vendor/lib64/egl
 mkdir -p $BASE/vendor/lib/egl
+mkdir -p $BASE/vendor/lib64/mediadrm
+mkdir -p $BASE/vendor/lib/mediadrm
 
 for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
   OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
