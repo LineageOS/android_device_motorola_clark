@@ -28,10 +28,6 @@
 on init
     write /sys/class/android_usb/android0/f_rndis/wceis 1
 
-    # Mount Points for External Storage Devices
-    mkdir /mnt/media_rw/usbdisk 0700 media_rw media_rw
-    mkdir /storage/usbdisk 0700 root root
-
 on boot
     write /sys/class/android_usb/android0/iManufacturer ${ro.product.manufacturer}
     write /sys/class/android_usb/android0/iProduct ${ro.product.model}
@@ -63,9 +59,11 @@ on fs
     mount functionfs adb /dev/usb-ffs/adb uid=2000,gid=2000
     write /sys/class/android_usb/android0/f_ffs/aliases adb
 
-service mmi-usb-sh /system/bin/sh /init.mmi.usb.sh
+service mmi-usb-sh /init.mmi.usb.sh
+    seclabel u:r:init_usb:s0
     class core
     user root
+    group system
     oneshot
 
 on property:tcmd.ctrl_adb=1
@@ -299,3 +297,23 @@ on property:sys.usb.config=diag,qdss,adb
 # Set RPS Mask for USB tethering
 on property:sys.usb.tethering=true
     write /sys/class/net/rndis0/queues/rx-0/rps_cpus ${sys.usb.rps_mask}
+
+# USB midi configuration
+on property:sys.usb.config=midi
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 18D1
+    write /sys/class/android_usb/android0/idProduct 4EE8
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
+
+# USB midi configuration, with adb
+on property:sys.usb.config=midi,adb
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 18D1
+    write /sys/class/android_usb/android0/idProduct 4EE9
+    write /sys/class/android_usb/android0/functions ${sys.usb.config}
+    write /sys/class/android_usb/android0/enable 1
+    start adbd
+    setprop sys.usb.state ${sys.usb.config}
