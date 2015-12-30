@@ -311,8 +311,6 @@ bin/loc_launcher
 bin/gpsone_daemon
 bin/location-mq
 etc/permissions/com.qualcomm.location.xml
-etc/izat.conf
-etc/lowi.conf
 lib/libloc_api_v02.so
 lib/libloc_ds_api.so
 vendor/lib/libalarmservice_jni.so
