@@ -248,6 +248,23 @@ vendor/lib64/libthermalioctl.so
 vendor/lib/libthermalclient.so
 vendor/lib/libqti-perfd-client.so
 
+# DM/Sprint
+-app/DMConfigUpdateLight/DMConfigUpdateLight.apk
+-app/HiddenMenuLight/HiddenMenuLight.apk
+etc/permissions/com.android.omadm.service.xml
+etc/sysconfig/whitelist_com.android.omadm.service.xml
+lib/libdmengine.so
+lib/libdmjavaplugin.so
+-priv-app/CQATest/CQATest.apk
+-priv-app/ConnMO/ConnMO.apk
+-priv-app/DCMO/DCMO.apk
+-priv-app/DMService/DMService.apk
+lib/libdmengine.so:priv-app/DMService/arm/lib/libdmengine.so
+lib/libdmjavaplugin.so:priv-app/DMService/arm/lib/libdmjavaplugin.so
+-priv-app/DiagMon/DiagMon.apk
+-priv-app/LifetimeData/LifetimeData.apk
+-priv-app/SprintDM/SprintDM.apk
+
 # DRM
 # TZBSP
 bin/qseecomd
@@ -412,6 +429,7 @@ vendor/lib/libqcci_legacy.so
 # CNE / DPM
 etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
+etc/permissions/cneapiclient.xml
 lib/libcnefeatureconfig.so
 framework/com.motorola.motosignature.jar
 -priv-app/CNEService/CNEService.apk
