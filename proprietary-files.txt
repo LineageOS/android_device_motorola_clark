@@ -97,6 +97,7 @@ etc/firmware/rampatch_tlv_2.1.tlv
 etc/firmware/rampatch_tlv_3.0.tlv
 etc/firmware/rampatch_tlv_3.2.tlv
 vendor/lib/libbtnv.so
+vendor/lib/libbt-vendor.so
 
 # Camera
 bin/mm-qcamera-daemon
@@ -325,6 +326,7 @@ lib/hw/gps.default.so
 lib/libgps.utils.so
 lib/libloc_core.so
 vendor/lib/libloc_xtra.so
+etc/izat.conf
 
 # Adreno GPU
 etc/firmware/a225p5_pm4.fw
