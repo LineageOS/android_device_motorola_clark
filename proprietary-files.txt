@@ -259,8 +259,8 @@ lib/libdmjavaplugin.so
 -priv-app/ConnMO/ConnMO.apk
 -priv-app/DCMO/DCMO.apk
 -priv-app/DMService/DMService.apk
-lib/libdmengine.so:priv-app/DMService/arm/lib/libdmengine.so
-lib/libdmjavaplugin.so:priv-app/DMService/arm/lib/libdmjavaplugin.so
+lib/libdmengine.so:priv-app/DMService/lib/arm/libdmengine.so
+lib/libdmjavaplugin.so:priv-app/DMService/lib/arm/libdmjavaplugin.so
 -priv-app/DiagMon/DiagMon.apk
 -priv-app/LifetimeData/LifetimeData.apk
 -priv-app/SprintDM/SprintDM.apk
@@ -422,7 +422,6 @@ vendor/lib/libdisp-aba.so
 vendor/lib/libsensor1.so
 
 # Qualcomm framework
-lib/librmnetctl.so
 vendor/lib/libdsutils.so
 vendor/lib/libqcci_legacy.so
 
@@ -430,6 +429,7 @@ vendor/lib/libqcci_legacy.so
 etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
 etc/permissions/cneapiclient.xml
+etc/permissions/com.motorola.motosignature.xml
 lib/libcnefeatureconfig.so
 framework/com.motorola.motosignature.jar
 -priv-app/CNEService/CNEService.apk
@@ -446,6 +446,7 @@ vendor/lib/libvendorconn.so
 vendor/lib/libwqe.so
 
 # Radio
+-app/ims/ims.apk
 -app/MotoSignatureApp/MotoSignatureApp.apk
 bin/charge_only_mode
 bin/diag_klog
@@ -480,7 +481,6 @@ etc/diag_mdlog/WLAN_V1.cfg
 etc/diag_mdlog/default.cfg
 etc/diag_mdlog/default.opts
 etc/sensors/sensor_def_qcomdev.conf
-etc/permissions/com.motorola.motosignature.xml
 etc/permissions/com.verizon.ims.xml
 etc/permissions/ims.xml
 etc/permissions/org.simalliance.openmobileapi.xml
@@ -495,13 +495,10 @@ lib/libmdmcutback.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
 -priv-app/atfwd/atfwd.apk
--priv-app/ims/ims.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 vendor/bin/qti
 vendor/lib/libimscamera_jni.so
 vendor/lib/libimsmedia_jni.so
-vendor/lib64/libimscamera_jni.so:priv-app/ims/lib/arm64/libimscamera_jni.so
-vendor/lib64/libimsmedia_jni.so:priv-app/ims/lib/arm64/libimsmedia_jni.so
 vendor/lib/liblqe.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libnetmgr.so
