@@ -25,8 +25,13 @@ vendor/lib/rfsa/adsp/libmare_hexagon_skel.so
 # Audio
 bin/fm_qsoc_patches
 vendor/bin/audioflacapp
+lib/libaudioroute.so
+lib/hw/audio.primary.msm8992.so
 lib/hw/audio.motvr.default.so
 lib/libmotaudioutils.so
+lib/libtinyalsa.so
+lib/libtinycompress.so
+lib/libtinyxml.so
 bin/fmconfig
 bin/fmfactorytest
 bin/fmfactorytestserver
