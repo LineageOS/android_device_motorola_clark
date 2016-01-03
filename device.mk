@@ -69,6 +69,9 @@ PRODUCT_PACKAGES += \
     libtinyxml \
     libxml2
 
+# never dexopt the MotoSignature
+$(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
+
 # Live Wallpapers
 PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
@@ -98,6 +101,10 @@ PRODUCT_PACKAGES += \
     nfc_nci.bcm2079x.default \
     NfcNci \
     Tag
+
+PRODUCT_PACKAGES += \
+    librmnetctl \
+    rmnetcli
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -209,6 +216,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/media_profiles.xml:system/etc/media_profiles.xml \
     $(LOCAL_PATH)/audio/media_codecs.xml:system/etc/media_codecs.xml \
     $(LOCAL_PATH)/audio/media_codecs_performance.xml:system/etc/media_codecs_performance.xml \
+    $(LOCAL_PATH)/audio/audio_ext_spkr.conf:system/etc/audio_ext_spkr.conf \
+    $(LOCAL_PATH)/audio/audio_platform_info_i2s.xml:system/etc/audio_platform_info_i2s.xml \
+    $(LOCAL_PATH)/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml \
     $(LOCAL_PATH)/audio/mixer_paths.xml:system/etc/mixer_paths.xml
 
 # CMActions

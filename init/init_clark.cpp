@@ -61,8 +61,8 @@ void vendor_load_properties()
             property_set("persist.radio.multisim.config", "dsds");
             property_set("persist.radio.plmn_name_cmp", "1");
             property_set("ro.fsg-id", "emea_dsds");
-            property_set("ro.build.description", "clark_retasia_ds-user 5.1.1 LPH23.116-18 22 release-keys");
-            property_set("ro.build.fingerprint", "motorola/clark_retasia_ds/clark_ds:5.1.1/LPH23.116-18/22:user/release-keys");
+            property_set("ro.build.description", "clark_retasia_ds-user 6.0 MPH24.49-18 18 release-keys");
+            property_set("ro.build.fingerprint", "motorola/clark_retasia_ds/clark_ds:6.0/MPH24.49-18/18:user/release-keys");
         } else {
             property_set("ro.build.description", "clark_reteu-user 5.1.1 LPH23.116-18 23 release-keys");
             property_set("ro.build.fingerprint", "motorola/clark_reteu/clark:5.1.1/LPH23.116-18/23:user/release-keys");

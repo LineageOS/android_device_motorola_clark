@@ -136,7 +136,7 @@ for APK in `ls ../../../$OUTDIR/proprietary/app/*/*apk`; do
   fi
     apkname=`basename $APK`
     apkmodulename=`echo $apkname|sed -e 's/\.apk$//gi'`
-  if [[ $apkmodulename = VZWAPNLib ]]; then
+  if [[ $apkmodulename = MotoSignatureApp ]]; then
     signature="PRESIGNED"
   else
     signature="platform"
