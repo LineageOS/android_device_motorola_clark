@@ -27,11 +27,6 @@ on early-init
     mkdir /customize 0500 root root
 
 on init
-
-    # Symbols required for motorola blobs
-    export LD_LIBRARY_PATH=/system/lib64:/system/lib
-    export LD_PRELOAD "libmoto.so:libboringssl-compat.so"
-
     chown system log /sys/fs/pstore/annotate-ramoops
     chmod 0640 /sys/fs/pstore/annotate-ramoops
 
