@@ -27,7 +27,6 @@ on early-init
     mkdir /customize 0500 root root
 
 on init
-
     chown system log /sys/fs/pstore/annotate-ramoops
     chmod 0640 /sys/fs/pstore/annotate-ramoops
 
