@@ -376,7 +376,6 @@ vendor/lib/libOpenCL.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/librs_adreno.so
 vendor/lib/libRSDriver_adreno.so
-vendor/lib/libscale.so
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
@@ -397,19 +396,10 @@ etc/firmware/venus.b03
 etc/firmware/venus.b04
 etc/firmware/venus.mbn
 etc/firmware/venus.mdt
-vendor/lib/libDivxDrm.so
 vendor/lib/libDxHdcp.so
-vendor/lib/libExtendedExtractor.so
 vendor/lib/libFlacSwDec.so
 vendor/lib/libI420colorconvert.so
 vendor/lib/libmm-hdcpmgr.so
-vendor/lib/libmmosal.so
-vendor/lib/libmmparser.so
-vendor/lib/libOmxAacDec.so
-vendor/lib/libOmxAmrwbplusDec.so
-vendor/lib/libOmxEvrcDec.so
-vendor/lib/libOmxQcelp13Dec.so
-vendor/lib/libOmxWmaDec.so
 vendor/lib/libSHIMDivxDrm.so
 
 # Motorola
@@ -418,13 +408,7 @@ bin/dbvc_atvc_property_set
 bin/hardware_revisions.sh
 
 # NFC
-# Postprocessing
-bin/mm-pp-daemon
 etc/firmware/BCM20795A2_001.003.025.0005.0048_Generic_I2C_NCD_Signed_configdata.ncd
-vendor/lib/libmm-abl.so
-vendor/lib/libmm-abl-oem.so
-vendor/lib/libdisp-aba.so
-vendor/lib/libsensor1.so
 
 # Qualcomm framework
 vendor/lib/libdsutils.so
@@ -527,6 +511,7 @@ lib/hw/sensors.msm8992.so
 vendor/lib/libsubsystem_control.so
 vendor/lib/libSubSystemShutdown.so
 lib64/hw/sensorhub.msm8992.so
+vendor/lib/libsensor1.so
 
 # Time (Linked to radio)
 bin/time_daemon
