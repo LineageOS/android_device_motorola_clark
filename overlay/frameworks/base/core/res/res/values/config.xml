@@ -400,4 +400,7 @@
         <item>SUPL_ES=0</item>
     </string-array>
 
+    <!-- Enable doze powersaving -->
+    <bool name="config_enableAutoPowerModes">true</bool>
+
 </resources>
