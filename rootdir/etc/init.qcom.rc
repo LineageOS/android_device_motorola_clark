@@ -77,6 +77,12 @@ on boot
     # Set ownership for high brightness mode feature
     chown system system /sys/class/graphics/fb0/hbm
 
+    # update foreground cpuset now that processors are up
+    write /dev/cpuset/foreground/cpus 0-5
+    write /dev/cpuset/foreground/boost/cpus 4-5
+    write /dev/cpuset/background/cpus 0
+    write /dev/cpuset/system-background/cpus 0-3
+
     # motosh irq_disable parameter permissions
     chown root mot_tcmd /sys/module/motosh/parameters/irq_disable
     chmod 0660 /sys/module/motosh/parameters/irq_disable
@@ -97,7 +103,7 @@ on boot
     # set permission for Dynamic-CABC feature
     chown system system /sys/class/graphics/fb0/cabc_mode
 
-    start rmt_storage
+    # start rmt_storage
     start rfs_access
 
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
@@ -424,6 +430,7 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
+    group system
 
 service rfs_access /system/bin/rfs_access
     class core
@@ -433,7 +440,7 @@ service rfs_access /system/bin/rfs_access
 service start_hci_filter /system/bin/wcnss_filter
     class late_start
     user root
-    group bluetooth qcom_diag log
+    group bluetooth qcom_diag log system
     disabled
 
 service loc_launcher /system/bin/loc_launcher
@@ -447,6 +454,7 @@ service qmuxd /system/bin/qmuxd
 
 service netmgrd /system/bin/netmgrd
     class main
+    group radio system
 
 service ipacm /system/bin/ipacm
     class main
@@ -508,7 +516,6 @@ service dhcpcd_p2p /system/bin/dhcpcd -ABKLG
     oneshot
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
-    class late_start
     disabled
     oneshot
 
@@ -553,7 +560,6 @@ service iprenew_eth0 /system/bin/dhcpcd -nBK
     oneshot
 
 service iprenew_bt-pan /system/bin/dhcpcd -n
-    class late_start
     disabled
     oneshot
 
@@ -641,20 +647,23 @@ service adsprpcd /system/bin/adsprpcd
 service atvc_core /system/bin/dbvc_atvc_property_set
     class core
     user mot_atvc
+    seclabel u:r:atvc:s0
     group mot_tpapi
     oneshot
 
 service atvc /system/bin/dbvc_atvc_property_set
     class late_start
     user mot_atvc
+    seclabel u:r:atvc:s0
     group mot_tpapi
     oneshot
 
 service msm_irqbalance /system/bin/msm_irqbalance -f /system/etc/msm_irqbalance.conf
+    socket msm_irqbalance seqpacket 660 root system
     class core
     user root
     group root
-    disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service cnd /system/bin/cnd
     class late_start
@@ -693,12 +702,6 @@ service ssr_diag /system/bin/ssr_diag
 
 on property:persist.sys.ssr.restart_level=*
     start ssr_setup
-
-service ppd /system/bin/mm-pp-daemon
-    class late_start
-    user system
-    socket pps stream 0660 system system
-    group system graphics
 
 service batt_health /system/bin/batt_health
     class late_start
