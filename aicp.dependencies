@@ -8,5 +8,10 @@
     "repository": "AICP/proprietary_vendor_motorola",
     "target_path": "vendor/motorola",
     "branch":      "mm6.0"
+  },
+  {
+    "repository": "CyanogenMod/android_vendor_qcom_opensource_dataservices",
+    "target_path": "vendor/qcom/opensource/dataservices",
+    "branch":      "cm-13.0"
   }
 ]
