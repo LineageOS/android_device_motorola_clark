@@ -71,13 +71,13 @@ BOARD_USES_QCOM_HARDWARE := true
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # CMHW
-BOARD_HARDWARE_CLASS := $(DEVICE_PATH)/cmhw/
+BOARD_USES_CYANOGEN_HARDWARE := true
+BOARD_HARDWARE_CLASS := \
+    $(DEVICE_PATH)/cmhw \
+    hardware/cyanogen/cmhw
 
 # Font
 EXTENDED_FONT_FOOTPRINT := true
-
-# Time service
-BOARD_USES_QC_TIME_SERVICES := true
 
 # Audio
 BOARD_USES_ALSA_AUDIO := true
