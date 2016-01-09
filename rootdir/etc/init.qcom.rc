@@ -23,9 +23,6 @@ on early-init
     # Create modem FSG mount point
     mkdir /fsg 755 root root
 
-    # Mount point for Digital Personalization partition
-    mkdir /customize 0500 root root
-
 on init
     chown system log /sys/fs/pstore/annotate-ramoops
     chmod 0640 /sys/fs/pstore/annotate-ramoops
@@ -621,10 +618,11 @@ service per_proxy /system/bin/pm-proxy
     group system net_raw
     disabled
 
-service time_daemon /system/bin/time_daemon
+service timekeep /system/bin/timekeep restore
     class late_start
     user root
     group root
+    oneshot
 
 service adsprpcd /system/bin/adsprpcd
     class main
