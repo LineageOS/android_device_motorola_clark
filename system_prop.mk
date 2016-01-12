@@ -2,6 +2,13 @@
 # System Properties for Moto X Pure
 #
 
+# Rich Communications Service is disabled in 5.1
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.rcs.supported=0
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.hwc.mdpcomp.enable=true
+
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.camera.facialproc=false \
