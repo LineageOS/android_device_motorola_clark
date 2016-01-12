@@ -8,5 +8,10 @@
     "repository": "AICP/proprietary_vendor_motorola",
     "target_path": "vendor/motorola",
     "branch":      "mm6.0"
+  },
+  {
+    "repository": "CyanogenMod/android_hardware_sony_thermanager",
+    "target_path": "hardware/sony/thermanager",
+    "branch":      "cm-13.0"
   }
 ]

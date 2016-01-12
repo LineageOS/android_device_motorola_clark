@@ -1,22 +1,3 @@
-## BROKEN
-# DPM
-bin/dpmd
-vendor/lib/libdpmctmgr.so
-vendor/lib/libdpmfdmgr.so
-vendor/lib/libdpmframework.so
-vendor/lib/libdpmnsrm.so
-
-#bin/ipacm
-#bin/ipacm-diag
-#bin/tcmd
-#bin/PktRspTest
-#bin/radish
-
-## NEEDED?
-vendor/lib/libwifiscanner.so
-vendor/lib/drm/libdrmwvmplugin.so
-
-## WORKING
 # ADSP /ADSP-RPC / Vision
 bin/adspd
 bin/adsprpcd
@@ -48,10 +29,10 @@ lib/libaudioroute.so
 lib/hw/audio.primary.msm8992.so
 lib/hw/audio.motvr.default.so
 lib/libmotaudioutils.so
-lib/libunshorten.so
-lib/libtinyalsa.so
-lib/libtinycompress.so
-lib/libtinyxml.so
+bin/fmconfig
+bin/fmfactorytest
+bin/fmfactorytestserver
+lib/libqcomfm_jni.so
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbmapper.so
@@ -62,7 +43,6 @@ vendor/lib/libaudioalsa.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
-lib/soundfx/libspeakerbundle.so
 etc/acdbdata/General_cal.acdb
 etc/acdbdata/Bluetooth_cal.acdb
 etc/acdbdata/Global_cal.acdb
@@ -72,7 +52,6 @@ etc/acdbdata/Hdmi_cal.acdb
 etc/acdbdata/Speaker_cal.acdb
 etc/firmware/florida-dsp2-aov-frontend.wmfw
 etc/firmware/florida-dsp3-aov-control.wmfw
-etc/aanc_tuning_mixer.txt
 
 # Audio firmware
 etc/firmware/left.tfa9890.music.config
@@ -101,6 +80,9 @@ etc/firmware/right.tfa9890_ringtone_table.preset
 etc/firmware/right.tfa9890_voice_table.preset
 etc/firmware/vrgain.bin
 
+# Battery
+# bin/hvdcp
+
 # Bluetooth
 bin/btnvtool
 bin/hci_qcomm_init
@@ -128,18 +110,9 @@ etc/firmware/cpp_firmware_v1_4_0.fw
 etc/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw
 lib/hw/camera.msm8992.so
-vendor/lib/libmotocalibration.so
-vendor/lib/libflash_sky81296.so
-vendor/lib/libSonyIMX230PdafLibrary.so
-vendor/lib/libactuator_mot_lc898212xd_camcorder.so
-vendor/lib/libactuator_mot_lc898212xd_camera.so
-vendor/lib/libactuator_mot_lc898212xd.so
-lib/libmot_lux_standardization.so
 lib/libadvalgcore.so
 lib/libAisAdapter.so
 lib/libAlAisLib.so
-lib/libAlAisTune.so
-lib/libAlAisWrap.so
 lib/libbson.so
 lib/libcamerabgproc-jni.so
 lib/libcamerabgprocservice.so
@@ -164,7 +137,6 @@ vendor/lib/libmmcamera_isp_chroma_enhan40.so
 vendor/lib/libmmcamera_cac2_lib.so
 vendor/lib/libmmcamera2_imglib_modules.so
 vendor/lib/libmmcamera2_q3a_core.so
-lib/libmbs.so
 vendor/lib/libmmcamera2_sensor_debug.so
 vendor/lib/libmmcamera_isp_clamp_viewfinder40.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
@@ -232,6 +204,8 @@ vendor/lib/libqomx_jpegdec.so
 vendor/lib/libqomx_jpegenc_pipe.so
 vendor/lib/libqomx_jpegenc.so
 
+lib/libAlAisTune.so
+lib/libAlAisWrap.so
 
 # Chromatix
 vendor/lib/libchromatix_mot_imx230_common.so
@@ -271,9 +245,6 @@ vendor/lib/libchromatix_ov5693_video.so
 # CPU
 bin/msm_irqbalance
 bin/perfd
-bin/thermal-engine
-vendor/lib64/libthermalioctl.so
-vendor/lib/libthermalclient.so
 vendor/lib/libqti-perfd-client.so
 
 # DM/Sprint
@@ -365,7 +336,6 @@ vendor/lib/liblbs_core.so
 vendor/lib/libloc_ext.so
 vendor/lib/liblocationservice.so
 vendor/lib/libquipc_os_api.so
-vendor/lib/libquipc_ulp_adapter.so
 vendor/lib/libulp2.so
 lib/libloc_eng.so
 lib/hw/gps.default.so
@@ -406,7 +376,6 @@ vendor/lib/egl/libGLESv1_CM_adreno.so
 vendor/lib/egl/libGLESv2_adreno.so
 vendor/lib/egl/libq3dtools_adreno.so
 vendor/lib/egl/libq3dtools_esx.so
-vendor/lib/egl/libQTapGLES.so
 
 # Media
 etc/firmware/dxhdcp2.b00
@@ -439,8 +408,7 @@ etc/firmware/BCM20795A2_001.003.025.0005.0048_Generic_I2C_NCD_Signed_configdata.
 vendor/lib/libdsutils.so
 vendor/lib/libqcci_legacy.so
 
-# CNE
-bin/cnd
+# CNE / DPM
 etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
 etc/permissions/cneapiclient.xml
@@ -451,6 +419,10 @@ vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
 vendor/lib/libcneqmiutils.so
 vendor/lib/libcne.so
+vendor/lib/libdpmctmgr.so
+vendor/lib/libdpmfdmgr.so
+vendor/lib/libdpmframework.so
+vendor/lib/libdpmnsrm.so
 vendor/lib/libNimsWrap.so
 vendor/lib/libvendorconn.so
 vendor/lib/libwqe.so
@@ -464,12 +436,16 @@ bin/diag_mdlog
 bin/diag_mdlog-getlogs
 bin/diag_mdlog-wrap
 bin/diag_qshrink4_daemon
+bin/ipacm
+bin/ipacm-diag
 bin/port-bridge
+bin/tcmd
 bin/test_diag
+bin/PktRspTest
 bin/netmgrd
 bin/qmi_motext_hook
-lib64/libadropbox.so
 bin/qmuxd
+bin/radish
 bin/rfs_access
 bin/rmt_storage
 etc/diag_mdlog/Bluetooth_V1.cfg
@@ -534,14 +510,29 @@ vendor/lib/libsensor1.so
 bin/time_daemon
 vendor/lib/libTimeService.so
 vendor/lib/hw/flp.default.so
+vendor/lib/egl/libQTapGLES.so
 
 # Wifi Firmware
+vendor/lib/drm/libdrmwvmplugin.so
+vendor/lib/libwifiscanner.so
+vendor/lib/libquipc_ulp_adapter.so
 vendor/bin/slim_ap_daemon
 
 # Wat - weird files
+lib64/libadropbox.so
+lib/libunshorten.so
 lib/soundfx/libmmieffectswrapper.so
+lib/libmbs.so
+vendor/lib/libmotocalibration.so
+vendor/lib/libflash_sky81296.so
+vendor/lib/libSonyIMX230PdafLibrary.so
+vendor/lib/libactuator_mot_lc898212xd_camcorder.so
+vendor/lib/libactuator_mot_lc898212xd_camera.so
+vendor/lib/libactuator_mot_lc898212xd.so
+lib/libmot_lux_standardization.so
+bin/cnd
 bin/cnss-daemon
-bin/fsck.exfat
+bin/dpmd
 bin/ftmdaemon
 bin/ssr_diag
 bin/ssr_setup
