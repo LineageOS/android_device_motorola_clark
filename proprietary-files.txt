@@ -440,6 +440,7 @@ etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/com.motorola.motosignature.xml
+etc/permissions/com.motorola.camera.xml
 framework/com.motorola.motosignature.jar
 -priv-app/CNEService/CNEService.apk
 vendor/lib/libcneapiclient.so
