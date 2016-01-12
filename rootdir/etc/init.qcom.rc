@@ -9,7 +9,7 @@ on charger
     # setprop sys.perf.profile 0
     start charge_only_mode
     start batt_health
-    start thermal-com
+    start thermanager
     class_stop main
     class_stop late_start
 
@@ -22,9 +22,6 @@ on early-init
 
     # Create modem FSG mount point
     mkdir /fsg 755 root root
-
-    # Mount point for Digital Personalization partition
-    mkdir /customize 0500 root root
 
 on init
     chown system log /sys/fs/pstore/annotate-ramoops
@@ -621,10 +618,11 @@ service per_proxy /system/bin/pm-proxy
     group system net_raw
     disabled
 
-service time_daemon /system/bin/time_daemon
+service timekeep /system/bin/timekeep restore
     class late_start
     user root
     group root
+    oneshot
 
 service adsprpcd /system/bin/adsprpcd
     class main
@@ -691,9 +689,8 @@ on property:persist.sys.ssr.restart_level=*
     start ssr_setup
 
 service batt_health /system/bin/batt_health
-    class late_start
-    user mot_pwric
-    group mot_pwric cache net_admin log
+    class main
+    group mot_pwric
     disabled
 
 service charge_only_mode /system/bin/charge_only_mode
@@ -764,15 +761,11 @@ service perfd /system/bin/perfd
     user root
     disabled
 
-service thermal-engine /system/bin/thermal-engine
-    class main
+# OSS thermal management
+service thermanager /system/bin/thermanager /system/etc/thermanager.xml
+    class late_start
     user root
     group root
-
-service thermal-com /system/bin/thermal-engine --minimode
-    class main
-    user root
-    disabled
 
 # CM Performance Profiles
 # Powersave

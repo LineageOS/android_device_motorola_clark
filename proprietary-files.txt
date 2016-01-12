@@ -48,10 +48,8 @@ lib/libaudioroute.so
 lib/hw/audio.primary.msm8992.so
 lib/hw/audio.motvr.default.so
 lib/libmotaudioutils.so
+lib/libqcomfm_jni.so
 lib/libunshorten.so
-lib/libtinyalsa.so
-lib/libtinycompress.so
-lib/libtinyxml.so
 vendor/lib/libacdb-fts.so
 vendor/lib/libacdbloader.so
 vendor/lib/libacdbmapper.so
@@ -271,9 +269,6 @@ vendor/lib/libchromatix_ov5693_video.so
 # CPU
 bin/msm_irqbalance
 bin/perfd
-bin/thermal-engine
-vendor/lib64/libthermalioctl.so
-vendor/lib/libthermalclient.so
 vendor/lib/libqti-perfd-client.so
 
 # DM/Sprint
@@ -445,7 +440,6 @@ etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/com.motorola.motosignature.xml
-lib/libcnefeatureconfig.so
 framework/com.motorola.motosignature.jar
 -priv-app/CNEService/CNEService.apk
 vendor/lib/libcneapiclient.so
@@ -531,11 +525,6 @@ vendor/lib/libSubSystemShutdown.so
 lib64/hw/sensorhub.msm8992.so
 vendor/lib/libsensor1.so
 
-# Time (Linked to radio)
-bin/time_daemon
-vendor/lib/libTimeService.so
-vendor/lib/hw/flp.default.so
-
 # Wifi Firmware
 vendor/bin/slim_ap_daemon
 
@@ -543,6 +532,7 @@ vendor/bin/slim_ap_daemon
 lib/soundfx/libmmieffectswrapper.so
 bin/cnss-daemon
 bin/fsck.exfat
+vendor/lib/hw/flp.default.so
 bin/ftmdaemon
 bin/ssr_diag
 bin/ssr_setup
