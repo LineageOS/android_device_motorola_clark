@@ -29,9 +29,6 @@ lib/libaudioroute.so
 lib/hw/audio.primary.msm8992.so
 lib/hw/audio.motvr.default.so
 lib/libmotaudioutils.so
-lib/libtinyalsa.so
-lib/libtinycompress.so
-lib/libtinyxml.so
 bin/fmconfig
 bin/fmfactorytest
 bin/fmfactorytestserver
@@ -248,9 +245,6 @@ vendor/lib/libchromatix_ov5693_video.so
 # CPU
 bin/msm_irqbalance
 bin/perfd
-bin/thermal-engine
-vendor/lib64/libthermalioctl.so
-vendor/lib/libthermalclient.so
 vendor/lib/libqti-perfd-client.so
 
 # DM/Sprint
@@ -539,7 +533,6 @@ lib/libmot_lux_standardization.so
 bin/cnd
 bin/cnss-daemon
 bin/dpmd
-bin/fsck.exfat
 bin/ftmdaemon
 bin/ssr_diag
 bin/ssr_setup

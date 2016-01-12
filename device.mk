@@ -34,7 +34,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/gpio-keys.kl:system/usr/keylayout/gpio-keys.kl
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/thermal-engine-clark.conf:system/etc/thermal-engine-clark.conf
+    $(LOCAL_PATH)/configs/thermanager.xml:system/etc/thermanager.xml
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/qmi_config.xml:system/etc/data/qmi_config.xml \
@@ -67,8 +67,11 @@ PRODUCT_PACKAGES += \
     curl \
     libnl_2 \
     libbson \
-    libtinyxml \
     libxml2
+
+# Thermal
+PRODUCT_PACKAGES += \
+    thermanager
 
 # never dexopt the MotoSignature
 $(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
@@ -80,6 +83,7 @@ PRODUCT_PACKAGES += \
 
 # Filesystem management tools
 PRODUCT_PACKAGES += \
+    fsck.exfat \
     e2fsck \
     make_ext4fs \
     setup_fs
@@ -95,6 +99,12 @@ PRODUCT_PACKAGES += \
     libqcomvoiceprocessingdescriptors \
     libqcomvoiceprocessing \
     tinymix
+
+# OpenSource Audio helpers
+PRODUCT_PACKAGES += \
+    libtinycompress \
+    libtinyxml \
+    libtinyalsa
 
 # NFC packages
 PRODUCT_PACKAGES += \
