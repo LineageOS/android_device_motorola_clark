@@ -312,7 +312,6 @@ vendor/lib/libtzdrmgenprov.so
 vendor/lib/libwvdrm_L1.so
 vendor/lib/libwvm.so
 vendor/lib/libWVStreamControlAPI_L1.so
-vendor/lib/mediadrm/libdrmclearkeyplugin.so
 vendor/lib/mediadrm/libwvdrmengine.so
 
 # Display tuning
@@ -532,8 +531,5 @@ vendor/bin/slim_ap_daemon
 # Wat - weird files
 lib/soundfx/libmmieffectswrapper.so
 bin/cnss-daemon
-bin/fsck.exfat
 vendor/lib/hw/flp.default.so
-bin/ftmdaemon
-bin/ssr_diag
 bin/ssr_setup

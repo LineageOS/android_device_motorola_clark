@@ -16,28 +16,20 @@ on charger
 on early-init
     mount debugfs debugfs /sys/kernel/debug
 
-    mkdir /firmware 0771 system system
-    mkdir /bt_firmware 0771 system system
-    symlink /data/tombstones /tombstones
-
-    # Create modem FSG mount point
-    mkdir /fsg 755 root root
-
 on init
     chown system log /sys/fs/pstore/annotate-ramoops
     chmod 0640 /sys/fs/pstore/annotate-ramoops
 
-    # Configure coredump
-    write /proc/sys/kernel/core_pattern "|/system/bin/coredump %e %p %t"
-    write /proc/self/coredump_filter "0x7f"
-
     # ESDFS
     chown mot_esdfs root /proc/fs/esdfs/packages
 
-    # Set permissions for persist partition
+    # Set permissions for partitions
     mkdir /persist 0771 system system
     mkdir /storage 0555 system sdcard_r
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
+    mkdir /firmware 0771 system system
+    mkdir /fsg 755 root root
+    mkdir /bt_firmware 0771 system system
 
     # Support legacy paths
     symlink /sdcard /mnt/sdcard
@@ -49,6 +41,8 @@ on fs
 
     # use /persist as phony PDS partition
     symlink /persist /pds
+
+    symlink /data/tombstones /tombstones
 
     restorecon_recursive /persist
 
@@ -67,12 +61,11 @@ on boot
     chmod 0664 /sys/class/leds/lcd-backlight/brightness
     chmod 0664 /sys/class/leds/charging/brightness
 
-    # Change the ownership of display TE files for tcmds
+    # Change the ownership of display files
     chown root mot_tcmd /sys/class/graphics/fb0/te_enable
     chown root mot_tcmd /sys/class/graphics/fb0/frame_counter
-
-    # Set ownership for high brightness mode feature
     chown system system /sys/class/graphics/fb0/hbm
+    chown system system /sys/class/graphics/fb0/cabc_mode
 
     # update foreground cpuset now that processors are up
     write /dev/cpuset/foreground/cpus 0-5
@@ -89,19 +82,6 @@ on boot
 
     # create the necessary data dirs for tpapi with proper permission
     mkdir /dev/tpapi 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi/etc 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi/etc/tpa 02770 mot_tpapi mot_tpapi
-    mkdir /data/tpapi/etc/tpa/persistent 02770 mot_tpapi mot_tpapi
-
-    # Create moodle directory that MOT_MOODLE can write to
-    mkdir /data/local/moodle 0770 graphics mot_tcmd
-
-    # set permission for Dynamic-CABC feature
-    chown system system /sys/class/graphics/fb0/cabc_mode
-
-    # start rmt_storage
-    start rfs_access
 
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
@@ -206,6 +186,8 @@ on post-fs
     mkdir /persist/batt_health 0755 mot_pwric mot_pwric
     mkdir /persist/mdm 0770 radio radio
     mkdir /persist/antcap 0755 mot_tcmd mot_tcmd
+    mkdir /persist/security 02770 mot_tpapi mot_tpapi
+    mkdir /persist/display 0770 system graphics
 
     chown mot_tcmd mot_tcmd /persist/factory/fti
     chown mot_tcmd mot_tcmd /persist/factory/byte
@@ -236,42 +218,9 @@ on post-fs
     chmod 0660 /sys/class/capsense/reset
 
 on post-fs-data
-    mkdir /persist/security 02770 mot_tpapi mot_tpapi
-    mkdir /data/local/dbvc 0750 mot_tcmd shell
-    mkdir /data/power_supply_logger 0750 mot_pwric log
-
-    # Create directory for cutback
-    mkdir /data/misc/cutback 0770 radio wifi
-
-    # Setup folder for WLAN WAPI
-    mkdir /data/wapi_certificate 0750 system wifi
-
-    # Change ownership of aov related sysfs entries
-    chown audio audio /sys/kernel/aov/trigger
-    chown audio audio /sys/kernel/aov/register
-    chown audio audio /sys/kernel/aov/event
-
-    # Create directory for adspd
-    mkdir /data/adspd/ 0770 audio qcom_diag
-
-    # Sensor Hub calibration data directory
-    mkdir /data/misc/sensorhub 0770 system compass
-
-    # Setup folder for camera HAL subsystem
-    mkdir /data/camera_dump 0750 media media
-
-    mkdir /data/hardware_revisions 0755 system system
-
-    # Create PERFD deamon related dirs
-    mkdir /data/misc/perfd 0755 root system
-    chmod 2755 /data/misc/perfd
-    mkdir /data/system/perfd 0770 root system
-    chmod 2770 /data/system/perfd
-
     # Setup correct permissions for dbvc and atvc
     mkdir /pds/public/atvc 0770 mot_atvc shell
     chmod 0770 /pds/public/atvc
-    mkdir /data/local/dbvc 0750 mot_tcmd shell
     mkdir /data/local/atvc 0775 mot_tcmd shell
 
     mkdir /data/tombstones 0771 system system
@@ -279,103 +228,59 @@ on post-fs-data
     mkdir /tombstones/lpass 0771 system system
     mkdir /tombstones/wcnss 0771 system system
     mkdir /tombstones/dsps 0771 system system
-    mkdir /data/misc/dts 0770 media audio
-    mkdir /data/misc/sensors 0775 root root 
-
-    # Create directory for TZ Apps
-    mkdir /data/misc/qsee 0770 system system
-
-    # Create folder for mm-qcamera-daemon
-    mkdir /data/misc/camera 0770 camera camera
-
-    mkdir /data/misc/ipa 0700 net_admin net_admin
-
-    # Create the directories used by the Wireless subsystem
-    mkdir /data/misc/wifi 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/wifi/wpa_supplicant 0770 wifi wifi
-    mkdir /data/misc/dhcp 0750 dhcp system
-    chown dhcp system /data/misc/dhcp
-
-    # Create the directories used by CnE subsystem
-    mkdir /data/connectivity 0771 system system
-    chown system system /data/connectivity
-
-    # Create the directories used by DPM subsystem
-    mkdir /data/dpm 0771 system system
-    mkdir /data/dpm/fdMgr 0771 system system
-    mkdir /data/dpm/nsrm 0771 system system
-
-    # Create directory used by audio subsystem
-    mkdir /data/misc/audio 0770 audio audio
-
-    # Create directory for audio delta files
-    mkdir /data/misc/audio/acdbdata 0770 media audio
-    mkdir /data/misc/audio/acdbdata/delta 0770 media audio
-
-    # Create directory used by the DASH client
-    mkdir /data/misc/dash 0770 media audio
-
-    # Create directory used by display clients
-    mkdir /data/misc/display 0770 system graphics
-    mkdir /persist/display 0770 system graphics
 
     # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
     # We chown/chmod /persist again so because mount is run as root + defaults
     chown system system /persist
     chmod 0771 /persist
+
+    # Chown polling nodes as needed from UI running on system server
     chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
-
-    # Chown polling nodes as needed from UI running on system server
+    chmod 0644 /sys/vibrator/pwmvalue
     chown system system /sys/devices/platform/msm_sdcc.1/polling
     chown system system /sys/devices/platform/msm_sdcc.2/polling
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
+    chown system system /sys/vibrator/pwmvalue
+    chown audio audio /sys/kernel/aov/trigger
+    chown audio audio /sys/kernel/aov/register
+    chown audio audio /sys/kernel/aov/event
 
-    # Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
-    mkdir /data/system 0775 system system
-
-    # Create directories for Location services
+    # Create misc directory for various subsystems
+    mkdir /data/misc/sensorhub 0770 system compass
+    mkdir /data/misc/cutback 0770 radio wifi
+    mkdir /data/misc/audio 0770 audio audio
+    mkdir /data/misc/audio/acdbdata 0770 media audio
+    mkdir /data/misc/audio/acdbdata/delta 0770 media audio
     mkdir /data/misc/location 0770 gps gps
     mkdir /data/misc/location/mq 0770 gps gps
     mkdir /data/misc/location/xtwifi 0770 gps gps
     mkdir /data/misc/location/gpsone_d 0770 system gps
     mkdir /data/misc/location/quipc 0770 gps system
     mkdir /data/misc/location/gsiff 0770 gps gps
+    mkdir /data/misc/camera 0770 camera camera
+    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
 
-    # Create directory from IMS services
-    mkdir /data/shared 0755 system system
-
-    # Create directory for FOTA
-    mkdir /data/fota 0771 system system
-
-    #Create directory for hostapd
-    mkdir /data/misc/wifi/hostapd 0770 system wifi
-
-    # Create /data/time folder for time-services
-    mkdir /data/time/ 0700 system system
+    # Create directory's for various items
+    mkdir /data/power_supply_logger 0750 mot_pwric log
+    mkdir /data/system 0775 system system
+    mkdir /data/adspd/ 0770 audio qcom_diag
+    mkdir /data/hardware_revisions 0755 system system
+    mkdir /data/connectivity 0771 system system
+    chown system system /data/connectivity
 
     # Create folders for audio files
     mkdir /data/audio/ 0770 media audio
     mkdir /data/audio/acdbdata 0770 media audio
     mkdir /data/audio/acdbdata/delta 0770 media audio
 
-    chown system system /sys/vibrator/pwmvalue
-    chmod 0644 /sys/vibrator/pwmvalue
-
     setprop vold.post_fs_data_done 1
 
-    # Create a folder for SRS to be able to create a usercfg file
-    mkdir /data/data/media 0770 media media
-
-on property:init.svc.bootanim=running
-    # Switch to performance mode while booting
-    # setprop sys.perf.profile 2
-
-on property:sys.boot_completed=1
+on enable-low-power
     setprop sys.io.scheduler bfq
 
     # Available Freqs in stock kernel
@@ -392,9 +297,6 @@ on property:sys.boot_completed=1
 
     setprop sys.perf.profile 1
 
-on property:init.svc.wpa_supplicant=stopped
-    stop dhcpcd
-
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
 
@@ -403,9 +305,6 @@ on property:init.svc.per_mgr=running
 
 on property:sys.shutdown.requested=*
     stop per_proxy
-
-on property:init.svc.surfaceflinger=stopped
-    stop ppd
 
 on property:persist.radio.atfwd.start=false
     stop atfwd
@@ -656,13 +555,6 @@ service cnd /system/bin/cnd
 
 service ssr_setup /system/bin/ssr_setup
     oneshot
-    disabled
-
-service ftm_ffbm /system/bin/ftmdaemon
-    user root
-    group root
-    disabled
-    oneshot
 
 service cnss-daemon /system/bin/cnss-daemon -n -l
     class late_start
@@ -679,15 +571,6 @@ on property:sys.usb_uicc.enabled=1
 on property:sys.usb_uicc.enabled=0
     start usb_uicc_enable
 
-service ssr_diag /system/bin/ssr_diag
-    class late_start
-    user system
-    group system
-    disabled
-
-on property:persist.sys.ssr.restart_level=*
-    start ssr_setup
-
 service batt_health /system/bin/batt_health
     class main
     group mot_pwric
@@ -697,12 +580,6 @@ service charge_only_mode /system/bin/charge_only_mode
     user root
     group graphics system input
     disabled
-
-service ftmipcd /system/bin/ftmipcd
-    user radio
-    group radio net_raw inet qcom_diag
-    disabled
-    oneshot
 
 service motosh /system/bin/motosh boot
     class late_start
@@ -723,12 +600,6 @@ service qcom-c_main-sh /system/bin/sh /init.class_main.sh
 
 service qcom-sh /system/bin/sh /init.qcom.sh
     class late_start
-    user root
-    oneshot
-
-service mmi-block-perm /init.mmi.block_perm.sh
-    seclabel u:r:init_block_perm:s0
-    class main
     user root
     oneshot
 
