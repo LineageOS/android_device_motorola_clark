@@ -530,9 +530,10 @@ vendor/lib/libsensor1.so
 vendor/bin/slim_ap_daemon
 
 # Wat - weird files
-vendor/lib/hw/flp.default.so
 lib/soundfx/libmmieffectswrapper.so
 bin/cnss-daemon
+bin/fsck.exfat
+vendor/lib/hw/flp.default.so
 bin/ftmdaemon
 bin/ssr_diag
 bin/ssr_setup
