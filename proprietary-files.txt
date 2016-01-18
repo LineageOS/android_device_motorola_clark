@@ -532,7 +532,6 @@ vendor/bin/slim_ap_daemon
 # Wat - weird files
 lib/soundfx/libmmieffectswrapper.so
 bin/cnss-daemon
-bin/fsck.exfat
 vendor/lib/hw/flp.default.so
 bin/ftmdaemon
 bin/ssr_diag
