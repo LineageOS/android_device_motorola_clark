@@ -208,46 +208,46 @@
 		</threshold>
 	</configuration>
 
-	<!-- USB and DC -->
-	<configuration sensor="pm8994_tz">
+	<!-- USB  -->
+	<configuration sensor="battery">
 		<threshold>
 			<mitigation name="usb" level="off" />
 		</threshold>
-		<threshold trigger="50000" clear="48000">
+		<threshold trigger="48000" clear="46000">
 			<mitigation name="usb" level="1" />
 		</threshold>
-		<threshold trigger="54000" clear="53000">
+		<threshold trigger="51000" clear="49000">
 			<mitigation name="usb" level="2" />
 		</threshold>
-		<threshold trigger="56000" clear="55000">
+		<threshold trigger="54000" clear="52000">
 			<mitigation name="usb" level="3" />
 		</threshold>
-		<threshold trigger="58000" clear="57000">
+		<threshold trigger="57000" clear="55000">
 			<mitigation name="usb" level="4" />
 		</threshold>
-		<threshold trigger="60000" clear="59000">
+		<threshold trigger="59000" clear="58000">
 			<mitigation name="usb" level="5" />
 		</threshold>
 	</configuration>
 
-	<!-- charging -->
-	<configuration sensor="pm8994_tz">
+	<!-- DC -->
+	<configuration sensor="battery">
 		<threshold>
 			<mitigation name="charging" level="off" />
 		</threshold>
-		<threshold trigger="50000" clear="48000">
+		<threshold trigger="48000" clear="46000">
 			<mitigation name="charging" level="1" />
 		</threshold>
-		<threshold trigger="54000" clear="53000">
+		<threshold trigger="51000" clear="49000">
 			<mitigation name="charging" level="3" />
 		</threshold>
-		<threshold trigger="56000" clear="55000">
+		<threshold trigger="54000" clear="52000">
 			<mitigation name="charging" level="6" />
 		</threshold>
-		<threshold trigger="58000" clear="57000">
+		<threshold trigger="57000" clear="55000">
 			<mitigation name="charging" level="9" />
 		</threshold>
-		<threshold trigger="60000" clear="59000">
+		<threshold trigger="59000" clear="58000">
 			<mitigation name="charging" level="12" />
 		</threshold>
 	</configuration>
@@ -311,26 +311,6 @@
 			<mitigation name="modem" level="1" />
 		</threshold>
 	</configuration>
-
-	<!-- backlight 
-	<configuration sensor="pm8994_tz">
-		<threshold>
-			<mitigation name="backlight" level="off" />
-		</threshold>
-		<threshold trigger="44000" clear="42000">
-			<mitigation name="backlight" level="1" />
-		</threshold>
-		<threshold trigger="47000" clear="45000">
-			<mitigation name="backlight" level="2" />
-		</threshold>
-		<threshold trigger="50000" clear="48000">
-			<mitigation name="backlight" level="3" />
-		</threshold>
-		<threshold trigger="53000" clear="51000">
-			<mitigation name="backlight" level="4" />
-		</threshold>
-	</configuration>
-	-->
 
 	<!-- CPU A53 -->
 	<configuration sensor="pm8994_tz">
