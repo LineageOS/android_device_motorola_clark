@@ -125,7 +125,9 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.clark \
+    libcamera \
     libqomx_core \
+    libmm-qcamera \
     libmmcamera_interface \
     libmmjpeg_interface \
     mm-jpeg-interface-test \
@@ -169,6 +171,7 @@ PRODUCT_PACKAGES += \
 
 # Media
 PRODUCT_PACKAGES += \
+    libstagefrighthw \
     libc2dcolorconvert \
     libdivxdrmdecrypt \
     libOmxAacEnc \
