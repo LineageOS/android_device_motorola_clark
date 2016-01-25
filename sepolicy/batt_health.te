@@ -8,3 +8,6 @@ allow batt_health self:capability net_admin;
 allow batt_health system_data_file:dir { write remove_name };
 allow batt_health sysfs_thermal:dir { search read open };
 allow batt_health sysfs_thermal:file { read open };
+allow batt_health cache_file:dir { write remove_name add_name };
+allow batt_health cache_file:file { create unlink open append setattr };
+

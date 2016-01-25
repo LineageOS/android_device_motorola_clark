@@ -1,0 +1,5 @@
+allow toolbox init:fifo_file { write read getattr };
+allow toolbox self:capability chown;
+allow toolbox sysfs:file setattr;
+allow toolbox system_data_file:dir { write remove_name setattr };
+
