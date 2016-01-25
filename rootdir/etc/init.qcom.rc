@@ -1,17 +1,17 @@
 import init.mmi.usb.rc
 
 on charger
+    setprop ro.board.platform msm8992
     trigger early-fs
     trigger fs
     trigger post-fs
     trigger post-fs-data
-    setprop ro.board.platform msm8992
-    # setprop sys.perf.profile 0
+    class_stop main
+    class_stop late_start
     start charge_only_mode
     start batt_health
     start thermanager
-    class_stop main
-    class_stop late_start
+    setprop sys.perf.profile 0
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -28,10 +28,11 @@ on init
     mkdir /storage 0555 system sdcard_r
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
     mkdir /firmware 0771 system system
-    mkdir /fsg 755 root root
     mkdir /bt_firmware 0771 system system
+    mkdir /fsg 755 root root
 
-    # Support legacy paths
+    # Setup symlinks
+    symlink /data/tombstones /tombstones
     symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
@@ -49,6 +50,7 @@ on fs
 on early-boot
     # set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
+
     # Allow subsystem (modem etc) debugging
     write /sys/kernel/boot_adsp/boot 1
 
@@ -81,7 +83,16 @@ on boot
     write /sys/module/binder/parameters/debug_mask 0x5
 
     # create the necessary data dirs for tpapi with proper permission
-    mkdir /dev/tpapi 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi/etc 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi/etc/tpa 02770 mot_tpapi mot_tpapi
+    mkdir /data/tpapi/etc/tpa/persistent 02770 mot_tpapi mot_tpapi
+
+    # Create moodle directory that MOT_MOODLE can write to
+    mkdir /data/local/moodle 0770 graphics mot_tcmd
+
+    # set permission for Dynamic-CABC feature
+    chown system system /sys/class/graphics/fb0/cabc_mode
 
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/type
     chown bluetooth net_bt_stack /sys/class/rfkill/rfkill0/state
@@ -110,38 +121,10 @@ on boot
     #Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
 
-    setprop wifi.interface wlan0
-
-    setprop ro.telephony.call_ring.multiple false
-
     #Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
-
-#   Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
-    setprop net.tcp.buffersize.wifi    524288,2097152,4194304,262144,524288,1048576
-    setprop net.tcp.buffersize.default 4096,87380,524288,4096,16384,110208
-    setprop net.tcp.buffersize.lte     2097152,4194304,8388608,262144,524288,1048576
-    setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
-    setprop net.tcp.buffersize.hspa    4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsupa   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hsdpa   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.hspap   4094,87380,1220608,4096,16384,1220608
-    setprop net.tcp.buffersize.edge    4093,26280,35040,4096,16384,35040
-    setprop net.tcp.buffersize.gprs    4092,8760,11680,4096,8760,11680
-    setprop net.tcp.buffersize.evdo    4094,87380,524288,4096,16384,262144
-
-    setprop net.tcp.2g_init_rwnd 10
-
-#   Define TCP delayed ack settings for WiFi & LTE
-    setprop net.tcp.delack.default     1
-    setprop net.tcp.delack.wifi        20
-    setprop net.tcp.delack.lte         1
-    setprop net.tcp.usercfg.default    0
-    setprop net.tcp.usercfg.wifi       1
-    setprop net.tcp.usercfg.lte        0
 
 #   Assign TCP buffer thresholds to be ceiling value of technology maximums
 #   Increased technology maximums should be reflected here.
@@ -273,14 +256,32 @@ on post-fs-data
     mkdir /data/connectivity 0771 system system
     chown system system /data/connectivity
 
+    # Create directory from IMS services
+    mkdir /data/shared 0755 system system
+
+    # Create directory for FOTA
+    mkdir /data/fota 0771 system system
+
+    # Create directory for hostapd
+    mkdir /data/misc/wifi/hostapd 0770 system wifi
+
+    # Create /data/time folder for time-services
+    mkdir /data/time/ 0700 system system
+
     # Create folders for audio files
     mkdir /data/audio/ 0770 media audio
     mkdir /data/audio/acdbdata 0770 media audio
     mkdir /data/audio/acdbdata/delta 0770 media audio
 
+    chown system system /sys/vibrator/pwmvalue
+    chmod 0644 /sys/vibrator/pwmvalue
+
+    # Create a folder for SRS to be able to create a usercfg file
+    mkdir /data/data/media 0770 media media
+
     setprop vold.post_fs_data_done 1
 
-on enable-low-power
+on property:sys.boot_completed=1
     setprop sys.io.scheduler bfq
 
     # Available Freqs in stock kernel
@@ -290,12 +291,13 @@ on enable-low-power
     write /sys/module/cpu_boost/parameters/sync_threshold 960000
     write /sys/module/cpu_boost/parameters/input_boost_freq 0:1248000
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
-    start batt_health
 
     write /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk 1
     write /sys/module/lowmemorykiller/parameters/vmpressure_file_min 49152
 
-    setprop sys.perf.profile 1
+    # allow CPUs to go in deeper idle state than C0
+    write /sys/module/lpm_levels/parameters/sleep_disabled 0
+
 
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
@@ -313,10 +315,10 @@ on property:radio.atfwd.start=false
     stop atfwd
 
 on property:wc_transport.start_hci=true
-    start start_hci_filter
+    start wcnss_filter
 
 on property:wc_transport.start_hci=false
-    stop start_hci_filter
+    stop wcnss_filter
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
@@ -333,7 +335,7 @@ service rfs_access /system/bin/rfs_access
     user root
     group system net_raw
 
-service start_hci_filter /system/bin/wcnss_filter
+service wcnss_filter /system/bin/wcnss_filter
     class late_start
     user root
     group bluetooth qcom_diag log system
@@ -554,10 +556,8 @@ service cnd /system/bin/cnd
     socket cnd stream 660 root inet
 
 service ssr_setup /system/bin/ssr_setup
-    oneshot
-
-service cnss-daemon /system/bin/cnss-daemon -n -l
     class late_start
+    oneshot
 
 service usb_uicc_daemon /system/bin/usb_uicc_client
     class main
@@ -565,16 +565,9 @@ service usb_uicc_daemon /system/bin/usb_uicc_client
     group system log net_raw
     oneshot
 
-on property:sys.usb_uicc.enabled=1
-    start usb_uicc_enable
-
-on property:sys.usb_uicc.enabled=0
-    start usb_uicc_enable
-
 service batt_health /system/bin/batt_health
     class main
     group mot_pwric
-    disabled
 
 service charge_only_mode /system/bin/charge_only_mode
     user root

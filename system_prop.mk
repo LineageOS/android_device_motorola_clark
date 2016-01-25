@@ -211,3 +211,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # SSR
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.ssr.restart_level=ALL_ENABLE
+
+# OTHER - pulled out of ramdisk
+PRODUCT_PROPERTY_OVERRIDES += \
+    net.tcp.2g_init_rwnd=10 \
+    net.tcp.delack.default=1 \
+    net.tcp.delack.wifi=20 \
+    net.tcp.delack.lte=1 \
+    net.tcp.usercfg.default=0 \
+    net.tcp.usercfg.wifi=1 \
+    net.tcp.usercfg.lte=0 \
+    ro.telephony.call_ring.multiple=false \
+    wifi.interface=wlan0
