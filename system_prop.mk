@@ -175,7 +175,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     audio.offload.pcm.24bit.enable=false \
     audio.offload.gapless.enabled=false \
     av.offload.enable=false \
-    mm.enable.qcom_parser=4643 \
     mmp.enable.3g2=true \
     vidc.enc.dcvs.extra-buff-count=2 \
     tunnel.audio.encode=false \
