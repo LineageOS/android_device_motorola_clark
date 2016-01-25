@@ -506,9 +506,6 @@ vendor/lib/libsensor1.so
 etc/sensors/sensor_def_qcomdev.conf
 
 # Wat - weird files
-# bin/cnss-daemon
-# bin/ssr_diag
-# bin/ftmdaemon
 vendor/lib/hw/flp.default.so
 bin/ftmdaemon
 bin/ssr_diag
