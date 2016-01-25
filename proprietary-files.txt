@@ -1,17 +1,3 @@
-## BROKEN
-# DPM
-bin/dpmd
-vendor/lib/libdpmctmgr.so
-vendor/lib/libdpmfdmgr.so
-vendor/lib/libdpmframework.so
-vendor/lib/libdpmnsrm.so
-
-#bin/ipacm
-#bin/ipacm-diag
-#bin/tcmd
-#bin/PktRspTest
-#bin/radish
-
 ## NEEDED?
 vendor/lib/libwifiscanner.so
 vendor/lib/drm/libdrmwvmplugin.so
@@ -60,6 +46,7 @@ vendor/lib/libaudioalsa.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
+lib/soundfx/libmmieffectswrapper.so
 lib/soundfx/libspeakerbundle.so
 etc/acdbdata/General_cal.acdb
 etc/acdbdata/Bluetooth_cal.acdb
@@ -126,33 +113,42 @@ etc/firmware/cpp_firmware_v1_4_0.fw
 etc/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw
 lib/hw/camera.msm8992.so
-vendor/lib/libmotocalibration.so
-vendor/lib/libflash_sky81296.so
-vendor/lib/libSonyIMX230PdafLibrary.so
-vendor/lib/libactuator_mot_lc898212xd_camcorder.so
-vendor/lib/libactuator_mot_lc898212xd_camera.so
-vendor/lib/libactuator_mot_lc898212xd.so
 lib/libmot_lux_standardization.so
 lib/libadvalgcore.so
 lib/libAisAdapter.so
 lib/libAlAisLib.so
 lib/libAlAisTune.so
 lib/libAlAisWrap.so
-lib/libbson.so
 lib/libcamerabgproc-jni.so
 lib/libcamerabgprocservice.so
 lib/libjscore.so
 lib/libjustshoot.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
+lib/libbson.so
 lib/libmot_sensorlistener.so
 lib/libmot-qc-fd-offline.so
-lib/libqomx_core.so
+lib/libmbs.so
+vendor/lib/libmmipl.so
+vendor/lib/libmmjpeg.so
+vendor/lib/libmmqjpeg_codec.so
+vendor/lib/libmmqjpegdma.so
+vendor/lib/libmmQSM.so
+vendor/lib/liboemcamera.so
+vendor/lib/libqomx_jpegdec.so
+vendor/lib/libqomx_jpegenc_pipe.so
+vendor/lib/libqomx_jpegenc.so
 vendor/lib/libfastcvadsp_stub.so
 vendor/lib/libflash_pmic.so
 vendor/lib/libjpegdhw.so
 vendor/lib/libjpegdmahw.so
 vendor/lib/libjpegehw.so
+vendor/lib/libmotocalibration.so
+vendor/lib/libflash_sky81296.so
+vendor/lib/libSonyIMX230PdafLibrary.so
+vendor/lib/libactuator_mot_lc898212xd_camcorder.so
+vendor/lib/libactuator_mot_lc898212xd_camera.so
+vendor/lib/libactuator_mot_lc898212xd.so
 vendor/lib/libmmcamera_ppbase_module.so
 vendor/lib/libmmcamera2_c2d_module.so
 vendor/lib/libmmcamera2_cpp_module.so
@@ -162,7 +158,6 @@ vendor/lib/libmmcamera_isp_chroma_enhan40.so
 vendor/lib/libmmcamera_cac2_lib.so
 vendor/lib/libmmcamera2_imglib_modules.so
 vendor/lib/libmmcamera2_q3a_core.so
-lib/libmbs.so
 vendor/lib/libmmcamera2_sensor_debug.so
 vendor/lib/libmmcamera_isp_clamp_viewfinder40.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
@@ -220,16 +215,6 @@ vendor/lib/libmmcamera_isp_ltm44.so
 vendor/lib/libmmcamera_isp_gamma44.so
 vendor/lib/libmmcamera_tintless_bg_pca_algo.so
 vendor/lib/libmmcamera_imglib.so
-vendor/lib/libmmipl.so
-vendor/lib/libmmjpeg.so
-vendor/lib/libmmqjpeg_codec.so
-vendor/lib/libmmqjpegdma.so
-vendor/lib/libmmQSM.so
-vendor/lib/liboemcamera.so
-vendor/lib/libqomx_jpegdec.so
-vendor/lib/libqomx_jpegenc_pipe.so
-vendor/lib/libqomx_jpegenc.so
-
 
 # Chromatix
 vendor/lib/libchromatix_mot_imx230_common.so
@@ -348,25 +333,20 @@ vendor/lib/libvoice-svc.so
 
 # GPS
 bin/loc_launcher
-bin/gpsone_daemon
-bin/location-mq
 etc/permissions/com.qualcomm.location.xml
 lib/libloc_api_v02.so
 lib/libloc_ds_api.so
-vendor/lib/libalarmservice_jni.so
-vendor/lib/libgeofence.so
-vendor/lib/libizat_core.so
-vendor/lib/liblbs_core.so
-vendor/lib/libloc_ext.so
-vendor/lib/liblocationservice.so
-vendor/lib/libquipc_os_api.so
-vendor/lib/libquipc_ulp_adapter.so
-vendor/lib/libulp2.so
 lib/libloc_eng.so
 lib/hw/gps.default.so
 lib/libgps.utils.so
 lib/libloc_core.so
-vendor/lib64/libloc_xtra.so
+vendor/lib/libalarmservice_jni.so
+vendor/lib/libgeofence.so
+vendor/lib/libizat_core.so
+vendor/lib/liblbs_core.so
+vendor/lib/liblocationservice.so
+vendor/lib/libquipc_ulp_adapter.so
+vendor/lib/libulp2.so
 etc/izat.conf
 
 # Adreno GPU
@@ -424,6 +404,7 @@ vendor/lib/libSHIMDivxDrm.so
 
 # Motorola
 bin/batt_health
+bin/charge_only_mode
 bin/dbvc_atvc_property_set
 bin/hardware_revisions.sh
 
@@ -435,6 +416,7 @@ vendor/lib/libdsutils.so
 vendor/lib/libqcci_legacy.so
 
 # CNE
+-priv-app/CNEService/CNEService.apk
 bin/cnd
 etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
@@ -442,7 +424,6 @@ etc/permissions/cneapiclient.xml
 etc/permissions/com.motorola.motosignature.xml
 etc/permissions/com.motorola.camera.xml
 framework/com.motorola.motosignature.jar
--priv-app/CNEService/CNEService.apk
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
 vendor/lib/libcneqmiutils.so
@@ -454,7 +435,8 @@ vendor/lib/libwqe.so
 # Radio
 -app/ims/ims.apk
 -app/MotoSignatureApp/MotoSignatureApp.apk
-bin/charge_only_mode
+-priv-app/atfwd/atfwd.apk
+-priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/diag_klog
 bin/diag_mdlog
 bin/diag_mdlog-getlogs
@@ -464,10 +446,10 @@ bin/port-bridge
 bin/test_diag
 bin/netmgrd
 bin/qmi_motext_hook
-lib64/libadropbox.so
 bin/qmuxd
 bin/rfs_access
 bin/rmt_storage
+vendor/bin/qti
 etc/diag_mdlog/Bluetooth_V1.cfg
 etc/diag_mdlog/Bluetooth_audio_V1.cfg
 etc/diag_mdlog/Connection_Issues_V8_wifi.cfg
@@ -482,7 +464,6 @@ etc/diag_mdlog/Vzw_Connection_Issues_V1.cfg
 etc/diag_mdlog/WLAN_V1.cfg
 etc/diag_mdlog/default.cfg
 etc/diag_mdlog/default.opts
-etc/sensors/sensor_def_qcomdev.conf
 etc/permissions/com.verizon.ims.xml
 etc/permissions/ims.xml
 etc/permissions/org.simalliance.openmobileapi.xml
@@ -492,24 +473,21 @@ framework/qcnvitems.jar
 framework/qcrilhook.jar
 framework/com.verizon.ims.jar
 framework/org.simalliance.openmobileapi.jar
-lib/libadspd.so
 lib/libmdmcutback.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
--priv-app/atfwd/atfwd.apk
--priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
-vendor/bin/qti
+lib64/libadropbox.so
+-vendor/lib/libtime_genoff.so
 vendor/lib/libimscamera_jni.so
 vendor/lib/libimsmedia_jni.so
 vendor/lib/liblqe.so
 vendor/lib/libmdmdetect.so
 vendor/lib/libnetmgr.so
-vendor/lib64/libqcmaputils.so
+vendor/lib/libperipheral_client.so
 vendor/lib/libril-qc-qmi-1.so
 vendor/lib/libril-qcril-hook-oem.so
--vendor/lib/libtime_genoff.so
 vendor/lib/libxml.so
-vendor/lib/libperipheral_client.so
+vendor/lib64/libqcmaputils.so
 
 # Touchscreen firmware
 etc/firmware/synaptics-s2726-15052160-1d19d9-clark.tdat
@@ -525,13 +503,12 @@ vendor/lib/libsubsystem_control.so
 vendor/lib/libSubSystemShutdown.so
 lib64/hw/sensorhub.msm8992.so
 vendor/lib/libsensor1.so
-
-# Wifi Firmware
-vendor/bin/slim_ap_daemon
+etc/sensors/sensor_def_qcomdev.conf
 
 # Wat - weird files
-lib/soundfx/libmmieffectswrapper.so
-bin/cnss-daemon
+# bin/cnss-daemon
+# bin/ssr_diag
+# bin/ftmdaemon
 vendor/lib/hw/flp.default.so
 bin/ftmdaemon
 bin/ssr_diag

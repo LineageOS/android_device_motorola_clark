@@ -75,6 +75,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.ims.vt=false \
     persist.ims.vt.epdg=false \
     persist.ims.rcs=false \
+    persist.ims.disableADBLogs=2 \
+    persist.ims.disableDebugLogs=0 \
+    persist.ims.disableQXDMLogs=0 \
+    persist.ims.disableIMSLogs=0 \
     persist.rcs.supported=0 \
     persist.rcs.presence.provision=0 \
     persist.sys.qc.sub.rdump.on=1 \
@@ -204,3 +208,18 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.frp.pst=/dev/block/bootdevice/by-name/frp
 
+# SSR
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.ssr.restart_level=ALL_ENABLE
+
+# OTHER - pulled out of ramdisk
+PRODUCT_PROPERTY_OVERRIDES += \
+    net.tcp.2g_init_rwnd=10 \
+    net.tcp.delack.default=1 \
+    net.tcp.delack.wifi=20 \
+    net.tcp.delack.lte=1 \
+    net.tcp.usercfg.default=0 \
+    net.tcp.usercfg.wifi=1 \
+    net.tcp.usercfg.lte=0 \
+    ro.telephony.call_ring.multiple=false \
+    wifi.interface=wlan0

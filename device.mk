@@ -59,14 +59,15 @@ PRODUCT_CHARACTERISTICS := default
 DEVICE_PACKAGE_OVERLAYS := \
     $(LOCAL_PATH)/overlay
 
+# Generic
 PRODUCT_PACKAGES += \
     libcnefeatureconfig \
     libqsap_sdk \
     ebtables \
     ethertypes \
-    curl \
     libnl_2 \
     libbson \
+    librmnetctl \
     libxml2
 
 # Thermal
@@ -97,19 +98,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     power.msm8992
 
-PRODUCT_PACKAGES += \
-    libaudio-resampler \
-    libqcompostprocbundle \
-    libqcomvisualizer \
-    libqcomvoiceprocessingdescriptors \
-    libqcomvoiceprocessing \
-    tinymix
-
-# OpenSource Audio helpers
-PRODUCT_PACKAGES += \
-    libtinycompress \
-    libtinyxml \
-    libtinyalsa
 
 # NFC packages
 PRODUCT_PACKAGES += \
@@ -118,9 +106,9 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag
 
-PRODUCT_PACKAGES += \
-    librmnetctl \
-    rmnetcli
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
+    $(LOCAL_PATH)/nfc/libnfc-brcm-20795a20.conf:system/etc/libnfc-brcm-20795a20.conf
 
 # Camera
 PRODUCT_PACKAGES += \
@@ -130,16 +118,12 @@ PRODUCT_PACKAGES += \
     libmm-qcamera \
     libmmcamera_interface \
     libmmjpeg_interface \
-    mm-jpeg-interface-test \
     mm-qcamera-app \
     Snap
 
 # for off charging mode
 PRODUCT_PACKAGES += \
     charger_res_images
-
-PRODUCT_PACKAGES += \
-    bdAddrLoader
 
 PRODUCT_PACKAGES += \
     pp_calib_data_mipi_mot_cmd_inx_QHD_0_570_v0.xml
@@ -180,7 +164,8 @@ PRODUCT_PACKAGES += \
     libOmxEvrcEnc \
     libOmxQcelp13Enc \
     libOmxVdec \
-    libOmxVenc
+    libOmxVenc \
+    libstagefrighthw
 
 PRODUCT_BOOT_JARS += \
     libstagefrighthw
@@ -196,6 +181,20 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.usb.default \
     audio.r_submix.default
+
+PRODUCT_PACKAGES += \
+    libaudio-resampler \
+    libqcompostprocbundle \
+    libqcomvisualizer \
+    libqcomvoiceprocessingdescriptors \
+    libqcomvoiceprocessing \
+    tinymix
+
+# OpenSource Audio helpers
+PRODUCT_PACKAGES += \
+    libtinycompress \
+    libtinyxml \
+    libtinyalsa
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/listen_platform_info.xml:system/etc/listen_platform_info.xml \
@@ -246,11 +245,6 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/nfc/libnfc-brcm.conf:system/etc/libnfc-brcm.conf \
-    $(LOCAL_PATH)/nfc/libnfc-brcm-20795a20.conf:system/etc/libnfc-brcm-20795a20.conf
-
-
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
@@ -274,6 +268,7 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.wifi.direct.xml:system/etc/permissions/android.hardware.wifi.direct.xml \
     frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
     frameworks/native/data/etc/android.software.sip.xml:system/etc/permissions/android.software.sip.xml \
+    frameworks/native/data/etc/android.software.midi.xml:system/etc/permissions/android.software.midi.xml \
     frameworks/native/data/etc/android.hardware.opengles.aep.xml:system/etc/permissions/android.hardware.opengles.aep.xml \
     frameworks/native/data/etc/android.hardware.audio.low_latency.xml:system/etc/permissions/android.hardware.audio.low_latency.xml
 
