@@ -129,6 +129,7 @@ lib/libbson.so
 lib/libmot_sensorlistener.so
 lib/libmot-qc-fd-offline.so
 lib/libmbs.so
+lib/libqomx_core.so
 vendor/lib/libmmipl.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
