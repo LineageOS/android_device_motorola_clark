@@ -12,7 +12,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Camera
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.camera.facialproc=false \
-    persist.camera.HAL3.enabled=0 \
+    persist.camera.HAL3.enabled=1 \
     persist.camera.tnr.video=on \
     persist.camera.tnr.preview=on
 
