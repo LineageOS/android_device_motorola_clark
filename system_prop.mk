@@ -2,10 +2,6 @@
 # System Properties for Moto X Pure
 #
 
-# Rich Communications Service is disabled in 5.1
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.rcs.supported=0
-
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.hwc.mdpcomp.enable=true
 
@@ -36,15 +32,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     rild.libpath=/vendor/lib64/libril-qc-qmi-1.so \
     rild.libargs=-d /dev/smd0 \
-    ril.subscription.types=RUIM \
     ro.use_data_netmgrd=true \
     ro.data.large_tcp_window_size=true \
-    ro.mot.ignore_csim_appid=true \
-    persist.data.netmgrd.qos.enable=true \
     persist.data.mode=concurrent \
-    persist.data.netmgrd.qos.enable=true \
-    persist.data.iwlan.enable=false \
-    persist.radio.mcfg_enabled=1 \
     persist.radio.mcfg_noreset=1 \
     persist.radio.mcfg_remote=1 \
     persist.radio.apm_sim_not_pwdn=1 \
@@ -58,38 +48,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.radio.force_get_pref=1 \
     persist.radio.mot_ecc_enabled=1 \
     persist.radio.mot_ecc_custid=common \
-    persist.radio.calls.on.ims=true \
-    persist.radio.jbims=1 \
-    persist.radio.domain.ps=0 \
-    persist.radio.VT_ENABLE=1 \
-    persist.radio.VT_HYBRID_ENABLE=1 \
-    persist.radio.ROTATION_ENABLE=1 \
-    persist.radio.REVERSE_QMI=0 \
-    persist.radio.RATE_ADAPT_ENABLE=1 \
-    persist.radio.VT_USE_MDM_TIME=0 \
-    persist.radio.videopause.mode=0 \
     persist.radio.apn_delay=5000 \
-    persist.radio.snapshot_timer=22 \
-    persist.radio.snapshot_enabled=1 \
-    persist.ims.volte=true \
-    persist.ims.vt=false \
-    persist.ims.vt.epdg=false \
-    persist.ims.rcs=false \
-    persist.ims.disableADBLogs=2 \
-    persist.ims.disableDebugLogs=0 \
-    persist.ims.disableQXDMLogs=0 \
-    persist.ims.disableIMSLogs=0 \
-    persist.rcs.supported=0 \
-    persist.rcs.presence.provision=0 \
     persist.sys.qc.sub.rdump.on=1 \
-    persist.rmnet.mux=enabled \
-    persist.sys.cnd.iwlan=0 \
-    persist.cne.logging.qxdm=0 \
-    persist.vt.supported=0 \
-    persist.eab.supported=0 \
     persist.qcril_uim_vcc_feature=1 \
     persist.data.qmi.adb_logmask=0 \
-    telephony.lteOnCdmaDevice=1 \
     net.tethering.noprovisioning=true \
 
 # Graphics
@@ -141,11 +103,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.qc.sdk.audio.ssr=false \
     ro.qc.sdk.audio.fluencetype=none \
     ro.fm.transmitter=false \
-    ro.media.enc.aud.fileformat=qcp \
-    ro.media.enc.aud.codec=qcelp \
-    ro.media.enc.aud.bps=13300 \
-    ro.media.enc.aud.ch=1 \
-    ro.media.enc.aud.hz=8000 \
     ro.audio.monitorRotation=true \
     media.stagefright.enable-player=true \
     media.stagefright.enable-http=true \
@@ -154,7 +111,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     media.stagefright.enable-fma2dp=true \
     media.stagefright.enable-scan=true \
     media.aac_51_output_enabled=true \
-    persist.cne.feature=0 \
     persist.dpm.feature=3 \
     persist.audio.calfile0=/etc/acdbdata/Bluetooth_cal.acdb \
     persist.audio.calfile1=/etc/acdbdata/General_cal.acdb \
