@@ -35,6 +35,8 @@
 #include "log.h"
 #include "util.h"
 
+static void setSsim(void);
+
 void vendor_load_properties()
 {
     char platform[PROP_VALUE_MAX];
@@ -62,61 +64,64 @@ void vendor_load_properties()
             property_set("persist.radio.plmn_name_cmp", "1");
             property_set("ro.telephony.ril.config", "simactivation");
             property_set("ro.fsg-id", "emea_dsds");
-            property_set("ro.build.expect.bootloader", "0xA048");
-            property_set("ro.boot.radio", "0x1");
             property_set("ro.media.enc.aud.fileformat", "amr");
             property_set("ro.media.enc.aud.codec", "amrnb");
             property_set("ro.build.description", "clark_retasia_ds-user 6.0 MPH24.49-18 18 release-keys");
             property_set("ro.build.fingerprint", "motorola/clark_retasia_ds/clark_ds:6.0/MPH24.49-18/18:user/release-keys");
         } else {
+            setSsim();
             property_set("ro.build.description", "clark_reteu-user 5.1.1 LPH23.116-18 23 release-keys");
             property_set("ro.build.fingerprint", "motorola/clark_reteu/clark:5.1.1/LPH23.116-18/23:user/release-keys");
         }
     } else if (strstr(sku, "XT1575")) {
         /* US */
+        setSsim();
         property_set("ro.product.display", "Moto X Pure Edition");
         property_set("ro.ril.force_eri_from_xml", "true");
         property_set("ro.telephony.get_imsi_from_sim", "true");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnCdmaDevice", "1");
-        property_set("persist.cne.feature", "0");
-        property_set("ro.media.enc.aud.fileformat", "qcp");
-        property_set("ro.media.enc.aud.codec", "qcelp");
-        property_set("ro.media.enc.aud.bps", "13300");
-        property_set("ro.media.enc.aud.ch", "1");
-        property_set("ro.media.enc.aud.hz", "8000");
-        property_set("persist.rmnet.mux", "enabled");
-        property_set("persist.sys.cnd.iwlan", "0");
-        property_set("persist.cne.logging.qxdm", "0");
-        property_set("persist.vt.supported", "0");
-        property_set("persist.eab.supported", "0");
-        property_set("persist.radio.snapshot_timer=22");
-        property_set("persist.radio.snapshot_enabled", "1");
-        property_set("persist.ims.volte", "true");
-        property_set("persist.ims.vt", "false");
-        property_set("persist.ims.vt.epdg", "false");
-        property_set("persist.ims.disableADBLogs", "2");
-        property_set("persist.ims.disableDebugLogs", "0");
-        property_set("persist.ims.disableQXDMLogs", "0");
-        property_set("persist.ims.disableIMSLogs", "0");
-        property_set("persist.rcs.supported", "0");
-        property_set("persist.rcs.presence.provision", "0");
-        property_set("persist.radio.calls.on.ims", "true");
-        property_set("persist.radio.jbims", "1");
-        property_set("persist.radio.domain.ps", "0");
-        property_set("persist.radio.VT_ENABLE", "1");
-        property_set("persist.radio.VT_HYBRID_ENABLE", "1");
-        property_set("persist.radio.ROTATION_ENABLE", "1");
-        property_set("persist.radio.REVERSE_QMI", "0");
-        property_set("persist.radio.RATE_ADAPT_ENABLE", "1");
-        property_set("persist.radio.VT_USE_MDM_TIME", "0");
-        property_set("persist.radio.videopause.mode", "0");
-        property_set("persist.data.iwlan.enable", "false");
-        property_set("persist.radio.mcfg_enabled", "1");
-        property_set("ro.mot.ignore_csim_appid", "true");
-        property_set("persist.data.netmgrd.qos.enable", "true");
-        property_set("ril.subscription.types", "RUIM");
         property_set("ro.build.description", "clark_retus-user 6.0 MPH24.49-18 18 release-keys");
         property_set("ro.build.fingerprint", "motorola/clark_retus/clark:6.0/MPH24.49-18/18:user/release-keys");
     }
+}
+static void setSsim(void)
+{
+    property_set("persist.cne.feature", "0");
+    property_set("ro.media.enc.aud.fileformat", "qcp");
+    property_set("ro.media.enc.aud.codec", "qcelp");
+    property_set("ro.media.enc.aud.bps", "13300");
+    property_set("ro.media.enc.aud.ch", "1");
+    property_set("ro.media.enc.aud.hz", "8000");
+    property_set("persist.rmnet.mux", "enabled");
+    property_set("persist.sys.cnd.iwlan", "0");
+    property_set("persist.cne.logging.qxdm", "0");
+    property_set("persist.vt.supported", "0");
+    property_set("persist.eab.supported", "0");
+    property_set("persist.radio.snapshot_timer", "22");
+    property_set("persist.radio.snapshot_enabled", "1");
+    property_set("persist.ims.volte", "true");
+    property_set("persist.ims.vt", "false");
+    property_set("persist.ims.vt.epdg", "false");
+    property_set("persist.ims.disableADBLogs", "2");
+    property_set("persist.ims.disableDebugLogs", "0");
+    property_set("persist.ims.disableQXDMLogs", "0");
+    property_set("persist.ims.disableIMSLogs", "0");
+    property_set("persist.rcs.supported", "0");
+    property_set("persist.rcs.presence.provision", "0");
+    property_set("persist.radio.calls.on.ims", "true");
+    property_set("persist.radio.jbims", "1");
+    property_set("persist.radio.domain.ps", "0");
+    property_set("persist.radio.VT_ENABLE", "1");
+    property_set("persist.radio.VT_HYBRID_ENABLE", "1");
+    property_set("persist.radio.ROTATION_ENABLE", "1");
+    property_set("persist.radio.REVERSE_QMI", "0");
+    property_set("persist.radio.RATE_ADAPT_ENABLE", "1");
+    property_set("persist.radio.VT_USE_MDM_TIME", "0");
+    property_set("persist.radio.videopause.mode", "0");
+    property_set("persist.data.iwlan.enable", "false");
+    property_set("persist.radio.mcfg_enabled", "1");
+    property_set("ro.mot.ignore_csim_appid", "true");
+    property_set("persist.data.netmgrd.qos.enable", "true");
+    property_set("ril.subscription.types", "RUIM");
 }
