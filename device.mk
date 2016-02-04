@@ -136,7 +136,6 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.mmi.boot.sh \
     init.mmi.usb.rc \
-    init.mmi.usb.sh \
     init.qcom.rc \
     init.qcom.power.rc \
     init.mmi.block_perm.sh \
