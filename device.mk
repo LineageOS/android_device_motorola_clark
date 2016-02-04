@@ -141,6 +141,7 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.mmi.block_perm.sh \
     init.qcom.class_core.sh \
+    init.qcom.ril.sh \
     init.qcom.sh \
     ueventd.qcom.rc
 

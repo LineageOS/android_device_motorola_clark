@@ -474,6 +474,12 @@ service ril-daemon3 /system/bin/rild -c 3
     disabled
     group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
 
+service rild2-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
+    class late_start
+    user root
+    group root
+    oneshot
+
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera

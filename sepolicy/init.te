@@ -1,2 +1,10 @@
 allow init firmware_file:dir mounton;
-#allow init device:file execute;
+allow init audio_device:chr_file { write ioctl };
+allow init input_device:chr_file ioctl;
+allow init mpctl_data_file:file append;
+allow init property_socket:sock_file write;
+allow init sensors_device:chr_file { write ioctl };
+allow init socket_device:sock_file { create setattr };
+allow init system_data_file:file { rename append };
+
+
