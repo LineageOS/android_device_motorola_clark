@@ -36,6 +36,7 @@
 #include "util.h"
 
 static void setSsim(void);
+static void setMsim(void);
 
 void vendor_load_properties()
 {
@@ -60,14 +61,15 @@ void vendor_load_properties()
         // Region specifics
         if (strstr(car, "retin")) {
             /* India */
-            property_set("persist.radio.multisim.config", "dsds");
-            property_set("persist.radio.plmn_name_cmp", "1");
-            property_set("ro.telephony.ril.config", "simactivation");
-            property_set("ro.fsg-id", "emea_dsds");
-            property_set("ro.media.enc.aud.fileformat", "amr");
-            property_set("ro.media.enc.aud.codec", "amrnb");
+            setMsim();
             property_set("ro.build.description", "clark_retasia_ds-user 6.0 MPH24.49-18 18 release-keys");
             property_set("ro.build.fingerprint", "motorola/clark_retasia_ds/clark_ds:6.0/MPH24.49-18/18:user/release-keys");
+        }
+        else if (strstr(car, "retbr")) {
+            /* Brazil */
+            setMsim();
+            property_set("ro.build.description", "clark_retla_ds-user 6.0 MPH24.49-18 18 release-keys");
+            property_set("ro.build.fingerprint", "motorola/clark_retla_ds/clark_ds:6.0/MPH24.49-18/18:user/release-keys");
         } else {
             setSsim();
             property_set("ro.build.description", "clark_reteu-user 5.1.1 LPH23.116-18 23 release-keys");
@@ -124,4 +126,14 @@ static void setSsim(void)
     property_set("ro.mot.ignore_csim_appid", "true");
     property_set("persist.data.netmgrd.qos.enable", "true");
     property_set("ril.subscription.types", "RUIM");
+}
+
+static void setMsim(void)
+{
+    property_set("persist.radio.multisim.config", "dsds");
+    property_set("persist.radio.plmn_name_cmp", "1");
+    property_set("ro.telephony.ril.config", "simactivation");
+    property_set("ro.fsg-id", "emea_dsds");
+    property_set("ro.media.enc.aud.fileformat", "amr");
+    property_set("ro.media.enc.aud.codec", "amrnb");
 }
