@@ -88,7 +88,6 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.class_core.sh \
     init.qcom.rc \
-    init.qcom.ril.sh \
     init.qcom.sh \
     ueventd.qcom.rc
 
