@@ -85,6 +85,22 @@ void vendor_load_properties()
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.build.description", "clark_retus-user 6.0 MPH24.49-18 18 release-keys");
         property_set("ro.build.fingerprint", "motorola/clark_retus/clark:6.0/MPH24.49-18/18:user/release-keys");
+    } else if (strstr(sku, "XT1570")) {
+        /* China */
+        setMsim();
+        property_set("ro.telephony.default_network", "22");
+        property_set("telephony.lteOnCdmaDevice", "1");
+        property_set("persist.radio.mcfg_enabled", "1");
+        property_set("persist.radio.force_on_dc", "true");
+        property_set("persist.radio.rat_on", "combine");
+        property_set("persist.radio.disable_flexmap", "0");
+        property_set("gsm.sim.min.match", "8");
+        property_set("ro.cdma.subscription", "0");
+        property_set("ro.telephony.default_cdma_sub", "0");
+        property_set("ril.subscription.types", "RUIM");
+        property_set("persist.radio.force_get_pref", "1");
+        property_set("ro.build.description", "clark_retcn_ds-user 6.0 MPH24.49-18 18 release-keys");
+        property_set("ro.build.fingerprint", "motorola/clark_retcn_ds/clark_ds:6.0/MPH24.49-18/18:user/release-keys");
     }
 }
 static void setSsim(void)
