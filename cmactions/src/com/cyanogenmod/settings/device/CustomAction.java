@@ -19,9 +19,13 @@ package com.cyanogenmod.settings.device;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.PowerManager;
+import android.os.RemoteException;
+import android.os.SystemClock;
 import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.WindowManagerGlobal;
 
 import java.net.URISyntaxException;
 
@@ -31,12 +35,14 @@ public class CustomAction implements SensorAction {
     private static final int TURN_SCREEN_ON_WAKE_LOCK_MS = 500;
 
     private Context mContext;
+    private PowerManager mPowerManager;
     private String mUri;
     private final int mVibratorPeriod;
     private final Vibrator mVibrator;
 
     public CustomAction(Context context, int vibratorPeriod, String key) {
         mContext = context;
+        mPowerManager = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
         mVibrator = (Vibrator) mContext.getSystemService(Context.VIBRATOR_SERVICE);
         mVibratorPeriod = vibratorPeriod;
 
@@ -51,6 +57,13 @@ public class CustomAction implements SensorAction {
             try {
                 Intent intent = Intent.parseUri(mUri, 0);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                if (!mPowerManager.isScreenOn()) {
+                    mPowerManager.wakeUp(SystemClock.uptimeMillis());
+                }
+                try {
+                    WindowManagerGlobal.getWindowManagerService().dismissKeyguard();
+                } catch (RemoteException e) {
+                }
                 mContext.startActivity(intent);
             } catch (URISyntaxException e) {
                 // ignore

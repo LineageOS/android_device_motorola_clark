@@ -17,6 +17,7 @@
 package com.cyanogenmod.settings.device;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.ListPreference;
@@ -42,7 +43,7 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
     private OnPreferenceChangeListener mPrefListener = new OnPreferenceChangeListener() {
         @Override
         public boolean onPreferenceChange(Preference preference, Object newValue) {
-            if (((String) newValue) == "4") {
+            if (((String) newValue).equals("4")) {
                 mGesture = preference.getKey();
                 mPicker.pickShortcut(null, null, 0);
             }
@@ -104,5 +105,12 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode != RESULT_CANCELED && resultCode != RESULT_CANCELED) {
+            mPicker.onActivityResult(requestCode, resultCode, data);
+        }
     }
 }

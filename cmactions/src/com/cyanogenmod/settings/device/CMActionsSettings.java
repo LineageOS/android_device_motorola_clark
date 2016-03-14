@@ -61,11 +61,11 @@ public class CMActionsSettings {
     }
 
     public SensorAction newCameraActivationAction() {
-        return new ConfigurableAction(true);
+        return new ConfigurableAction(GESTURE_CAMERA_ACTION_KEY);
     }
 
     public SensorAction newChopChopAction() {
-        return new ConfigurableAction(false);
+        return new ConfigurableAction(GESTURE_CHOP_CHOP_KEY);
     }
 
     public boolean isUserAwareDisplayEnabled() {
@@ -146,22 +146,22 @@ public class CMActionsSettings {
     };
 
     private class ConfigurableAction implements SensorAction {
-        private final boolean mIsCamera;
+        private final String mKey;
 
-        public ConfigurableAction(boolean isCamera) {
-             mIsCamera = isCamera;
+        public ConfigurableAction(String key) {
+             mKey = key;
         }
 
         @Override
         public void action() {
-            if (mIsCamera) {
-                action(mCameraGestureAction);
+            if (mKey.equals(GESTURE_CAMERA_ACTION_KEY)) {
+                action(mCameraGestureAction, mKey);
             } else {
-                action(mChopChopAction);
+                action(mChopChopAction, mKey);
             }
         }
 
-        private void action(int action) {
+        private void action(int action, String key) {
             int vibratorPeriod = mFeedbackIntensity * 80;
             if (action == ACTION_LAUNCH_CAMERA) {
                 new CameraActivationAction(mContext, vibratorPeriod).action();
@@ -169,6 +169,8 @@ public class CMActionsSettings {
                 new TorchAction(mContext, vibratorPeriod).action();
             } else if (action == ACTION_WAKE_DEVICE) {
                 new WakeDeviceAction(mContext, vibratorPeriod).action();
+            } else if (action == ACTION_CUSTOM) {
+                new CustomAction(mContext, vibratorPeriod, key).action();
             }
         }
     };
