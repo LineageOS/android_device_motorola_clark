@@ -42,8 +42,10 @@
     <string name="ir_silencer_summary">Silence incoming calls by waving your hand across the screen</string>
 
     <string name="action_none">Disable</string>
+    <string name="action_wake_device">Wake device</string>
     <string name="action_launch_camera">Launch camera</string>
     <string name="action_torch">Toggle torch</string>
+    <string name="action_custom">Custom</string>
 
     <string name="feedback_intensity_title">Haptic feedback intensity</string>
     <string name="feedback_intensity_summary">Strength of the haptic feedback for the double-twist and chop-chop actions</string>
@@ -51,5 +53,13 @@
     <string name="feedback_intensity_low">Low</string>
     <string name="feedback_intensity_medium">Medium</string>
     <string name="feedback_intensity_high">High</string>
+
+    <!-- App picker -->
+    <string name="profile_applist_title">Apps</string>
+    <string name="profile_choose_app">Choose app</string>
+    <string name="profiles_add">Add</string>
+    <string name="picker_activities">Activities</string>
+    <string name="select_custom_app_title">Select custom app</string>
+    <string name="select_custom_activity_title">Select custom activity</string>
 </resources>
 

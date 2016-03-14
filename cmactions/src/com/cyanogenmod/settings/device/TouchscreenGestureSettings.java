@@ -17,9 +17,14 @@
 package com.cyanogenmod.settings.device;
 
 import android.app.ActionBar;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -27,6 +32,23 @@ import org.cyanogenmod.internal.util.ScreenType;
 
 public class TouchscreenGestureSettings extends PreferenceActivity {
     private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
+
+    private static final String KEY_CHOP_CHOP = "gesture_chop_chop";
+    private static final String KEY_TWIST = "gesture_camera_action";
+
+    private String mGesture;
+    private ShortcutPickHelper mPicker;
+
+    private OnPreferenceChangeListener mPrefListener = new OnPreferenceChangeListener() {
+        @Override
+        public boolean onPreferenceChange(Preference preference, Object newValue) {
+            if (((String) newValue) == "4") {
+                mGesture = preference.getKey();
+                mPicker.pickShortcut(null, null, 0);
+            }
+            return true;
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -39,6 +61,30 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         }
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
+
+        ListPreference chopchop = (ListPreference) findPreference(KEY_CHOP_CHOP);
+        ListPreference twist = (ListPreference) findPreference(KEY_TWIST);
+
+        mPicker = new ShortcutPickHelper(this, new ShortcutPickHelper.OnPickListener() {
+            @Override
+            public void shortcutPicked(String uri, String friendlyName, boolean isApplication) {
+                if (uri == null) {
+                    return;
+                }
+                if (mGesture != null) {
+                    putSettingsString(mGesture + "_custom", uri);
+                    mGesture = null;
+                }
+            }
+        });
+
+        chopchop.setOnPreferenceChangeListener(mPrefListener);
+        twist.setOnPreferenceChangeListener(mPrefListener);
+    }
+
+    private void putSettingsString(String key, String value) {
+        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        prefs.edit().putString(key, value).apply();
     }
 
     @Override

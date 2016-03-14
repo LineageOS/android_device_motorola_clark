@@ -28,8 +28,10 @@ public class CMActionsSettings {
     private static final String TAG = "CMActions";
 
     private static final int ACTION_NONE = 0;
-    private static final int ACTION_LAUNCH_CAMERA = 1;
-    private static final int ACTION_TORCH = 2;
+    private static final int ACTION_WAKE_DEVICE = 1;
+    private static final int ACTION_LAUNCH_CAMERA = 2;
+    private static final int ACTION_TORCH = 3;
+    private static final int ACTION_CUSTOM = 4;
 
     private static final String GESTURE_USER_AWARE_DISPLAY_KEY = "gesture_user_aware_display";
     private static final String GESTURE_CAMERA_ACTION_KEY = "gesture_camera_action";
@@ -165,6 +167,8 @@ public class CMActionsSettings {
                 new CameraActivationAction(mContext, vibratorPeriod).action();
             } else if (action == ACTION_TORCH) {
                 new TorchAction(mContext, vibratorPeriod).action();
+            } else if (action == ACTION_WAKE_DEVICE) {
+                new WakeDeviceAction(mContext, vibratorPeriod).action();
             }
         }
     };
