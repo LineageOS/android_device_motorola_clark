@@ -47,7 +47,7 @@ public class FlatUpSensor implements ScreenStateNotifier {
     @Override
     public void screenTurnedOn() {
         if (mEnabled) {
-            Log.d(TAG, "Disabling");
+            if (CMActionsService.DEBUG) Log.d(TAG, "Disabling");
             mSensorHelper.unregisterListener(mFlatUpListener);
             mSensorHelper.unregisterListener(mStowListener);
             mEnabled = false;
@@ -57,7 +57,7 @@ public class FlatUpSensor implements ScreenStateNotifier {
     @Override
     public void screenTurnedOff() {
         if (mCMActionsSettings.isPickUpEnabled() && !mEnabled) {
-            Log.d(TAG, "Enabling");
+            if (CMActionsService.DEBUG) Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mFlatUpSensor, mFlatUpListener);
             mSensorHelper.registerListener(mStowSensor, mStowListener);
             mEnabled = true;
@@ -69,8 +69,8 @@ public class FlatUpSensor implements ScreenStateNotifier {
         public synchronized void onSensorChanged(SensorEvent event) {
             boolean thisFlatUp = (event.values[0] != 0);
 
-            Log.d(TAG, "event: " + thisFlatUp + " mLastFlatUp=" + mLastFlatUp + " mIsStowed=" +
-                mIsStowed);
+            if (CMActionsService.DEBUG) Log.d(TAG, "event: " + thisFlatUp
+                + " mLastFlatUp=" + mLastFlatUp + " mIsStowed=" + mIsStowed);
 
             if (mLastFlatUp && ! thisFlatUp && ! mIsStowed) {
                 mSensorAction.action();

@@ -30,6 +30,8 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
         UpdatedStateNotifier {
     private static final String TAG = "CMActions";
 
+    public static final boolean DEBUG = true;
+
     private final Context mContext;
 
     private final DozePulseAction mDozePulseAction;
@@ -45,7 +47,7 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
         super("CMActionService");
         mContext = context;
 
-        Log.d(TAG, "Starting");
+        if (DEBUG) Log.d(TAG, "Starting");
 
         CMActionsSettings cmActionsSettings = new CMActionsSettings(context, this);
         mSensorHelper = new SensorHelper(context);
@@ -56,7 +58,6 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
 
         // Actionable sensors get screen on/off notifications
         mScreenStateNotifiers.add(new FlatUpSensor(cmActionsSettings, mSensorHelper, mDozePulseAction));
-        mScreenStateNotifiers.add(new ProximitySensor(cmActionsSettings, mSensorHelper, mDozePulseAction));
         mScreenStateNotifiers.add(new IrGestureSensor(mSensorHelper, mDozePulseAction));
         mScreenStateNotifiers.add(new StowSensor(cmActionsSettings, mSensorHelper, mDozePulseAction));
 

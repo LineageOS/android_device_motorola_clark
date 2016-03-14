@@ -42,14 +42,14 @@ public class ServiceWrapper extends android.app.Service {
 
     @Override
     public void onCreate() {
-        Log.i(TAG, "onCreate");
+        if (CMActionsService.DEBUG) Log.i(TAG, "onCreate");
         super.onCreate();
         mCmActionsService = new CMActionsService(this);
     }
 
     @Override
     public IBinder onBind(Intent intent) {
-        Log.i(TAG, "onBind");
+        if (CMActionsService.DEBUG) Log.i(TAG, "onBind");
         return null;
     }
 
@@ -57,7 +57,7 @@ public class ServiceWrapper extends android.app.Service {
     }
 
     public void start() {
-        Log.i(TAG, "start");
+        if (CMActionsService.DEBUG) Log.i(TAG, "start");
     }
 
     public void stop() {

@@ -48,7 +48,7 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
 
     static
     {
-       System.load("/system/lib/libjni_CMActions.so");
+       System.load("/system/lib64/libjni_CMActions.so");
     }
 
     public IrGestureSensor(SensorHelper sensorHelper, SensorAction action) {
@@ -85,8 +85,8 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        Log.d(TAG, "event: [" + event.values.length + "]: " + event.values[0] + ", " +
-            event.values[1] + ", " + event.values[2]);
+        if (CMActionsService.DEBUG) Log.d(TAG, "event: [" + event.values.length + "]: "
+            + event.values[0] + ", " + event.values[1] + ", " + event.values[2]);
         mSensorAction.action();
     }
 
