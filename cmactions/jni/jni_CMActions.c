@@ -39,7 +39,9 @@
 #define MOTOSH_DEVICE                  "/dev/motosh"
 #define MOTOSH_IR_WAKE_CONFIG_MASK      0x000007FE
 #define MOTOSH_IR_CONTROL_DISABLE       0x00000001
-#define MOTOSH_IR_CONFIG_TUNING_NUMBER 7
+
+#define MOTOSH_IR_CONFIG_TUNING_NUMBER_MIN 6
+#define MOTOSH_IR_CONFIG_TUNING_NUMBER_MAX 7
 
 struct PACKED motosh_ir_led_config
 {
@@ -136,8 +138,11 @@ int read_ir_config(struct motosh_ir_config* config, int check_version)
         return 1;
     }
 
-    if (check_version && config->tuning_number != MOTOSH_IR_CONFIG_TUNING_NUMBER) {
-        ALOGE("%s: Found tuning number %d, but expected %d!\n", __func__, config->tuning_number, MOTOSH_IR_CONFIG_TUNING_NUMBER);
+    if (check_version && (config->tuning_number < MOTOSH_IR_CONFIG_TUNING_NUMBER_MIN ||
+        config->tuning_number > MOTOSH_IR_CONFIG_TUNING_NUMBER_MAX)) {
+        ALOGE("%s: Found tuning number %d, but expected %d..%d!\n", __func__,
+                config->tuning_number, MOTOSH_IR_CONFIG_TUNING_NUMBER_MIN,
+                MOTOSH_IR_CONFIG_TUNING_NUMBER_MAX);
         return 1;
     }
 
@@ -171,7 +176,6 @@ int set_ir_disabled(int disabled)
 
     pthread_mutex_unlock(&ioctl_mutex);
 
-    ALOGD("%s: set ir disabled to %d\n", __func__, (disabled != 0));
     return 0;
 err:
     pthread_mutex_unlock(&ioctl_mutex);
@@ -196,20 +200,19 @@ int set_ir_wake_config(int wake_config)
 
      pthread_mutex_unlock(&ioctl_mutex);
 
-    ALOGD("%s: set ir wake config to 0x%x\n", __func__, config.cmd_config);
     return 0;
 err:
     pthread_mutex_unlock(&ioctl_mutex);
     return 1;
 }
 
-JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_settings_device_IrGestureSensor_nativeSetIrDisabled(
+JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_settings_device_IrGestureManager_nativeSetIrDisabled(
      UNUSED JNIEnv *env, UNUSED jclass thiz, jboolean disabled)
 {
     return set_ir_disabled(disabled == JNI_TRUE) ? JNI_FALSE : JNI_TRUE;
 }
 
-JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_settings_device_IrGestureSensor_nativeSetIrWakeConfig(
+JNIEXPORT jboolean JNICALL Java_com_cyanogenmod_settings_device_IrGestureManager_nativeSetIrWakeConfig(
      UNUSED JNIEnv *env, UNUSED jclass thiz, jint wakeConfig)
 {
     return set_ir_wake_config((int)wakeConfig) ? JNI_FALSE : JNI_TRUE;
