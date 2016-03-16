@@ -37,8 +37,8 @@ public class CMActionsSettings {
     private static final String GESTURE_CAMERA_ACTION_KEY = "gesture_camera_action";
     private static final String GESTURE_CHOP_CHOP_KEY = "gesture_chop_chop";
     private static final String GESTURE_FEEDBACK_INTENSITY_KEY = "gesture_feedback_intensity";
-    private static final String GESTURE_PICK_UP_KEY = "gesture_pick_up";
-    private static final String GESTURE_IR_WAKEUP_KEY = "gesture_ir_wake_up";
+    public static final String GESTURE_PICK_UP_KEY = "gesture_pick_up";
+    public static final String GESTURE_IR_WAKEUP_KEY = "gesture_ir_wake_up";
     private static final String GESTURE_IR_SILENCER_KEY = "gesture_ir_silencer";
 
     private final Context mContext;
@@ -48,9 +48,9 @@ public class CMActionsSettings {
     private int mCameraGestureAction;
     private int mChopChopAction;
     private int mFeedbackIntensity;
-    private boolean mIrWakeUpEnabled;
     private boolean mIrSilencerEnabled;
-    private boolean mPickUpGestureEnabled;
+    private String mIrWakeUp;
+    private String mPickUpGesture;
 
     public CMActionsSettings(Context context, UpdatedStateNotifier updatedStateNotifier) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -89,11 +89,11 @@ public class CMActionsSettings {
     }
 
     public boolean isIrWakeupEnabled() {
-        return isDozeEnabled() && mIrWakeUpEnabled;
+        return isDozeEnabled() && mIrWakeUp != DozePulseAction.NO_ACTION;
     }
 
     public boolean isPickUpEnabled() {
-        return isDozeEnabled() && mPickUpGestureEnabled;
+        return isDozeEnabled() && mPickUpGesture != DozePulseAction.NO_ACTION;
     }
 
     public boolean isIrSilencerEnabled() {
@@ -105,8 +105,8 @@ public class CMActionsSettings {
         mCameraGestureAction = getIntPreference(sharedPreferences, GESTURE_CAMERA_ACTION_KEY);
         mChopChopAction = getIntPreference(sharedPreferences, GESTURE_CHOP_CHOP_KEY);
         mFeedbackIntensity = getIntPreference(sharedPreferences, GESTURE_FEEDBACK_INTENSITY_KEY);
-        mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, false);
-        mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, false);
+        mIrWakeUp = sharedPreferences.getString(GESTURE_IR_WAKEUP_KEY, DozePulseAction.NO_ACTION);
+        mPickUpGesture = sharedPreferences.getString(GESTURE_PICK_UP_KEY, DozePulseAction.NO_ACTION);
         mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, false);
     }
 
@@ -130,9 +130,9 @@ public class CMActionsSettings {
             } else if (GESTURE_FEEDBACK_INTENSITY_KEY.equals(key)) {
                 mFeedbackIntensity = getIntPreference(sharedPreferences, GESTURE_FEEDBACK_INTENSITY_KEY);
             } else if (GESTURE_IR_WAKEUP_KEY.equals(key)) {
-                mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, false);
+                mIrWakeUp = sharedPreferences.getString(GESTURE_IR_WAKEUP_KEY, DozePulseAction.NO_ACTION);
             } else if (GESTURE_PICK_UP_KEY.equals(key)) {
-                mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, false);
+                mPickUpGesture = sharedPreferences.getString(GESTURE_PICK_UP_KEY, DozePulseAction.NO_ACTION);
             } else if (GESTURE_IR_SILENCER_KEY.equals(key)) {
                 mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, false);
             } else {

@@ -50,7 +50,7 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     @Override
     public void screenTurnedOn() {
         if (mEnabled) {
-            Log.d(TAG, "Disabling");
+            if (CMActionsService.DEBUG) Log.d(TAG, "Disabling");
             mSensorHelper.unregisterListener(this);
             mIrGestureVote.voteForSensors(0);
             mEnabled = false;
@@ -60,7 +60,7 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
     @Override
     public void screenTurnedOff() {
         if (mCMActionsSettings.isIrWakeupEnabled() && !mEnabled) {
-            Log.d(TAG, "Enabling");
+            if (CMActionsService.DEBUG) Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mSensor, this);
             mIrGestureVote.voteForSensors(IR_GESTURES_FOR_SCREEN_OFF);
             mEnabled = true;
@@ -72,8 +72,8 @@ public class IrGestureSensor implements ScreenStateNotifier, SensorEventListener
         int gesture = (int) event.values[0];
 
         if (gesture == IR_GESTURE_SWIPE || gesture == IR_GESTURE_APPROACH) {
-            Log.d(TAG, "event: [" + event.values.length + "]: " + event.values[0] + ", " +
-                event.values[1] + ", " + event.values[2]);
+            if (CMActionsService.DEBUG) Log.d(TAG, "event: [" + event.values.length + "]: "
+                    + event.values[0] + ", " + event.values[1] + ", " + event.values[2]);
             mSensorAction.action();
         }
     }

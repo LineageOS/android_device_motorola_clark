@@ -106,7 +106,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
     private void enableSensors() {
         if (! mEnabled) {
-            Log.d(TAG, "Enabling");
+            if (CMActionsService.DEBUG) Log.d(TAG, "Enabling");
 
             mEnabled = true;
             mObjectIsDetected = false;
@@ -120,7 +120,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
     private void disableSensors() {
         if (mEnabled) {
-            Log.d(TAG, "Disabling");
+            if (CMActionsService.DEBUG) Log.d(TAG, "Disabling");
             mSensorHelper.unregisterListener(mStowListener);
             mSensorHelper.unregisterListener(mIrGestureListener);
             mIrGestureVote.voteForSensors(IR_GESTURES_FOR_SCREEN_OFF);
@@ -129,13 +129,13 @@ public class UserAwareDisplay implements ScreenStateNotifier {
     }
 
     private synchronized void setIsStowed(boolean isStowed) {
-        Log.d(TAG, "Stowed: " + isStowed);
+        if (CMActionsService.DEBUG) Log.d(TAG, "Stowed: " + isStowed);
         mIsStowed = isStowed;
         updateScreenLock();
     }
 
     private synchronized void setObjectIsDetected(boolean objectIsDetected) {
-        Log.d(TAG, "IR object is detected: " + objectIsDetected);
+        if (CMActionsService.DEBUG) Log.d(TAG, "IR object is detected: " + objectIsDetected);
         mObjectIsDetected = objectIsDetected;
         updateScreenLock();
     }
@@ -152,7 +152,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
 
     private synchronized void enableScreenLock() {
         if (! mScreenIsLocked) {
-            Log.d(TAG, "Acquiring screen wakelock");
+            if (CMActionsService.DEBUG) Log.d(TAG, "Acquiring screen wakelock");
             mScreenIsLocked = true;
             mWakeLock.acquire();
         }
@@ -163,7 +163,7 @@ public class UserAwareDisplay implements ScreenStateNotifier {
             mScreenIsLocked = false;
             mDelayedOffWakeLock.acquire(DELAYED_OFF_MS);
             mWakeLock.release();
-            Log.d(TAG, "Released screen wakelock");
+            if (CMActionsService.DEBUG) Log.d(TAG, "Released screen wakelock");
         }
     }
 

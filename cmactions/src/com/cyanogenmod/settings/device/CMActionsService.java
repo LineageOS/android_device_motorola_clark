@@ -30,11 +30,10 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
         UpdatedStateNotifier {
     private static final String TAG = "CMActions";
 
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = false;
 
     private final Context mContext;
 
-    private final DozePulseAction mDozePulseAction;
     private final IrGestureManager mIrGestureManager;
     private final PowerManager mPowerManager;
     private final ScreenReceiver mScreenReceiver;
@@ -55,13 +54,15 @@ public class CMActionsService extends IntentService implements ScreenStateNotifi
         mScreenReceiver = new ScreenReceiver(context, this);
         mIrGestureManager = new IrGestureManager();
 
-        mDozePulseAction = new DozePulseAction(context);
-        mScreenStateNotifiers.add(mDozePulseAction);
+        DozePulseAction pickupAction = new DozePulseAction(context, CMActionsSettings.GESTURE_PICK_UP_KEY);
+        DozePulseAction irAction = new DozePulseAction(context, CMActionsSettings.GESTURE_IR_WAKEUP_KEY);
+        mScreenStateNotifiers.add(pickupAction);
+        mScreenStateNotifiers.add(irAction);
 
         // Actionable sensors get screen on/off notifications
-        mScreenStateNotifiers.add(new FlatUpSensor(cmActionsSettings, mSensorHelper, mDozePulseAction));
-        mScreenStateNotifiers.add(new IrGestureSensor(cmActionsSettings, mSensorHelper, mDozePulseAction, mIrGestureManager));
-        mScreenStateNotifiers.add(new StowSensor(cmActionsSettings, mSensorHelper, mDozePulseAction));
+        mScreenStateNotifiers.add(new FlatUpSensor(cmActionsSettings, mSensorHelper, pickupAction));
+        mScreenStateNotifiers.add(new IrGestureSensor(cmActionsSettings, mSensorHelper, irAction, mIrGestureManager));
+        mScreenStateNotifiers.add(new StowSensor(cmActionsSettings, mSensorHelper, pickupAction));
         mScreenStateNotifiers.add(new UserAwareDisplay(cmActionsSettings, mSensorHelper, mIrGestureManager, context));
 
         // Other actions that are always enabled

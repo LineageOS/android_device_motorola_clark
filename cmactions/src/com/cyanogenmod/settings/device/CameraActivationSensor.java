@@ -49,11 +49,11 @@ public class CameraActivationSensor implements SensorEventListener, UpdatedState
     @Override
     public synchronized void updateState() {
         if (mCMActionsSettings.isCameraGestureEnabled() && !mIsEnabled) {
-            Log.d(TAG, "Enabling");
+            if (CMActionsService.DEBUG) Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mSensor, this);
             mIsEnabled = true;
         } else if (! mCMActionsSettings.isCameraGestureEnabled() && mIsEnabled) {
-            Log.d(TAG, "Disabling");
+            if (CMActionsService.DEBUG) Log.d(TAG, "Disabling");
             mSensorHelper.unregisterListener(this);
             mIsEnabled = false;
         }

@@ -32,17 +32,23 @@
         android:key="ambient_display_key"
         android:title="@string/ambient_display_title" >
 
-        <SwitchPreference
+        <ListPreference
             android:key="gesture_pick_up"
-            android:defaultValue="true"
+            android:defaultValue="doze"
             android:title="@string/pick_up_gesture_title"
-            android:summary="@string/pick_up_gesture_summary" />
+            android:dialogTitle="@string/pick_up_gesture_title"
+            android:summary="@string/pick_up_gesture_summary"
+            android:entries="@array/wake_action_entries"
+            android:entryValues="@array/wake_action_values" />
 
-        <SwitchPreference
+        <ListPreference
             android:key="gesture_ir_wake_up"
-            android:defaultValue="true"
+            android:defaultValue="doze"
             android:title="@string/ir_wake_up_title"
-            android:summary="@string/ir_wake_up_summary" />
+            android:dialogTitle="@string/ir_wake_up_title"
+            android:summary="@string/ir_wake_up_summary"
+            android:entries="@array/wake_action_entries"
+            android:entryValues="@array/wake_action_values" />
     </PreferenceCategory>
 
     <PreferenceCategory
