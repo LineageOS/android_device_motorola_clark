@@ -19,7 +19,6 @@ on init
 
     # Setup symlinks
     symlink /data/tombstones /tombstones
-    symlink /sdcard /mnt/sdcard
     symlink /sdcard /storage/sdcard0
 
 on fs
