@@ -128,9 +128,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     pp_calib_data_mipi_mot_cmd_inx_QHD_0_570_v0.xml
 
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rootdir/etc/twrp.fstab:recovery/root/etc/twrp.fstab
-
 PRODUCT_PACKAGES += \
     init.class_main.sh \
     fstab.qcom \
