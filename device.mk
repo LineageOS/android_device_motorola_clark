@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
+$(call inherit-product-if-exists, vendor/motorola/clark/clark-vendor.mk)
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:system/vendor/etc/aanc_tuning_mixer.txt \
@@ -64,6 +67,8 @@ $(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
 # Display
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
+TARGET_SCREEN_HEIGHT := 1440
+TARGET_SCREEN_WIDTH := 2560
 
 PRODUCT_PACKAGES += \
     pp_calib_data_mipi_mot_cmd_inx_QHD_0_570_v0.xml
