@@ -30,8 +30,6 @@ vendor/lib/rfsa/adsp/libmare_hexagon_skel.so
 # Audio
 bin/fm_qsoc_patches
 vendor/bin/audioflacapp
-lib/libaudioroute.so
-lib/hw/audio.primary.msm8992.so
 lib/hw/audio.motvr.default.so
 lib/libmotaudioutils.so
 lib/libqcomfm_jni.so
@@ -42,7 +40,6 @@ vendor/lib/libacdbmapper.so
 vendor/lib/libacdbrtac.so
 vendor/lib/libadiertac.so
 vendor/lib/libaudcal.so
-vendor/lib/libaudioalsa.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
@@ -91,6 +88,7 @@ bin/btnvtool
 bin/hci_qcomm_init
 bin/wcnss_filter
 etc/user_bhd_psy.conf
+etc/user_dbg_bhd_psy.conf
 etc/firmware/nvm_tlv.bin
 etc/firmware/nvm_tlv_1.3.bin
 etc/firmware/nvm_tlv_2.1.bin
@@ -105,6 +103,7 @@ vendor/lib/libbtnv.so
 vendor/lib/libbt-vendor.so
 
 # Camera
+bin/mediaserver
 bin/mm-qcamera-daemon
 etc/firmware/cpp_firmware_v1_1_1.fw
 etc/firmware/cpp_firmware_v1_1_6.fw
@@ -112,6 +111,8 @@ etc/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw
 etc/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw
+etc/permissions/com.motorola.camera.xml
+etc/permissions/com.motorola.gallery.xml
 lib/hw/camera.msm8992.so
 lib/libmot_lux_standardization.so
 lib/libadvalgcore.so
@@ -256,6 +257,7 @@ vendor/lib/libchromatix_ov5693_video.so
 bin/msm_irqbalance
 bin/perfd
 vendor/lib/libqti-perfd-client.so
+vendor/lib/libthermalclient.so
 
 # DM/Sprint
 -app/DMConfigUpdateLight/DMConfigUpdateLight.apk
@@ -279,6 +281,7 @@ lib/libdmjavaplugin.so:priv-app/DMService/lib/arm/libdmjavaplugin.so
 bin/qseecomd
 etc/permissions/com.google.widevine.software.drm.xml
 framework/com.google.widevine.software.drm.jar
+lib/hw/keystore.qcom.so
 vendor/lib/libdrmfs.so
 vendor/lib/libdrmtime.so
 vendor/lib/liboemcrypto.so
@@ -422,7 +425,6 @@ etc/cne/andsfCne.xml
 etc/cne/SwimConfig.xml
 etc/permissions/cneapiclient.xml
 etc/permissions/com.motorola.motosignature.xml
-etc/permissions/com.motorola.camera.xml
 framework/com.motorola.motosignature.jar
 vendor/lib/libcneapiclient.so
 vendor/lib/libcneconn.so
