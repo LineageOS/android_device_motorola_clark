@@ -60,10 +60,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     CMActions
 
-# DexOpt
-# never dexopt MotoSignatureApp
-$(call add-product-dex-preopt-module-config,MotoSignatureApp,disable)
-
 # Display
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
