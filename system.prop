@@ -35,7 +35,7 @@ ro.bluetooth.hfp.ver=1.6
 ro.qualcomm.cabl=0
 
 # Camera
-persist.camera.HAL3.enabled=1
+persist.camera.HAL3.enabled=0
 persist.camera.tnr.video=on
 persist.camera.tnr.preview=on
 ro.qc.sdk.camera.facialproc=false
