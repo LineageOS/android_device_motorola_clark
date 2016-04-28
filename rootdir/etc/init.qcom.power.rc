@@ -1,3 +1,8 @@
+on early-init
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "performance"
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "performance"
+    write /sys/devices/soc.0/f9824900.sdhci/mmc_host/mmc0/mmc0:0001/block/mmcblk0/queue/scheduler "noop"
+
 on charger
     trigger early-fs
     trigger fs
