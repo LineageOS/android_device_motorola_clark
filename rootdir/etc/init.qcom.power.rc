@@ -21,8 +21,8 @@ on moto-charger
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "powersave"
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled Y
-    write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/governor "powersave"
-    write /sys/class/devfreq/qcom,cpubw.26/governor "powersave"
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor "powersave"
+    write /sys/class/devfreq/qcom,cpubw.27/governor "powersave"
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
     setprop sys.usb.config charging
     start charge_only_mode
@@ -70,8 +70,8 @@ on enable-low-power
     # Enable thermal core
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled Y
-    write /sys/class/devfreq/1c00000.qcom,kgsl-3d0/governor "msm-adreno-tz"
-    write /sys/class/devfreq/qcom,cpubw.26/governor "cpufreq"
+    write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor "msm-adreno-tz"
+    write /sys/class/devfreq/qcom,cpubw.27/governor "cpufreq"
 
     # allow CPUs to go in deeper idle state than C0
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
