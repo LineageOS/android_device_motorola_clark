@@ -50,6 +50,9 @@ on enable-low-power
     # Disable thermal control
     write /sys/module/msm_thermal/core_control/enabled 0
 
+    # HMP Background migration
+    write /proc/sys/kernel/sched_small_task 60
+
     # disable bcl hotplug to switch governor
     write /sys/devices/soc.0/qcom,bcl.66/mode "disable"
     write /sys/devices/soc.0/qcom,bcl.66/hotplug_mask 0
