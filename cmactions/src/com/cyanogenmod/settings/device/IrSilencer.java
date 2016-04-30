@@ -70,15 +70,14 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
         int gesture = (int) event.values[1];
 
         if (gesture == IR_GESTURE_SWIPE && mIsRinging) {
-            if (CMActionsService.DEBUG) Log.d(TAG, "event: [" + event.values.length + "]: "
-                    + event.values[0] + ", " + event.values[1] + ", " + event.values[2]);
+            Log.d(TAG, "event: [" + event.values.length + "]: " + event.values[0] + ", " +
+                event.values[1] + ", " + event.values[2]);
             long now = System.currentTimeMillis();
             if (now - mRingStartedMs >= SILENCE_DELAY_MS) {
-                if (CMActionsService.DEBUG) Log.d(TAG, "Silencing ringer");
+                Log.d(TAG, "Silencing ringer");
                 mTelecomManager.silenceRinger();
             } else {
-                if (CMActionsService.DEBUG) Log.d(TAG, "Ignoring silence gesture: "
-                        + now + " is too close to " +
+                Log.d(TAG, "Ignoring silence gesture: " + now + " is too close to " +
                         mRingStartedMs + ", delay=" + SILENCE_DELAY_MS);
             }
         }
@@ -87,13 +86,13 @@ public class IrSilencer extends PhoneStateListener implements SensorEventListene
     @Override
     public synchronized void onCallStateChanged(int state, String incomingNumber) {
         if (state == CALL_STATE_RINGING && !mIsRinging) {
-            if (CMActionsService.DEBUG) Log.d(TAG, "Ringing started");
+            Log.d(TAG, "Ringing started");
             mSensorHelper.registerListener(mSensor, this);
             mIrGestureVote.voteForSensors(IR_GESTURES_FOR_RINGING);
             mIsRinging = true;
             mRingStartedMs = System.currentTimeMillis();
         } else if (state != CALL_STATE_RINGING && mIsRinging) {
-            if (CMActionsService.DEBUG) Log.d(TAG, "Ringing stopped");
+            Log.d(TAG, "Ringing stopped");
             mSensorHelper.unregisterListener(this);
             mIrGestureVote.voteForSensors(0);
             mIsRinging = false;

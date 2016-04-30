@@ -18,32 +18,19 @@ package com.cyanogenmod.settings.device;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.PowerManager;
-import android.os.SystemClock;
-import android.preference.PreferenceManager;
 import android.util.Log;
 
 public class DozePulseAction implements SensorAction, ScreenStateNotifier {
     private static final String TAG = "CMActions";
 
-    public static final String DOZE_ACTION = "doze";
-    public static final String WAKE_ACTION = "wake";
-    public static final String NO_ACTION = "none";
-
     private static final int DELAY_BETWEEN_DOZES_IN_MS = 1500;
 
     private final Context mContext;
-    private final PowerManager mPowerManager;
-
-    private String mKey;
 
     private long mLastDoze;
 
-    public DozePulseAction(Context context, String key) {
+    public DozePulseAction(Context context) {
         mContext = context;
-        mPowerManager = (PowerManager) context.getSystemService(Context.POWER_SERVICE);
-        mKey = key;
     }
 
     @Override
@@ -56,28 +43,20 @@ public class DozePulseAction implements SensorAction, ScreenStateNotifier {
     }
 
     public void action() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(mContext);
-        String action = prefs.getString(mKey, "");
-        if (action.equals(DOZE_ACTION)) {
-            if (mayDoze()) {
-                if (CMActionsService.DEBUG) Log.d(TAG, "Sending doze.pulse intent");
-                mContext.sendBroadcast(new Intent("com.android.systemui.doze.pulse"));
-            }
-        } else if (action.equals(WAKE_ACTION)) {
-            if (!mPowerManager.isScreenOn()) {
-                mPowerManager.wakeUp(SystemClock.uptimeMillis());
-            }
+         if (mayDoze()) {
+            Log.d(TAG, "Sending doze.pulse intent");
+            mContext.sendBroadcast(new Intent("com.android.systemui.doze.pulse"));
         }
     }
 
     public synchronized boolean mayDoze() {
         long now = System.currentTimeMillis();
         if (now - mLastDoze > DELAY_BETWEEN_DOZES_IN_MS) {
-            if (CMActionsService.DEBUG) Log.d(TAG, "Allowing doze");
+            Log.d(TAG, "Allowing doze");
             mLastDoze = now;
             return true;
         } else {
-            if (CMActionsService.DEBUG) Log.d(TAG, "Denying doze");
+            Log.d(TAG, "Denying doze");
             return false;
         }
     }

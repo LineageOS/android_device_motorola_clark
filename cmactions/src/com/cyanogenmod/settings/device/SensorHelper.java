@@ -57,8 +57,7 @@ public class SensorHelper {
             List<Sensor> sensorList = mSensorManager.getSensorList(Sensor.TYPE_ALL);
             for (Sensor sensor : sensorList) {
                 writer.write("sensor " + sensor.getType() + " = " + sensor.getName()
-                    + " max batch: " + sensor.getFifoMaxEventCount()
-                    + " isWakeUp: " + sensor.isWakeUpSensor() + "\n");
+                    + " max batch: " + sensor.getFifoMaxEventCount() + " isWakeUp: " + sensor.isWakeUpSensor() + "\n");
             }
             writer.close();
         } catch (IOException e) {

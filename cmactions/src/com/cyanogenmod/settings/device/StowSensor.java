@@ -44,7 +44,7 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
     @Override
     public void screenTurnedOn() {
         if (mEnabled) {
-            if (CMActionsService.DEBUG) Log.d(TAG, "Disabling");
+            Log.d(TAG, "Disabling");
             mSensorHelper.unregisterListener(this);
             mEnabled = false;
         }
@@ -53,7 +53,7 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
     @Override
     public void screenTurnedOff() {
         if (mCMActionsSettings.isPickUpEnabled() && !mEnabled) {
-            if (CMActionsService.DEBUG) Log.d(TAG, "Enabling");
+            Log.d(TAG, "Enabling");
             mSensorHelper.registerListener(mSensor, this);
             mEnabled = true;
         }
@@ -62,8 +62,8 @@ public class StowSensor implements ScreenStateNotifier, SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         boolean thisStowed = (event.values[0] != 0);
-        if (CMActionsService.DEBUG) Log.d(TAG, "event: " + thisStowed);
-        if (mLastStowed && !thisStowed) {
+        Log.d(TAG, "event: " + thisStowed);
+        if (mLastStowed && ! thisStowed) {
             mSensorAction.action();
         }
         mLastStowed = thisStowed;

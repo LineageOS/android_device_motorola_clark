@@ -17,43 +17,16 @@
 package com.cyanogenmod.settings.device;
 
 import android.app.ActionBar;
-import android.content.Context;
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.ListPreference;
-import android.preference.Preference;
-import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
-import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
-import android.view.DisplayInfo;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.WindowManager;
 
 import org.cyanogenmod.internal.util.ScreenType;
 
 public class TouchscreenGestureSettings extends PreferenceActivity {
     private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
-
-    private static final String KEY_CHOP_CHOP = "gesture_chop_chop";
-    private static final String KEY_TWIST = "gesture_camera_action";
-
-    private String mGesture;
-    private ShortcutPickHelper mPicker;
-
-    private OnPreferenceChangeListener mPrefListener = new OnPreferenceChangeListener() {
-        @Override
-        public boolean onPreferenceChange(Preference preference, Object newValue) {
-            if (((String) newValue).equals("4")) {
-                mGesture = preference.getKey();
-                mPicker.pickShortcut(null, null, 0);
-            }
-            return true;
-        }
-    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,30 +39,6 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         }
         final ActionBar actionBar = getActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
-        ListPreference chopchop = (ListPreference) findPreference(KEY_CHOP_CHOP);
-        ListPreference twist = (ListPreference) findPreference(KEY_TWIST);
-
-        mPicker = new ShortcutPickHelper(this, new ShortcutPickHelper.OnPickListener() {
-            @Override
-            public void shortcutPicked(String uri, String friendlyName, boolean isApplication) {
-                if (uri == null) {
-                    return;
-                }
-                if (mGesture != null) {
-                    putSettingsString(mGesture + "_custom", uri);
-                    mGesture = null;
-                }
-            }
-        });
-
-        chopchop.setOnPreferenceChangeListener(mPrefListener);
-        twist.setOnPreferenceChangeListener(mPrefListener);
-    }
-
-    private void putSettingsString(String key, String value) {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        prefs.edit().putString(key, value).apply();
     }
 
     @Override
@@ -97,19 +46,9 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         super.onResume();
 
         // If running on a phone, remove padding around the listview
-        if (!isTablet(this)) {
+        if (!ScreenType.isTablet(this)) {
             getListView().setPadding(0, 0, 0, 0);
         }
-    }
-
-    private static boolean isTablet(Context con) {
-        WindowManager wm = (WindowManager) con.getSystemService(Context.WINDOW_SERVICE);
-        DisplayInfo outDisplayInfo = new DisplayInfo();
-        wm.getDefaultDisplay().getDisplayInfo(outDisplayInfo);
-        int shortSize = Math.min(outDisplayInfo.logicalHeight, outDisplayInfo.logicalWidth);
-        int shortSizeDp =
-            shortSize * DisplayMetrics.DENSITY_DEFAULT / outDisplayInfo.logicalDensityDpi;
-        return shortSizeDp > 720;
     }
 
     @Override
@@ -119,12 +58,5 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
             return true;
         }
         return false;
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode != RESULT_CANCELED && resultCode != RESULT_CANCELED) {
-            mPicker.onActivityResult(requestCode, resultCode, data);
-        }
     }
 }

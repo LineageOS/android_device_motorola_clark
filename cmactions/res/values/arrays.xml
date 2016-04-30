@@ -18,30 +18,14 @@
 
     <string-array name="action_entries" translatable="false">
         <item>@string/action_none</item>
-        <item>@string/action_wake_device</item>
         <item>@string/action_launch_camera</item>
         <item>@string/action_torch</item>
-        <item>@string/action_custom</item>
     </string-array>
 
     <string-array name="action_values" translatable="false">
         <item>0</item>
         <item>1</item>
         <item>2</item>
-        <item>3</item>
-        <item>4</item>
-    </string-array>
-
-    <string-array name="wake_action_entries" translatable="false">
-        <item>@string/action_wake_device</item>
-        <item>@string/action_doze</item>
-        <item>@string/action_none</item>
-    </string-array>
-
-    <string-array name="wake_action_values" translatable="false">
-        <item>wake</item>
-        <item>doze</item>
-        <item>none</item>
     </string-array>
 
     <string-array name="feedback_intensity_entries" translatable="false">

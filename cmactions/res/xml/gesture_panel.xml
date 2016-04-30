@@ -32,23 +32,17 @@
         android:key="ambient_display_key"
         android:title="@string/ambient_display_title" >
 
-        <ListPreference
+        <SwitchPreference
             android:key="gesture_pick_up"
-            android:defaultValue="doze"
+            android:defaultValue="true"
             android:title="@string/pick_up_gesture_title"
-            android:dialogTitle="@string/pick_up_gesture_title"
-            android:summary="@string/pick_up_gesture_summary"
-            android:entries="@array/wake_action_entries"
-            android:entryValues="@array/wake_action_values" />
+            android:summary="@string/pick_up_gesture_summary" />
 
-        <ListPreference
+        <SwitchPreference
             android:key="gesture_ir_wake_up"
-            android:defaultValue="doze"
+            android:defaultValue="true"
             android:title="@string/ir_wake_up_title"
-            android:dialogTitle="@string/ir_wake_up_title"
-            android:summary="@string/ir_wake_up_summary"
-            android:entries="@array/wake_action_entries"
-            android:entryValues="@array/wake_action_values" />
+            android:summary="@string/ir_wake_up_summary" />
     </PreferenceCategory>
 
     <PreferenceCategory
@@ -57,7 +51,7 @@
 
         <ListPreference
             android:key="gesture_camera_action"
-            android:defaultValue="2"
+            android:defaultValue="1"
             android:title="@string/camera_gesture_title"
             android:dialogTitle="@string/camera_gesture_title"
             android:summary="@string/camera_gesture_summary"
@@ -66,7 +60,7 @@
 
         <ListPreference
             android:key="gesture_chop_chop"
-            android:defaultValue="3"
+            android:defaultValue="2"
             android:title="@string/chop_chop_gesture_title"
             android:dialogTitle="@string/chop_chop_gesture_title"
             android:summary="@string/chop_chop_gesture_summary"
