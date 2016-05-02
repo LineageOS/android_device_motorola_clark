@@ -20,4 +20,7 @@
     <!-- Force use a specific preview-size
          Example: 1920x1080 -->
     <string name="preview_size_for_photo">1920x1080</string>
+
+    <!-- Set this to true to use device manufacturer and model for exif -->
+    <bool name="override_maker_and_model_tag">true</bool>
 </resources>
