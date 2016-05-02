@@ -490,6 +490,7 @@ service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
+    writepid /dev/cpuset/system-background/tasks
 
 service qseecomd /system/bin/qseecomd
     class core
@@ -612,6 +613,7 @@ service perfd /system/bin/perfd
     class main
     user root
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 # OSS thermal management
 service thermanager /system/bin/thermanager /system/etc/thermanager.xml
