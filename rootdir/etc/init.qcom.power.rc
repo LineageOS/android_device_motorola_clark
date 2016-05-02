@@ -100,6 +100,9 @@ on enable-low-power
     write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor "msm-adreno-tz"
     write /sys/class/devfreq/qcom,cpubw.27/governor "cpufreq"
 
+    # set GPU default power level to 5 (180MHz) instead of 4 (305MHz)
+    write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
+
     # allow CPUs to go in deeper idle state than C0
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
 
