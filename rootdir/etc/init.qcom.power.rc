@@ -117,7 +117,7 @@ on enable-low-power
     # Bit: 384000 480000 633600 768000 864000 960000 1248000 1344000 1440000 1536000 1632000 1689600 1824000
     write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/sync_threshold 960000
-    write /sys/module/cpu_boost/parameters/input_boost_freq 0:1248000
+    write /sys/module/cpu_boost/parameters/input_boost_freq 0:960000
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
     # android background processes are set to nice 10. Never schedule these on the a57s.
