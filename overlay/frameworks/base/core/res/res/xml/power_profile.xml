@@ -5,9 +5,11 @@
     <item name="screen.full">460</item>
     <item name="bluetooth.active">30</item>
     <item name="bluetooth.on">3</item>
-    <item name="wifi.on">10</item>
-    <item name="wifi.active">100</item>
-    <item name="wifi.scan">50</item>
+    <item name="camera.avg">256</item>
+    <item name="camera.flashlight">109</item>
+    <item name="wifi.on">1</item>
+    <item name="wifi.active">90</item>
+    <item name="wifi.scan">20</item>
     <item name="gps.on">70</item>
     <item name="radio.active">350</item>
     <item name="radio.scanning">10</item>
@@ -42,23 +44,23 @@
     <item name="cpu.idle">6</item>
     <item name="cpu.awake">34</item>
     <array name="cpu.active">
-        <value>70</value>
-        <value>74</value>
-        <value>157</value>
-        <value>80</value>
-        <value>190</value>
-        <value>89</value>
-        <value>241</value>
-        <value>96</value>
-        <value>106</value>
-        <value>119</value>
-        <value>155</value>
-        <value>473</value>
-        <value>526</value>
-        <value>589</value>
-        <value>659</value>
-        <value>728</value>
-        <value>841</value>
+        <value>49</value>
+        <value>56</value>
+        <value>134</value>
+        <value>61</value>
+        <value>164</value>
+        <value>72</value>
+        <value>201</value>
+        <value>78</value>
+        <value>90</value>
+        <value>104</value>
+        <value>144</value>
+        <value>362</value>
+        <value>178</value>
+        <value>444</value>
+        <value>490</value>
+        <value>518</value>
+        <value>674</value>
     </array>
     <item name="battery.capacity">3000</item>
 </device>
