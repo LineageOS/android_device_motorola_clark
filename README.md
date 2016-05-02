@@ -17,3 +17,5 @@ Dimensions | 153.9 x 76.2 x 11.06 mm
 Display | 2560 x 1440 pixels, 5.7" IPS LCD
 Rear Camera  | 21 MP, dual-LED flash
 Front Camera | 5 MP, LED flash
+
+![Moto X Pure/Style 2015](http://cdn2.gsmarena.com/vv/pics/motorola/moto-x-style-1.jpg "Moto X Pure/Style 2015")
