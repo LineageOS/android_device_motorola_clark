@@ -161,5 +161,8 @@ ro.usb.mtp_adb=0x2e76
 ro.usb.ptp=0x2e83
 ro.usb.ptp_adb=0x2e84
 
+# Wifi Calling
+persist.data.iwlan.enable=true
+
 # Wifi Display
 persist.sys.wfd.virtual
