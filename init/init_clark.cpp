@@ -137,7 +137,7 @@ static void setSsim(void)
     property_set("persist.radio.RATE_ADAPT_ENABLE", "1");
     property_set("persist.radio.VT_USE_MDM_TIME", "0");
     property_set("persist.radio.videopause.mode", "0");
-    property_set("persist.data.iwlan.enable", "false");
+    property_set("persist.data.iwlan.enable", "true");
     property_set("persist.radio.mcfg_enabled", "1");
     property_set("ro.mot.ignore_csim_appid", "true");
     property_set("persist.data.netmgrd.qos.enable", "true");
