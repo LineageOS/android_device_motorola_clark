@@ -56,6 +56,9 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 QCOM_BT_USE_BTNV := true
 
+# Build with Clang by default
+USE_CLANG_PLATFORM_BUILD := true
+
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
 
