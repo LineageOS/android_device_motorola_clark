@@ -60,6 +60,14 @@ $(WV_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@
 	$(hide) ln -sf /firmware/image/$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(PERSIST_WCNSS) $(WCNSS_CFG_INI) $(IMS_SYMLINKS) $(WV_SYMLINKS)
+FIRMWARE_FILES := firmware fsg
+FIRMWARE_SYMLINKS := $(addprefix $(TARGET_OUT)/rfs/msm/mpss/readonly/,$(notdir $(FIRMWARE_FILES)))
+$(FIRMWARE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "Firmware link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(PERSIST_WCNSS) $(WCNSS_CFG_INI) $(IMS_SYMLINKS) $(WV_SYMLINKS) $(FIRMWARE_SYMLINKS)
 
 endif
