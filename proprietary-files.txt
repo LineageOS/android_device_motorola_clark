@@ -507,6 +507,11 @@ lib64/hw/sensorhub.msm8992.so
 vendor/lib/libsensor1.so
 etc/sensors/sensor_def_qcomdev.conf
 
+# Wifi
+vendor/lib64/liblowi_client.so
+vendor/lib64/liblowi_wifihal.so
+vendor/lib64/libquipc_os_api.so
+
 # Wat - weird files
 vendor/lib/hw/flp.default.so
 bin/ssr_setup
