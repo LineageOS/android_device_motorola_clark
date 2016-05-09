@@ -248,10 +248,6 @@ on property:sys.usb.config=diag,qdss,adb
     start adbd
     setprop sys.usb.state ${sys.usb.config}
 
-# Set RPS Mask for USB tethering
-on property:sys.usb.tethering=true
-    write /sys/class/net/rndis0/queues/rx-0/rps_cpus ${sys.usb.rps_mask}
-
 # USB midi configuration
 on property:sys.usb.config=midi
     write /sys/class/android_usb/android0/enable 0
