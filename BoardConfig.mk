@@ -154,7 +154,7 @@ BOARD_SEPOLICY_DIRS += \
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
 TARGET_INIT_VENDOR_LIB := libinit_clark
-TARGET_LIBINIT_DEFINES_FILE := $(DEVICE_PATH)/init/init_clark.cpp
+TARGET_RECOVERY_DEVICE_MODULES := libinit_clark
 
 # Wifi
 BOARD_HAS_QCOM_WLAN              := true
