@@ -49,7 +49,6 @@ on enable-low-power
     write /proc/sys/kernel/sched_downmigrate 85
     write /proc/sys/kernel/sched_freq_inc_notify 400000
     write /proc/sys/kernel/sched_freq_dec_notify 400000
-    write /proc/sys/kernel/sched_small_task 60
 
     # Bring both clusters online
     write /sys/devices/system/cpu/cpu0/online 1
