@@ -19,4 +19,4 @@
 /dev/block/bootdevice/by-name/bluetooth    /bt_firmware ext4    ro,nosuid,nodev,context=u:object_r:bt_firmware_file:s0                         wait,notrim
 /devices/soc.0/f98a4900.sdhci/mmc_host/*  auto   vfat    nosuid,nodev                          wait,voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/*/xhci-hcd.0.auto/usb*                       auto         auto    defaults                 voldmanaged=usb:auto
-/dev/block/zram0                                      none         swap    defaults                 zramsize=536870912
+/dev/block/zram0                                      none         swap    defaults                 zramsize=536870912,zramstreams=4,notrim
