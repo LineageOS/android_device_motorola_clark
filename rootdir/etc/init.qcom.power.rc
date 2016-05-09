@@ -121,6 +121,9 @@ on enable-low-power
     write /sys/class/devfreq/qcom,cpubw.27/bw_hwmon/idle_mbps 1600
     write /sys/class/devfreq/qcom,mincpubw.28/governor cpufreq
 
+    # enable rps static configuration
+    write /sys/class/net/rmnet_ipa0/queues/rx-0/rps_cpus 8
+
     # set GPU default power level to 5 (180MHz) instead of 4 (305MHz)
     write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
 
