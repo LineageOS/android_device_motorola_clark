@@ -1,2 +1,0 @@
-allow qmuxd socket_device:dir { write add_name };
-allow qmuxd socket_device:sock_file { create setattr };
