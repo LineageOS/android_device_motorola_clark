@@ -12,9 +12,6 @@ on charger
     trigger post-fs-data
     class_stop main
     class_stop late_start
-    trigger moto-charger
-
-on moto-charger
     setprop ro.board.platform msm8992
     write /sys/module/msm_thermal/core_control/enabled 0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "powersave"

@@ -88,13 +88,9 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.class_main.sh \
-    init.mmi.boot.sh \
     init.mmi.usb.rc \
     init.qcom.power.rc \
-    init.qcom.class_core.sh \
     init.qcom.rc \
-    init.qcom.sh \
     ueventd.qcom.rc
 
 # Keylayout
