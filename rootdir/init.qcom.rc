@@ -144,6 +144,8 @@ on boot
     write /data/misc/radio/copy_complete 0
     chown radio radio /data/misc/radio/copy_complete
     chmod 0660 /data/misc/radio/copy_complete
+    symlink /firmware/image/modem_pr/mbn_ota /data/misc/radio/modem_config
+    write /data/misc/radio/copy_complete 1
 
 on post-fs
     mkdir /persist/camera 02755 mot_tcmd mot_tcmd
@@ -573,29 +575,6 @@ service motosh /system/bin/motosh boot
     class late_start
     user compass
     group compass misc input mot_tcmd
-    oneshot
-
-service qcom-c_core-sh /system/bin/sh /init.qcom.class_core.sh
-    class core
-    user root
-    oneshot
-
-service qcom-c_main-sh /system/bin/sh /init.class_main.sh
-    class main
-    user radio
-    group radio
-    oneshot
-
-service qcom-sh /system/bin/sh /init.qcom.sh
-    class late_start
-    user root
-    oneshot
-
-service mmi-boot-sh /init.mmi.boot.sh
-    seclabel u:r:mmi_boot:s0
-    class core
-    user root
-    group root system mot_tcmd
     oneshot
 
 service mmi-touch-sh /system/bin/init.mmi.touch.sh synaptics
