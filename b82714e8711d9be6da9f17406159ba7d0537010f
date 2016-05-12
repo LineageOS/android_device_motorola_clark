@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_8fe64b44",
+        "filename": "overlay/frameworks/base/core/res/res/values/config.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 10699
+      },
+      "writtenOn": "2016-05-12T18:40:45Z",
+      "side": 1,
+      "message": "I don\u0027t think this line is needed. Looks like true is default: https://github.com/CyanogenMod/android_frameworks_base/blob/4a54c554cf1d1b15e0ee566e91223719b15ea346/core/res/res/values/config.xml#L945",
+      "revId": "b82714e8711d9be6da9f17406159ba7d0537010f",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
