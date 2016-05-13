@@ -199,6 +199,9 @@ on post-fs-data
     chmod 0770 /pds/public/atvc
     mkdir /data/local/atvc 0775 mot_tcmd shell
 
+    # Create IPA daemon dir
+    mkdir /data/misc/ipa/ 0770 system net_admin
+
     # Create IOP daemon dir
     mkdir /data/misc/iop 0770 root system
 
@@ -344,6 +347,17 @@ service qmuxd /system/bin/qmuxd
 service netmgrd /system/bin/netmgrd
     class main
     group radio system
+
+service ipacm-diag /system/bin/ipacm-diag
+    class main
+    user system
+    socket ipacm_log_file dgram 660 system net_admin
+    group net_admin qcom_diag
+
+service ipacm /system/bin/ipacm
+    class main
+    user net_admin
+    group net_admin inet
 
 service qti /system/vendor/bin/qti
     class main
