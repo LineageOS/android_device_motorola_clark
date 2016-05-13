@@ -137,6 +137,9 @@ on boot
     # Create IOP daemon dir
     mkdir /data/misc/iop 0770 root system
 
+    # Create daemon dir
+    mkdir /data/misc/ipa/ 0770 system net_admin
+
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
@@ -344,6 +347,17 @@ service qmuxd /system/bin/qmuxd
 service netmgrd /system/bin/netmgrd
     class main
     group radio system
+
+service ipacm-diag /system/bin/ipacm-diag
+    class main
+    user system
+    socket ipacm_log_file dgram 660 system net_admin
+    group net_admin qcom_diag
+
+service ipacm /system/bin/ipacm
+    class main
+    user net_admin
+    group net_admin inet
 
 service qti /system/vendor/bin/qti
     class main
