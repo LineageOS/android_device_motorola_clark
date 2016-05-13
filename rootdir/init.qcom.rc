@@ -134,9 +134,6 @@ on boot
     mkdir /data/nfc 0770 nfc nfc
     mkdir /data/nfc/param 0770 nfc nfc
 
-    # Create IOP daemon dir
-    mkdir /data/misc/iop 0770 root system
-
     # Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
@@ -201,6 +198,9 @@ on post-fs-data
     mkdir /pds/public/atvc 0770 mot_atvc shell
     chmod 0770 /pds/public/atvc
     mkdir /data/local/atvc 0775 mot_tcmd shell
+
+    # Create IOP daemon dir
+    mkdir /data/misc/iop 0770 root system
 
     # Create PERFD deamon related dirs
     mkdir /data/misc/perfd 0755 root system
