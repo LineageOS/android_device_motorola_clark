@@ -153,6 +153,9 @@ on enable-low-power
     write /sys/module/lpm_levels/system/a53/a53-l2-retention/idle_enabled 0
     write /sys/module/lpm_levels/system/a57/a57-l2-retention/idle_enabled 0
 
+    # Enable timer migration to little cluster
+    write /proc/sys/kernel/power_aware_timer_migration 1
+
     start perfd
 
 on property:sys.boot_completed=1
