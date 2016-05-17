@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_89cabe17",
+        "filename": "rootdir/fstab.qcom",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 32
+      },
+      "writtenOn": "2016-05-17T02:33:10Z",
+      "side": 1,
+      "message": "\"nobarrier\" is probably a death wish",
+      "revId": "c946241f55e8ad243050d9ef4e2619b40902436b",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
