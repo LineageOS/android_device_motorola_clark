@@ -233,6 +233,8 @@ fi
 LIBS=`cat proprietary-files.txt | grep '\-lib' | cut -d'-' -f2 | head -1`
 
 if [ -e ../../../$OUTDIR/proprietary/$LIBS ]; then
+echo "# Prebuilt libs needed for compilation" >> $VENDOR_MAKEFILE
+echo "PRODUCT_PACKAGES += \\" >> $VENDOR_MAKEFILE
 
 LINEEND=" \\"
 COUNT=`cat proprietary-files.txt | grep '\-lib' | wc -l`
