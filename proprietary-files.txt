@@ -339,21 +339,29 @@ vendor/lib/libsmemlog.so
 vendor/lib/libvoice-svc.so
 
 # GPS
+bin/location-mq
 bin/loc_launcher
+bin/lowi-server
+bin/xtwifi-client
+bin/xtwifi-inet-agent
 etc/permissions/com.qualcomm.location.xml
-lib/libloc_api_v02.so
-lib/libloc_ds_api.so
-lib/libloc_eng.so
-lib/hw/gps.default.so
-lib/libgps.utils.so
-lib/libloc_core.so
+-lib/libloc_api_v02.so
+-lib/libloc_ds_api.so
+vendor/bin/slim_ap_daemon
+vendor/lib/hw/flp.default.so
+vendor/lib/libflp.so
 vendor/lib/libalarmservice_jni.so
 vendor/lib/libgeofence.so
 vendor/lib/libizat_core.so
 vendor/lib/liblbs_core.so
 vendor/lib/liblocationservice.so
+vendor/lib/liblowi_client.so
+vendor/lib/libquipc_os_api.so
 vendor/lib/libquipc_ulp_adapter.so
 vendor/lib/libulp2.so
+vendor/lib/libxtadapter.so
+vendor/lib/libxtwifi_ulp_adaptor.so
+vendor/lib/libxtwifi_zpp_adaptor.so
 
 # Adreno GPU
 etc/firmware/leia_pfp_470.fw
@@ -503,5 +511,4 @@ lib64/hw/sensorhub.msm8992.so
 vendor/lib/libsensor1.so
 
 # Wat - weird files
-vendor/lib/hw/flp.default.so
 bin/ssr_setup

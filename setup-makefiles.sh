@@ -233,6 +233,8 @@ fi
 LIBS=`cat proprietary-files.txt | grep '\-lib' | cut -d'-' -f2 | head -1`
 
 if [ -e ../../../$OUTDIR/proprietary/$LIBS ]; then
+echo "# Prebuilt libs needed for compilation" >> $VENDOR_MAKEFILE
+echo "PRODUCT_PACKAGES += \\" >> $VENDOR_MAKEFILE
 
 LINEEND=" \\"
 COUNT=`cat proprietary-files.txt | grep '\-lib' | wc -l`
@@ -248,8 +250,8 @@ include \$(CLEAR_VARS)
 LOCAL_MODULE := $libmodulename
 LOCAL_MODULE_OWNER := $VENDOR
 LOCAL_MODULE_TAGS := optional
-LOCAL_SRC_FILES_64 := ../lib64/$libname
-LOCAL_SRC_FILES_32 := $libname
+LOCAL_SRC_FILES_64 := proprietary/lib64/$libname
+LOCAL_SRC_FILES_32 := proprietary/lib/$libname
 LOCAL_MODULE_PATH_64 := \$(TARGET_OUT_SHARED_LIBRARIES)
 LOCAL_MODULE_PATH_32 := \$(2ND_TARGET_OUT_SHARED_LIBRARIES)
 LOCAL_MODULE_SUFFIX := .so
@@ -261,6 +263,7 @@ EOF
 
 echo "    $libmodulename$LINEEND" >> $VENDOR_MAKEFILE
 done
+echo "" >> $VENDOR_MAKEFILE
 fi
 
 VENDORLIBS=`cat proprietary-files.txt | grep '\-vendor\/lib' | cut -d'-' -f2 | head -1`
