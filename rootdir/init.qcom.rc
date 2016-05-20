@@ -563,7 +563,7 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/etc/msm_irqbalance.
     writepid /dev/cpuset/system-background/tasks
 
 service cnd /system/bin/cnd
-    class late_start
+    class main
     socket cnd stream 660 root inet
 
 service ssr_setup /system/bin/ssr_setup
