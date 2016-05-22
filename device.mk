@@ -64,8 +64,7 @@ PRODUCT_COPY_FILES += \
 
 # CMActions
 PRODUCT_PACKAGES += \
-    CMActions \
-    libjni_CMActions
+    MotoActions
 
 # Display
 PRODUCT_AAPT_CONFIG := normal
