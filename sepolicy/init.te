@@ -1,4 +1,5 @@
 allow init audio_device:chr_file { write ioctl };
+allow init debugfs:dir mounton;
 allow init firmware_file:dir mounton;
 allow init graphics_device:chr_file { write ioctl };
 allow init hwrev_data_file:file append;
@@ -7,7 +8,7 @@ allow init kernel:system syslog_read;
 allow init mpctl_data_file:file append;
 allow init property_socket:sock_file write;
 allow init sensors_device:chr_file { write ioctl };
-allow init socket_device:sock_file { create setattr };
+allow init socket_device:sock_file { create setattr unlink };
 allow init sysfs_dt2w:file setattr;
 allow init sysfs_lowmemorykiller:file getattr;
 allow init sysfs_light:file setattr;
