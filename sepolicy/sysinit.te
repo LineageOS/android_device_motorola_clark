@@ -1,3 +1,3 @@
 allow sysinit surfaceflinger_exec:file getattr;
-allow sysinit wifi_data_file:file getattr;
 allow sysinit wifi_data_file:dir search;
+allow sysinit wifi_data_file:file getattr;

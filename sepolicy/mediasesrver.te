@@ -1,2 +1,2 @@
-allow mediaserver socket_device:sock_file write;
 allow mediaserver firmware_file:dir search;
+allow mediaserver socket_device:sock_file write;

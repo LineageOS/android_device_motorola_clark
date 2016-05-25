@@ -1,6 +1,5 @@
 allow mm-qcamerad camera_prop:property_service set;
-allow mm-qcamerad persist_file:file { read open getattr };
-allow mm-qcamerad persist_file:dir { getattr open read search  };
-allow mm-qcamerad property_socket:sock_file write;
 allow mm-qcamerad init:unix_stream_socket connectto;
-
+allow mm-qcamerad persist_file:dir { getattr open read search  };
+allow mm-qcamerad persist_file:file { read open getattr };
+allow mm-qcamerad property_socket:sock_file write;
