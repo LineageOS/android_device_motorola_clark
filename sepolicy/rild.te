@@ -1,5 +1,6 @@
 allow rild block_device:dir search;
 allow rild firmware_file:dir { read open search };
+allow rild fsg_file:dir { open read };
 allow rild persist_file:dir search;
 allow rild persist_file:file { getattr read write open };
 allow rild radio_data_file:chr_file { create open read write };
