@@ -21,3 +21,4 @@
 /system/bin/batt_health                         u:object_r:batt_health_exec:s0
 /system/bin/charge_only_mode                    u:object_r:charge_only_mode_exec:s0
 /system/bin/perfd                               u:object_r:perfd_exec:s0
+/system/bin/thermanager                         u:object_r:thermanager_exec:s0
