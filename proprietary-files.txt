@@ -501,7 +501,6 @@ vendor/lib64/libqcmaputils.so
 etc/firmware/synaptics-s2726-15052160-1d19d9-clark.tdat
 etc/firmware/synaptics-s3528-15071401-1e29b4-clark.tdat
 etc/firmware/synaptics-s3528ar-15071401-1e29b4-clark.tdat
-bin/init.mmi.touch.sh
 
 # Sensors
 bin/motosh

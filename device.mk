@@ -90,6 +90,7 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
+    init.mmi.touch.sh \
     init.mmi.usb.rc \
     init.qcom.power.rc \
     init.qcom.rc \
