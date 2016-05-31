@@ -580,12 +580,6 @@ service ssr_setup /system/bin/ssr_setup
     class late_start
     oneshot
 
-service usb_uicc_daemon /system/bin/usb_uicc_client
-    class main
-    user system
-    group system log net_raw
-    oneshot
-
 service batt_health /system/bin/batt_health
     class main
     group mot_pwric
