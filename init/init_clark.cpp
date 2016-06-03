@@ -54,6 +54,9 @@ void vendor_load_properties()
 
     property_set("ro.product.model", sku);
 
+    property_set("ro.build.product", "clark");
+    property_set("ro.product.device", "clark");
+
     if (strstr(sku, "XT1572")) {
         property_set("ro.product.display", "Moto X Style");
         property_set("ro.telephony.default_network", "9");
