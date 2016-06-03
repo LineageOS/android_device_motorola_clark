@@ -209,6 +209,12 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2
 
+# This jar is needed for MSIM manual provisioning and for other
+# telephony related functionalities to work.
+PRODUCT_BOOT_JARS += telephony-ext
+
+PRODUCT_PACKAGES += telephony-ext
+
 # Sensors
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf \
