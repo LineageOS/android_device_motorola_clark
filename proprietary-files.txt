@@ -358,17 +358,10 @@ vendor/lib/libulp2.so
 etc/izat.conf
 
 # Adreno GPU
-etc/firmware/a225p5_pm4.fw
-etc/firmware/a225_pfp.fw
-etc/firmware/a225_pm4.fw
-etc/firmware/a300_pfp.fw
-etc/firmware/a300_pm4.fw
-etc/firmware/a330_pfp.fw
-etc/firmware/a330_pm4.fw
-etc/firmware/a420_pfp.fw
-etc/firmware/a420_pm4.fw
 etc/firmware/leia_pfp_470.fw
 etc/firmware/leia_pm4_470.fw
+vendor/firmware/a420_pfp.fw
+vendor/firmware/a420_pm4.fw
 vendor/lib/libC2D2.so
 vendor/lib/libadreno_utils.so
 vendor/lib/libbccQTI.so
