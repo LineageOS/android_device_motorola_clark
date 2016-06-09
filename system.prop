@@ -28,6 +28,7 @@ ro.config.vc_call_vol_steps=8
 ro.qc.sdk.audio.ssr=false
 ro.qc.sdk.audio.fluencetype=fluence
 ro.audio.monitorRotation=true
+ro.audio.flinger_standbytime_ms=300
 
 # Bluetooth
 bluetooth.hfp.client=1
