@@ -48,6 +48,11 @@ ro.qc.sdk.camera.facialproc=false
 # Coresight
 persist.debug.coresight.config=stm-events
 
+# Dalvik
+dalvik.vm.boot-dex2oat-threads=4
+dalvik.vm.dex2oat-threads=2
+dalvik.vm.image-dex2oat-threads=4
+
 # DRM
 drm.service.enabled=true
 
