@@ -354,7 +354,6 @@ vendor/lib/liblbs_core.so
 vendor/lib/liblocationservice.so
 vendor/lib/libquipc_ulp_adapter.so
 vendor/lib/libulp2.so
-etc/izat.conf
 
 # Adreno GPU
 etc/firmware/leia_pfp_470.fw
