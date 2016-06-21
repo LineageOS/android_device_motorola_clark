@@ -58,7 +58,7 @@ void vendor_load_properties()
     property_set("ro.product.device", "clark");
 
     if (strstr(sku, "XT1572")) {
-        property_set("ro.product.display", "Moto X Style");
+        property_set("ro.product.name", "Moto X Style");
         property_set("ro.telephony.default_network", "9");
         property_set("telephony.lteOnCdmaDevice", "0");
         // Region specifics
@@ -81,7 +81,7 @@ void vendor_load_properties()
     } else if (strstr(sku, "XT1575")) {
         /* US */
         setSsim();
-        property_set("ro.product.display", "Moto X Pure Edition");
+        property_set("ro.product.name", "Moto X Pure Edition");
         property_set("ro.ril.force_eri_from_xml", "true");
         property_set("ro.telephony.get_imsi_from_sim", "true");
         property_set("ro.telephony.default_network", "10");
@@ -91,6 +91,7 @@ void vendor_load_properties()
     } else if (strstr(sku, "XT1570")) {
         /* China */
         setMsim();
+        property_set("ro.product.name", "Moto X Style");
         property_set("ro.telephony.default_network", "22");
         property_set("telephony.lteOnCdmaDevice", "1");
         property_set("persist.radio.mcfg_enabled", "1");
