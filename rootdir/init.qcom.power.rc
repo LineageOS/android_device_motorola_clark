@@ -49,7 +49,8 @@ on enable-low-power
     write /proc/sys/kernel/sched_downmigrate 85
     write /proc/sys/kernel/sched_freq_inc_notify 400000
     write /proc/sys/kernel/sched_freq_dec_notify 400000
-    write /proc/sys/kernel/sched_small_task 60
+    write /proc/sys/kernel/sched_init_task_load 100
+    write /proc/sys/kernel/sched_min_runtime 10
 
     # Bring both clusters online
     write /sys/devices/system/cpu/cpu0/online 1
@@ -73,11 +74,12 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay 19000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 99
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 19000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 960000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 768000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "65 460800:75 960000:80"
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 40000
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 80000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "65 460800:75 787200:80"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 19000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 79000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 1
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 384000
 
     # Setup Big interactive settings
@@ -89,15 +91,10 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/hispeed_freq 1248000
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy 1
     write /sys/devices/system/cpu/cpu4/cpufreq/interactive/target_loads "70 960000:80 1248000:85"
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 40000
-    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 80000
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/min_sample_time 19000
+    write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 79000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 384000
-
-    # re-enable bcl hotplug
-    write /sys/devices/soc.0/qcom,bcl.66/mode "disable"
-    write /sys/devices/soc.0/qcom,bcl.66/hotplug_mask 192
-    write /sys/devices/soc.0/qcom,bcl.66/hotplug_soc_mask 240
-    write /sys/devices/soc.0/qcom,bcl.66/mode "enable"
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 633600
 
     # Enable thermal core
     write /sys/module/msm_thermal/core_control/enabled 1
@@ -106,16 +103,6 @@ on enable-low-power
 
     # devfreq
     write /sys/class/devfreq/qcom,cpubw.27/governor bw_hwmon
-    write /sys/class/devfreq/qcom,cpubw.27/bw_hwmon/sample_ms 4
-    write /sys/class/devfreq/qcom,cpubw.27/bw_hwmon/io_percent 34
-    write /sys/class/devfreq/qcom,cpubw.27/bw_hwmon/hist_memory 20
-    write /sys/class/devfreq/qcom,cpubw.27/bw_hwmon/hyst_length 10
-    write /sys/class/devfreq/qcom,cpubw.27/bw_hwmon/low_power_ceil_mbps 0
-    write /sys/class/devfreq/qcom,cpubw.27/bw_hwmon/low_power_io_percent 34
-    write /sys/class/devfreq/qcom,cpubw.27/bw_hwmon/low_power_delay 20
-    write /sys/class/devfreq/qcom,cpubw.27/bw_hwmon/guard_band_mbps 0
-    write /sys/class/devfreq/qcom,cpubw.27/bw_hwmon/up_scale 250
-    write /sys/class/devfreq/qcom,cpubw.27/bw_hwmon/idle_mbps 1600
     write /sys/class/devfreq/qcom,mincpubw.28/governor cpufreq
 
     # enable rps static configuration
@@ -138,14 +125,17 @@ on enable-low-power
     # Bit: 384000 480000 633600 768000 864000 960000 1248000 1344000 1440000 1536000 1632000 1689600 1824000
     write /sys/module/cpu_boost/parameters/boost_ms 20
     write /sys/module/cpu_boost/parameters/sync_threshold 960000
-    write /sys/module/cpu_boost/parameters/input_boost_freq 0:960000
+    write /sys/module/cpu_boost/parameters/input_boost_freq 0:787200
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
 
     # android background processes are set to nice 10. Never schedule these on the a57s.
     write /proc/sys/kernel/sched_upmigrate_min_nice 9
 
-    # Enable timer migration to little cluster
-    write /proc/sys/kernel/power_aware_timer_migration 1
+    # re-enable bcl hotplug
+    write /sys/devices/soc.0/qcom,bcl.66/mode "disable"
+    write /sys/devices/soc.0/qcom,bcl.66/hotplug_mask 192
+    write /sys/devices/soc.0/qcom,bcl.66/hotplug_soc_mask 240
+    write /sys/devices/soc.0/qcom,bcl.66/mode "enable"
 
     start perfd
 
