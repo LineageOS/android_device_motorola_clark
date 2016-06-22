@@ -449,6 +449,7 @@ bin/diag_mdlog-getlogs
 bin/diag_mdlog-wrap
 bin/diag_qshrink4_daemon
 bin/port-bridge
+bin/rild
 bin/test_diag
 bin/ipacm-diag
 bin/netmgrd
@@ -482,6 +483,7 @@ framework/com.verizon.ims.jar
 framework/org.simalliance.openmobileapi.jar
 lib/libmdmcutback.so
 lib/libmotext_inf.so
+-lib/libril.so
 lib/libqmimotext.so
 lib64/libadropbox.so
 -vendor/lib/libtime_genoff.so

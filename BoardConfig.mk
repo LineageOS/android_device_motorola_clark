@@ -147,7 +147,8 @@ PROTOBUF_SUPPORTED := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 
 # Ril
-TARGET_RIL_VARIANT := caf
+BOARD_PROVIDES_LIBRIL := true
+BOARD_PROVIDES_RILD := true
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
