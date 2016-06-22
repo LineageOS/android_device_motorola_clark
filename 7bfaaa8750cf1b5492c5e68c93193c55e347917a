@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5faad753_50265317",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-06-22T16:36:05Z",
+      "side": 1,
+      "message": "sup with this? we need it and it wont build with the flag set...(also alphabetize)",
+      "revId": "7bfaaa8750cf1b5492c5e68c93193c55e347917a",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
