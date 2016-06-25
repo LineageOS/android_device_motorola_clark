@@ -117,7 +117,7 @@ on enable-low-power
     # Configure foreground and background cpuset
     write /dev/cpuset/foreground/cpus 0-5
     write /dev/cpuset/foreground/boost/cpus 4-5
-    write /dev/cpuset/background/cpus 0
+    write /dev/cpuset/background/cpus 0-2
     write /dev/cpuset/system-background/cpus 0-3
 
     # Available Freqs in stock kernel
