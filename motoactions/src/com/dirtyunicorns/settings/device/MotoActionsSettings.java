@@ -32,16 +32,17 @@ public class MotoActionsSettings {
     private static final String GESTURE_PICK_UP_KEY = "gesture_pick_up";
     private static final String GESTURE_IR_WAKEUP_KEY = "gesture_ir_wake_up";
     private static final String GESTURE_IR_SILENCER_KEY = "gesture_ir_silencer";
-
+    private static final String GESTURE_FLIP_TO_MUTE_KEY = "gesture_flip_to_mute";
 
     private final Context mContext;
     private final UpdatedStateNotifier mUpdatedStateNotifier;
 
     private boolean mCameraGestureEnabled;
     private boolean mChopChopEnabled;
+    private boolean mPickUpGestureEnabled;
     private boolean mIrWakeUpEnabled;
     private boolean mIrSilencerEnabled;
-    private boolean mPickUpGestureEnabled;
+    private boolean mFlipToMuteEnabled;
 
     public MotoActionsSettings(Context context, UpdatedStateNotifier updatedStateNotifier) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
@@ -79,6 +80,10 @@ public class MotoActionsSettings {
         return mIrSilencerEnabled;
     }
 
+    public boolean isFlipToMuteEnabled() {
+        return mFlipToMuteEnabled;
+    }
+
     public void cameraAction() {
         new CameraActivationAction(mContext).action();
     }
@@ -93,6 +98,7 @@ public class MotoActionsSettings {
         mIrWakeUpEnabled = sharedPreferences.getBoolean(GESTURE_IR_WAKEUP_KEY, true);
         mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, true);
         mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, false);
+        mFlipToMuteEnabled = sharedPreferences.getBoolean(GESTURE_FLIP_TO_MUTE_KEY, false);
     }
 
     private SharedPreferences.OnSharedPreferenceChangeListener mPrefListener =
@@ -111,6 +117,8 @@ public class MotoActionsSettings {
                 mPickUpGestureEnabled = sharedPreferences.getBoolean(GESTURE_PICK_UP_KEY, true);
             } else if (GESTURE_IR_SILENCER_KEY.equals(key)) {
                 mIrSilencerEnabled = sharedPreferences.getBoolean(GESTURE_IR_SILENCER_KEY, false);
+            } else if (GESTURE_FLIP_TO_MUTE_KEY.equals(key)) {
+                mFlipToMuteEnabled = sharedPreferences.getBoolean(GESTURE_FLIP_TO_MUTE_KEY, false);
             } else {
                 updated = false;
             }
