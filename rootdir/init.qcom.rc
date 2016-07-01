@@ -530,11 +530,10 @@ service per_proxy /system/bin/pm-proxy
     group system net_raw
     disabled
 
-service timekeep /system/bin/timekeep restore
+service time_daemon /system/bin/time_daemon
     class late_start
     user root
     group root
-    oneshot
 
 service adsprpcd /system/bin/adsprpcd
     class main
