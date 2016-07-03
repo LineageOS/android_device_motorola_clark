@@ -107,6 +107,10 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 384000
     write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 633600
 
+    # Enable and configure core_ctl
+    insmod /system/lib/modules/msm_core_ctl.ko
+    write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 1
+
     # Enable thermal core
     write /sys/module/msm_thermal/core_control/enabled 1
     write /sys/module/msm_thermal/parameters/enabled Y
@@ -148,6 +152,16 @@ on enable-low-power
     write /sys/devices/soc.0/qcom,bcl.66/hotplug_soc_mask 240
     write /sys/devices/soc.0/qcom,bcl.66/mode "enable"
 
+    # configure core_ctl module parameters
+    write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 4
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 72
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 28
+    write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms  100
+    write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
+    write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
+
+    rm /data/system/perfd/default_values
     start perfd
 
 on property:sys.boot_completed=1
