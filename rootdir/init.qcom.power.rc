@@ -148,6 +148,16 @@ on enable-low-power
     write /sys/devices/soc.0/qcom,bcl.66/hotplug_soc_mask 240
     write /sys/devices/soc.0/qcom,bcl.66/mode "enable"
 
+    # Enable and configure core_ctl
+    insmod /system/lib/modules/msm_core_ctl.ko
+    write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 2
+    write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 60
+    write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 30
+    write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
+    write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
+    write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
+
     start perfd
 
 on property:sys.boot_completed=1
