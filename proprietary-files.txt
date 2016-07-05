@@ -483,6 +483,7 @@ framework/org.simalliance.openmobileapi.jar
 lib/libmdmcutback.so
 lib/libmotext_inf.so
 lib/libqmimotext.so
+-lib/libril.so
 lib64/libadropbox.so
 vendor/lib/libimscamera_jni.so
 vendor/lib/libimsmedia_jni.so
