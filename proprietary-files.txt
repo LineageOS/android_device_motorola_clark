@@ -347,6 +347,7 @@ bin/xtwifi-inet-agent
 etc/permissions/com.qualcomm.location.xml
 -lib/libloc_api_v02.so
 -lib/libloc_ds_api.so
+-priv-app/com.qualcomm.location/com.qualcomm.location.apk
 vendor/bin/slim_ap_daemon
 vendor/lib/hw/flp.default.so
 vendor/lib/libflp.so
