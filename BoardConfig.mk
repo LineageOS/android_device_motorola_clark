@@ -64,9 +64,7 @@ BOARD_CHARGER_ENABLE_SUSPEND := true
 
 # CMHW
 BOARD_USES_CYANOGEN_HARDWARE := true
-BOARD_HARDWARE_CLASS := \
-    $(DEVICE_PATH)/cmhw \
-    hardware/cyanogen/cmhw
+BOARD_HARDWARE_CLASS := hardware/cyanogen/cmhw
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true

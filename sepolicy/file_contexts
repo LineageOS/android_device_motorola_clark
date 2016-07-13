@@ -18,7 +18,6 @@
 /sys/android_touch/doubletap2wake               u:object_r:sysfs_dt2w:s0
 /sys/class/leds/lcd-backlight/brightness        u:object_r:sysfs_light:s0
 /sys/power/autosleep                            u:object_r:sysfs_power:s0
-/sys/vibrator/pwmvalue                          u:object_r:vibeamp_sysfs:s0
 
 /system/bin/adspd                               u:object_r:adspd_exec:s0
 /system/bin/batt_health                         u:object_r:batt_health_exec:s0
