@@ -210,6 +210,7 @@ on post-fs-data
     chmod 2755 /data/misc/perfd
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
+    rm /data/system/perfd/default_values
 
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
@@ -605,7 +606,8 @@ service adspd /system/bin/adspd
 service perfd /system/bin/perfd
     class main
     user root
-    disabled
+    group system
+    socket perfd seqpacket 0666 root system
     writepid /dev/cpuset/system-background/tasks
 
 service iop /system/bin/iop

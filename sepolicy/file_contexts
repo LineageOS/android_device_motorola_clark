@@ -17,12 +17,15 @@
 
 /sys/android_touch/doubletap2wake               u:object_r:sysfs_dt2w:s0
 /sys/class/leds/lcd-backlight/brightness        u:object_r:sysfs_light:s0
+/sys/module/lpm_levels(/.*)?                    u:object_r:sysfs_power_management:s0
+/sys/module/msm_performance(/.*)?               u:object_r:sysfs_performance:s0
 /sys/power/autosleep                            u:object_r:sysfs_power:s0
 
 /system/bin/adspd                               u:object_r:adspd_exec:s0
 /system/bin/batt_health                         u:object_r:batt_health_exec:s0
 /system/bin/charge_only_mode                    u:object_r:charge_only_mode_exec:s0
 /system/bin/hardware_revisions.sh               u:object_r:hwrev_exec:s0
+/system/bin/init.qcom.power.sh                  u:object_r:init-power-sh_exec:s0
 /system/bin/motosh                              u:object_r:sensors_exec:s0
 /system/bin/perfd                               u:object_r:perfd_exec:s0
 /system/bin/thermanager                         u:object_r:thermanager_exec:s0
