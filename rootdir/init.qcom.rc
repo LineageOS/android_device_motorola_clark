@@ -605,7 +605,8 @@ service adspd /system/bin/adspd
 service perfd /system/bin/perfd
     class main
     user root
-    disabled
+    group system
+    socket perfd seqpacket 0666 root system
     writepid /dev/cpuset/system-background/tasks
 
 service iop /system/bin/iop
