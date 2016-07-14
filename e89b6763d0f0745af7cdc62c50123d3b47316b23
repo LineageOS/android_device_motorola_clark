@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_7c273d14",
+        "filename": "rootdir/bin/init.qcom.power.sh",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-07-14T12:41:21Z",
+      "side": 1,
+      "message": "we could probably set min_cpus 0 here (i manually set it and will test it out today)",
+      "revId": "e89b6763d0f0745af7cdc62c50123d3b47316b23",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
