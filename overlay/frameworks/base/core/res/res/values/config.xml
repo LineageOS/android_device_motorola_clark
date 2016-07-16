@@ -438,4 +438,13 @@
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
 
+    <!-- Proximity check on screen on -->
+    <bool name="config_proximityCheckOnWake">true</bool>
+
+    <!-- Proximity check timeout -->
+    <integer name="config_proximityCheckTimeout">100</integer>
+
+    <!-- Proximity check on screen on default -->
+    <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
+
 </resources>
