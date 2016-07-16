@@ -724,18 +724,6 @@
 		<ctl name="TFA9890 earpiece mode" value="Off" />
 	</path>
 
-	<path name="speaker-safe">
-		<!-- Bottom speaker only -->
-		<!-- Enable Mixers to power up Right IC only -->
-		<ctl name="SLIM_0_RX Channels" value="One" />
-		<ctl name="AIF1TX2 Input 1" value="SLIMRX1" />
-		<!-- Select mono channel on Right IC -->
-		<ctl name="NXP Right Ch Select" value="3" />
-		<!-- Disable earpiece mode this toggles gpio -->
-		<ctl name="TFA9890 earpiece mode" value="Off" />
-		<ctl name="Left SPK Mux" value="Off" />
-	</path>
-
 	<path name="speaker-mic">
 		<path name="mic2" />
 	</path>
@@ -836,28 +824,8 @@
 		<ctl name="TFA9890 earpiece mode" value="Off" />
 	</path>
 
-	<path name="speaker-safe-and-headphones">
-		<path name="headphones" />
-		<!-- Bottom speaker only -->
-		<!-- Enable Mixers to power up Right IC only -->
-		<ctl name="AIF1TX2 Input 1" value="SLIMRX1" />
-		<ctl name="AIF1TX2 Input 2" value="SLIMRX2" />
-		<!-- <ctl name="AIF1TX1 Input 2" value="SLIMRX2" /> -->
-		<!-- Select left channel on Right IC -->
-		<ctl name="NXP Right Ch Select" value="3" />
-		<!-- Disable earpiece mode this toggles gpio -->
-		<ctl name="TFA9890 earpiece mode" value="Off" />
-		<ctl name="Left SPK Mux" value="Off" />
-	</path>
-
 	<path name="speaker-and-line">
 		<path name="speaker-and-headphones" />
-		<ctl name="HPOUT1 Digital Volume" id="0" value="128" />
-		<ctl name="HPOUT1 Digital Volume" id="1" value="128" />
-	</path>
-
-	<path name="speaker-safe-and-line">
-		<path name="speaker-safe-and-headphones" />
 		<ctl name="HPOUT1 Digital Volume" id="0" value="128" />
 		<ctl name="HPOUT1 Digital Volume" id="1" value="128" />
 	</path>
