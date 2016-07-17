@@ -57,12 +57,6 @@ for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
     else
         cp $SRC/system/$FILE $BASE/$DEST
     fi
-    if [[ $FILE == *"lib"* ]]  && [[ $FILE != *"lib64"* ]]; then
-       echo "Attempting to get 64Bit file"
-       FILE64="${FILE/lib/lib64}"
-       DEST64="${DEST/lib/lib64}"
-       cp $SRC/system/$FILE64 $BASE/$DEST64
-    fi
   fi
 done
 
