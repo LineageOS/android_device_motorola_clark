@@ -407,7 +407,9 @@ bin/xtwifi-client
 bin/xtwifi-inet-agent
 etc/permissions/com.qualcomm.location.xml
 -lib/libloc_api_v02.so
+-lib64/libloc_api_v02.so
 -lib/libloc_ds_api.so
+-lib64/libloc_ds_api.so
 vendor/bin/slim_ap_daemon
 vendor/lib/hw/flp.default.so
 vendor/lib64/hw/flp.default.so
@@ -595,6 +597,7 @@ lib64/libmdmcutback.so
 lib/libmotext_inf.so
 lib64/libmotext_inf.so
 -lib/libril.so
+-lib64/libril.so
 lib/libqmimotext.so
 lib64/libqmimotext.so
 lib64/libadropbox.so
@@ -642,6 +645,7 @@ bin/time_daemon
 vendor/lib/libTimeService.so
 vendor/lib64/libTimeService.so
 -vendor/lib/libtime_genoff.so
+-vendor/lib64/libtime_genoff.so
 
 # Wat - weird files
 bin/ssr_setup
