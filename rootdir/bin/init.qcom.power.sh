@@ -141,8 +141,7 @@ write /dev/cpuset/system-background/cpus 0-3
 # android background processes are set to nice 10. Never schedule these on the a57s.
 write /proc/sys/kernel/sched_upmigrate_min_nice 9
 
-# Enable thermal core
-write /sys/module/msm_thermal/core_control/enabled 1
+# set GPU default governor to msm-adreno-tz
 write /sys/class/devfreq/fdb00000.qcom,kgsl-3d0/governor msm-adreno-tz
 
 # re-enable thermal and BCL hotplug
