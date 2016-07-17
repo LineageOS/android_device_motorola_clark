@@ -551,7 +551,7 @@ vendor/lib64/libwqe.so
 
 # Radio
 -app/ims/ims.apk
--app/MotoSignatureApp/MotoSignatureApp.apk
+-app/MotoSignatureApp/MotoSignatureApp.apk:PRESIGNED
 -priv-app/atfwd/atfwd.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/diag_klog
