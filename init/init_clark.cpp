@@ -75,8 +75,8 @@ void vendor_load_properties()
             property_set("ro.build.fingerprint", "motorola/clark_retla_ds/clark_ds:6.0/MPH24.49-18/18:user/release-keys");
         } else {
             setSsim();
-            property_set("ro.build.description", "clark_reteu-user 5.1.1 LPH23.116-18 23 release-keys");
-            property_set("ro.build.fingerprint", "motorola/clark_reteu/clark:5.1.1/LPH23.116-18/23:user/release-keys");
+            property_set("ro.build.description", "clark_reteu-user 6.0.1 MPHS24.107-58-1 1 release-keys");
+            property_set("ro.build.fingerprint", "motorola/clark_reteu/clark:6.0.1/MPHS24.107-58-1/1:user/release-keys");
         }
     } else if (strstr(sku, "XT1575")) {
         /* US */
