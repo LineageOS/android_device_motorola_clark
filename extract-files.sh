@@ -4,6 +4,19 @@
 export DEVICE=clark
 export VENDOR=motorola
 
+# Load extractutils and do some sanity checks
+MY_DIR="${BASH_SOURCE%/*}"
+if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
+
+CM_ROOT="$MY_DIR"/../../..
+
+HELPER="$CM_ROOT"/vendor/cm/build/tools/extract_utils.sh
+if [ ! -f "$HELPER" ]; then
+    echo "Unable to find helper script at $HELPER"
+    exit 1
+fi
+. "$HELPER"
+
 if [ $# -eq 0 ]; then
   SRC=adb
 else
@@ -20,44 +33,9 @@ else
   fi
 fi
 
-BASE=../../../vendor/$VENDOR/$DEVICE/proprietary
-rm -rf $BASE/../*
+# Initialize the helper
+setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
 
-mkdir -p $BASE/lib64/hw
-mkdir -p $BASE/lib/hw
-mkdir -p $BASE/vendor/lib64/hw
-mkdir -p $BASE/vendor/lib/hw
-mkdir -p $BASE/vendor/lib64/egl
-mkdir -p $BASE/vendor/lib/egl
-mkdir -p $BASE/vendor/lib64/mediadrm
-mkdir -p $BASE/vendor/lib/mediadrm
+extract "$MY_DIR"/proprietary-files.txt "$SRC"
 
-for FILE in `egrep -v '(^#|^$)' proprietary-files.txt`; do
-  OLDIFS=$IFS IFS=":" PARSING_ARRAY=($FILE) IFS=$OLDIFS
-  FILE=`echo ${PARSING_ARRAY[0]} | sed -e "s/^-//g"`
-  DEST=${PARSING_ARRAY[1]}
-  if [ -z $DEST ]
-  then
-    DEST=$FILE
-  fi
-  DIR=`dirname $DEST`
-  if [ ! -d $BASE/$DIR ]; then
-    mkdir -p $BASE/$DIR
-  fi
-  # Try CM target first
-  if [ "$SRC" = "adb" ]; then
-    adb pull /system/$DEST $BASE/$DEST
-    # if file does not exist try OEM target
-    if [ "$?" != "0" ]; then
-        adb pull /system/$FILE $BASE/$DEST
-    fi
-  else
-    if [ -r $SRC/system/$DEST ]; then
-        cp $SRC/system/$DEST $BASE/$DEST
-    else
-        cp $SRC/system/$FILE $BASE/$DEST
-    fi
-  fi
-done
-
-./setup-makefiles.sh
+"$MY_DIR"/setup-makefiles.sh

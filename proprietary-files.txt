@@ -99,7 +99,7 @@ bin/btnvtool
 bin/hci_qcomm_init
 bin/wcnss_filter
 etc/user_bhd_psy.conf
-etc/user_dbg_bhd_psy.conf
+etc/user_bhd_psy.conf:etc/user_dbg_bhd_psy.conf
 etc/firmware/nvm_tlv.bin
 etc/firmware/nvm_tlv_1.3.bin
 etc/firmware/nvm_tlv_2.1.bin
@@ -125,7 +125,7 @@ etc/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw
 etc/permissions/com.motorola.camera.xml
 etc/permissions/com.motorola.gallery.xml
-lib/hw/camera.vendor.msm8992.so
+lib/hw/camera.msm8992.so:lib/hw/camera.vendor.msm8992.so
 lib/libmot_lux_standardization.so
 lib/libadvalgcore.so
 lib/libAisAdapter.so
@@ -550,7 +550,7 @@ vendor/lib64/libwqe.so
 
 # Radio
 -app/ims/ims.apk
--app/MotoSignatureApp/MotoSignatureApp.apk
+-app/MotoSignatureApp/MotoSignatureApp.apk:app/MotoSignatureApp/MotoSignatureApp.apk:PRESIGNED
 -priv-app/atfwd/atfwd.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
 bin/diag_klog
