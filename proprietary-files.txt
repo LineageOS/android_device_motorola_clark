@@ -45,7 +45,6 @@ vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
 lib/soundfx/libmmieffectswrapper.so
-lib/soundfx/libspeakerbundle.so
 etc/acdbdata/General_cal.acdb
 etc/acdbdata/Bluetooth_cal.acdb
 etc/acdbdata/Global_cal.acdb
