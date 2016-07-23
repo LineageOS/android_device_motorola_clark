@@ -37,3 +37,9 @@ on boot
     write /sys/module/process_reclaim/parameters/pressure_min 10
     write /sys/module/process_reclaim/parameters/per_swap_size 1024
     exec - root root system -- /system/bin/init.qcom.power.sh
+
+on enable-low-power
+    stop perfd
+
+on property:sys.boot_completed=1
+    trigger enable-low-power
