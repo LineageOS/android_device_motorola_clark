@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_55f0fdc9",
+        "filename": "rootdir/init.qcom.power.rc",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-07-23T10:20:14Z",
+      "side": 1,
+      "message": "uhh, we want perfd running...\n\nalso, there\u0027s no real reason to create \u0027enable-low-power\u0027 to do just one thing on boot_completed",
+      "revId": "09dd22cb1b8026e96ef7105f4514eda65e673237",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_b5e37105",
+        "filename": "sepolicy/init-power-sh.te",
+        "patchSetId": 4
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-07-23T10:20:14Z",
+      "side": 1,
+      "message": "no, you should label them instead",
+      "revId": "09dd22cb1b8026e96ef7105f4514eda65e673237",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
