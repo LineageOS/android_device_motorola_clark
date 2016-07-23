@@ -135,7 +135,7 @@ write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
 # Configure foreground and background cpuset
 write /dev/cpuset/foreground/cpus 0-5
 write /dev/cpuset/foreground/boost/cpus 4-5
-write /dev/cpuset/background/cpus 0-2
+write /dev/cpuset/background/cpus 0
 write /dev/cpuset/system-background/cpus 0-3
 
 # android background processes are set to nice 10. Never schedule these on the a57s.
@@ -150,6 +150,9 @@ get-set-forall /sys/devices/soc.0/qcom,bcl.*/mode disable
 get-set-forall /sys/devices/soc.0/qcom,bcl.*/hotplug_mask $bcl_hotplug_mask
 get-set-forall /sys/devices/soc.0/qcom,bcl.*/hotplug_soc_mask $bcl_hotplug_soc_mask
 get-set-forall /sys/devices/soc.0/qcom,bcl.*/mode enable
+
+#enable vdd restriction to avoid voltages overheating
+write /sys/module/msm_thermal/vdd_restriction/enabled 1
 
 # allow CPUs to go in deeper idle state than C0
 write /sys/module/lpm_levels/parameters/sleep_disabled 0
