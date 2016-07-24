@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_e62ce148",
+        "filename": "overlay/frameworks/base/core/res/res/xml/power_profile.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 15573
+      },
+      "writtenOn": "2016-07-24T05:56:49Z",
+      "side": 1,
+      "message": "strange zero? consumption for the big cluster",
+      "revId": "8e0d4ac72938f451092f7acdf1546a6dd1236f88",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fa7e38b_6618f11c",
+        "filename": "overlay/frameworks/base/core/res/res/xml/power_profile.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 15573
+      },
+      "writtenOn": "2016-07-24T05:56:49Z",
+      "side": 1,
+      "message": "this seems to be set zero if big cluster is set at min_speed at 633 but our is set min at 384, so 384 and 480 has consumption it couldn\u0027t be zero",
+      "revId": "8e0d4ac72938f451092f7acdf1546a6dd1236f88",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
