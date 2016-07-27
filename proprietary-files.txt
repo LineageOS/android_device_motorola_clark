@@ -176,14 +176,12 @@ vendor/lib/libmmcamera_cac2_lib.so
 vendor/lib/libmmcamera2_imglib_modules.so
 vendor/lib/libmmcamera2_q3a_core.so
 vendor/lib/libmmcamera2_sensor_debug.so
-vendor/lib64/libmmcamera2_sensor_debug.so
 vendor/lib/libmmcamera_isp_clamp_viewfinder40.so
 vendor/lib/libmmcamera_hdr_gb_lib.so
 vendor/lib/libmmcamera_isp_sce40.so
 vendor/lib/libmmcamera2_wnr_module.so
 vendor/lib/libmmcamera_isp_demosaic44.so
 vendor/lib/libmmcamera2_stats_algorithm.so
-vendor/lib64/libmmcamera2_stats_algorithm.so
 vendor/lib/libmmcamera_isp_be_stats44.so
 vendor/lib/libmmcamera_isp_bg_stats44.so
 vendor/lib/libmmcamera_isp_color_xform_viewfinder40.so
