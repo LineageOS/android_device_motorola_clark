@@ -96,6 +96,7 @@ if [ -e /system/lib/modules/msm_core_ctl.ko ]; then
         write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
         write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
         write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
+        chown system.system /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
     fi
 fi
 
