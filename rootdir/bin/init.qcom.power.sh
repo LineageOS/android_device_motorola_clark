@@ -96,6 +96,7 @@ write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 20
 write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 5
 write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 5000
 write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred 1
+chown system:system /sys/devices/system/cpu/cpu4/core_ctl/min_cpus
 
 # Available Freqs in stock kernel
 # Little: 384000 460800 600000 672000 787200 864000 960000 1248000 1440000
