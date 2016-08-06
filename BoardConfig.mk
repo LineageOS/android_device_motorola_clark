@@ -140,6 +140,7 @@ BOARD_USES_QC_TIME_SERVICES := true
 USE_CLANG_PLATFORM_BUILD := true
 
 # Power
+TARGET_POWERHAL_SET_INTERACTIVE_EXT := $(DEVICE_PATH)/power/power_ext.c
 TARGET_POWERHAL_VARIANT := qcom
 
 # Protobuf-c is supported in this build
