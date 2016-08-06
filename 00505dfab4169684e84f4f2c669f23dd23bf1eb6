@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_3beaf674",
+        "filename": "BoardConfig.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 15573
+      },
+      "writtenOn": "2016-08-06T20:11:49Z",
+      "side": 1,
+      "message": "it should be a good idea to also define gpu platform, line should look:\nTARGET_BOARD_PLATFORM_GPU :\u003d qcom-adreno418",
+      "revId": "00505dfab4169684e84f4f2c669f23dd23bf1eb6",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
