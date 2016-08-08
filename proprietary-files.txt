@@ -410,7 +410,6 @@ vendor/lib/libSHIMDivxDrm.so
 
 # Motorola
 bin/batt_health
-bin/charge_only_mode
 bin/dbvc_atvc_property_set
 bin/hardware_revisions.sh
 
