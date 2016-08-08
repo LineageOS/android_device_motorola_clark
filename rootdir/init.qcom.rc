@@ -575,10 +575,10 @@ service batt_health /system/bin/batt_health
     class main
     group mot_pwric
 
-service charge_only_mode /system/bin/charge_only_mode
-    user root
-    group graphics system input
-    disabled
+service charger /charger
+    class charger
+    group log
+    seclabel u:r:healthd:s0
 
 service motosh /system/bin/motosh boot
     class late_start
