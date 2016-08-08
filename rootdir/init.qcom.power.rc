@@ -25,7 +25,6 @@ on moto-charger
     write /sys/class/devfreq/qcom,cpubw.27/governor "powersave"
     write /sys/module/lpm_levels/parameters/sleep_disabled 0
     setprop sys.usb.config charging
-    start charge_only_mode
     start batt_health
     start thermanager
 
