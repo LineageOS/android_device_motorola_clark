@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3fa7e38b_b0f91cc9",
+        "filename": "rootdir/init.qcom.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 7880
+      },
+      "writtenOn": "2016-08-09T12:59:51Z",
+      "side": 1,
+      "message": "Might want to use the actual path instead; I think the /charger symlink is just here for legacy reasons:\nservice charger /sbin/healthd -c",
+      "revId": "68f29f608111f316ab3c6bfa4441ea707ea8988d",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
