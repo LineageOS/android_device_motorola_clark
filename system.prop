@@ -20,13 +20,13 @@ persist.audio.calfile4=/etc/acdbdata/Hdmi_cal.acdb
 persist.audio.calfile5=/etc/acdbdata/Headset_cal.acdb
 persist.audio.calfile6=/etc/acdbdata/Speaker_cal.acdb
 persist.audio.dualmic.config=endfire
-persist.audio.fluence.speaker=true
-persist.audio.fluence.voicecall=false
+persist.audio.fluence.speaker=false
+persist.audio.fluence.voicecall=true
 persist.audio.fluence.voicecomm=true
 persist.audio.fluence.voicerec=false
 ro.config.vc_call_vol_steps=8
 ro.qc.sdk.audio.ssr=false
-ro.qc.sdk.audio.fluencetype=fluence
+ro.qc.sdk.audio.fluencetype=none
 ro.audio.monitorRotation=true
 ro.audio.flinger_standbytime_ms=300
 
