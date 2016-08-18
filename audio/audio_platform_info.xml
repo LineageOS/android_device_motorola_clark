@@ -41,5 +41,6 @@
 
 	<!-- Input devices -->
 		<device name="SND_DEVICE_IN_HEADSET_MIC_AEC" acdb_id="47"/>
+		<device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" acdb_id="11"/>
 	</acdb_ids>
 </audio_platform_info>
