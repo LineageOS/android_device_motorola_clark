@@ -35,11 +35,13 @@
 		<device name="SND_DEVICE_OUT_SPEAKER_AND_HEADPHONES" acdb_id="9"/>
 		<device name="SND_DEVICE_OUT_SPEAKER" acdb_id="14"/>
 		<device name="SND_DEVICE_OUT_SPEAKER_REVERSE" acdb_id="14"/>
+		<device name="SND_DEVICE_OUT_VOICE_SPEAKER" acdb_id="15"/>
 		<device name="SND_DEVICE_OUT_SPEAKER_AND_HDMI" acdb_id="18"/>
 		<device name="SND_DEVICE_OUT_VOLTE_NB_HANDSET_TMUS" acdb_id="200"/>
 		<device name="SND_DEVICE_OUT_VOLTE_NB_ANC_HANDSET" acdb_id="200"/>
 
 	<!-- Input devices -->
 		<device name="SND_DEVICE_IN_HEADSET_MIC_AEC" acdb_id="47"/>
+		<device name="SND_DEVICE_IN_VOICE_SPEAKER_DMIC" acdb_id="11" />
 	</acdb_ids>
 </audio_platform_info>
