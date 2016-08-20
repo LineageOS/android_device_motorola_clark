@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_09a29b9b",
+        "filename": "audio/audio_platform_info.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 13274
+      },
+      "writtenOn": "2016-08-20T20:33:23Z",
+      "side": 1,
+      "message": "I\u0027m pretty sure this ID is incorrect. Need a log on stock with VoLTE to confirm.",
+      "range": {
+        "startLine": 45,
+        "startChar": 59,
+        "endLine": 45,
+        "endChar": 61
+      },
+      "revId": "170d759c3ad6d7ebece6c5f47d7fd889a5b5b8cb",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
