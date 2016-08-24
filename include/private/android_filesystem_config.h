@@ -32,6 +32,8 @@
 #include <private/android_filesystem_capability.h>
 #endif
 
+#define CAP_MASK_LONG(cap_name)  (1ULL << (cap_name))
+
 /* This is the master Users and Groups config for the platform.
  * DO NOT EVER RENUMBER
  */
@@ -94,9 +96,13 @@
 #define AID_NET_BW_STATS  3006  /* read bandwidth statistics */
 #define AID_NET_BW_ACCT   3007  /* change bandwidth statistics accounting */
 #define AID_NET_BT_STACK  3008  /* bluetooth: access config files */
-#define AID_QCOM_DIAG     3009  /* can read/write /dev/diag */
+#define AID_READPROC      3009  /* Allow /proc read access */
 
 #define AID_SENSORS       3011 /* access to /dev/socket/sensor_ctl_socket & QCCI/QCSI */
+
+/* The range 5000-5999 is also reserved for OEM, and must never be used here. */
+#define AID_OEM_RESERVED_2_START 5000
+#define AID_OEM_RESERVED_2_END   5999
 
 /* Motorola IDs */
 #define AID_MOT_ACCY      9000  /* access to accessory */
@@ -200,7 +206,6 @@ static const struct android_id_info android_ids[] = {
     { "shell",         AID_SHELL, },
     { "cache",         AID_CACHE, },
     { "diag",          AID_DIAG, },
-    { "qcom_diag",     AID_QCOM_DIAG, },
 
     { "net_bt_admin",  AID_NET_BT_ADMIN, },
     { "net_bt",        AID_NET_BT, },
@@ -210,6 +215,7 @@ static const struct android_id_info android_ids[] = {
     { "net_bw_stats",  AID_NET_BW_STATS, },
     { "net_bw_acct",   AID_NET_BW_ACCT, },
     { "net_bt_stack",  AID_NET_BT_STACK, },
+    { "readproc",      AID_READPROC, },
 
     { "sensors",       AID_SENSORS, },
 	
