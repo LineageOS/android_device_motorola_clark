@@ -62,7 +62,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/com.motorola.cameraone.xml:system/etc/permissions/com.motorola.cameraone.xml
 
 # CMActions
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     CMActions \
     libjni_CMActions
 
@@ -90,15 +90,15 @@ PRODUCT_PACKAGES += \
     Gello
 
 # GPS
-PRODUCT_PACKAGES += \
-    gps.msm8992 \
-    flp.conf \
-    gps.conf \
-    izat.conf \
-    lowi.conf \
-    quipc.conf \
-    sap.conf \
-    xtwifi.conf
+#PRODUCT_PACKAGES += \
+#    gps.msm8992 \
+#    flp.conf \
+#    gps.conf \
+#    izat.conf \
+#    lowi.conf \
+#    quipc.conf \
+#    sap.conf \
+#    xtwifi.conf
 
 # Init
 PRODUCT_PACKAGES += \
@@ -115,9 +115,9 @@ PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
     ro.product.name
 
 # IPA Manager
-PRODUCT_PACKAGES += \
-    ipacm \
-    IPACM_cfg.xml
+#PRODUCT_PACKAGES += \
+#    ipacm \
+#    IPACM_cfg.xml
 
 # Keylayout
 PRODUCT_COPY_FILES += \
