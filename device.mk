@@ -90,15 +90,15 @@ PRODUCT_PACKAGES += \
     Gello
 
 # GPS
-PRODUCT_PACKAGES += \
-    gps.msm8992 \
-    flp.conf \
-    gps.conf \
-    izat.conf \
-    lowi.conf \
-    quipc.conf \
-    sap.conf \
-    xtwifi.conf
+#PRODUCT_PACKAGES += \
+#    gps.msm8992 \
+#    flp.conf \
+#    gps.conf \
+#    izat.conf \
+#    lowi.conf \
+#    quipc.conf \
+#    sap.conf \
+#    xtwifi.conf
 
 # Init
 PRODUCT_PACKAGES += \
