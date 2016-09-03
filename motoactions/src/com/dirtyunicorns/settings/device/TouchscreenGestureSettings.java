@@ -18,7 +18,6 @@ package com.dirtyunicorns.settings.device;
 
 import com.android.internal.util.du.ScreenType;
 
-import android.app.ActionBar;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.os.Bundle;
@@ -30,8 +29,6 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceCategory;
 import android.preference.SwitchPreference;
-import android.view.Menu;
-import android.view.MenuItem;
 
 public class TouchscreenGestureSettings extends PreferenceActivity {
     private static final String CATEGORY_AMBIENT_DISPLAY = "ambient_display_key";
@@ -48,8 +45,6 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         if (ambientDisplayCat != null) {
             ambientDisplayCat.setEnabled(MotoActionsSettings.isDozeEnabled(getContentResolver()));
         }
-        final ActionBar actionBar = getActionBar();
-        actionBar.setDisplayHomeAsUpEnabled(true);
         Resources res = getResources();
         boolean hasChopChop = res.getBoolean(R.bool.config_hasChopChop);
         if (!hasChopChop){
@@ -98,14 +93,5 @@ public class TouchscreenGestureSettings extends PreferenceActivity {
         if (mNotificationManager.isNotificationPolicyAccessGranted() && mFlipClick) {
             mFlipPref.setChecked(true);
         }
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == android.R.id.home) {
-            onBackPressed();
-            return true;
-        }
-        return false;
     }
 }
