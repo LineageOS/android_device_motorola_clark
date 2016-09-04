@@ -31,6 +31,10 @@ PRODUCT_COPY_FILES += \
     frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
     frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
 
+# for android_filesystem_config.h
+PRODUCT_PACKAGES += \
+    fs_config_files
+
 PRODUCT_PACKAGES += \
     audio_policy.msm8992 \
     audio.a2dp.default \
