@@ -560,7 +560,6 @@ bin/diag_mdlog-getlogs
 bin/diag_mdlog-wrap
 bin/diag_qshrink4_daemon
 bin/port-bridge
-bin/rild
 bin/test_diag
 bin/ipacm-diag
 bin/netmgrd
@@ -596,8 +595,6 @@ lib/libmdmcutback.so
 lib64/libmdmcutback.so
 lib/libmotext_inf.so
 lib64/libmotext_inf.so
--lib/libril.so
--lib64/libril.so
 lib/libqmimotext.so
 lib64/libqmimotext.so
 lib64/libadropbox.so
