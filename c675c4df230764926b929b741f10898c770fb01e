@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa4df85_1141220c",
+        "filename": "overlay/frameworks/base/core/res/res/values/config.xml",
+        "patchSetId": 10
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-09-09T12:56:42Z",
+      "side": 0,
+      "message": "this is the stock value, can we just nuke it from our overlay?",
+      "revId": "c675c4df230764926b929b741f10898c770fb01e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
