@@ -85,7 +85,7 @@ void vendor_load_properties()
         property_set("ro.ril.force_eri_from_xml", "true");
         property_set("ro.telephony.get_imsi_from_sim", "true");
         property_set("ro.telephony.default_network", "10");
-        property_set("telephony.lteOnCdmaDevice", "1");
+//        property_set("telephony.lteOnCdmaDevice", "1");
         property_set("ro.build.description", "clark_retus-user 6.0 MPHS24.49-18-4 5 release-keys");
         property_set("ro.build.fingerprint", "motorola/clark_retus/clark:6.0/MPHS24.49-18-4/5:user/release-keys");
     } else if (sku == "XT1570") {
@@ -93,7 +93,7 @@ void vendor_load_properties()
         setMsim();
         property_set("ro.product.name", "Moto X Style");
         property_set("ro.telephony.default_network", "22");
-        property_set("telephony.lteOnCdmaDevice", "1");
+//        property_set("telephony.lteOnCdmaDevice", "1");
         property_set("persist.radio.mcfg_enabled", "1");
         property_set("persist.radio.force_on_dc", "true");
         property_set("persist.radio.rat_on", "combine");
