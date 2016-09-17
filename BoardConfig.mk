@@ -149,6 +149,8 @@ TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/fstab.qcom
 
 # Ril
 TARGET_RIL_VARIANT := caf
+BOARD_GLOBAL_CFLAGS += -DUSE_RIL_VERSION_11
+BOARD_GLOBAL_CPPFLAGS += -DUSE_RIL_VERSION_11
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
