@@ -338,7 +338,7 @@ service loc_launcher /system/bin/loc_launcher
 service qmuxd /system/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps nfc qcom_diag
+    group radio audio bluetooth gps nfc diag qcom_diag
 
 service netmgrd /system/bin/netmgrd
     class main
