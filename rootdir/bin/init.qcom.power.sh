@@ -84,20 +84,14 @@ write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 79000
 write /sys/devices/system/cpu/cpu4/cpufreq/interactive/ignore_hispeed_on_notif 1
 write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 384000
 
-# Enable and configure core_ctl (if available)
-if [ -e /system/lib/modules/msm_core_ctl.ko ]; then
-    insmod /system/lib/modules/msm_core_ctl.ko
-    if [ $? -eq 0 ]; then
-        restorecon -R /sys/devices/system/cpu # must restore after insmod
-        write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 2
-        write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
-        write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 60
-        write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 30
-        write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
-        write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
-        write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
-    fi
-fi
+# Configure core_ctl
+write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 2
+write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
+write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 60
+write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 30
+write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
+write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
+write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
 
 # Available Freqs in stock kernel
 # Little: 384000 460800 600000 672000 787200 864000 960000 1248000 1440000
