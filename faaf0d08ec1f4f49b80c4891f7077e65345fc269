@@ -22,6 +22,30 @@
       "revId": "faaf0d08ec1f4f49b80c4891f7077e65345fc269",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff2e2bb8_e2e55b0c",
+        "filename": "cmactions/src/com/cyanogenmod/settings/device/CMActionsService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 13897
+      },
+      "writtenOn": "2016-10-03T19:17:28Z",
+      "side": 1,
+      "message": "The problem is that mWakeLock.aquire() and mWakeLock.release() should be in screenTurnedOn() and screenTurnedOff() respectively. updateState() is called only once when the service is created, while screenTurnedOff() and screenTurnedOn() are called when ACTION_SCREEN_OFF and ACTION_SCREEN_ON are received.",
+      "parentUuid": "ff2e2bb8_a20eb3e2",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 99
+      },
+      "revId": "faaf0d08ec1f4f49b80c4891f7077e65345fc269",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
