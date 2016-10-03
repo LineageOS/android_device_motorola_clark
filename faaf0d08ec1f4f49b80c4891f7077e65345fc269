@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_a20eb3e2",
+        "filename": "cmactions/src/com/cyanogenmod/settings/device/CMActionsService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 15927
+      },
+      "writtenOn": "2016-10-03T18:54:51Z",
+      "side": 1,
+      "message": "I have a feeling this is why CMActionsWakeLock never let\u0027s my phone to sleep. Never, I mean 100% CPU on, 0% Deep Sleep!! Please workaround",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 77,
+        "endChar": 99
+      },
+      "revId": "faaf0d08ec1f4f49b80c4891f7077e65345fc269",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
