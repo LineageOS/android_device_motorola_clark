@@ -93,6 +93,30 @@
       "revId": "faaf0d08ec1f4f49b80c4891f7077e65345fc269",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff2e2bb8_c2c77745",
+        "filename": "cmactions/src/com/cyanogenmod/settings/device/CMActionsService.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 13897
+      },
+      "writtenOn": "2016-10-03T20:16:24Z",
+      "side": 1,
+      "message": "You don\u0027t need isInteractive() if you rely on the intents: https://developer.android.com/reference/android/content/Intent.html#ACTION_SCREEN_OFF\n\nAll you need is\n\n    @Override\n    public void screenTurnedOn() {\n        if (!mWakeLock.isHeld()) {\n            mWakeLock.acquire();\n        }\n        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {\n            screenStateNotifier.screenTurnedOn();\n        }\n    }\n\n    @Override\n    public void screenTurnedOff() {\n        for (ScreenStateNotifier screenStateNotifier : mScreenStateNotifiers) {\n            screenStateNotifier.screenTurnedOff();\n        }\n        if (mWakeLock.isHeld()) {\n            mWakeLock.release();\n        }\n    }\n\nThis should result in a minimal wakelock time.\n\nThis was necessary to enable the gestures reliably on my device running cm-13.0, I don\u0027t know about clark.",
+      "parentUuid": "ff2e2bb8_e27c3b22",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 13
+      },
+      "revId": "faaf0d08ec1f4f49b80c4891f7077e65345fc269",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
