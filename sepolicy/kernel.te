@@ -1,0 +1,3 @@
+allow kernel radio:process setsched;
+allow kernel system_app:process setsched;
+allow kernel untrusted_app:process setsched;
