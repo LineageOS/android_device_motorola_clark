@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_53e69846",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 13274
+      },
+      "writtenOn": "2016-10-05T20:10:28Z",
+      "side": 1,
+      "message": "I\u0027m not sure if these are still needed",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 31
+      },
+      "revId": "7afe80a98257843501d47fff542cb241db68fc69",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
