@@ -27,6 +27,8 @@ write_headers
 # The blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt
 
+printf '\n%s\n' "\$(call inherit-product, vendor/qcom/binaries/msm8992/graphics/graphics-vendor.mk)" >> "$PRODUCTMK"
+
 # We are done!
 write_footers
 
