@@ -317,12 +317,14 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
 service rmt_storage /system/bin/rmt_storage
     class core
     user root
-    group system
+    group system wakelock
+    writepid /dev/cpuset/system-background/tasks
 
 service rfs_access /system/bin/rfs_access
     class core
     user root
     group system net_raw
+    writepid /dev/cpuset/system-background/tasks
 
 service wcnss_filter /system/bin/wcnss_filter
     class late_start
@@ -334,15 +336,18 @@ service wcnss_filter /system/bin/wcnss_filter
 service loc_launcher /system/bin/loc_launcher
     class late_start
     group gps inet net_raw qcom_diag net_admin wifi
+    writepid /dev/cpuset/system-background/tasks
 
 service qmuxd /system/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps nfc diag qcom_diag
+    group radio audio bluetooth gps nfc diag qcom_diag wakelock
+    writepid /dev/cpuset/system-background/tasks
 
 service netmgrd /system/bin/netmgrd
     class main
-    group radio system
+    group radio system wakelock
+    writepid /dev/cpuset/system-background/tasks
 
 service ipacm-diag /system/bin/ipacm-diag
     class main
@@ -354,12 +359,14 @@ service ipacm /system/bin/ipacm
     class main
     user net_admin
     group net_admin inet
+    writepid /dev/cpuset/system-background/tasks
 
 service qti /system/vendor/bin/qti
     class main
     user radio
     group radio net_raw qcom_diag usb net_admin
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service p2p_supplicant /system/bin/wpa_supplicant \
     -ip2p0 -Dnl80211 -c/data/misc/wifi/p2p_supplicant.conf \
@@ -423,14 +430,16 @@ service ril-daemon /system/bin/rild
     socket cutback stream 660 media radio
     socket wpa_wlan0 dgram 660 wifi wifi
     user root
-    group radio cache inet misc audio log diag qcom_diag net_raw wifi compass
+    group radio cache inet misc audio log diag qcom_diag net_raw wifi compass wakelock
+    writepid /dev/cpuset/system-background/tasks
 
 service ril-daemon2 /system/bin/rild -c 2
     class main
     socket rild2 stream 660 root radio
     socket rild-debug2 stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
+    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log wakelock
+    writepid /dev/cpuset/system-background/tasks
 
 service ril-daemon3 /system/bin/rild -c 3
     class main
@@ -456,22 +465,26 @@ service qseecomd /system/bin/qseecomd
     class core
     user root
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 service per_mgr /system/bin/pm-service
     class core
     user system
     group system net_raw
+    writepid /dev/cpuset/system-background/tasks
 
 service per_proxy /system/bin/pm-proxy
     class core
     user system
     group system net_raw
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service time_daemon /system/bin/time_daemon
     class late_start
     user root
     group root
+    writepid /dev/cpuset/system-background/tasks
 
 service adsprpcd /system/bin/adsprpcd
     class main
@@ -502,6 +515,8 @@ service msm_irqbalance /system/bin/msm_irqbalance -f /system/etc/msm_irqbalance.
 service cnd /system/bin/cnd
     class main
     socket cnd stream 660 root inet
+    group root wakelock
+    writepid /dev/cpuset/system-background/tasks
 
 service ssr_setup /system/bin/ssr_setup
     class late_start
@@ -521,6 +536,7 @@ service charger /charger
     class charger
     group log
     seclabel u:r:healthd:s0
+    writepid /dev/cpuset/system-background/tasks
 
 service motosh /system/bin/motosh boot
     class late_start
@@ -563,3 +579,4 @@ service thermanager /system/bin/thermanager /system/etc/thermanager.xml
     class late_start
     user root
     group root
+    writepid /dev/cpuset/system-background/tasks
