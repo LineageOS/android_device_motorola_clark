@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ff2e2bb8_96780ef9",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-10-06T15:15:31Z",
+      "side": 1,
+      "message": "several other libs seem to rely on this",
+      "revId": "7afe80a98257843501d47fff542cb241db68fc69",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff2e2bb8_53e69846",
         "filename": "proprietary-files.txt",
         "patchSetId": 1
@@ -13,6 +30,30 @@
       "writtenOn": "2016-10-05T20:10:28Z",
       "side": 1,
       "message": "I\u0027m not sure if these are still needed",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 31
+      },
+      "revId": "7afe80a98257843501d47fff542cb241db68fc69",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff2e2bb8_361e62ba",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-10-06T15:15:31Z",
+      "side": 1,
+      "message": "these four do not appear to be",
+      "parentUuid": "ff2e2bb8_53e69846",
       "range": {
         "startLine": 447,
         "startChar": 0,
