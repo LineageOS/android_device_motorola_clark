@@ -87,14 +87,15 @@ write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 384000
 # Configure core_ctl
 write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
 write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 2
-write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 68
-write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 40
+write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 60
+write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 30
 write /sys/devices/system/cpu/cpu4/core_ctl/offline_delay_ms 100
 write /sys/devices/system/cpu/cpu4/core_ctl/task_thres 4
 write /sys/devices/system/cpu/cpu4/core_ctl/is_big_cluster 1
-write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 20
-write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 5
-write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 5000
+
+write /sys/devices/system/cpu/cpu0/core_ctl/busy_up_thres 0
+write /sys/devices/system/cpu/cpu0/core_ctl/busy_down_thres 0
+write /sys/devices/system/cpu/cpu0/core_ctl/offline_delay_ms 100
 write /sys/devices/system/cpu/cpu0/core_ctl/not_preferred 1
 
 # Available Freqs in stock kernel
