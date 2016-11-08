@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_7d2874e1",
+        "filename": "power/power_ext.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-11-08T21:05:40Z",
+      "side": 1,
+      "message": "this is always at 0/0, so i\u0027ll probably rip it back out eventually...",
+      "revId": "a661ebbd1ace0ff6013e655953dc938af06714f1",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
