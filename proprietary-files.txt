@@ -184,6 +184,12 @@ lib/libunshorten.so
 lib/soundfx/libmmieffectswrapper.so
 vendor/bin/audioflacapp
 vendor/bin/qti
+vendor/etc/perf-profile0.conf
+vendor/etc/perf-profile1.conf
+vendor/etc/perf-profile2.conf
+vendor/etc/perf-profile3.conf
+vendor/etc/perf-profile4.conf
+vendor/etc/perf-profile5.conf
 vendor/bin/slim_ap_daemon
 vendor/firmware/a420_pfp.fw
 vendor/firmware/a420_pm4.fw
