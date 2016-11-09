@@ -211,13 +211,6 @@ on post-fs-data
     # Create IOP daemon dir
     mkdir /data/misc/iop 0770 root system
 
-    # Create PERFD deamon related dirs
-    mkdir /data/misc/perfd 0755 root system
-    chmod 2755 /data/misc/perfd
-    mkdir /data/system/perfd 0770 root system
-    chmod 2770 /data/system/perfd
-    rm /data/system/perfd/default_values
-
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -560,13 +553,6 @@ service adspd /system/bin/adspd
    socket adspdsock stream 0660 system audio
    user audio
    group audio input qcom_diag
-
-service perfd /system/bin/perfd
-    class main
-    user root
-    group system
-    socket perfd seqpacket 0666 root system
-    writepid /dev/cpuset/system-background/tasks
 
 service iop /system/bin/iop
     class main
