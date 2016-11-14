@@ -55,6 +55,7 @@ PRODUCT_PACKAGES += \
     libmm-qcamera \
     libmmcamera_interface \
     libmmjpeg_interface \
+    libprotobuf-cpp-full \
     mm-qcamera-app \
     libshim_camera \
     Snap
