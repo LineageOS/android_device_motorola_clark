@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_9990ccef",
+        "filename": "audio/audio_platform_info.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-11-18T03:35:07Z",
+      "side": 1,
+      "message": "hmm, should have probably left this at 14\n\nmaybe i should flash stock and log this with a custom kernel like a true 1337ist",
+      "revId": "c2849cddba1b0478cf6079d8a74735386639d92e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
