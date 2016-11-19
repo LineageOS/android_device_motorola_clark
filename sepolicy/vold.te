@@ -1,0 +1,2 @@
+allow vold cache_file:dir create;
+allow vold cache_file:file setattr;
