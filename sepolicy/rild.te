@@ -6,6 +6,7 @@ allow rild persist_file:file { getattr read write open };
 allow rild radio_data_file:lnk_file read;
 allow rild radio_data_file:chr_file { create open read write };
 allow rild rmt_storage_prop:property_service set;
+allow rild rmt_storage_prop:file { getattr open read };
 allow rild sensors_device:chr_file { ioctl open read write };
 allow rild system_data_file:dir { write remove_name  add_name };
 allow rild system_data_file:sock_file { create setattr unlink };
