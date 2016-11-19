@@ -9,4 +9,5 @@ allow moto_wcnss_filter proc_sysrq:file { read write open };
 allow moto_wcnss_filter property_socket:sock_file write;
 allow moto_wcnss_filter self:capability { dac_override setuid setgid };
 allow moto_wcnss_filter sysfs_msmuart_file:file { read write open };
-allow moto_wcnss_filter wcnss_filter_exec:file { entrypoint read };
+allow moto_wcnss_filter wcnss_filter_exec:file { entrypoint read getattr };
+allow moto_wcnss_filter diag_device:chr_file { ioctl open read write };

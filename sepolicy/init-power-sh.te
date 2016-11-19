@@ -26,3 +26,8 @@ allow init-power-sh toolbox_exec:file rx_file_perms;
 
 # load core_ctl
 allow init-power-sh self:capability sys_module;
+
+allow init-power-sh rootfs:file { getattr open read };
+allow init-power-sh sysfs:dir { open read };
+allow init-power-sh sysfs:file getattr;
+allow init-power-sh sysfs:lnk_file getattr;
