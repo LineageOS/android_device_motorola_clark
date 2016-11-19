@@ -343,6 +343,7 @@ service loc_launcher /system/bin/loc_launcher
     class late_start
     group gps inet net_raw qcom_diag net_admin wifi
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service qmuxd /system/bin/qmuxd
     class main
