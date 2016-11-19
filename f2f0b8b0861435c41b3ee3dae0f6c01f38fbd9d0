@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff2e2bb8_83ba1107",
+        "filename": "sepolicy/adspd.te",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2016-11-19T22:50:33Z",
+      "side": 1,
+      "message": "ugh...this is so overly permissive (not that it wasn\u0027t before)",
+      "revId": "f2f0b8b0861435c41b3ee3dae0f6c01f38fbd9d0",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
