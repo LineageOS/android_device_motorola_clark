@@ -53,7 +53,7 @@ $(IMS_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	$(hide) ln -sf /system/vendor/lib64/$(notdir $@) $@
 
 WV_IMAGES := widevine.b00 widevine.b01 widevine.b02 widevine.b03 widevine.mdt
-WV_SYMLINKS := $(addprefix $(TARGET_OUT_ETC)/firmware/,$(notdir $(WV_IMAGES)))
+WV_SYMLINKS := $(addprefix $(TARGET_OUT)/vendor/firmware/,$(notdir $(WV_IMAGES)))
 $(WV_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@echo "Widevine firmware link: $@"
 	@mkdir -p $(dir $@)
