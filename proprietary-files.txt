@@ -291,8 +291,10 @@ vendor/lib/libqti-iop-client.so
 vendor/lib64/libqti-iop-client.so
 
 # DM/Sprint
--app/DMConfigUpdateLight/DMConfigUpdateLight.apk
--app/HiddenMenuLight/HiddenMenuLight.apk
+-app/DMConfigUpdate/DMConfigUpdate.apk
+-app/HiddenMenu/HiddenMenu.apk
+etc/permissions/com.android.omadm.service.xml
+etc/sysconfig/whitelist_com.android.omadm.service.xml
 lib/libdmengine.so
 lib/libdmjavaplugin.so
 -priv-app/CQATest/CQATest.apk
@@ -302,6 +304,7 @@ lib/libdmjavaplugin.so
 lib/libdmengine.so:priv-app/DMService/lib/arm/libdmengine.so
 lib/libdmjavaplugin.so:priv-app/DMService/lib/arm/libdmjavaplugin.so
 -priv-app/DiagMon/DiagMon.apk
+-priv-app/GCS/GCS.apk:priv-app/GCS/GCS.apk:PRESIGNED
 -priv-app/LifetimeData/LifetimeData.apk
 -priv-app/SprintDM/SprintDM.apk
 
