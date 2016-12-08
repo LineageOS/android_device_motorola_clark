@@ -10,5 +10,6 @@ allow rild rmt_storage_prop:file { getattr open read };
 allow rild sensors_device:chr_file { ioctl open read write };
 allow rild system_data_file:dir { write remove_name  add_name };
 allow rild system_data_file:sock_file { create setattr unlink };
+allow rild wifi_data_file:file r_file_perms;
 allow rild wpa:unix_dgram_socket sendto;
 allow rild wpa_socket:sock_file write;

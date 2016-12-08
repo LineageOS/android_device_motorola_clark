@@ -6,6 +6,7 @@ allow hwrev shell_exec:file read;
 
 allow hwrev hwrev_data_file:dir create_dir_perms;
 allow hwrev hwrev_data_file:file create_file_perms;
+allow hwrev rootfs:lnk_file getattr;
 allow hwrev system_file:file execute_no_trans;
 allow hwrev shell_exec:file getattr;
 allow hwrev sysfs:dir { open read };
