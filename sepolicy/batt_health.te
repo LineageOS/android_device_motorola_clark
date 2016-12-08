@@ -6,6 +6,7 @@ allow batt_health battery_data_file:dir { search write add_name remove_name };
 allow batt_health battery_data_file:file { open write create read append getattr setattr rename unlink };
 allow batt_health cache_file:dir { write remove_name add_name search };
 allow batt_health cache_file:file { create unlink open read write append getattr setattr };
+allow batt_health rootfs:lnk_file getattr;
 allow batt_health self:capability { dac_read_search dac_override chown net_admin fowner fsetid };
 allow batt_health self:netlink_kobject_uevent_socket { create setopt bind read };
 allow batt_health sysfs_thermal:dir { search read open };
