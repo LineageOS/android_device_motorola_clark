@@ -1,1 +1,2 @@
 allow priv_app exfat:dir rw_dir_perms;
+allow priv_app exfat:file rw_file_perms;

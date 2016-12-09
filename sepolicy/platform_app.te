@@ -2,3 +2,4 @@ allow platform_app battery_service:service_manager find;
 allow platform_app batteryproperties_service:service_manager find;
 allow platform_app persist_file:dir search;
 allow platform_app exfat:dir rw_dir_perms;
+allow platform_app exfat:file rw_file_perms;
