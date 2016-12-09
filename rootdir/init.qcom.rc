@@ -144,6 +144,9 @@ on boot
     symlink /firmware/image/modem_pr/mbn_ota /data/misc/radio/modem_config
     write /data/misc/radio/copy_complete 1
 
+    # Wifi firmware reload path
+    chown wifi wifi /sys/module/wlan/parameters/fwpath
+
 on post-fs
     mkdir /persist/camera 02755 oem_9004 oem_9004
     mkdir /persist/camera/ledcal 0755 camera oem_9004
