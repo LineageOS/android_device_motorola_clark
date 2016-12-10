@@ -133,12 +133,6 @@ write /proc/sys/kernel/sched_boost 0
 # set GPU default power level to 5 (180MHz) instead of 4 (305MHz)
 write /sys/class/kgsl/kgsl-3d0/default_pwrlevel 5
 
-# Configure foreground and background cpuset
-write /dev/cpuset/foreground/cpus 0-5
-write /dev/cpuset/foreground/boost/cpus 4-5
-write /dev/cpuset/background/cpus 0-2
-write /dev/cpuset/system-background/cpus 0-3
-
 # android background processes are set to nice 10. Never schedule these on the a57s.
 write /proc/sys/kernel/sched_upmigrate_min_nice 9
 
