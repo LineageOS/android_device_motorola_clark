@@ -272,12 +272,6 @@ vendor/lib/libchromatix_ov5693_video.so
 # CPU
 bin/msm_irqbalance
 bin/perfd
-vendor/etc/perf-profile0.conf
-vendor/etc/perf-profile1.conf
-vendor/etc/perf-profile2.conf
-vendor/etc/perf-profile3.conf
-vendor/etc/perf-profile4.conf
-vendor/etc/perf-profile5.conf
 vendor/lib/libqti-perfd-client.so
 vendor/lib64/libqti-perfd-client.so
 vendor/lib/libthermalclient.so
