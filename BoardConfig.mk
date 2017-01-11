@@ -71,6 +71,9 @@ TARGET_HW_DISK_ENCRYPTION := true
 # CPU
 ENABLE_CPUSETS := true
 
+# Enable real time lockscreen charging current values
+BOARD_GLOBAL_CFLAGS += -DBATTERY_REAL_INFO
+
 # Filesystems
 BOARD_BOOTIMAGE_PARTITION_SIZE := 41943040
 BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
