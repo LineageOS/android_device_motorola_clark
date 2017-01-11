@@ -161,9 +161,6 @@ ro.qc.sdk.sensors.gestures=true
 # SSR
 persist.sys.ssr.restart_level=ALL_ENABLE
 
-# Storage
-ro.sys.sdcardfs=true
-
 # Time
 persist.timed.enable=true
 
