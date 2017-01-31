@@ -64,6 +64,9 @@ ro.fm.transmitter=false
 # FRP
 ro.frp.pst=/dev/block/platform/soc.0/f9824900.sdhci/by-name/frp
 
+# Google Assistant
+ro.opa.eligible_device=true
+
 # GPS
 persist.gps.qc_nlp_in_use=0
 persist.mot.gps.assisted=false
