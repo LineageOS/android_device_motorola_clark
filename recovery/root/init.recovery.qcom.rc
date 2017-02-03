@@ -1,0 +1,36 @@
+# separate copy needed to use /sbin/linker64 instead of /system/bin/linker64
+service sbinqseecomd /sbin/qseecomd
+    oneshot
+    disabled
+    user root
+    group root
+    seclabel u:r:recovery:s0
+
+on fs
+    mkdir /firmware 0771 system system
+    mount ext4 /dev/block/bootdevice/by-name/modem /firmware ro nosuid nodev
+
+
+    # needed to make qseecomd work in recovery
+    chmod 0666 /dev/qseecom
+    chown system drmrpc /dev/qseecom
+    chmod 0664 /dev/ion
+    chown system system /dev/ion
+
+on property:ro.crypto.state=encrypted
+    start sbinqseecomd
+
+on property:ro.twrp.boot=1
+    mkdir /vendor
+    mkdir /vendor/firmware
+    mkdir /vendor/firmware/keymaster
+    symlink /firmware/image/keymaster.b00 /vendor/firmware/keymaster/keymaster.b00
+    symlink /firmware/image/keymaster.b01 /vendor/firmware/keymaster/keymaster.b01
+    symlink /firmware/image/keymaster.b02 /vendor/firmware/keymaster/keymaster.b02
+    symlink /firmware/image/keymaster.b03 /vendor/firmware/keymaster/keymaster.b03
+    symlink /firmware/image/keymaster.mdt /vendor/firmware/keymaster/keymaster.mdt
+    symlink /firmware/image/cmnlib.b00 /vendor/firmware/cmnlib.b00
+    symlink /firmware/image/cmnlib.b01 /vendor/firmware/cmnlib.b01
+    symlink /firmware/image/cmnlib.b02 /vendor/firmware/cmnlib.b02
+    symlink /firmware/image/cmnlib.b03 /vendor/firmware/cmnlib.b03
+    symlink /firmware/image/cmnlib.mdt /vendor/firmware/cmnlib.mdt
