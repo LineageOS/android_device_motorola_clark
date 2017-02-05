@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a288981_63792093",
+        "filename": "twrp.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 13274
+      },
+      "writtenOn": "2017-02-05T16:23:11Z",
+      "side": 1,
+      "message": "Looks like this is redundant if TW_INCLUDE_CRYPTO is already being set: https://github.com/omnirom/android_bootable_recovery/blob/8df3191beed34f7cbfc0bfd4041c692f8b98d9a2/Android.mk#L289",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 26
+      },
+      "revId": "b4d5fa267bfb0f16ee8d45f0ca31b73a337becc8",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
