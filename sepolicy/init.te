@@ -1,5 +1,5 @@
 allow init audio_device:chr_file { write ioctl };
-allow init debugfs:dir mounton;
+allow init debugfs:file write;
 allow init firmware_file:dir mounton;
 allow init graphics_device:chr_file { write ioctl };
 allow init hwrev_data_file:file append;
