@@ -1,4 +1,4 @@
-dontaudit perfd self:capability fsetid;
+dontaudit perfd self:capability { fsetid sys_ptrace };
 
 type_transition perfd mpctl_data_file:sock_file mpctl_socket;
 
