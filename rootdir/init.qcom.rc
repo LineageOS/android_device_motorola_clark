@@ -326,6 +326,12 @@ service rmt_storage /system/bin/rmt_storage
     group system wakelock
     writepid /dev/cpuset/system-background/tasks
 
+service rfs_access /system/bin/rfs_access
+    class core
+    user root
+    group system net_raw
+    writepid /dev/cpuset/system-background/tasks
+
 service wcnss_filter /system/bin/wcnss_filter
     class late_start
     user root

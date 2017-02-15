@@ -525,6 +525,7 @@ bin/ipacm-diag
 bin/netmgrd
 bin/qmi_motext_hook
 bin/qmuxd
+bin/rfs_access
 bin/rmt_storage
 vendor/bin/qti
 etc/diag_mdlog/Connection_Issues_V10.cfg
