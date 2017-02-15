@@ -1,5 +1,6 @@
 type rmt_storage_prop, property_type;
 
+allow rmt_storage self:capability net_raw;
 allow rmt_storage debugfs_rmt_storage:dir search;
 allow rmt_storage debugfs_rmt_storage:file w_file_perms;
 allow rmt_storage firmware_file:dir { search read };
