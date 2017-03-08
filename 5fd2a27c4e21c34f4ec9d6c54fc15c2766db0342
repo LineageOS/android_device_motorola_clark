@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da6255ed_1d73e3b2",
+        "filename": "recovery/root/sbin/liblog.so",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2017-03-08T13:55:55Z",
+      "side": 1,
+      "message": "sup with this? twrp should get its own liblog from the build system shouldn\u0027t it?",
+      "revId": "5fd2a27c4e21c34f4ec9d6c54fc15c2766db0342",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da6255ed_3d6ea7ca",
+        "filename": "recovery/root/sbin/qseecomd",
+        "patchSetId": 5
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2017-03-08T13:55:55Z",
+      "side": 1,
+      "message": "can\u0027t we pull this from vendor too?",
+      "revId": "5fd2a27c4e21c34f4ec9d6c54fc15c2766db0342",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
