@@ -311,8 +311,6 @@ lib/libdmjavaplugin.so:priv-app/DMService/lib/arm/libdmjavaplugin.so
 # DRM
 # TZBSP
 bin/qseecomd
-etc/permissions/com.google.widevine.software.drm.xml
-framework/com.google.widevine.software.drm.jar
 lib/hw/keystore.qcom.so
 lib64/hw/keystore.qcom.so
 vendor/lib/libdrmfs.so
@@ -346,9 +344,9 @@ vendor/lib/libSSEPKCS11.so
 vendor/lib64/libSSEPKCS11.so
 vendor/lib/libtzdrmgenprov.so
 vendor/lib64/libtzdrmgenprov.so
-vendor/lib/libwvdrm_L1.so
+vendor/lib/libwvdrm_L3.so
 vendor/lib/libwvm.so
-vendor/lib/libWVStreamControlAPI_L1.so
+vendor/lib/libWVStreamControlAPI_L3.so
 vendor/lib/mediadrm/libwvdrmengine.so
 
 # Display tuning
