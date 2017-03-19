@@ -1,1 +1,2 @@
 type adsp_serial_device, dev_type;
+type hid_gadget_device, dev_type;
