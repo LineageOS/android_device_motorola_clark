@@ -1,1 +1,4 @@
 type adsp_serial_device, dev_type;
+
+# USB Gadget
+type hid_gadget_device, dev_type, mlstrustedobject;
