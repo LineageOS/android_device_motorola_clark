@@ -165,7 +165,6 @@ BOARD_SEPOLICY_DIRS += \
 
 # Vendor Init
 TARGET_UNIFIED_DEVICE := true
-TARGET_INIT_VENDOR_LIB := libinit_clark
 TARGET_RECOVERY_DEVICE_MODULES := libinit_clark
 
 # Wifi
