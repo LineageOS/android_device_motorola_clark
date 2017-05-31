@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa82b9bf_536598df",
+        "filename": "audio/audio_platform_info.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 15927
+      },
+      "writtenOn": "2017-05-31T15:02:56Z",
+      "side": 1,
+      "message": "this should be 14",
+      "range": {
+        "startLine": 32,
+        "startChar": 55,
+        "endLine": 32,
+        "endChar": 57
+      },
+      "revId": "16bacfcc170df88fc3754d6eacabd3e75f0aa98e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa82b9bf_d3a0c8f6",
+        "filename": "audio/audio_platform_info.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 15927
+      },
+      "writtenOn": "2017-05-31T15:02:56Z",
+      "side": 1,
+      "message": "this also should be 14. Not actually correct, but I don\u0027t remember the number for the reversed speakers, they work well with 14 too anyway",
+      "range": {
+        "startLine": 36,
+        "startChar": 63,
+        "endLine": 36,
+        "endChar": 65
+      },
+      "revId": "16bacfcc170df88fc3754d6eacabd3e75f0aa98e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
