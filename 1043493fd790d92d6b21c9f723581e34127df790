@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da87b5cf_a3d5b944",
+        "filename": "sepolicy/untrusted_app.te",
+        "patchSetId": 9
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 3671
+      },
+      "writtenOn": "2017-06-05T02:22:01Z",
+      "side": 1,
+      "message": "I am not comfortable with this at all.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 61
+      },
+      "revId": "1043493fd790d92d6b21c9f723581e34127df790",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
