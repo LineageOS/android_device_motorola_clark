@@ -209,6 +209,7 @@ PRODUCT_PACKAGES += \
     libbson \
     librmnetctl \
     libshims_ims \
+    libshim_ril \
     libxml2
 
 # Sensors
