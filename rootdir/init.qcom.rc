@@ -7,7 +7,7 @@ on early-init
 
 on init
     # Symbols required for motorola blobs
-    export LD_SHIM_LIBS /system/vendor/lib64/lib-imsvt.so|libshims_ims.so
+    export LD_SHIM_LIBS /system/vendor/lib64/lib-imsvt.so|libshims_ims.so:/system/lib64/libandroid.so|libshim_ril.so
 
     write /proc/sys/vm/page-cluster 0
 
