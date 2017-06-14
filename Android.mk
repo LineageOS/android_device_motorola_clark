@@ -54,6 +54,14 @@ $(FIRMWARE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
 	@rm -rf $@
 	$(hide) ln -sf /$(notdir $@) $@
 
-ALL_DEFAULT_INSTALLED_MODULES += $(PERSIST_WCNSS) $(WCNSS_CFG_INI) $(IMS_SYMLINKS) $(WV_SYMLINKS) $(FIRMWARE_SYMLINKS)
+DMENGINE_FILES := libdmengine.so libdmjavaplugin.so
+DMENGINE_SYMLINKS := $(addprefix $(TARGET_OUT)/priv-app/DMService/lib/arm/,$(notdir $(DMENGINE_FILES)))
+$(DMENGINE_SYMLINKS): $(LOCAL_INSTALLED_MODULE)
+	@echo "DMEngine link: $@"
+	@mkdir -p $(dir $@)
+	@rm -rf $@
+	$(hide) ln -sf /system/lib/$(notdir $@) $@
+
+ALL_DEFAULT_INSTALLED_MODULES += $(PERSIST_WCNSS) $(WCNSS_CFG_INI) $(IMS_SYMLINKS) $(WV_SYMLINKS) $(FIRMWARE_SYMLINKS) $(DMENGINE_SYMLINKS)
 
 endif
