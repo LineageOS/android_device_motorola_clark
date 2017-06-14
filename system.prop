@@ -48,8 +48,6 @@ persist.cne.feature=1
 persist.vendor.dpm.feature=11
 
 # Camera
-media.stagefright.legacyencoder=true
-media.stagefright.less-secure=true
 persist.camera.HAL3.enabled=0
 persist.camera.tnr.video=on
 persist.camera.tnr.preview=on
