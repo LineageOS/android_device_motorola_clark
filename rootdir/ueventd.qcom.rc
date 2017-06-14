@@ -61,8 +61,8 @@
 /dev/smd6                 0660   system     system
 /dev/smd7                 0660   bluetooth  bluetooth
 /dev/ccid_bridge          0660   system     system
-/dev/ipa                  0660   net_admin  net_admin
-/dev/wwan_ioctl           0660   net_admin  net_admin
+/dev/ipa                  0660   system  net_admin
+/dev/wwan_ioctl           0660   system  net_admin
 /dev/ipaNatTable          0660   net_admin  net_admin
 /dev/rmnet_ctrl           0660   usb        usb
 /dev/dpl_ctrl             0660   usb        usb
@@ -226,6 +226,8 @@
 # wlan
 /dev/wcnss_wlan           0660   system     system
 /dev/wcnss_ctrl           0660   system     system
+/sys/devices/pci0000:00/0000:00:00.0/0000:01:00.0/net/wlan0/queues/rx-* rps_cpus 0660 system system
+
 #nfc permissions
 /dev/nfc-nci              0660    nfc         nfc
 /dev/assd                 0660    nfc         nfc
@@ -255,6 +257,8 @@
 # Subsystem Restart Ramdump
 /dev/ramdump*             0660   radio      radio
 
+# Add device block for FRP
+/dev/block/platform/soc.0/f9824900.sdhci/by-name/config    0600   system     system
 # HOB
 /dev/mot_hob_ram          0660   radio      radio
 

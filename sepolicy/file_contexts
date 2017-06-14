@@ -35,5 +35,4 @@
 /system/bin/hardware_revisions.sh               u:object_r:hwrev_exec:s0
 /system/bin/init.qcom.power.sh                  u:object_r:init-power-sh_exec:s0
 /system/bin/motosh                              u:object_r:sensors_exec:s0
-/system/bin/perfd                               u:object_r:perfd_exec:s0
 /system/bin/thermanager                         u:object_r:thermanager_exec:s0
