@@ -82,12 +82,12 @@ void vendor_load_properties()
         else if (car == "retbr") {
             /* Brazil */
             setMsim();
-            property_override("ro.build.description", "clark_retla_ds-user 6.0 MPH24.49-18 18 release-keys");
-            property_override("ro.build.fingerprint", "motorola/clark_retla_ds/clark_ds:6.0/MPH24.49-18/18:user/release-keys");
+            property_override("ro.build.description", "clark_retla_ds-user 7.0 NPH25.200-15 14 release-keys");
+            property_override("ro.build.fingerprint", "motorola/clark_retla_ds/clark_ds:7.0/NPH25.200-15/14:user/release-keys");
         } else {
             setSsim();
-            property_override("ro.build.description", "clark_reteu-user 6.0.1 MPHS24.107-58-1 1 release-keys");
-            property_override("ro.build.fingerprint", "motorola/clark_reteu/clark:6.0.1/MPHS24.107-58-1/1:user/release-keys");
+            property_override("ro.build.description", "clark_reteu-user 7.0 NPH25.200-15 14 release-keys");
+            property_override("ro.build.fingerprint", "motorola/clark_reteu/clark:7.0/NPH25.200-15/14:user/release-keys");
         }
     } else if (sku == "XT1575") {
         /* US */
