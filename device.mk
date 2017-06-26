@@ -190,6 +190,69 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     power.msm8992
 
+# Prop blacklist
+# TODO: these probably don't all need to be set
+#       ro.product.device and ro.build.fingerprint can't be blacklisted, otherwise build fails
+PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
+    gsm.sim.min.match \
+    persist.cne.feature \
+    persist.cne.logging.qxdm \
+    persist.data.iwlan.enable \
+    persist.data.netmgrd.qos.enable \
+    persist.eab.supported \
+    persist.ims.disableADBLogs \
+    persist.ims.disableDebugLogs \
+    persist.ims.disableIMSLogs \
+    persist.ims.disableQXDMLogs \
+    persist.ims.volte \
+    persist.ims.vt \
+    persist.ims.vt.epdg \
+    persist.radio.RATE_ADAPT_ENABLE \
+    persist.radio.REVERSE_QMI \
+    persist.radio.ROTATION_ENABLE \
+    persist.radio.VT_ENABLE \
+    persist.radio.VT_HYBRID_ENABLE \
+    persist.radio.VT_USE_MDM_TIME \
+    persist.radio.calls.on.ims \
+    persist.radio.disable_flexmap \
+    persist.radio.domain.ps \
+    persist.radio.force_get_pref \
+    persist.radio.force_on_dc \
+    persist.radio.jbims \
+    persist.radio.mcfg_enabled \
+    persist.radio.multisim.config \
+    persist.radio.plmn_name_cmp \
+    persist.radio.rat_on \
+    persist.radio.snapshot_enabled \
+    persist.radio.snapshot_timer \
+    persist.radio.videopause.mode \
+    persist.rcs.presence.provision \
+    persist.rcs.supported \
+    persist.rmnet.mux \
+    persist.sys.cnd.iwlan \
+    persist.vt.supported \
+    ril.subscription.types \
+    ro.build.description \
+    ro.build.fingerprint \
+    ro.build.product \
+    ro.cdma.subscription \
+    ro.fsg-id \
+    ro.media.enc.aud.bps \
+    ro.media.enc.aud.ch \
+    ro.media.enc.aud.codec \
+    ro.media.enc.aud.fileformat \
+    ro.media.enc.aud.hz \
+    ro.mot.ignore_csim_appid \
+    ro.product.device \
+    ro.product.model \
+    ro.product.name \
+    ro.ril.force_eri_from_xml \
+    ro.telephony.default_cdma_sub \
+    ro.telephony.default_network \
+    ro.telephony.get_imsi_from_sim \
+    ro.telephony.ril.config \
+    telephony.lteOnCdmaDevice
+
 # Radio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/dsi_config.xml:system/etc/data/dsi_config.xml \
