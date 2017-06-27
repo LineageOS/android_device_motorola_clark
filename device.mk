@@ -91,10 +91,14 @@ PRODUCT_COPY_FILES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    gps.msm8992
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf
+    gps.msm8992 \
+    flp.conf \
+    gps.conf \
+    izat.conf \
+    lowi.conf \
+    quipc.conf \
+    sap.conf \
+    xtwifi.conf
 
 # Init
 PRODUCT_PACKAGES += \
