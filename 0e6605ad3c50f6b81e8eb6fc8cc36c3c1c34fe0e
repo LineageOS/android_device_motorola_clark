@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ca9f1f4_dae6fd59",
+        "filename": "proprietary-files.txt",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 13274
+      },
+      "writtenOn": "2017-07-10T16:01:03Z",
+      "side": 1,
+      "message": "This apk isn\u0027t playing nicely right now",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 57
+      },
+      "revId": "0e6605ad3c50f6b81e8eb6fc8cc36c3c1c34fe0e",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
