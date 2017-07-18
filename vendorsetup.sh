@@ -1,1 +1,1 @@
-add_lunch_combo cos_clark-uesrdebug
+add_lunch_combo cos_clark-userdebug
