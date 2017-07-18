@@ -310,7 +310,7 @@
             64 - Volume rocker
          For example, a device with Home, Back and Menu keys would set this
          config to 7. -->
-    <integer name="config_deviceHardwareWakeKeys">64</integer>
+<!--    <integer name="config_deviceHardwareWakeKeys">64</integer> -->
     
     <!-- Defines the system property to set for performance profile xe: sys.cpu.modes. Leave it
          blank if the device do not support performance profiles -->
@@ -433,7 +433,7 @@
     <string name="config_wifi_tcp_buffers" translatable="false">524288,2097152,4194304,262144,524288,1048576</string>
 
     <!-- Enable blur support -->
-    <bool name="config_uiBlurEnabled">true</bool>
+<!--    <bool name="config_uiBlurEnabled">true</bool> -->
 
     <!-- Boolean indicating if current platform supports BLE peripheral mode -->
     <bool name="config_bluetooth_le_peripheral_mode_supported">true</bool>
