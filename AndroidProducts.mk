@@ -1,2 +1,2 @@
 PRODUCT_MAKEFILES := \
-	cos.mk
+	$(LOCAL_DIR)/cos.mk
