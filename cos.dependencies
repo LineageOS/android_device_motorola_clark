@@ -5,7 +5,7 @@
   },
   {
 	"remote":		"github",
-    "repository": 	"obsolete-ra/android_kernel_motorola_msm8992",
+    "repository": 	"LineageOS/android_kernel_motorola_msm8992",
     "target_path": 	"kernel/motorola/msm8992",
 	"branch":		"cm-14.1"
   },
