@@ -1,0 +1,18 @@
+[
+  {
+    "repository": 	"android_device_qcom_common",
+    "target_path": 	"device/qcom/common"
+  },
+  {
+	"remote":		"github",
+    "repository": 	"LineageOS/android_kernel_motorola_msm8992",
+    "target_path": 	"kernel/motorola/msm8992",
+	"branch":		"cm-14.1"
+  },
+  {
+	"remote":		"github",
+    "repository": 	"LinegaeOS/android_hardware_sony_thermanager",
+    "target_path": 	"hardware/sony/thermanager",
+	"branch":		"cm-14.1"
+  }
+]
