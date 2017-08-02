@@ -299,6 +299,7 @@ service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
+    shutdown critical
     ioprio rt 0
     writepid /dev/cpuset/system-background/tasks
 
