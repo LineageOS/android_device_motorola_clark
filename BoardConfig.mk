@@ -53,7 +53,10 @@ USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bionic
 TARGET_LD_SHIM_LIBS := \
-    /system/lib64/libmdmcutback.so|libqsap_shim.so
+    /system/lib64/libmdmcutback.so|libqsap_shim.so \
+    /system/vendor/lib64/libizat_core.so|libshims_get_process_name.so \
+    /system/vendor/lib/libizat_core.so|libshims_get_process_name.so \
+    /system/vendor/lib64/hw/flp.default.so|libshims_get_process_name.so
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
