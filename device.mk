@@ -68,6 +68,10 @@ PRODUCT_PACKAGES += \
     CMActions \
     libjni_CMActions
 
+# Config.fs
+PRODUCT_PACKAGES += \
+    fs_config_files
+
 # Display
 PRODUCT_AAPT_CONFIG := normal
 PRODUCT_AAPT_PREF_CONFIG := 560dpi
