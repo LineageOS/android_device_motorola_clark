@@ -97,8 +97,8 @@ void vendor_load_properties()
         property_set("ro.telephony.get_imsi_from_sim", "true");
         property_set("ro.telephony.default_network", "10");
         property_set("telephony.lteOnCdmaDevice", "1");
-        property_override("ro.build.description", "clark_retus-user 6.0 MPHS24.49-18-4 5 release-keys");
-        property_override("ro.build.fingerprint", "motorola/clark_retus/clark:6.0/MPHS24.49-18-4/5:user/release-keys");
+        property_override("ro.build.description", "clark_retus-user 7.0 NPH25.200-22 21 release-keys");
+        property_override("ro.build.fingerprint", "motorola/clark_retus/clark:7.0/NPH25.200-22/21:user/release-keys");
     } else if (sku == "XT1570") {
         /* China */
         setMsim();
