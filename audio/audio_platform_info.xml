@@ -37,7 +37,7 @@
         <device name="SND_DEVICE_OUT_VOICE_LINE" acdb_id="22"/>
 
         <!-- Input devices -->
-        <device name="SND_DEVICE_IN_SPEAKER_MIC" acdb_id="34"/>
-        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" acdb_id="89"/>
+        <device name="SND_DEVICE_IN_SPEAKER_MIC" acdb_id="11"/>
+        <device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" acdb_id="11"/>
     </acdb_ids>
 </audio_platform_info>
