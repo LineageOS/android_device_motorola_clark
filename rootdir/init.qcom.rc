@@ -258,7 +258,7 @@ on post-fs-data
     # Create directory's for various items
     mkdir /data/power_supply_logger 0750 mot_pwric log
     mkdir /data/system 0775 system system
-    mkdir /data/adspd/ 0770 audio qcom_diag
+    mkdir /data/adspd/ 0770 audio oem_2950
     mkdir /data/hardware_revisions 0755 system system
     mkdir /data/connectivity 0771 system system
     chown system system /data/connectivity
@@ -332,20 +332,20 @@ service rfs_access /system/bin/rfs_access
 service wcnss_filter /system/bin/wcnss_filter
     class late_start
     user root
-    group bluetooth qcom_diag log system
+    group bluetooth oem_2950 log system
     seclabel u:r:moto_wcnss_filter:s0
     disabled
 
 service loc_launcher /system/bin/loc_launcher
     class late_start
-    group gps inet net_raw qcom_diag net_admin wifi
+    group gps inet net_raw oem_2950 net_admin wifi
     writepid /dev/cpuset/system-background/tasks
     disabled
 
 service qmuxd /system/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps nfc diag qcom_diag wakelock
+    group radio audio bluetooth gps nfc diag oem_2950 wakelock
     writepid /dev/cpuset/system-background/tasks
 
 service netmgrd /system/bin/netmgrd
@@ -358,7 +358,7 @@ service ipacm-diag /system/bin/ipacm-diag
     class main
     user system
     socket ipacm_log_file dgram 660 system net_admin
-    group net_admin qcom_diag
+    group net_admin oem_2950
 
 service ipacm /system/bin/ipacm
     class main
@@ -369,7 +369,7 @@ service ipacm /system/bin/ipacm
 service qti /system/vendor/bin/qti
     class main
     user radio
-    group radio net_raw qcom_diag usb net_admin
+    group radio net_raw oem_2950 usb net_admin
     disabled
     writepid /dev/cpuset/system-background/tasks
 
@@ -435,7 +435,7 @@ service ril-daemon /system/bin/rild
     socket cutback stream 660 media radio
     socket wpa_wlan0 dgram 660 wifi wifi
     user root
-    group radio cache inet misc audio log diag qcom_diag net_raw wifi compass wakelock
+    group radio cache inet misc audio log diag oem_2950 net_raw wifi compass wakelock
     writepid /dev/cpuset/system-background/tasks
 
 service ril-daemon2 /system/bin/rild -c 2
@@ -443,7 +443,7 @@ service ril-daemon2 /system/bin/rild -c 2
     socket rild2 stream 660 root radio
     socket rild-debug2 stream 660 radio system
     user root
-    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log wakelock
+    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2950 log wakelock
     writepid /dev/cpuset/system-background/tasks
 
 service ril-daemon3 /system/bin/rild -c 3
@@ -452,7 +452,7 @@ service ril-daemon3 /system/bin/rild -c 3
     socket rild-debug3 stream 660 radio system
     user root
     disabled
-    group radio cache inet misc audio sdcard_r sdcard_rw diag qcom_diag log
+    group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2950 log
 
 service rild2-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
     class late_start
@@ -558,7 +558,7 @@ service adspd /system/bin/adspd
    class main
    socket adspdsock stream 0660 system audio
    user audio
-   group audio input qcom_diag
+   group audio input oem_2950
 
 service perfd /system/bin/perfd
     class main
