@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3761ec47_930dbe9f",
+        "filename": "rootdir/ueventd.qcom.rc",
+        "patchSetId": 8
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 14088
+      },
+      "writtenOn": "2018-01-04T10:29:34Z",
+      "side": 1,
+      "message": "nit: new line",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 83
+      },
+      "revId": "33a0cc915024212e6d78bf44b534363b20696959",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
