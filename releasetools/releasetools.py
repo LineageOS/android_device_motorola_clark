@@ -12,6 +12,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import re
+
+def FullOTA_Assertions(info):
+  AddBootloaderAssertion(info, info.input_zip)
+
+def IncrementalOTA_Assertions(info):
+  AddBootloaderAssertion(info, info.target_zip)
+
 def FullOTA_InstallEnd(info):
   ExtractFirmwares(info)
 
@@ -23,3 +31,12 @@ def ExtractFirmwares(info):
   info.script.AppendExtra('ui_print("Firmware extracted");')
   info.script.AppendExtra('unmount("/firmware");')
   info.script.Unmount("/system")
+
+def AddBootloaderAssertion(info, input_zip):
+  android_info = input_zip.read("OTA/android-info.txt")
+  m = re.search(r"require\s+version-bootloader\s*=\s*(\S+)", android_info)
+  if m:
+    bootloaders = m.group(1).split("|")
+    if "*" not in bootloaders:
+      info.script.AssertSomeBootloader(*bootloaders)
+    info.metadata["pre-bootloader"] = m.group(1)
