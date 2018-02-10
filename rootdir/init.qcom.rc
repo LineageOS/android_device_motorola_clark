@@ -293,17 +293,17 @@ on property:sys.boot_completed=1
 on property:vold.decrypt=trigger_restart_framework
     start qcom-c_main-sh
 
-on property:init.svc.per_mgr=running
-    start per_proxy
+on property:init.svc.vendor.per_mgr=running
+    start vendor.per_proxy
 
 on property:sys.shutdown.requested=*
-    stop per_proxy
+    stop vendor.per_proxy
 
 on property:persist.radio.atfwd.start=false
-    stop atfwd
+    stop vendor.atfwd
 
 on property:radio.atfwd.start=false
-    stop atfwd
+    stop vendor.atfwd
 
 service config_bluetooth /vendor/bin/init.qcom.bt.sh "onboot"
     seclabel u:r:bluetooth_loader:s0
@@ -313,7 +313,7 @@ service config_bluetooth /vendor/bin/init.qcom.bt.sh "onboot"
     disabled
     writepid /dev/cpuset/system-background/tasks
 
-service hciattach /vendor/bin/init.qcom.bt.sh
+service vendor.hciattach /vendor/bin/init.qcom.bt.sh
     seclabel u:r:bluetooth_loader:s0
     class late_start
     user bluetooth
@@ -322,54 +322,54 @@ service hciattach /vendor/bin/init.qcom.bt.sh
     oneshot
 
 on property:vendor.bluetooth.hciattach=true
-    start hciattach
+    start vendor.hciattach
 
 on property:vendor.bluetooth.hciattach=false
     setprop bluetooth.status off
 
 on property:wc_transport.start_hci=true
-    start wcnss_filter
+    start vendor.wcnss_filter
 
 on property:wc_transport.start_hci=false
-    stop wcnss_filter
+    stop vendor.wcnss_filter
 
-service irsc_util /system/bin/irsc_util "/etc/sec_config"
+service vendor.irsc_util /vendor/bin/irsc_util "/etc/sec_config"
     class main
     user root
     oneshot
 
-service rmt_storage /system/bin/rmt_storage
+service vendor.rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
     writepid /dev/cpuset/system-background/tasks
 
-service rfs_access /system/bin/rfs_access
+service vendor.rfs_access /vendor/bin/rfs_access
     class core
     user root
     group system net_raw
     writepid /dev/cpuset/system-background/tasks
 
-service wcnss_filter /system/bin/wcnss_filter
+service vendor.wcnss_filter /vendor/bin/wcnss_filter
     class late_start
     user root
     group bluetooth oem_2950 log system
     seclabel u:r:moto_wcnss_filter:s0
     disabled
 
-service qmuxd /system/bin/qmuxd
+service vendor.qmuxd /vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps nfc diag oem_2950 wakelock
     writepid /dev/cpuset/system-background/tasks
 
-service netmgrd /system/bin/netmgrd
+service vendor.netmgrd /vendor/bin/netmgrd
     class main
     user root
     group root wifi wakelock radio inet
     writepid /dev/cpuset/system-background/tasks
 
-service ipacm-diag /system/bin/ipacm-diag
+service vendor.ipacm-diag /vendor/bin/ipacm-diag
     class main
     user system
     socket ipacm_log_file dgram 660 system net_admin
@@ -381,14 +381,14 @@ service ipacm /system/bin/ipacm
     group net_admin inet
     writepid /dev/cpuset/system-background/tasks
 
-service qti /system/vendor/bin/qti
+service vendor.qti /vendor/bin/qti
     class main
     user radio
     group radio net_raw oem_2950 usb net_admin
     disabled
     writepid /dev/cpuset/system-background/tasks
 
-service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
+service vendor.wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -O/data/vendor/wifi/wpa/sockets -puse_p2p_group_interface=1 \
     -g@android:wpa_wlan0
     interface android.hardware.wifi.supplicant@1.0::ISupplicant default
@@ -415,89 +415,89 @@ service location_mq /system/bin/location-mq
     group gps
     disabled
 
-service atfwd /system/bin/ATFWD-daemon
+service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
 
-service ril-daemon2 /vendor/bin/hw/rild -c 2
+service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
     user radio
     group radio cache inet misc audio log readproc wakelock oem_2950
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service vendor.qcamerasvr /vendor/bin/mm-qcamera-daemon
     class late_start
     user camera
     group camera system inet input graphics
     writepid /dev/cpuset/system-background/tasks
 
-service qseecomd /system/bin/qseecomd
+service vendor.qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service per_mgr /system/bin/pm-service
+service vendor.per_mgr /vendor/bin/pm-service
     class core
     user system
     group system net_raw
     writepid /dev/cpuset/system-background/tasks
 
-service per_proxy /system/bin/pm-proxy
+service vendor.per_proxy /vendor/bin/pm-proxy
     class core
     user system
     group system net_raw
     disabled
     writepid /dev/cpuset/system-background/tasks
 
-service time_daemon /system/bin/time_daemon
+service vendor.time_daemon /vendor/bin/time_daemon
     class late_start
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service adsprpcd /system/bin/adsprpcd
+service vendor.adsprpcd /vendor/bin/adsprpcd
     class main
     user media
     group media
 
-service atvc_core /system/bin/dbvc_atvc_property_set
+service vendor.atvc_core /vendor/bin/dbvc_atvc_property_set
     class core
     user oem_9012
     seclabel u:r:atvc:s0
     group oem_9007
     oneshot
 
-service atvc /system/bin/dbvc_atvc_property_set
+service vendor.atvc /vendor/bin/dbvc_atvc_property_set
     class late_start
     user oem_9012
     seclabel u:r:atvc:s0
     group oem_9007
     oneshot
 
-service msm_irqbalance /system/bin/msm_irqbalance -f /system/etc/msm_irqbalance.conf
+service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/etc/msm_irqbalance.conf
     socket msm_irqbalance seqpacket 660 root system
     class core
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service cnd /vendor/bin/cnd
+service vendor.cnd /vendor/bin/cnd
     class main
     user system
     group system wifi inet radio wakelock net_admin
 
-service dpmQmiMgr /vendor/bin/dpmQmiMgr
+service vendor.dpmQmiMgr /vendor/bin/dpmQmiMgr
     class main
     user system
     group radio system
 
-service ssr_setup /system/bin/ssr_setup
+service vendor.ssr_setup /vendor/bin/ssr_setup
     class late_start
     oneshot
 
-service batt_health /system/bin/batt_health
+service vendor.batt_health /vendor/bin/batt_health
     class main
     group oem_9001
 
@@ -509,50 +509,50 @@ service charger /system/bin/charger
     seclabel u:r:charger:s0
     writepid /dev/cpuset/system-background/tasks
 
-service motosh /system/bin/motosh boot
+service vendor.motosh /vendor/bin/motosh boot
     class late_start
     user compass
     group compass misc input oem_9004
     oneshot
 
-service mmi-touch-sh /vendor/bin/init.mmi.touch.sh synaptics
+service vendor.mmi-touch-sh /vendor/bin/init.mmi.touch.sh synaptics
     class core
     user root
     oneshot
 
-service hw_revs /system/bin/hardware_revisions.sh
+service vendor.hw_revs /vendor/bin/hardware_revisions.sh
     class late_start
     user system
     group system
     oneshot
 
-service adspd /system/bin/adspd
+service vendor.adspd /vendor/bin/adspd
    class main
    socket adspdsock stream 0660 system audio
    user audio
    group audio input oem_2950
 
-service perfd /system/bin/perfd
+service vendor.perfd /vendor/bin/perfd
     class main
     user root
     group system
     socket perfd seqpacket 0666 root system
     writepid /dev/cpuset/system-background/tasks
 
-service iop /system/bin/iop
+service vendor.iop /vendor/bin/iop
     class main
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service ppd /system/bin/mm-pp-daemon
+service vendor.ppd /vendor/bin/mm-pp-daemon
     class late_start
     user system
     socket pps stream 0660 system system
     group system graphics
 
 on property:init.svc.surfaceflinger=stopped
-    stop ppd
+    stop vendor.ppd
 
 on property:apexd.status=ready
     mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind

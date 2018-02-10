@@ -2,10 +2,10 @@
 # CLARK_RETUS_7.0_NPH25.200-22_cid9_subsidy-DEFAULT_CFC.xml and OTA to 25.201.1
 
 # ADSP /ADSP-RPC / Vision
-bin/adspd
-bin/adsprpcd
-lib/libadspd.so
-lib64/libadspd.so
+bin/adspd:vendor/bin/adspd
+bin/adsprpcd:vendor/bin/adsprpcd
+lib/libadspd.so:vendor/lib/libadspd.so
+lib64/libadspd.so:vendor/lib64/libadspd.so
 vendor/lib/libadsprpc.so
 vendor/lib64/libadsprpc.so
 vendor/lib/libmdsprpc.so
@@ -18,13 +18,13 @@ vendor/lib/rfsa/adsp/libfastcvadsp_skel.so
 vendor/lib/rfsa/adsp/libfastcvadsp.so
 
 # Audio
-bin/fm_qsoc_patches
+bin/fm_qsoc_patches:vendor/bin/fm_qsoc_patches
 vendor/bin/audioflacapp
-lib/hw/audio.motvr.default.so
-lib/libmotaudioutils.so
-lib/libqcomfm_jni.so
-lib64/libqcomfm_jni.so
-lib/libunshorten.so
+lib/hw/audio.motvr.default.so:vendor/lib/hw/audio.motvr.default.so
+lib/libmotaudioutils.so:vendor/lib/libmotaudioutils.so
+lib/libqcomfm_jni.so:vendor/lib/libqcomfm_jni.so
+lib64/libqcomfm_jni.so:vendor/lib64/libqcomfm_jni.so
+lib/libunshorten.so:vendor/lib/libunshorten.so
 vendor/lib/libacdb-fts.so
 vendor/lib64/libacdb-fts.so
 vendor/lib/libacdbloader.so
@@ -40,84 +40,84 @@ vendor/lib64/libaudcal.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
-lib/soundfx/libmmieffectswrapper.so
-etc/acdbdata/General_cal.acdb
-etc/acdbdata/Bluetooth_cal.acdb
-etc/acdbdata/Global_cal.acdb
-etc/acdbdata/Headset_cal.acdb
-etc/acdbdata/Handset_cal.acdb
-etc/acdbdata/Hdmi_cal.acdb
-etc/acdbdata/Speaker_cal.acdb
-etc/firmware/florida-dsp2-aov-frontend.wmfw
-etc/firmware/florida-dsp3-aov-control.wmfw
+lib/soundfx/libmmieffectswrapper.so:vendor/lib/soundfx/libmmieffectswrapper.so
+etc/acdbdata/General_cal.acdb:vendor/etc/acdbdata/General_cal.acdb
+etc/acdbdata/Bluetooth_cal.acdb:vendor/etc/acdbdata/Bluetooth_cal.acdb
+etc/acdbdata/Global_cal.acdb:vendor/etc/acdbdata/Global_cal.acdb
+etc/acdbdata/Headset_cal.acdb:vendor/etc/acdbdata/Headset_cal.acdb
+etc/acdbdata/Handset_cal.acdb:vendor/etc/acdbdata/Handset_cal.acdb
+etc/acdbdata/Hdmi_cal.acdb:vendor/etc/acdbdata/Hdmi_cal.acdb
+etc/acdbdata/Speaker_cal.acdb:vendor/etc/acdbdata/Speaker_cal.acdb
+etc/firmware/florida-dsp2-aov-frontend.wmfw:vendor/firmware/florida-dsp2-aov-frontend.wmfw
+etc/firmware/florida-dsp3-aov-control.wmfw:vendor/firmware/florida-dsp3-aov-control.wmfw
 
 # Audio firmware
-etc/firmware/left.tfa9890.music.config
-etc/firmware/left.tfa9890.music.eq
-etc/firmware/left.tfa9890.ringtone.config
-etc/firmware/left.tfa9890.ringtone.eq
-etc/firmware/left.tfa9890.speaker
-etc/firmware/left.tfa9890.voice.config
-etc/firmware/left.tfa9890.voice.eq
-etc/firmware/left.tfa9890_music_table.preset
-etc/firmware/left.tfa9890_n1b12.patch
-etc/firmware/left.tfa9890_n1c2.patch
-etc/firmware/left.tfa9890_ringtone_table.preset
-etc/firmware/left.tfa9890_voice_table.preset
-etc/firmware/right.tfa9890.music.config
-etc/firmware/right.tfa9890.music.eq
-etc/firmware/right.tfa9890.ringtone.config
-etc/firmware/right.tfa9890.ringtone.eq
-etc/firmware/right.tfa9890.speaker
-etc/firmware/right.tfa9890.voice.config
-etc/firmware/right.tfa9890.voice.eq
-etc/firmware/right.tfa9890_music_table.preset
-etc/firmware/right.tfa9890_n1b12.patch
-etc/firmware/right.tfa9890_n1c2.patch
-etc/firmware/right.tfa9890_ringtone_table.preset
-etc/firmware/right.tfa9890_voice_table.preset
+etc/firmware/left.tfa9890.music.config:vendor/firmware/left.tfa9890.music.config
+etc/firmware/left.tfa9890.music.eq:vendor/firmware/left.tfa9890.music.eq
+etc/firmware/left.tfa9890.ringtone.config:vendor/firmware/left.tfa9890.ringtone.config
+etc/firmware/left.tfa9890.ringtone.eq:vendor/firmware/left.tfa9890.ringtone.eq
+etc/firmware/left.tfa9890.speaker:vendor/firmware/left.tfa9890.speaker
+etc/firmware/left.tfa9890.voice.config:vendor/firmware/left.tfa9890.voice.config
+etc/firmware/left.tfa9890.voice.eq:vendor/firmware/left.tfa9890.voice.eq
+etc/firmware/left.tfa9890_music_table.preset:vendor/firmware/left.tfa9890_music_table.preset
+etc/firmware/left.tfa9890_n1b12.patch:vendor/firmware/left.tfa9890_n1b12.patch
+etc/firmware/left.tfa9890_n1c2.patch:vendor/firmware/left.tfa9890_n1c2.patch
+etc/firmware/left.tfa9890_ringtone_table.preset:vendor/firmware/left.tfa9890_ringtone_table.preset
+etc/firmware/left.tfa9890_voice_table.preset:vendor/firmware/left.tfa9890_voice_table.preset
+etc/firmware/right.tfa9890.music.config:vendor/firmware/right.tfa9890.music.config
+etc/firmware/right.tfa9890.music.eq:vendor/firmware/right.tfa9890.music.eq
+etc/firmware/right.tfa9890.ringtone.config:vendor/firmware/right.tfa9890.ringtone.config
+etc/firmware/right.tfa9890.ringtone.eq:vendor/firmware/right.tfa9890.ringtone.eq
+etc/firmware/right.tfa9890.speaker:vendor/firmware/right.tfa9890.speaker
+etc/firmware/right.tfa9890.voice.config:vendor/firmware/right.tfa9890.voice.config
+etc/firmware/right.tfa9890.voice.eq:vendor/firmware/right.tfa9890.voice.eq
+etc/firmware/right.tfa9890_music_table.preset:vendor/firmware/right.tfa9890_music_table.preset
+etc/firmware/right.tfa9890_n1b12.patch:vendor/firmware/right.tfa9890_n1b12.patch
+etc/firmware/right.tfa9890_n1c2.patch:vendor/firmware/right.tfa9890_n1c2.patch
+etc/firmware/right.tfa9890_ringtone_table.preset:vendor/firmware/right.tfa9890_ringtone_table.preset
+etc/firmware/right.tfa9890_voice_table.preset:vendor/firmware/right.tfa9890_voice_table.preset:vendor
 etc/firmware/vrgain.bin
 
 # Bluetooth
-bin/btnvtool
-bin/hci_qcomm_init
-bin/wcnss_filter
-etc/user_bhd_psy.conf
-etc/firmware/nvm_tlv.bin
-etc/firmware/nvm_tlv_1.3.bin
-etc/firmware/nvm_tlv_2.1.bin
-etc/firmware/nvm_tlv_3.0.bin
-etc/firmware/nvm_tlv_3.2.bin
-etc/firmware/rampatch_tlv.img
-etc/firmware/rampatch_tlv_1.3.tlv
-etc/firmware/rampatch_tlv_2.1.tlv
-etc/firmware/rampatch_tlv_3.0.tlv
-etc/firmware/rampatch_tlv_3.2.tlv
+bin/btnvtool:vendor/bin/btnvtool
+bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
+bin/wcnss_filter:vendor/bin/wcnss_filter
+etc/user_bhd_psy.conf:vendor/etc/user_bhd_psy.conf
+etc/firmware/nvm_tlv.bin:vendor/firmware/nvm_tlv.bin
+etc/firmware/nvm_tlv_1.3.bin:vendor/firmware/nvm_tlv_1.3.bin
+etc/firmware/nvm_tlv_2.1.bin:vendor/firmware/nvm_tlv_2.1.bin
+etc/firmware/nvm_tlv_3.0.bin:vendor/firmware/nvm_tlv_3.0.bin
+etc/firmware/nvm_tlv_3.2.bin:vendor/firmware/nvm_tlv_3.2.bin
+etc/firmware/rampatch_tlv.img:vendor/firmware/rampatch_tlv.img
+etc/firmware/rampatch_tlv_1.3.tlv:vendor/firmware/rampatch_tlv_1.3.tlv
+etc/firmware/rampatch_tlv_2.1.tlv:vendor/firmware/rampatch_tlv_2.1.tlv
+etc/firmware/rampatch_tlv_3.0.tlv:vendor/firmware/rampatch_tlv_3.0.tlv
+etc/firmware/rampatch_tlv_3.2.tlv:vendor/firmware/rampatch_tlv_3.2.tlv
 vendor/lib/libbtnv.so
 vendor/lib64/libbtnv.so
 
 # Camera
-bin/mm-qcamera-daemon
-etc/firmware/cpp_firmware_v1_1_1.fw
-etc/firmware/cpp_firmware_v1_1_6.fw
-etc/firmware/cpp_firmware_v1_2_0.fw
-etc/firmware/cpp_firmware_v1_4_0.fw
-etc/firmware/cpp_firmware_v1_6_0.fw
-etc/firmware/cpp_firmware_v1_8_0.fw
+bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
+etc/firmware/cpp_firmware_v1_1_1.fw:vendor/firmware/cpp_firmware_v1_1_1.fw
+etc/firmware/cpp_firmware_v1_1_6.fw:vendor/firmware/cpp_firmware_v1_1_6.fw
+etc/firmware/cpp_firmware_v1_2_0.fw:vendor/firmware/cpp_firmware_v1_2_0.fw
+etc/firmware/cpp_firmware_v1_4_0.fw:vendor/firmware/cpp_firmware_v1_4_0.fw
+etc/firmware/cpp_firmware_v1_6_0.fw:vendor/firmware/cpp_firmware_v1_6_0.fw
+etc/firmware/cpp_firmware_v1_8_0.fw:vendor/firmware/cpp_firmware_v1_8_0.fw
 etc/permissions/com.motorola.camera.xml
 etc/permissions/com.motorola.gallery.xml
-lib/libmot_lux_standardization.so
-lib/libadvalgcore.so
-lib/libAisAdapter.so
-lib/libAlAisLib.so
-lib/libAlAisTune.so
-lib/libAlAisWrap.so
-lib/libcamerabgprocservice.so
-lib/libjscore.so
-lib/libjustshoot.so
-lib/libmot_sensorlistener.so
-lib/libmot-qc-fd-offline.so
-lib/libmbs.so
+lib/libmot_lux_standardization.so:vendor/lib/libmot_lux_standardization.so
+lib/libadvalgcore.so:vendor/lib/libadvalgcore.so
+lib/libAisAdapter.so:vendor/lib/libAisAdapter.so
+lib/libAlAisLib.so:vendor/lib/libAlAisLib.so
+lib/libAlAisTune.so:vendor/lib/libAlAisTune.so
+lib/libAlAisWrap.so:vendor/lib/libAlAisWrap.so
+lib/libcamerabgprocservice.so:vendor/lib/libcamerabgprocservice.so
+lib/libjscore.so:vendor/lib/libjscore.so
+lib/libjustshoot.so:vendor/lib/libjustshoot.so
+lib/libmot_sensorlistener.so:vendor/lib/libmot_sensorlistener.so
+lib/libmot-qc-fd-offline.so:vendor/lib/libmot-qc-fd-offline.so
+lib/libmbs.so:vendor/lib/libmbs.so
 vendor/lib/libmmipl.so
 vendor/lib/libmmjpeg.so
 vendor/lib/libmmqjpeg_codec.so
@@ -258,7 +258,7 @@ vendor/lib/libchromatix_ov5693_snapshot_night.so
 vendor/lib/libchromatix_ov5693_video.so
 
 # CPU
-bin/msm_irqbalance
+bin/msm_irqbalance:vendor/bin/msm_irqbalance
 vendor/bin/perfd
 vendor/etc/perf-profile0.conf
 vendor/etc/perf-profile1.conf
@@ -276,8 +276,8 @@ vendor/lib64/libthermalclient.so
 -app/HiddenMenuLight/HiddenMenuLight.apk
 etc/permissions/com.android.omadm.service.xml
 etc/sysconfig/whitelist_com.android.omadm.service.xml
-lib/libdmengine.so
-lib/libdmjavaplugin.so
+lib/libdmengine.so:vendor/lib/libdmengine.so
+lib/libdmjavaplugin.so:vendor/lib/libdmjavaplugin.so
 -priv-app/CQATest/CQATest.apk
 -priv-app/ConnMO/ConnMO.apk
 -priv-app/DCMO/DCMO.apk
@@ -288,7 +288,7 @@ lib/libdmjavaplugin.so
 
 # DRM
 # TZBSP
-bin/qseecomd
+bin/qseecomd:vendor/bin/qseecomd
 vendor/lib/libdrmfs.so
 vendor/lib64/libdrmfs.so
 vendor/lib/libdrmtime.so
@@ -336,10 +336,10 @@ vendor/lib/libsd_sdk_display.so
 vendor/lib64/libsd_sdk_display.so
 
 # QMI
-bin/ATFWD-daemon
-bin/irsc_util
-bin/pm-proxy
-bin/pm-service
+bin/ATFWD-daemon:vendor/bin/ATFWD-daemon
+bin/irsc_util:vendor/bin/irsc_util
+bin/pm-proxy:vendor/bin/pm-proxy
+bin/pm-service:vendor/bin/pm-service
 vendor/lib/libconfigdb.so
 vendor/lib64/libconfigdb.so
 vendor/lib/libsystem_health_mon.so
@@ -384,10 +384,10 @@ vendor/lib64/liblbs_core.so|f193bdf82b36ff9fde2df1d4b8e12e0e84483b59
 
 
 # Adreno GPU
-etc/firmware/a420_pfp.fw
-etc/firmware/a420_pm4.fw
-etc/firmware/leia_pfp_470.fw
-etc/firmware/leia_pm4_470.fw
+etc/firmware/a420_pfp.fw:vendor/firmware/a420_pfp.fw
+etc/firmware/a420_pm4.fw:vendor/firmware/a420_pm4.fw
+etc/firmware/leia_pfp_470.fw:vendor/firmware/leia_pfp_470.fw
+etc/firmware/leia_pm4_470.fw:vendor/firmware/leia_pm4_470.fw
 vendor/lib/egl/eglSubDriverAndroid.so
 vendor/lib/egl/libEGL_adreno.so
 vendor/lib/egl/libGLESv1_CM_adreno.so
@@ -435,18 +435,18 @@ vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/libscale.so
 
 # Media
-etc/firmware/dxhdcp2.b00
-etc/firmware/dxhdcp2.b01
-etc/firmware/dxhdcp2.b02
-etc/firmware/dxhdcp2.b03
-etc/firmware/dxhdcp2.mdt
-etc/firmware/venus.b00
-etc/firmware/venus.b01
-etc/firmware/venus.b02
-etc/firmware/venus.b03
-etc/firmware/venus.b04
-etc/firmware/venus.mbn
-etc/firmware/venus.mdt
+etc/firmware/dxhdcp2.b00:vendor/firmware/dxhdcp2.b00
+etc/firmware/dxhdcp2.b01:vendor/firmware/dxhdcp2.b01
+etc/firmware/dxhdcp2.b02:vendor/firmware/dxhdcp2.b02
+etc/firmware/dxhdcp2.b03:vendor/firmware/dxhdcp2.b03
+etc/firmware/dxhdcp2.mdt:vendor/firmware/dxhdcp2.mdt
+etc/firmware/venus.b00:vendor/firmware/venus.b00
+etc/firmware/venus.b01:vendor/firmware/venus.b01
+etc/firmware/venus.b02:vendor/firmware/venus.b02
+etc/firmware/venus.b03:vendor/firmware/venus.b03
+etc/firmware/venus.b04:vendor/firmware/venus.b04
+etc/firmware/venus.mbn:vendor/firmware/venus.mbn
+etc/firmware/venus.mdt:vendor/firmware/venus.mdt
 vendor/lib/libDxHdcp.so
 vendor/lib/libFlacSwDec.so
 vendor/lib64/libFlacSwDec.so
@@ -456,12 +456,12 @@ vendor/lib/libmm-hdcpmgr.so
 vendor/lib64/libmm-hdcpmgr.so
 
 # Motorola
-bin/batt_health
-bin/dbvc_atvc_property_set
-bin/hardware_revisions.sh
+bin/batt_health:vendor/bin/batt_health
+bin/dbvc_atvc_property_set:vendor/bin/dbvc_atvc_property_set
+bin/hardware_revisions.sh:vendor/bin/hardware_revisions.sh
 
 # NFC
-etc/firmware/BCM20795A2_001.003.025.0005.0048_Generic_I2C_NCD_Signed_configdata.ncd
+etc/firmware/BCM20795A2_001.003.025.0005.0048_Generic_I2C_NCD_Signed_configdata.ncd:vendor/firmware/BCM20795A2_001.003.025.0005.0048_Generic_I2C_NCD_Signed_configdata.ncd
 
 # Qualcomm framework
 vendor/lib/libdsutils.so
@@ -494,35 +494,35 @@ vendor/lib64/libdpmqmihal.so|ec071f4b67a605481e3e64a93626c7cfd9520945
 -app/MotoSignatureApp/MotoSignatureApp.apk:app/MotoSignatureApp/MotoSignatureApp.apk:PRESIGNED
 -priv-app/atfwd/atfwd.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
-bin/diag_klog
-bin/diag_mdlog
-bin/diag_mdlog-getlogs
-bin/diag_mdlog-wrap
-bin/diag_qshrink4_daemon
-bin/port-bridge
-bin/test_diag
-bin/ipacm-diag
-bin/netmgrd
-bin/qmi_motext_hook
-bin/qmuxd
-bin/rfs_access
-bin/rmt_storage
+bin/diag_klog:vendor/bin/diag_klog
+bin/diag_mdlog:vendor/bin/diag_mdlog
+bin/diag_mdlog-getlogs:vendor/bin/diag_mdlog-getlogs
+bin/diag_mdlog-wrap:vendor/bin/diag_mdlog-wrap
+bin/diag_qshrink4_daemon:vendor/bin/diag_qshrink4_daemon
+bin/port-bridge:vendor/bin/port-bridge
+bin/test_diag:vendor/bin/test_diag
+bin/ipacm-diag:vendor/bin/ipacm-diag
+bin/netmgrd:vendor/bin/netmgrd
+bin/qmi_motext_hook:vendor/bin/qmi_motext_hook
+bin/qmuxd:vendor/bin/qmuxd
+bin/rfs_access:vendor/bin/rfs_access
+bin/rmt_storage:vendor/bin/rmt_storage
 vendor/bin/qti
-etc/data/dsi_config.xml
-etc/data/netmgr_config.xml
-etc/data/qmi_config.xml
-etc/diag_mdlog/Connection_Issues_V11.cfg
-etc/diag_mdlog/Bluetooth_V1.cfg
-etc/diag_mdlog/Bluetooth_audio_V1.cfg
-etc/diag_mdlog/default.cfg
-etc/diag_mdlog/default.opts
-etc/diag_mdlog/FIT_V20_1.cfg
-etc/diag_mdlog/FIT_V20_2_volte_full_ip.cfg
-etc/diag_mdlog/GNSS_OTDOA_V1.cfg
-etc/diag_mdlog/GNSS_SUPL_V7.cfg
-etc/diag_mdlog/GNSS_V7.cfg
-etc/diag_mdlog/Vzw_Connection_Issues_V2.cfg
-etc/diag_mdlog/WLAN_V1.cfg
+etc/data/dsi_config.xml:vendor/etc/data/dsi_config.xml
+etc/data/netmgr_config.xml:vendor/etc/data/netmgr_config.xml
+etc/data/qmi_config.xml:vendor/etc/data/qmi_config.xml
+etc/diag_mdlog/Connection_Issues_V11.cfg:vendor/etc/diag_mdlog/Connection_Issues_V11.cfg
+etc/diag_mdlog/Bluetooth_V1.cfg:vendor/etc/diag_mdlog/Bluetooth_V1.cfg
+etc/diag_mdlog/Bluetooth_audio_V1.cfg:vendor/etc/diag_mdlog/Bluetooth_audio_V1.cfg
+etc/diag_mdlog/default.cfg:vendor/etc/diag_mdlog/default.cfg
+etc/diag_mdlog/default.opts:vendor/etc/diag_mdlog/default.opts
+etc/diag_mdlog/FIT_V20_1.cfg:vendor/etc/diag_mdlog/FIT_V20_1.cfg
+etc/diag_mdlog/FIT_V20_2_volte_full_ip.cfg:vendor/etc/diag_mdlog/FIT_V20_2_volte_full_ip.cfg
+etc/diag_mdlog/GNSS_OTDOA_V1.cfg:vendor/etc/diag_mdlog/GNSS_OTDOA_V1.cfg
+etc/diag_mdlog/GNSS_SUPL_V7.cfg:vendor/etc/diag_mdlog/GNSS_SUPL_V7.cfg
+etc/diag_mdlog/GNSS_V7.cfg:vendor/etc/diag_mdlog/GNSS_V7.cfg
+etc/diag_mdlog/Vzw_Connection_Issues_V2.cfg:vendor/etc/diag_mdlog/Vzw_Connection_Issues_V2.cfg
+etc/diag_mdlog/WLAN_V1.cfg:vendor/etc/diag_mdlog/WLAN_V1.cfg
 etc/permissions/org.simalliance.openmobileapi.xml
 etc/permissions/qcnvitems.xml
 etc/permissions/qcrilhook.xml
@@ -530,13 +530,13 @@ framework/qcnvitems.jar
 framework/qcrilhook.jar
 framework/qti-telephony-common.jar
 framework/org.simalliance.openmobileapi.jar
-lib/libmdmcutback.so
-lib64/libmdmcutback.so
-lib/libmotext_inf.so
-lib64/libmotext_inf.so
-lib/libqmimotext.so
-lib64/libqmimotext.so
-lib64/libadropbox.so
+lib/libmdmcutback.so:vendor/lib/libmdmcutback.so
+lib64/libmdmcutback.so:vendor/lib64/libmdmcutback.so
+lib/libmotext_inf.so:vendor/lib/libmotext_inf.so
+lib64/libmotext_inf.so:vendor/lib64/libmotext_inf.so
+lib/libqmimotext.so:vendor/lib/libqmimotext.so
+lib64/libqmimotext.so:vendor/lib64/libqmimotext.so
+lib64/libadropbox.so:vendor/lib64/libadropbox.so
 vendor/qcril.db
 vendor/lib/liblqe.so
 vendor/lib64/liblqe.so
@@ -566,33 +566,33 @@ vendor/lib64/libxml.so
 vendor/lib64/libqcmaputils.so
 
 # Touchscreen firmware
-etc/firmware/synaptics-s2726-15052160-1d19d9-clark.tdat
-etc/firmware/synaptics-s3528-15071401-1e29b4-clark.tdat
-etc/firmware/synaptics-s3528ar-15071401-1e29b4-clark.tdat
+etc/firmware/synaptics-s2726-15052160-1d19d9-clark.tdat:vendor/firmware/synaptics-s2726-15052160-1d19d9-clark.tdat
+etc/firmware/synaptics-s3528-15071401-1e29b4-clark.tdat:vendor/firmware/synaptics-s3528-15071401-1e29b4-clark.tdat
+etc/firmware/synaptics-s3528ar-15071401-1e29b4-clark.tdat:vendor/firmware/synaptics-s3528ar-15071401-1e29b4-clark.tdat
 
 # Sensors
-bin/motosh
-etc/firmware/sensorhubfw.bin
-lib/hw/sensors.msm8992.so
-lib64/hw/sensors.msm8992.so
+bin/motosh:vendor/bin/motosh
+etc/firmware/sensorhubfw.bin:vendor/firmware/sensorhubfw.bin
+lib/hw/sensors.msm8992.so:vendor/lib/hw/sensors.msm8992.so
+lib64/hw/sensors.msm8992.so:vendor/lib64/hw/sensors.msm8992.so
 vendor/lib/libsubsystem_control.so
 vendor/lib64/libsubsystem_control.so
-lib64/hw/sensorhub.msm8992.so
+lib64/hw/sensorhub.msm8992.so:vendor/lib64/hw/sensorhub.msm8992.so
 vendor/lib/libsensor1.so
 vendor/lib64/libsensor1.so
 
 # Time services
 -app/TimeService/TimeService.apk
-bin/time_daemon
+bin/time_daemon:vendor/bin/time_daemon
 vendor/lib/libTimeService.so
 vendor/lib64/libTimeService.so
 -vendor/lib/libtime_genoff.so
 -vendor/lib64/libtime_genoff.so
 
 # Wat - weird files
-bin/ssr_setup
+bin/ssr_setup:vendor/bin/ssr_setup
 
-bin/mm-pp-daemon
+bin/mm-pp-daemon:vendor/bin/mm-pp-daemon
 vendor/lib64/libdisp-aba.so
 vendor/lib64/libmm-abl.so
 vendor/lib64/libmm-abl-oem.so
