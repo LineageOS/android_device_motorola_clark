@@ -53,7 +53,7 @@ failed ()
 
 program_bdaddr ()
 {
-  /system/bin/btnvtool -O
+  /vendor/bin/btnvtool -O
   logi "Bluetooth Address programmed successfully"
 }
 
@@ -197,7 +197,7 @@ esac
 
 start_hciattach ()
 {
-  /system/bin/hciattach -n $BTS_DEVICE $BTS_TYPE $BTS_BAUD &
+  /vendor/bin/hciattach -n $BTS_DEVICE $BTS_TYPE $BTS_BAUD &
   hciattach_pid=$!
   logi "start_hciattach: pid = $hciattach_pid"
   echo 1 > $BLUETOOTH_SLEEP_PATH
@@ -284,7 +284,7 @@ case $LE_POWER_CLASS in
      logi "LE Power Class: To override, Before turning BT ON; setprop qcom.bt.le_dev_pwr_class <1 or 2 or 3>";;
 esac
 
-eval $(/system/bin/hci_qcomm_init -e $PWR_CLASS $LE_PWR_CLASS && echo "exit_code_hci_qcomm_init=0" || echo "exit_code_hci_qcomm_init=1")
+eval $(/vendor/bin/hci_qcomm_init -e $PWR_CLASS $LE_PWR_CLASS && echo "exit_code_hci_qcomm_init=0" || echo "exit_code_hci_qcomm_init=1")
 
 case $exit_code_hci_qcomm_init in
   0) logi "Bluetooth QSoC firmware download succeeded, $BTS_DEVICE $BTS_TYPE $BTS_BAUD $BTS_ADDRESS";;

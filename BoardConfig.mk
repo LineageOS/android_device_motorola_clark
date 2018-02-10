@@ -53,7 +53,7 @@ USE_XML_AUDIO_POLICY_CONF := 1
 
 # Bionic
 TARGET_LD_SHIM_LIBS := \
-    /system/lib64/libmdmcutback.so|libqsap_shim.so \
+    /system/vendor/lib64/libmdmcutback.so|libqsap_shim.so \
     /system/vendor/lib64/libizat_core.so|libshims_get_process_name.so \
     /system/vendor/lib/libizat_core.so|libshims_get_process_name.so \
     /system/vendor/lib64/hw/flp.default.so|libshims_get_process_name.so
@@ -71,7 +71,7 @@ QCOM_BT_USE_OLD_WCNSS_FILTER := true
 TARGET_USES_MEDIA_EXTENSIONS := true
 USE_DEVICE_SPECIFIC_CAMERA := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
-    /system/bin/mm-qcamera-daemon=22
+    /system/vendor/bin/mm-qcamera-daemon=22
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
