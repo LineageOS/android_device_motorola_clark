@@ -216,9 +216,6 @@ on post-fs-data
     # Create IPA daemon dir
     mkdir /data/misc/ipa/ 0770 system net_admin
 
-    # Create IOP daemon dir
-    mkdir /data/misc/iop 0770 root system
-
     # Create PERFD deamon related dirs
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
@@ -573,12 +570,6 @@ service perfd /system/vendor/bin/perfd
     user root
     group system
     socket perfd seqpacket 0666 root system
-    writepid /dev/cpuset/system-background/tasks
-
-service iop /system/bin/iop
-    class main
-    user root
-    group root
     writepid /dev/cpuset/system-background/tasks
 
 # OSS thermal management
