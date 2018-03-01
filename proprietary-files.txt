@@ -76,7 +76,6 @@ etc/firmware/vrgain.bin
 
 # Bluetooth
 bin/wcnss_filter:vendor/bin/wcnss_filter
-etc/user_bhd_psy.conf:vendor/etc/user_dbg_bhd_psy.conf
 etc/firmware/nvm_tlv.bin:vendor/firmware/nvm_tlv.bin
 etc/firmware/nvm_tlv_1.3.bin:vendor/firmware/nvm_tlv_1.3.bin
 etc/firmware/nvm_tlv_2.1.bin:vendor/firmware/nvm_tlv_2.1.bin
@@ -434,7 +433,6 @@ vendor/lib/libmm-hdcpmgr.so
 vendor/lib64/libmm-hdcpmgr.so
 
 # Motorola
-vendor/bin/batt_health|1567828e308485b8a3307bc1b5a007eb7960b933
 bin/dbvc_atvc_property_set:vendor/bin/dbvc_atvc_property_set
 
 # NFC

@@ -1,5 +1,4 @@
 type adspd_data_file, file_type, data_file_type;
-type batt_health_data_file, file_type, data_file_type;
 type cutback_data_file, file_type, data_file_type;
 type fsg_file, file_type, data_file_type;
 type persist_camera_file, file_type, data_file_type;

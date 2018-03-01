@@ -145,7 +145,6 @@ on post-fs
     mkdir /persist/wifi 0755 oem_5004 oem_5004
     mkdir /persist/bt 0755 oem_5004 bluetooth
     mkdir /persist/wmdrm 0775 oem_5004 oem_5004
-    mkdir /persist/batt_health 0755 oem_5001 oem_5001
     mkdir /persist/mdm 0770 radio radio
     mkdir /persist/antcap 0755 oem_5004 oem_5004
     mkdir /persist/security 02770 oem_5007 oem_5007
@@ -434,12 +433,6 @@ service vendor.dpmQmiMgr /vendor/bin/dpmQmiMgr
 service vendor.ssr_setup /vendor/bin/ssr_setup
     class late_start
     oneshot
-
-service vendor.batt_health /vendor/bin/batt_health
-    class late_start
-    group oem_5001
-    seclabel u:r:batt_health:s0
-    writepid /dev/cpuset/system-background/tasks
 
 service charger /system/bin/charger
     class charger
