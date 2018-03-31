@@ -546,7 +546,6 @@ vendor/lib/libwqe.so
 vendor/lib64/libwqe.so
 
 # Radio
--app/ims/ims.apk
 -app/MotoSignatureApp/MotoSignatureApp.apk:app/MotoSignatureApp/MotoSignatureApp.apk:PRESIGNED
 -priv-app/atfwd/atfwd.apk
 -priv-app/qcrilmsgtunnel/qcrilmsgtunnel.apk
@@ -599,6 +598,8 @@ lib64/libmotext_inf.so
 lib/libqmimotext.so
 lib64/libqmimotext.so
 lib64/libadropbox.so
+-vendor/app/ims/ims.apk
+-vendor/app/imssettings/imssettings.apk
 vendor/qcril.db
 vendor/lib/lib-dplmedia.so
 vendor/lib64/lib-dplmedia.so
