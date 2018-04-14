@@ -66,6 +66,7 @@ typedef struct{
     /* supported iso modes */
     size_t supported_iso_modes_cnt;
     cam_iso_mode_type supported_iso_modes[CAM_ISO_MODE_MAX];
+    volatile char moto_reserved1[4]; //hack
 
     /* supported flash modes */
     size_t supported_flash_modes_cnt;
@@ -135,6 +136,7 @@ typedef struct{
     uint32_t sensor_mount_angle;                            /* sensor mount angle */
 
     float focal_length;                                     /* focal length */
+    volatile char moto_reserved2[4]; // hack
     float hor_view_angle;                                   /* horizontal view angle */
     float ver_view_angle;                                   /* vertical view angle */
 
@@ -316,6 +318,7 @@ typedef struct{
     cam_scene_mode_overrides_t scene_mode_overrides[CAM_SCENE_MODE_MAX];
     size_t scale_picture_sizes_cnt;
     cam_dimension_t scale_picture_sizes[MAX_SCALE_SIZES_CNT];
+    volatile char moto_reserved4[32]; //hack
 
     uint8_t flash_available;
 
@@ -392,6 +395,7 @@ typedef struct{
 
     /* Max cpp batch size */
     uint8_t max_batch_bufs_supported;
+    // FIXME
 } cam_capability_t;
 
 typedef enum {
@@ -574,6 +578,9 @@ typedef struct {
     INCLUDE(CAM_INTF_META_AUTOFOCUS_DATA,               cam_auto_focus_data_t,          1);
     INCLUDE(CAM_INTF_PARM_UPDATE_DEBUG_LEVEL,           uint32_t,                       1);
 
+    volatile char moto_reserved1[24];
+    INCLUDE(MOTO2,                                      uint8_t,                     232);
+
     /* Specific to HAl1 */
     INCLUDE(CAM_INTF_META_CROP_DATA,                    cam_crop_data_t,                1);
     INCLUDE(CAM_INTF_META_PREP_SNAPSHOT_DONE,           int32_t,                        1);
@@ -690,6 +697,10 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_SCE_FACTOR,                   int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_FD,                           cam_fd_set_parm_t,           1);
     INCLUDE(CAM_INTF_PARM_MCE,                          int32_t,                     1);
+    INCLUDE(MOTO4,                                      uint8_t,                     4);
+    INCLUDE(MOTO27,                                     uint8_t,                     4);
+    INCLUDE(MOTO28,                                     uint8_t,                     28);
+    INCLUDE(MOTO3,                                      uint8_t,                     4);
     INCLUDE(CAM_INTF_PARM_HFR,                          int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_REDEYE_REDUCTION,             int32_t,                     1);
     INCLUDE(CAM_INTF_PARM_WAVELET_DENOISE,              cam_denoise_param_t,         1);
@@ -744,6 +755,9 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_STATS_AF_PAAF,                uint32_t,                    1);
     INCLUDE(CAM_INTF_PARM_FOCUS_BRACKETING,             cam_af_bracketing_t,         1);
     INCLUDE(CAM_INTF_PARM_FLASH_BRACKETING,             cam_flash_bracketing_t,      1);
+    volatile char moto_reserved[2];
+    INCLUDE(MOTO22,                                     uint8_t,                     4);
+    INCLUDE(MOTO23,                                     uint8_t,                     4);
     INCLUDE(CAM_INTF_META_JPEG_GPS_COORDINATES,         double,                      3);
     INCLUDE(CAM_INTF_META_JPEG_GPS_PROC_METHODS,        uint8_t,                     GPS_PROCESSING_METHOD_SIZE);
     INCLUDE(CAM_INTF_META_JPEG_GPS_TIMESTAMP,           int64_t,                     1);
@@ -759,7 +773,10 @@ typedef struct {
     INCLUDE(CAM_INTF_PARM_ROTATION,                     cam_rotation_info_t,         1);
     INCLUDE(CAM_INTF_META_IMGLIB,                       cam_intf_meta_imglib_t,      1);
     INCLUDE(CAM_INTF_PARM_CAPTURE_FRAME_CONFIG,         cam_capture_frame_config_t,  1);
+    INCLUDE(MOTO30,                                     uint8_t,                     1);
+    INCLUDE(MOTO31,                                     uint8_t,                     1);
     INCLUDE(CAM_INTF_PARM_FLIP,                         int32_t,                     1);
+
 } metadata_data_t;
 
 /* Update clear_metadata_buffer() function when a new is_xxx_valid is added to
