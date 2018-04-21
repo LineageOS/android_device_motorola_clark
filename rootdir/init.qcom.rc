@@ -325,7 +325,7 @@ service vendor.qmuxd /vendor/bin/qmuxd
 service vendor.netmgrd /vendor/bin/netmgrd
     class main
     user root
-    group root wifi wakelock radio inet
+    group root wifi wakelock radio inet oem_2950
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.ipacm-diag /vendor/bin/ipacm-diag
