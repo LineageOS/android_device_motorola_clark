@@ -66,7 +66,6 @@ QCOM_BT_READ_ADDR_FROM_PROP := true
 QCOM_BT_USE_OLD_WCNSS_FILTER := true
 
 # Camera
-TARGET_USES_MEDIA_EXTENSIONS := true
 TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
     /system/vendor/bin/mm-qcamera-daemon=22
 
