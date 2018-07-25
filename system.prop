@@ -41,6 +41,12 @@ bluetooth.enable_timeout_ms=12000
 # CABL
 ro.qualcomm.cabl=0
 
+# CNE
+persist.cne.feature=1
+
+# DPM
+persist.vendor.dpm.feature=11
+
 # Camera
 media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
@@ -110,7 +116,6 @@ media.stagefright.enable-fma2dp=true
 media.stagefright.enable-scan=true
 media.aac_51_output_enabled=true
 mmp.enable.3g2=true
-persist.dpm.feature=3
 ro.hdmi.enable=true
 tunnel.audio.encode=false
 use.voice.path.for.pcm.voip=true
