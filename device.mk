@@ -237,6 +237,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
 
 PRODUCT_PACKAGES += \
+    android.hidl.base@1.0 \
+    android.hidl.manager@1.0 \
     libcnefeatureconfig \
     libqsap_sdk \
     ebtables \
