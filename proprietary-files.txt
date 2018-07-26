@@ -622,7 +622,7 @@ vendor/lib64/libril-qc-qmi-1.so
 vendor/lib/libril-qcril-hook-oem.so
 vendor/lib64/libril-qcril-hook-oem.so
 vendor/lib/libsettings.so
-vendor/lib64/libsettings.so
+vendor/lib64/libsettings.so|20c4cfbafdae30682a8e4d9d22e242cdb3706c72
 vendor/lib/libxml.so
 vendor/lib64/libxml.so
 vendor/lib64/libqcmaputils.so
