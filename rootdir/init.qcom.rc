@@ -249,8 +249,6 @@ on post-fs-data
     mkdir /data/misc/location/quipc 0770 gps system
     mkdir /data/misc/location/gsiff 0770 gps gps
     mkdir /data/misc/camera 0770 camera camera
-    mkdir /data/misc/wifi 0770 wifi wifi
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
 
     # Create directory's for various items
     mkdir /data/power_supply_logger 0750 oem_9001 log
