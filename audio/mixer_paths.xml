@@ -833,8 +833,10 @@
 		<!-- Enable earpiece mode this toggles gpio -->
 		<ctl name="TFA9890 earpiece mode" value="Off" />
 		<ctl name="AIF1TX2 Input 1" value="SLIMRX1" />
+		<!-- SQK: breaks mic on OSS audio HAL
 		<ctl name="SLIMTX5 Input 1" value="AIF1RX2" />
 		<ctl name="VOC_EXT_EC MUX" value="SLIMBUS_1_TX" />
+		-->
 		<ctl name="Left SPK Mux" value="Off" />
 	</path>
 
