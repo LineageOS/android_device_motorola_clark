@@ -69,6 +69,8 @@ QCOM_BT_USE_OLD_WCNSS_FILTER := true
 
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
+TARGET_PROCESS_SDK_VERSION_OVERRIDE := \
+    /system/bin/mm-qcamera-daemon=22
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
