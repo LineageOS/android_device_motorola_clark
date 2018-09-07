@@ -176,6 +176,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/nfc/libnfc-nci-20795a20.conf:$(TARGET_COPY_OUT_VENDOR)/etc/libnfc-nci-20795a20.conf
 
 PRODUCT_PACKAGES += \
+    android.hardware.nfc@1.0-impl-bcm \
+    android.hardware.nfc@1.0-service \
     com.android.nfc_extras \
     nfc_nci.bcm2079x.default \
     NfcNci \
