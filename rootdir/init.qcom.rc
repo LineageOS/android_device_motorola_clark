@@ -19,7 +19,6 @@ on init
 
     # Setup symlinks
     symlink /data/tombstones /tombstones
-    symlink /sdcard /storage/sdcard0
 
 on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
