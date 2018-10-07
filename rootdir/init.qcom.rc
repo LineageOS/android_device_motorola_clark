@@ -15,12 +15,7 @@ on init
     chown mot_esdfs root /proc/fs/esdfs/packages
 
     # Set permissions for partitions
-    mkdir /persist 0771 system system
-    mkdir /storage 0555 system sdcard_r
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
-    mkdir /firmware 0771 system system
-    mkdir /bt_firmware 0771 system system
-    mkdir /fsg 755 root root
 
     # Setup symlinks
     symlink /data/tombstones /tombstones

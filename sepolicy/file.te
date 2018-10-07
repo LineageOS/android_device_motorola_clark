@@ -11,3 +11,4 @@ type sysfs_light, dev_type, file_type, sysfs_type;
 type sysfs_performance, sysfs_type, fs_type;
 type sysfs_power, dev_type, file_type, sysfs_type;
 type sysfs_power_management, fs_type, sysfs_type;
+type fsg_file, file_type, data_file_type;
