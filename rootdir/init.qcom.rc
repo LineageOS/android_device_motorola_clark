@@ -17,9 +17,6 @@ on init
     # Set permissions for partitions
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
 
-    # Setup symlinks
-    symlink /data/tombstones /tombstones
-
 on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
@@ -28,8 +25,6 @@ on fs
 
     # use /persist as phony PDS partition
     symlink /persist /pds
-
-    symlink /data/tombstones /tombstones
 
     restorecon_recursive /persist
 
@@ -152,6 +147,7 @@ on post-fs
     mkdir /persist/factory 0755 oem_5004 oem_5004
     mkdir /persist/public 0755 oem_5004 oem_5004
     mkdir /persist/public/atvc 0770 oem_5012 shell
+    chmod 0770 /pds/public/atvc
     mkdir /persist/public/battd 0755 mot_accy oem_5004
     mkdir /persist/public/hiddenmenu 0755 radio radio
     mkdir /persist/public/hiddenmenu/data 0775 system oem_5004
@@ -198,7 +194,6 @@ on post-fs
 on post-fs-data
     # Setup correct permissions for dbvc and atvc
     mkdir /pds/public/atvc 0770 oem_5012 shell
-    chmod 0770 /pds/public/atvc
     mkdir /data/local/atvc 0775 oem_5004 shell
 
     # Create IPA daemon dir
@@ -215,11 +210,10 @@ on post-fs-data
     copy /vendor/etc/perfd-preset-values /data/system/perfd/default_values
     start vendor.perfd
     
-    mkdir /data/tombstones 0771 system system
-    mkdir /tombstones/modem 0771 system system
-    mkdir /tombstones/lpass 0771 system system
-    mkdir /tombstones/wcnss 0771 system system
-    mkdir /tombstones/dsps 0771 system system
+    mkdir /data/tombstones/modem 0771 system system
+    mkdir /data/tombstones/lpass 0771 system system
+    mkdir /data/tombstones/wcnss 0771 system system
+    mkdir /data/tombstones/dsps 0771 system system
 
     # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
     # We chown/chmod /persist again so because mount is run as root + defaults
