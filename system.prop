@@ -170,6 +170,11 @@ wifi.interface=wlan0
 ro.qc.sdk.gestures.camera=false
 ro.qc.sdk.sensors.gestures=true
 
+# Surfaceflinger
+ro.surface_flinger.max_frame_buffer_acquired_buffers=3
+ro.surface_flinger.vsync_event_phase_offset_ns=7500000
+ro.surface_flinger.vsync_sf_event_phase_offset_ns=5000000
+
 # SSR
 persist.sys.ssr.restart_level=ALL_ENABLE
 
