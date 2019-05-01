@@ -509,10 +509,10 @@ service batt_health /system/bin/batt_health
     class main
     group oem_9001
 
-service charger /charger
+service charger /system/bin/charger
     class charger
-    group log
-    seclabel u:r:healthd:s0
+    group system graphics
+    seclabel u:r:charger:s0
     writepid /dev/cpuset/system-background/tasks
 
 service motosh /system/bin/motosh boot
