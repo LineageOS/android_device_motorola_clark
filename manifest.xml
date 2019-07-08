@@ -58,6 +58,15 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.gatekeeper</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IGatekeeper</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.gnss</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -95,8 +104,8 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.keymaster</name>
+        <transport>hwbinder</transport>
         <version>3.0</version>
-        <transport arch="32+64">passthrough</transport>
         <interface>
             <name>IKeymasterDevice</name>
             <instance>default</instance>
