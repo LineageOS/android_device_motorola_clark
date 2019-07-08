@@ -311,8 +311,10 @@ vendor/lib/libtzdrmgenprov.so
 vendor/lib64/libtzdrmgenprov.so
 # Widevine - from Angler - OPM3.171019.019
 vendor/lib/mediadrm/libwvdrmengine.so|fb276a490ee3d630f9ba5ba751b00397a2f6dca0
-vendor/lib/hw/keystore.msm8992.so
-vendor/lib64/hw/keystore.msm8992.so
+# Keystore - from Ether - ether-user-7.1.1-Robin_Nougat_108-00WW_Jenkins_108-release-keys
+vendor/lib64/hw/keystore.msm8992.so|f7c779829078002735f681f2ec06c2a89b4a1ffc
+# Gatekeeper - from Ether - ether-user-7.1.1-Robin_Nougat_108-00WW_Jenkins_108-release-keys
+vendor/lib64/hw/gatekeeper.msm8992.so|af080bfd4294dc941b2de00897ef90bef66d28d2
 
 # Display tuning
 vendor/lib/libmm-als.so
