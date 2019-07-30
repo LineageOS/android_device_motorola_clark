@@ -511,7 +511,8 @@ service batt_health /system/bin/batt_health
 
 service charger /system/bin/charger
     class charger
-    group system graphics
+    user system
+    group system graphics input
     seclabel u:r:charger:s0
     writepid /dev/cpuset/system-background/tasks
 
