@@ -560,3 +560,6 @@ service ppd /system/bin/mm-pp-daemon
 
 on property:init.svc.surfaceflinger=stopped
     stop ppd
+
+on property:apexd.status=ready
+    mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
