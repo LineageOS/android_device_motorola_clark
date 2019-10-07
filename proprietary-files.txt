@@ -138,8 +138,6 @@ lib/libjscore.so
 lib/libjustshoot.so
 lib/libmmcamera_interface.so
 lib/libmmjpeg_interface.so
-lib/libbson.so
-lib64/libbson.so
 lib/libmot_sensorlistener.so
 lib/libmot-qc-fd-offline.so
 lib/libmbs.so
