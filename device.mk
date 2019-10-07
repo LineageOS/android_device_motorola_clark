@@ -51,6 +51,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
     camera.msm8992 \
+    libbson \
     libcamera \
     libqomx_core \
     libmm-qcamera \
@@ -201,7 +202,6 @@ PRODUCT_PACKAGES += \
     ebtables \
     ethertypes \
     libnl_2 \
-    libbson \
     librmnetctl \
     libxml2
 
