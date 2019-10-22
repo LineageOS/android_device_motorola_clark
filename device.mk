@@ -249,8 +249,6 @@ PRODUCT_PACKAGES += \
     android.hidl.manager@1.0 \
     libcnefeatureconfig \
     libqsap_sdk \
-    ebtables \
-    ethertypes \
     libnl_2 \
     librmnetctl \
     libxml2
