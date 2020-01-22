@@ -6,9 +6,5 @@
   {
     "repository": "android_hardware_sony_thermanager",
     "target_path": "hardware/sony/thermanager"
-  },
-  {
-    "repository": "android_packages_resources_devicesettings",
-    "target_path": "packages/resources/devicesettings"
   }
 ]
