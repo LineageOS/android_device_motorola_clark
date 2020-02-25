@@ -545,13 +545,6 @@ service iop /system/bin/iop
     group root
     writepid /dev/cpuset/system-background/tasks
 
-# OSS thermal management
-service thermanager /system/bin/thermanager /system/etc/thermanager.xml
-    class late_start
-    user root
-    group root
-    writepid /dev/cpuset/system-background/tasks
-
 service ppd /system/bin/mm-pp-daemon
     class late_start
     user system
