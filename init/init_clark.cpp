@@ -27,15 +27,17 @@
    IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <android-base/properties.h>
+
 #include <string.h>
 #include <stdlib.h>
 #define _REALLY_INCLUDE_SYS__SYSTEM_PROPERTIES_H_
 #include <sys/_system_properties.h>
 
-#include "vendor_init.h"
 #include "property_service.h"
-#include "log.h"
-#include "util.h"
+#include "vendor_init.h"
+
+using android::init::property_set;
 
 static void setSsim(void);
 static void setMsim(void);
@@ -57,12 +59,8 @@ void vendor_load_properties()
     std::string sku;
     std::string car;
 
-    platform = property_get("ro.board.platform");
-    if (platform != ANDROID_TARGET)
-        return;
-
-    sku = property_get("ro.boot.hardware.sku");
-    car = property_get("ro.boot.carrier");
+    sku = android::base::GetProperty("ro.boot.hardware.sku", "");
+    car = android::base::GetProperty("ro.boot.carrier", "");
 
     property_override("ro.product.model", sku.c_str());
     property_override("ro.build.product", "clark");
