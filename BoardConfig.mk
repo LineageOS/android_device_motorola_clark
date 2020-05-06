@@ -142,9 +142,6 @@ TARGET_KERNEL_CONFIG := clark_defconfig
 TARGET_KERNEL_HEADER_ARCH := arm64
 TARGET_KERNEL_SOURCE := kernel/motorola/msm8992
 
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
-
 # Peripheral manager
 TARGET_PER_MGR_ENABLED := true
 
