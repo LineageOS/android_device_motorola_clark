@@ -110,6 +110,7 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.power.sh \
     init.qcom.rc \
+    init.recovery.qcom.rc \
     ueventd.qcom.rc
 
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST := \
