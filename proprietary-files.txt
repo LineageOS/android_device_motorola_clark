@@ -34,8 +34,6 @@ vendor/lib/libadiertac.so
 vendor/lib64/libadiertac.so
 vendor/lib/libaudcal.so
 vendor/lib64/libaudcal.so
-vendor/lib/libhwdaphal.so
-vendor/lib64/libhwdaphal.so
 vendor/lib/soundfx/libqcbassboost.so
 vendor/lib/soundfx/libqcreverb.so
 vendor/lib/soundfx/libqcvirt.so
@@ -286,7 +284,6 @@ lib/libdmjavaplugin.so
 -priv-app/DCMO/DCMO.apk
 -priv-app/DMService/DMService.apk
 -priv-app/DiagMon/DiagMon.apk
--priv-app/GCS/GCS.apk:priv-app/GCS/GCS.apk:PRESIGNED
 -priv-app/LifetimeData/LifetimeData.apk
 -priv-app/SprintDM/SprintDM.apk
 
@@ -381,7 +378,6 @@ vendor/lib/libvoice-svc.so
 vendor/lib64/libvoice-svc.so
 
 # GPS
-bin/location-mq
 bin/loc_launcher
 bin/lowi-server
 bin/xtwifi-client
@@ -391,7 +387,6 @@ etc/permissions/com.qualcomm.location.xml
 -lib64/libloc_api_v02.so
 -lib/libloc_ds_api.so
 -lib64/libloc_ds_api.so
-vendor/bin/slim_ap_daemon
 vendor/lib/hw/flp.default.so
 vendor/lib64/hw/flp.default.so
 vendor/lib/libflp.so
@@ -440,7 +435,6 @@ vendor/lib/libllvm-qcom.so
 vendor/lib/librs_adreno.so
 vendor/lib/librs_adreno_sha1.so
 vendor/lib/libscale.so
-vendor/lib/libuiblur.so
 vendor/lib64/egl/eglSubDriverAndroid.so
 vendor/lib64/egl/libEGL_adreno.so
 vendor/lib64/egl/libGLESv1_CM_adreno.so
@@ -463,7 +457,6 @@ vendor/lib64/libllvm-qcom.so
 vendor/lib64/librs_adreno.so
 vendor/lib64/librs_adreno_sha1.so
 vendor/lib64/libscale.so
-vendor/lib64/libuiblur.so
 
 # Media
 etc/firmware/dxhdcp2.b00
