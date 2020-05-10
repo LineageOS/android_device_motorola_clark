@@ -1,3 +1,6 @@
+# Default source if not otherwise specified:
+# CLARK_RETUS_7.0_NPH25.200-22_cid9_subsidy-DEFAULT_CFC.xml
+
 # ADSP /ADSP-RPC / Vision
 bin/adspd
 bin/adsprpcd
