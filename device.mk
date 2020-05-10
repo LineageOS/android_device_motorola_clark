@@ -225,6 +225,10 @@ PRODUCT_PACKAGES += \
     librmnetctl \
     libxml2
 
+# RenderScript
+PRODUCT_PACKAGES += \
+    android.hardware.renderscript@1.0-impl
+
 # Sensors
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sensor_def_qcomdev.conf:system/etc/sensors/sensor_def_qcomdev.conf \
