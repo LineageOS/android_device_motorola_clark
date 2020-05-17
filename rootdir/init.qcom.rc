@@ -261,9 +261,6 @@ on post-fs-data
     mkdir /data/connectivity 0771 system system
     chown system system /data/connectivity
 
-    # Create directory from IMS services
-    mkdir /data/shared 0755 system system
-
     # Create directory for FOTA
     mkdir /data/fota 0771 system system
 
