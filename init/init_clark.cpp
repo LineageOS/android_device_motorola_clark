@@ -133,16 +133,8 @@ static void setSsim(void)
     property_set("persist.eab.supported", "0");
     property_set("persist.radio.snapshot_timer", "22");
     property_set("persist.radio.snapshot_enabled", "1");
-    property_set("persist.ims.volte", "true");
-    property_set("persist.ims.vt", "false");
-    property_set("persist.ims.vt.epdg", "false");
-    property_set("persist.ims.disableADBLogs", "2");
-    property_set("persist.ims.disableDebugLogs", "0");
-    property_set("persist.ims.disableQXDMLogs", "0");
-    property_set("persist.ims.disableIMSLogs", "0");
     property_set("persist.rcs.supported", "0");
     property_set("persist.rcs.presence.provision", "0");
-    property_set("persist.radio.calls.on.ims", "true");
     property_set("persist.radio.jbims", "1");
     property_set("persist.radio.domain.ps", "0");
     property_set("persist.radio.VT_ENABLE", "1");
