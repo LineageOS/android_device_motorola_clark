@@ -36,6 +36,7 @@ vendor.qcom.bluetooth.soc=rome
 qcom.bluetooth.soc=rome
 qcom.bt.le_dev_pwr_class=1
 ro.bluetooth.hfp.ver=1.6
+bluetooth.enable_timeout_ms=12000
 
 # CABL
 ro.qualcomm.cabl=0
