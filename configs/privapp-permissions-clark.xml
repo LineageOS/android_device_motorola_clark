@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<permissions>
+    <privapp-permissions package="com.android.omadm.service">
+	<permission name="android.permission.CHANGE_CONFIGURATION"/>
+	<permission name="android.permission.CONNECTIVITY_INTERNAL"/>
+	<permission name="android.permission.MODIFY_PHONE_STATE"/>
+	<permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
+	<permission name="android.permission.WRITE_APN_SETTINGS"/>
+	<permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.android.sdm.plugins.connmo">
+        <permission name="android.permission.CHANGE_CONFIGURATION"/>
+        <permission name="android.permission.MODIFY_PHONE_STATE"/>
+        <permission name="android.permission.WRITE_APN_SETTINGS"/>
+        <permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.android.sdm.plugins.sprintdm">
+	<permission name="android.permission.CHANGE_CONFIGURATION"/>
+	<permission name="android.permission.CONNECTIVITY_INTERNAL"/>
+	<permission name="android.permission.MASTER_CLEAR"/>
+	<permission name="android.permission.MODIFY_PHONE_STATE"/>
+	<permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
+	<permission name="android.permission.SHUTDOWN"/>
+	<permission name="android.permission.WRITE_APN_SETTINGS"/>
+	<permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.motorola.lifetimedata">
+	<permission name="android.permission.MASTER_CLEAR"/>
+	<permission name="android.permission.MODIFY_PHONE_STATE"/>
+	<permission name="android.permission.READ_PRIVILEGED_PHONE_STATE"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.motorola.motocit">
+	<permission name="android.permission.LOCAL_MAC_ADDRESS"/>
+	<permission name="android.permission.MODIFY_PHONE_STATE"/>
+	<permission name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+	<permission name="android.permission.OVERRIDE_WIFI_CONFIG"/>
+	<permission name="android.permission.REBOOT"/>
+	<permission name="android.permission.SHUTDOWN"/>
+	<permission name="android.permission.WRITE_MEDIA_STORAGE"/>
+	<permission name="android.permission.WRITE_SECURE_SETTINGS"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.qualcomm.atfwd">
+	<permission name="android.permission.INTERACT_ACROSS_USERS"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.qualcomm.qcrilmsgtunnel">
+        <permission name="android.permission.INTERACT_ACROSS_USERS"/>
+    </privapp-permissions>
+    <privapp-permissions package="com.quicinc.cne.CNEService">
+	<permission name="android.permission.PACKET_KEEPALIVE_OFFLOAD"/>
+    </privapp-permissions>
+</permissions>

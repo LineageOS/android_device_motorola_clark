@@ -218,6 +218,10 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     power.msm8992
 
+# Privapp Whitelist
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/privapp-permissions-clark.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/privapp-permissions-clark.xml
+
 # Radio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:system/etc/sec_config
