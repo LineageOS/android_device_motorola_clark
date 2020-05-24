@@ -2,6 +2,6 @@
 
 for file in /firmware/image/*.gz; do
   OUT_FILE=$(basename $file .gz)
-  gzip -dc $file > /system/etc/firmware/$OUT_FILE
-  chmod 644 /system/etc/firmware/$OUT_FILE
+  gzip -dc $file > /mnt/system/system/vendor/firmware/$OUT_FILE
+  chmod 644 /mnt/system/system/vendor/firmware/$OUT_FILE
 done
