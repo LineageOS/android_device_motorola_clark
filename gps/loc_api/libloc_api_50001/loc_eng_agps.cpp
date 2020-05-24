@@ -293,9 +293,9 @@ AgpsState* AgpsReleasedState::onRsrcEvent(AgpsRsrcStatus event, void* data)
         subscriber->notifyRsrcStatus(notification);
     }
         // break;
-    case RSRC_GRANTED:
-    case RSRC_RELEASED:
-    case RSRC_DENIED:
+    case RSRC_GRANTED:[[fallthrough]];
+    case RSRC_RELEASED:[[fallthrough]];
+    case RSRC_DENIED:[[fallthrough]];
     default:
         LOC_LOGW("%s: unrecognized event %d", whoami(), event);
         // no state change.
@@ -933,6 +933,7 @@ void DSStateMachine :: onRsrcEvent(AgpsRsrcStatus event)
             event = RSRC_DENIED;
             LOC_LOGE(" Switching event to RSRC_DENIED\n");
         }
+	[[fallthrough]];
     case RSRC_DENIED:
         mStatePtr = mStatePtr->onRsrcEvent(event, NULL);
         break;
