@@ -379,34 +379,14 @@ vendor/lib/libsmemlog.so
 vendor/lib64/libsmemlog.so
 
 # GPS
-bin/loc_launcher
-bin/lowi-server
-bin/xtwifi-client
-bin/xtwifi-inet-agent
-etc/permissions/com.qualcomm.location.xml
--lib/libloc_api_v02.so
--lib64/libloc_api_v02.so
--lib/libloc_ds_api.so
--lib64/libloc_ds_api.so
-vendor/lib/hw/flp.default.so
-vendor/lib64/hw/flp.default.so
-vendor/lib/libflp.so
-vendor/lib64/libflp.so
-vendor/lib/libalarmservice_jni.so
-vendor/lib64/libalarmservice_jni.so
-vendor/lib64/libgeofence.so
-vendor/lib64/libizat_core.so
-vendor/lib64/liblbs_core.so
-vendor/lib/liblocationservice.so
-vendor/lib64/liblocationservice.so
-vendor/lib/liblowi_client.so
-vendor/lib64/liblowi_client.so
-vendor/lib/libquipc_os_api.so
-vendor/lib64/libquipc_os_api.so
-vendor/lib/libulp2.so
-vendor/lib64/libulp2.so
-vendor/lib/libxtadapter.so
-vendor/lib64/libxtadapter.so
+vendor/lib64/libloc_api_v02.so|1db714846d90a94b00db54486e156b25b2a1e64e
+vendor/lib64/libloc_ds_api.so|375785257c6dc8e8451eb25babfea9128e1d5749
+vendor/lib64/hw/flp.default.so|8b151d16862a78df4d75f9158468cfb10fea86fe
+vendor/lib64/libflp.so|b29bcc5ba9e9bb81b61c5f8c1db8216d15b718c3
+vendor/lib64/libgeofence.so|96bf6e10ab1128607bc21f3064c53e978a785dfa
+vendor/lib64/libizat_core.so|6810eccd7a7b4b49e56431fe8caa30e904154c3c
+vendor/lib64/liblbs_core.so|f193bdf82b36ff9fde2df1d4b8e12e0e84483b59
+
 
 # Adreno GPU
 etc/firmware/a420_pfp.fw

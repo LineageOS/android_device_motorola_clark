@@ -359,12 +359,6 @@ service wcnss_filter /system/bin/wcnss_filter
     seclabel u:r:moto_wcnss_filter:s0
     disabled
 
-service loc_launcher /system/bin/loc_launcher
-    class late_start
-    group gps inet net_raw oem_2950 net_admin wifi
-    writepid /dev/cpuset/system-background/tasks
-    disabled
-
 service qmuxd /system/bin/qmuxd
     class main
     user root
