@@ -570,7 +570,8 @@ vendor/lib64/libmdmdetect.so
 vendor/lib/libnetmgr.so
 vendor/lib64/libnetmgr.so
 vendor/lib/libperipheral_client.so
-vendor/lib64/libperipheral_client.so
+# libperipheral_client.so from bullhead-ota-opm7.181205.001-b1af2457
+vendor/lib64/libperipheral_client.so|bc6b71eb5b8fce1c2ddf27ea3a0b42df380e6a0d
 vendor/lib/lib-rcsjni.so
 vendor/lib64/lib-rcsjni.so
 vendor/lib/libril-qc-ltedirectdisc.so
