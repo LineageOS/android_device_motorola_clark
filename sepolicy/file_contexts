@@ -1,5 +1,6 @@
 /bt_firmware(/.*)                               u:object_r:firmware_file:s0
 /fsg(/.*)?					u:object_r:fsg_file:s0
+/pds(/.*)?					u:object_r:firmware_file:s0
 /data/adspd(/.*)?                               u:object_r:adspd_data_file:s0
 /data/hardware_revisions(/.*)?                  u:object_r:hwrev_data_file:s0
 /data/power_supply_logger(/.*)?                 u:object_r:battery_data_file:s0
