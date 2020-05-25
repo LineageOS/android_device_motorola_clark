@@ -121,6 +121,9 @@ PRODUCT_PACKAGES += \
     libqdutils \
     libqdMetaData
 
+PRODUCT_PACKAGES += \
+    vendor.lineage.livedisplay@2.0-service-sysfs
+
 # Firmware extraction script
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/releasetools/extract_firmware.sh:install/bin/extract_firmware.sh
