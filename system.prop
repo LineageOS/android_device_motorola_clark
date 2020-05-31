@@ -28,7 +28,7 @@ ro.vendor.audio.sdk.ssr=false
 vendor.audio.offload.buffer.size.kb=32
 vendor.audio.offload.gapless.enabled=false
 vendor.audio.offload.multiple.enabled=true
-vendor.audio_hal.period_size=192
+vendor.audio_hal.period_size=240
 
 # Bluetooth
 bluetooth.hfp.client=1
