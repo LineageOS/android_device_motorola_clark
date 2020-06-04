@@ -7034,6 +7034,7 @@ bool QCamera2HardwareInterface::needReprocess()
 {
     pthread_mutex_lock(&m_parm_lock);
 
+#if 0
     if (mParameters.getofflineRAW()) {
         pthread_mutex_unlock(&m_parm_lock);
         return true;
@@ -7114,6 +7115,7 @@ bool QCamera2HardwareInterface::needReprocess()
         return true;
     }
 
+#endif
     pthread_mutex_unlock(&m_parm_lock);
     return false;
 }
