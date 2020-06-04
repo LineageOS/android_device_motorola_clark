@@ -65,7 +65,7 @@ namespace qcamera {
 
 cam_capability_t *gCamCaps[MM_CAMERA_MAX_NUM_SENSORS];
 static pthread_mutex_t g_camlock = PTHREAD_MUTEX_INITIALIZER;
-volatile uint32_t gCamHalLogLevel = 1;
+volatile uint32_t gCamHalLogLevel = 2;
 
 camera_device_ops_t QCamera2HardwareInterface::mCameraOps = {
     .set_preview_window =         QCamera2HardwareInterface::set_preview_window,
