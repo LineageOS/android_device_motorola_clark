@@ -51,6 +51,7 @@ persist.vendor.dpm.feature=11
 persist.camera.HAL3.enabled=0
 persist.camera.tnr.video=on
 persist.camera.tnr.preview=on
+persist.camera.zsl.mode=1
 ro.qc.sdk.camera.facialproc=false
 
 # Coresight
