@@ -1,5 +1,5 @@
-import init.mmi.usb.rc
-import init.qcom.power.rc
+import /vendor/etc/init/hw/init.mmi.usb.rc
+import /vendor/etc/init/hw/init.qcom.power.rc
 
 on early-init
     write /sys/block/zram0/comp_algorithm lz4
@@ -23,8 +23,8 @@ on init
 on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
-    mount_all fstab.qcom
-    swapon_all fstab.qcom
+    mount_all /vendor/etc/fstab.qcom
+    swapon_all /vendor/etc/fstab.qcom
 
     # use /persist as phony PDS partition
     symlink /persist /pds
@@ -313,7 +313,7 @@ service config_bluetooth /vendor/bin/init.qcom.bt.sh "onboot"
     disabled
     writepid /dev/cpuset/system-background/tasks
 
-service hciattach /system/bin/sh /vendor/bin/init.qcom.bt.sh
+service hciattach /vendor/bin/init.qcom.bt.sh
     seclabel u:r:bluetooth_loader:s0
     class late_start
     user bluetooth
@@ -426,12 +426,6 @@ service ril-daemon2 /vendor/bin/hw/rild -c 2
     group radio cache inet misc audio log readproc wakelock oem_2950
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service rild2-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
-    class late_start
-    user root
-    group root
-    oneshot
-
 service qcamerasvr /system/bin/mm-qcamera-daemon
     class late_start
     user camera
@@ -521,7 +515,7 @@ service motosh /system/bin/motosh boot
     group compass misc input oem_9004
     oneshot
 
-service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh synaptics
+service mmi-touch-sh /vendor/bin/init.mmi.touch.sh synaptics
     class core
     user root
     oneshot
