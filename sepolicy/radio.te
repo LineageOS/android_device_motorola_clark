@@ -1,5 +1,1 @@
-qmux_socket(radio)
-
-allow radio net_radio_prop:property_service set;
-allow radio persist_file:dir { add_name remove_name search write };
-allow radio persist_file:file { create getattr open read rename unlink write };
+allow radio persist_file:dir search;
