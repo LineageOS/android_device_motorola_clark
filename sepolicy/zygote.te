@@ -1,2 +1,0 @@
-allow zygote device:file open;
-allow zygote init:unix_stream_socket { getattr listen };

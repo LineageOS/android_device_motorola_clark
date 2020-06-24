@@ -1,5 +1,0 @@
-allow toolbox hwrev_data_file:dir { write remove_name search getattr setattr };
-allow toolbox hwrev_data_file:file { write unlink getattr setattr };
-allow toolbox init:fifo_file { write read getattr };
-allow toolbox self:capability chown;
-allow toolbox sysfs:file setattr;
