@@ -354,7 +354,6 @@ service wcnss_filter /system/bin/wcnss_filter
     class late_start
     user root
     group bluetooth oem_2950 log system
-    seclabel u:r:moto_wcnss_filter:s0
     disabled
 
 service qmuxd /system/bin/qmuxd

@@ -1,5 +1,0 @@
-allow rfs_access self:capability net_raw;
-
-allow rfs_access fsg_file:dir search;
-allow rfs_access fsg_file:file { getattr open read };
-allow rfs_access fsg_file:lnk_file read;
