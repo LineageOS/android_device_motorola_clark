@@ -1,0 +1,2 @@
+allow servicemanager atfwd:dir search;
+allow servicemanager atfwd:file { read open };

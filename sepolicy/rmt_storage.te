@@ -1,12 +1,2 @@
-type rmt_storage_prop, property_type;
-
-allow rmt_storage self:capability net_raw;
-allow rmt_storage debugfs_rmt_storage:dir search;
-allow rmt_storage debugfs_rmt_storage:file w_file_perms;
-allow rmt_storage firmware_file:dir { search read };
-allow rmt_storage firmware_file:file { read open };
-allow rmt_storage fsg_file:dir { read search };
+allow rmt_storage self:capability dac_override;
 allow rmt_storage fsg_file:file r_file_perms;
-allow rmt_storage init:unix_stream_socket connectto;
-allow rmt_storage property_socket:sock_file write;
-allow rmt_storage rmt_storage_prop:property_service set;
