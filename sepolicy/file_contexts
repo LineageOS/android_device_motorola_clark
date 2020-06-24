@@ -1,38 +1,55 @@
-/bt_firmware(/.*)                               u:object_r:firmware_file:s0
-/fsg(/.*)?					u:object_r:fsg_file:s0
-/pds(/.*)?					u:object_r:firmware_file:s0
-/data/adspd(/.*)?                               u:object_r:adspd_data_file:s0
-/data/hardware_revisions(/.*)?                  u:object_r:hwrev_data_file:s0
-/data/power_supply_logger(/.*)?                 u:object_r:battery_data_file:s0
+/(vendor|system/vendor)/bin/adspd u:object_r:adspd_exec:s0
+/(vendor|system/vendor)/bin/batt_health u:object_r:batt_health_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.clark u:object_r:hal_light_default_exec:s0
+/(vendor|system/vendor)/bin/init\.qcom\.power\.sh u:object_r:qti_init_shell_exec:s0
+/(vendor|system/vendor)/bin/motosh u:object_r:motosh_exec:s0
+/(vendor|system/vendor)/bin/qmi_motext_hook u:object_r:rild_exec:s0
 
-/dev/bcm2079x-i2c                               u:object_r:nfc_device:s0
-/dev/block/bootdevice/by-name/metadata          u:object_r:metadata_block_device:s0
-/dev/mot_hob_ram                                u:object_r:radio_data_file:s0
-/dev/motosh                                     u:object_r:sensors_device:s0
-/dev/motosh_as                                  u:object_r:sensors_device:s0
-/dev/motosh_ms                                  u:object_r:sensors_device:s0
-/dev/ttyHS0                                     u:object_r:hci_attach_dev:s0
+/bt_firmware(/.*)? u:object_r:bt_firmware_file:s0
 
-/sys/android_touch/doubletap2wake               u:object_r:sysfs_dt2w:s0
-/sys/class/leds/lcd-backlight/brightness        u:object_r:sysfs_light:s0
-/sys/devices/soc\.0/fdb00000\.qcom,kgsl-3d0/devfreq/fdb00000\.qcom,kgsl-3d0/governor u:object_r:sysfs_thermal:s0
-/sys/devices/soc\.0/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/default_pwrlevel           u:object_r:sysfs_thermal:s0
-/sys/devices/soc\.0/fdb00000\.qcom,kgsl-3d0/kgsl/kgsl-3d0/max_gpuclk                 u:object_r:sysfs_thermal:s0
-/sys/devices/soc\.0/qcom,bcl[^/]*(/.*)?                                              u:object_r:sysfs_thermal:s0
-/sys/devices/soc\.0/qcom,cpubw\.[0-9]+/devfreq/qcom,cpubw\.[0-9]+(/.*)?              u:object_r:sysfs_devices_system_cpu:s0
-/sys/devices/soc\.0/qcom,cpubw\.[0-9]+/devfreq/qcom,cpubw\.[0-9]+/bw_hwmon(/.*)?     u:object_r:sysfs_devices_system_cpu:s0
-/sys/devices/soc\.0/qcom,mincpubw\.[0-9]+/devfreq/qcom,mincpubw\.[0-9]+(/.*)?        u:object_r:sysfs_devices_system_cpu:s0
-/sys/devices/virtual/net/rmnet_ipa0/queues/rx-0/rps_cpus                             u:object_r:sysfs_devices_system_cpu:s0
-/sys/kernel/debug/rmt_storage(/.*)?             u:object_r:debugfs_rmt_storage:s0
-/sys/module/cpu_boost(/.*)?                     u:object_r:sysfs_devices_system_cpu:s0
-/sys/module/lpm_levels(/.*)?                    u:object_r:sysfs_power_management:s0
-/sys/module/msm_performance(/.*)?               u:object_r:sysfs_performance:s0
-/sys/power/autosleep                            u:object_r:sysfs_power:s0
+/data/adspd(/.*)? u:object_r:adspd_data_file:s0
+/data/misc/cutback(/.*)? u:object_r:cutback_data_file:s0
+/data/power_supply_logger(/.*)? u:object_r:batt_health_data_file:s0
 
-/system/bin/adspd                               u:object_r:adspd_exec:s0
-/system/bin/batt_health                         u:object_r:batt_health_exec:s0
-/system/bin/hardware_revisions.sh               u:object_r:hwrev_exec:s0
-/system/bin/init.qcom.power.sh                  u:object_r:init-power-sh_exec:s0
-/system/bin/motosh                              u:object_r:sensors_exec:s0
-/system/bin/perfd                               u:object_r:perfd_exec:s0
-/system/bin/thermanager                         u:object_r:thermanager_exec:s0
+/dev/bcm2079x-i2c u:object_r:nfc_device:s0
+/dev/block/platform/soc\.0/f9824900\.sdhci/by-name/frp u:object_r:frp_block_device:s0
+/dev/block/platform/soc\.0/f9824900\.sdhci/by-name/metadata u:object_r:metadata_block_device:s0
+/dev/motosh u:object_r:sensors_device:s0
+/dev/motosh_as u:object_r:sensors_device:s0
+/dev/socket/adspdsock u:object_r:adspd_data_file:s0
+/dev/stune(/.*)? u:object_r:cgroup:s0
+
+/fsg(/.*)? u:object_r:fsg_file:s0
+/pds(/.*)? u:object_r:persist_file:s0
+
+/pds/camera/ledcal/front u:object_r:persist_camera_file:s0
+/pds/camera/ledcal/rear u:object_r:persist_camera_file:s0
+/pds/mdm/oma_dm_update u:object_r:persist_mdm_file:s0
+/persist/camera/ledcal/front u:object_r:persist_camera_file:s0
+/persist/camera/ledcal/rear u:object_r:persist_camera_file:s0
+/persist/mdm/oma_dm_update u:object_r:persist_mdm_file:s0
+
+/sys/class/leds/lcd-backlight(/.*)? u:object_r:sysfs_leds:s0
+/sys/devices/soc\.0/leds-qpnp-9/leds/charging(/.*)? u:object_r:sysfs_leds:s0
+
+/sys/devices/soc\.0/f9200000\.ssusb/f9200000\.dwc3/gadget/lun0/file u:object_r:sysfs_android_usb:s0
+
+/sys/devices/soc\.0/f9200000\.ssusb/power_supply/usb(/.*)? u:object_r:sysfs_usb_supply:s0
+
+/sys/devices/soc\.0/f9927000\.i2c/i2c-5/5-0043/power_supply/MOTOSH-ANTCAP-PSY-DRIVER(/.*)? u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc\.0/f9967000\.i2c/i2c-11/11-001d/power_supply/usb-parallel(/.*)? u:object_r:sysfs_usb_supply:s0
+/sys/devices/soc\.0/msm-bcl-16/power_supply/fg_adc(/.*)? u:object_r:sysfs_battery_supply:s0
+/sys/devices/soc\.0/qcom,bcl\.66/power_supply/bcl(/.*)? u:object_r:sysfs_battery_supply:s0
+
+/sys/devices/soc\.0/qcom,bcl[^/]*(/.*)? u:object_r:sysfs_thermal:s0
+
+/sys/devices/soc\.0/qcom,cpubw\.[0-9]+/devfreq/qcom,cpubw\.[0-9]+(/.*)? u:object_r:sysfs_devices_system_cpu:s0
+/sys/devices/soc\.0/qcom,mincpubw\.[0-9]+/devfreq/qcom,mincpubw\.[0-9]+(/.*)? u:object_r:sysfs_devices_system_cpu:s0
+
+/sys/devices/soc\.0/f9924000\.i2c/i2c-2/2-0020/input/input1/capabilities/sw u:object_r:sysfs_adspd:s0
+/sys/devices/soc\.0/fe034000\.sound/sound/card0/input3/capabilities/sw u:object_r:sysfs_adspd:s0
+/sys/devices/soc\.0/fe034000\.sound/sound/card0/input4/capabilities/sw u:object_r:sysfs_adspd:s0
+/sys/devices/virtual/input/input0/capabilities/sw u:object_r:sysfs_adspd:s0
+/sys/devices/virtual/input/input2/capabilities/sw u:object_r:sysfs_adspd:s0
+
+/sys/kernel/aov(/.*)? u:object_r:sysfs_adspd:s0

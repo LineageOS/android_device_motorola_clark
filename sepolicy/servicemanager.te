@@ -1,0 +1,3 @@
+allow servicemanager atfwd:dir search;
+allow servicemanager atfwd:file { read open };
+allow servicemanager atfwd:process getattr;

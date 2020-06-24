@@ -1,1 +1,2 @@
-allow netmgrd self:capability dac_override;
+allow netmgrd cnd:binder { call transfer };
+allow netmgrd hal_cne_hwservice:hwservice_manager find;
