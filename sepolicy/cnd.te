@@ -1,2 +1,1 @@
-allow cnd netmgrd:dir search;
-allow cnd netmgrd:file { open read };
+allow cnd netmgrd:binder call;

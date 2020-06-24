@@ -1,0 +1,9 @@
+type motosh, domain;
+type motosh_exec, exec_type, file_type;
+init_daemon_domain(motosh)
+
+allow motosh motosh_prop:property_service set;
+allow motosh property_socket:sock_file write;
+allow motosh sensors_device:chr_file rw_file_perms;
+
+unix_socket_connect(motosh, property, init)
