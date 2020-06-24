@@ -1,0 +1,2 @@
+allow vendor_init radio_data_file:file create_file_perms;
+allow vendor_init radio_data_file:lnk_file create;

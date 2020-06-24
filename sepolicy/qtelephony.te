@@ -1,0 +1,2 @@
+allow qtelephony atfwd_service:service_manager add;
+allow qtelephony radio_service:service_manager find;

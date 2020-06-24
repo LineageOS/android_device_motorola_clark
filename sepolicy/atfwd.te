@@ -1,1 +1,8 @@
-allow atfwd diag_device:chr_file { ioctl open read write };
+allow atfwd atfwd_service:service_manager find;
+
+allow atfwd qmuxd:unix_stream_socket connectto;
+
+allow atfwd qmuxd_socket:dir rw_dir_perms;
+allow atfwd qmuxd_socket:sock_file { create write };
+
+allow atfwd servicemanager:binder call;
