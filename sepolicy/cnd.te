@@ -1,2 +1,0 @@
-allow cnd netmgrd:dir search;
-allow cnd netmgrd:file { open read };

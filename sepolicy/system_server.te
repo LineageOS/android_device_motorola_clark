@@ -1,7 +1,0 @@
-allow system_server device:chr_file ioctl;
-allow system_server rild:unix_dgram_socket sendto;
-allow system_server sysfs_dt2w:dir search;
-allow system_server sysfs_dt2w:file rw_file_perms;
-allow system_server sysfs_light:file rw_file_perms;
-allow system_server sysfs_power:file rw_file_perms;
-allow system_server user_profile_data_file:dir r_dir_perms;

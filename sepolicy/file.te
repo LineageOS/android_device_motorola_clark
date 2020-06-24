@@ -1,14 +1,1 @@
-type adspd_data_file, file_type, data_file_type;
-type adspd_socket, file_type;
-type battery_data_file, file_type, data_file_type;
-type chargeonly_data_file, file_type, data_file_type;
-type debugfs_rmt_storage, debugfs_type, fs_type;
-type fsg_file, fs_type, contextmount_type;
-type hwrev_data_file, file_type, data_file_type;
-type proc_kernel_sched, fs_type;
-type sysfs_dt2w, dev_type, file_type, sysfs_type;;
-type sysfs_light, dev_type, file_type, sysfs_type;
-type sysfs_performance, sysfs_type, fs_type;
-type sysfs_power, dev_type, file_type, sysfs_type;
-type sysfs_power_management, fs_type, sysfs_type;
 type fsg_file, file_type, data_file_type;
