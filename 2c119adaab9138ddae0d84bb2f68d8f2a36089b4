@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b7ee407_d084143b",
+        "filename": "init/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 16185
+      },
+      "writtenOn": "2020-06-28T18:17:33Z",
+      "side": 0,
+      "message": "make sure to go kill the relevant in code flag as well",
+      "range": {
+        "startLine": 7,
+        "startChar": 22,
+        "endLine": 7,
+        "endChar": 66
+      },
+      "revId": "2c119adaab9138ddae0d84bb2f68d8f2a36089b4",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": true
+    }
+  ]
+}
