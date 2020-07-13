@@ -403,18 +403,6 @@ service vendor.wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     disabled
     oneshot
 
-service gpsone_daemon /system/bin/gpsone_daemon
-    class late_start
-    user gps
-    group gps inet net_raw
-    disabled
-
-service location_mq /system/bin/location-mq
-    class late_start
-    user gps
-    group gps
-    disabled
-
 service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
@@ -537,12 +525,6 @@ service vendor.perfd /vendor/bin/perfd
     user root
     group system
     socket perfd seqpacket 0666 root system
-    writepid /dev/cpuset/system-background/tasks
-
-service vendor.iop /vendor/bin/iop
-    class main
-    user root
-    group root
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.ppd /vendor/bin/mm-pp-daemon
