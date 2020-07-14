@@ -305,28 +305,6 @@ on property:persist.radio.atfwd.start=false
 on property:radio.atfwd.start=false
     stop vendor.atfwd
 
-service config_bluetooth /vendor/bin/init.qcom.bt.sh "onboot"
-    seclabel u:r:bluetooth_loader:s0
-    user bluetooth
-    group bluetooth net_bt_admin
-    oneshot
-    disabled
-    writepid /dev/cpuset/system-background/tasks
-
-service vendor.hciattach /vendor/bin/init.qcom.bt.sh
-    seclabel u:r:bluetooth_loader:s0
-    class late_start
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
-on property:vendor.bluetooth.hciattach=true
-    start vendor.hciattach
-
-on property:vendor.bluetooth.hciattach=false
-    setprop bluetooth.status off
-
 on property:wc_transport.start_hci=true
     start vendor.wcnss_filter
 
