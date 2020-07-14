@@ -278,7 +278,6 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf \
     $(LOCAL_PATH)/configs/sensorhub-blacklist.txt:$(TARGET_COPY_OUT_VENDOR)/etc/firmware/sensorhub-blacklist.txt
 
 PRODUCT_PACKAGES += \
