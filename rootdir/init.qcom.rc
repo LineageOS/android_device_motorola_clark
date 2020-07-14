@@ -333,7 +333,7 @@ on property:wc_transport.start_hci=true
 on property:wc_transport.start_hci=false
     stop vendor.wcnss_filter
 
-service vendor.irsc_util /vendor/bin/irsc_util "/etc/sec_config"
+service vendor.irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class main
     user root
     oneshot
@@ -464,7 +464,7 @@ service vendor.atvc /vendor/bin/dbvc_atvc_property_set
     group oem_9007
     oneshot
 
-service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /system/etc/msm_irqbalance.conf
+service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqbalance.conf
     socket msm_irqbalance seqpacket 660 root system
     class core
     user root
