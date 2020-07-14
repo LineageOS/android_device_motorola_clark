@@ -32,12 +32,12 @@ vendor.audio.offload.multiple.enabled=true
 vendor.audio_hal.period_size=240
 
 # Bluetooth
+bluetooth.enable_timeout_ms=12000
 bluetooth.hfp.client=1
-vendor.qcom.bluetooth.soc=rome
 qcom.bluetooth.soc=rome
 qcom.bt.le_dev_pwr_class=1
 ro.bluetooth.hfp.ver=1.6
-bluetooth.enable_timeout_ms=12000
+vendor.qcom.bluetooth.soc=rome
 
 # CABL
 ro.qualcomm.cabl=0
@@ -50,8 +50,8 @@ persist.vendor.dpm.feature=11
 
 # Camera
 persist.camera.HAL3.enabled=0
-persist.camera.tnr.video=on
 persist.camera.tnr.preview=on
+persist.camera.tnr.video=on
 persist.camera.zsl.mode=1
 ro.qc.sdk.camera.facialproc=false
 
@@ -86,18 +86,18 @@ persist.mot.gps.conf.from.sim=true
 persist.mot.gps.smart_battery=1
 
 # Graphics
-debug.egl.hw=1
-debug.sf.hw=1
 debug.composition.type=c2d
+debug.egl.hw=1
 debug.hwui.use_buffer_age=false
 debug.mdpcomp.logs=0
+debug.sf.hw=1
 dev.pm.dyn_samplingrate=1
 persist.demo.hdmirotationlock=false
 persist.hwc.enable_vds=1
 persist.hwc.mdpcomp.enable=true
 persist.hwc.ptor.enable=true
-persist.mdpcomp_perfhint=50
 persist.mdpcomp.4k2kSplit=1
+persist.mdpcomp_perfhint=50
 persist.metadata_dynfps.disable=true
 ro.hwui.texture_cache_flushrate=0.4
 ro.opengles.version=196610
@@ -107,13 +107,13 @@ ro.sf.lcd_density=560
 av.offload.enable=false
 debug.stagefright.omx_default_rank.sw-audio=1
 debug.stagefright.omx_default_rank=0
-media.stagefright.enable-player=true
-media.stagefright.enable-http=true
-media.stagefright.enable-aac=true
-media.stagefright.enable-qcp=true
-media.stagefright.enable-fma2dp=true
-media.stagefright.enable-scan=true
 media.aac_51_output_enabled=true
+media.stagefright.enable-aac=true
+media.stagefright.enable-fma2dp=true
+media.stagefright.enable-http=true
+media.stagefright.enable-player=true
+media.stagefright.enable-qcp=true
+media.stagefright.enable-scan=true
 mmp.enable.3g2=true
 ro.hdmi.enable=true
 tunnel.audio.encode=false
@@ -129,20 +129,20 @@ ro.vendor.gt_library=libqti-gt.so
 sys.games.gt.prof=0
 
 # Play Store
-ro.com.google.clientidbase=android-motorola
 ro.com.google.clientidbase.am=android-motorola
 ro.com.google.clientidbase.gmm=android-motorola
 ro.com.google.clientidbase.ms=android-motorola
 ro.com.google.clientidbase.yt=android-motorola
+ro.com.google.clientidbase=android-motorola
 
 # Radio
 net.tcp.2g_init_rwnd=10
 net.tcp.delack.default=1
-net.tcp.delack.wifi=20
 net.tcp.delack.lte=1
+net.tcp.delack.wifi=20
 net.tcp.usercfg.default=0
-net.tcp.usercfg.wifi=1
 net.tcp.usercfg.lte=0
+net.tcp.usercfg.wifi=1
 net.tethering.noprovisioning=true
 persist.data.mode=concurrent
 persist.data.qmi.adb_logmask=0
