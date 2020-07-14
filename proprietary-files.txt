@@ -104,8 +104,6 @@ etc/firmware/cpp_firmware_v1_2_0.fw:vendor/firmware/cpp_firmware_v1_2_0.fw
 etc/firmware/cpp_firmware_v1_4_0.fw:vendor/firmware/cpp_firmware_v1_4_0.fw
 etc/firmware/cpp_firmware_v1_6_0.fw:vendor/firmware/cpp_firmware_v1_6_0.fw
 etc/firmware/cpp_firmware_v1_8_0.fw:vendor/firmware/cpp_firmware_v1_8_0.fw
-etc/permissions/com.motorola.camera.xml
-etc/permissions/com.motorola.gallery.xml
 lib/libmot_lux_standardization.so:vendor/lib/libmot_lux_standardization.so
 lib/libadvalgcore.so:vendor/lib/libadvalgcore.so
 lib/libAisAdapter.so:vendor/lib/libAisAdapter.so
