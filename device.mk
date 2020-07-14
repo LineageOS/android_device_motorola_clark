@@ -134,7 +134,6 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.mmi.touch.sh \
     init.mmi.usb.rc \
-    init.qcom.bt.sh \
     init.qcom.power.rc \
     init.qcom.power.sh \
     init.qcom.rc \

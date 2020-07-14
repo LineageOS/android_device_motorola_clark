@@ -79,8 +79,6 @@ etc/firmware/right.tfa9890_voice_table.preset:vendor/firmware/right.tfa9890_voic
 etc/firmware/vrgain.bin
 
 # Bluetooth
-bin/btnvtool:vendor/bin/btnvtool
-bin/hci_qcomm_init:vendor/bin/hci_qcomm_init
 bin/wcnss_filter:vendor/bin/wcnss_filter
 etc/user_bhd_psy.conf:vendor/etc/user_dbg_bhd_psy.conf
 etc/firmware/nvm_tlv.bin:vendor/firmware/nvm_tlv.bin
@@ -93,8 +91,6 @@ etc/firmware/rampatch_tlv_1.3.tlv:vendor/firmware/rampatch_tlv_1.3.tlv
 etc/firmware/rampatch_tlv_2.1.tlv:vendor/firmware/rampatch_tlv_2.1.tlv
 etc/firmware/rampatch_tlv_3.0.tlv:vendor/firmware/rampatch_tlv_3.0.tlv
 etc/firmware/rampatch_tlv_3.2.tlv:vendor/firmware/rampatch_tlv_3.2.tlv
-vendor/lib/libbtnv.so
-vendor/lib64/libbtnv.so
 
 # Camera
 bin/mm-qcamera-daemon:vendor/bin/mm-qcamera-daemon
