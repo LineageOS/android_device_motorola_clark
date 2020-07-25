@@ -4,10 +4,6 @@
     "target_path": "kernel/motorola/msm8992"
   },
   {
-    "repository": "android_hardware_sony_thermanager",
-    "target_path": "hardware/sony/thermanager"
-  },
-  {
     "repository": "android_external_bson",
     "target_path": "external/bson"
   },

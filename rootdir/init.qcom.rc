@@ -519,3 +519,16 @@ on property:apexd.status=ready
 
 on property:vold.decrypt=trigger_restart_framework
     restart vendor.camera-provider-2-4
+
+service vendor.thermal-engine /vendor/bin/thermal-engine
+   class main
+   user root
+   socket thermal-send-client stream 0666 system system
+   socket thermal-recv-client stream 0660 system system
+   socket thermal-recv-passive-client stream 0666 system system
+   group root
+
+service vendor.thermal-com /system/vendor/bin/thermal-engine --minimode
+   class main
+   user root
+   disabled

@@ -575,6 +575,11 @@ lib64/hw/sensorhub.msm8992.so:vendor/lib64/hw/sensorhub.msm8992.so
 vendor/lib/libsensor1.so
 vendor/lib64/libsensor1.so
 
+# Thermal engine
+etc/thermal-engine-clark.conf:vendor/etc/thermal-engine-clark.conf
+vendor/bin/thermal-engine|506596681eb8d4ec5f1301d234274e6acab68b5a
+vendor/lib64/libthermalioctl.so
+
 # Time services
 -app/TimeService/TimeService.apk
 bin/time_daemon:vendor/bin/time_daemon
