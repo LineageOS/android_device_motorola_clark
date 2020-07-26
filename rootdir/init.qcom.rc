@@ -51,7 +51,7 @@ on boot
     chown system system /sys/class/graphics/fb0/hbm
     chown system system /sys/class/graphics/fb0/cabc_mode
 
-    # update foreground cpuset now that processors are up
+    # Update foreground cpuset now that processors are up
     # foreground gets all CPUs except CPU 3
     # CPU 3 is reserved for the top app
     write /dev/cpuset/background/cpus 0-1
@@ -67,7 +67,7 @@ on boot
     # Quiet binder logs
     write /sys/module/binder/parameters/debug_mask 0x5
 
-    # create the necessary data dirs for tpapi with proper permission
+    # Create the necessary data dirs for tpapi with proper permission
     mkdir /data/tpapi 02770 oem_5007 oem_5007
     mkdir /data/tpapi/etc 02770 oem_5007 oem_5007
     mkdir /data/tpapi/etc/tpa 02770 oem_5007 oem_5007
@@ -76,7 +76,7 @@ on boot
     # Create moodle directory that MOT_MOODLE can write to
     mkdir /data/local/moodle 0770 graphics oem_5004
 
-    # set permission for Dynamic-CABC feature
+    # Set permission for Dynamic-CABC feature
     chown system system /sys/class/graphics/fb0/cabc_mode
 
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
@@ -91,17 +91,17 @@ on boot
     chmod 0660 /dev/ttyHS0
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
 
-    #Create QMUX deamon socket area
+    # Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 2770 radio radio
     mkdir /dev/socket/qmux_audio 2770 media audio
     mkdir /dev/socket/qmux_bluetooth 2770 bluetooth bluetooth
     mkdir /dev/socket/qmux_gps 2770 gps gps
     mkdir /dev/socket/qmux_nfc 2770 nfc nfc
 
-    #Create NETMGR daemon socket area
+    # Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
 
-    #Remove SUID bit for iproute2 ip tool
+    # Remove SUID bit for iproute2 ip tool
     chmod 0755 /system/bin/ip
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
@@ -201,7 +201,7 @@ on post-fs-data
     mkdir /data/system/perfd 2770 root system
     copy /vendor/etc/perfd-preset-values /data/system/perfd/default_values
     start vendor.perfd
-    
+
     mkdir /data/tombstones/modem 0771 system system
     mkdir /data/tombstones/lpass 0771 system system
     mkdir /data/tombstones/wcnss 0771 system system
@@ -517,16 +517,16 @@ on property:vold.decrypt=trigger_restart_framework
     restart vendor.camera-provider-2-4
 
 service vendor.thermal-engine /vendor/bin/thermal-engine
-   class main
-   user root
-   socket thermal-send-client stream 0666 system system
-   socket thermal-recv-client stream 0660 system system
-   socket thermal-recv-passive-client stream 0666 system system
-   group root
-   writepid /dev/cpuset/system-background/tasks
+    class main
+    user root
+    socket thermal-send-client stream 0666 system system
+    socket thermal-recv-client stream 0660 system system
+    socket thermal-recv-passive-client stream 0666 system system
+    group root
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.thermal-com /system/vendor/bin/thermal-engine --minimode
-   class main
-   user root
-   disabled
-   writepid /dev/cpuset/system-background/tasks
+    class main
+    user root
+    disabled
+    writepid /dev/cpuset/system-background/tasks
