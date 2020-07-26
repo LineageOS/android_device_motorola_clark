@@ -23,9 +23,6 @@ on fs
     mount_all /vendor/etc/fstab.qcom
     swapon_all /vendor/etc/fstab.qcom
 
-    # use /persist as phony PDS partition
-    symlink /persist /pds
-
     restorecon_recursive /persist
 
 on early-boot
