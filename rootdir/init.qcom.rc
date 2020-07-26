@@ -212,8 +212,9 @@ on post-fs-data
     chmod 2755 /data/misc/perfd
     mkdir /data/system/perfd 0770 root system
     chmod 2770 /data/system/perfd
-    rm /data/system/perfd/default_values
-
+    copy /vendor/etc/perfd-preset-values /data/system/perfd/default_values
+    start vendor.perfd
+    
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -502,6 +503,7 @@ service vendor.perfd /vendor/bin/perfd
     class main
     user root
     group system
+    disabled
     socket perfd seqpacket 0666 root system
     writepid /dev/cpuset/system-background/tasks
 

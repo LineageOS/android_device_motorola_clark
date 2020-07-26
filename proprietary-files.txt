@@ -254,6 +254,7 @@ vendor/lib/libchromatix_ov5693_video.so
 # CPU
 bin/msm_irqbalance:vendor/bin/msm_irqbalance
 vendor/bin/perfd
+etc/perfd-preset-values:/vendor/etc/perfd-preset-values
 vendor/etc/perf-profile0.conf
 vendor/etc/perf-profile1.conf
 vendor/etc/perf-profile2.conf
