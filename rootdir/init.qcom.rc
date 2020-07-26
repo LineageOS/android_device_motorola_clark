@@ -11,9 +11,6 @@ on init
     chown system log /sys/fs/pstore/annotate-ramoops
     chmod 0640 /sys/fs/pstore/annotate-ramoops
 
-    # ESDFS
-    chown mot_esdfs root /proc/fs/esdfs/packages
-
     # Set permissions for partitions
     mkdir /mnt/media_rw/sdcard1 0700 media_rw media_rw
 
