@@ -54,12 +54,11 @@ on boot
     # update foreground cpuset now that processors are up
     # foreground gets all CPUs except CPU 3
     # CPU 3 is reserved for the top app
-    write /dev/cpuset/foreground/cpus 0-2,4-5
-    write /dev/cpuset/foreground/boost/cpus 4-5
     write /dev/cpuset/background/cpus 0-1
+    write /dev/cpuset/foreground/cpus 0-2,4-5
+    write /dev/cpuset/restricted/cpus 0-3
     write /dev/cpuset/system-background/cpus 0-2
     write /dev/cpuset/top-app/cpus 0-5
-    write /dev/cpuset/restricted/cpus 0-3
 
     # motosh irq_disable parameter permissions
     chown root oem_5004 /sys/module/motosh/parameters/irq_disable
@@ -321,6 +320,7 @@ service vendor.wcnss_filter /vendor/bin/wcnss_filter
     group bluetooth oem_2950 log system
     seclabel u:r:moto_wcnss_filter:s0
     disabled
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.qmuxd /vendor/bin/qmuxd
     class main
@@ -339,6 +339,7 @@ service vendor.ipacm-diag /vendor/bin/ipacm-diag
     user system
     socket ipacm_log_file dgram 660 system net_admin
     group net_admin oem_2950
+    writepid /dev/cpuset/system-background/tasks
 
 service ipacm /system/bin/ipacm
     class main
@@ -372,6 +373,7 @@ service vendor.atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
     class main
@@ -414,6 +416,7 @@ service vendor.adsprpcd /vendor/bin/adsprpcd
     class main
     user media
     group media
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.atvc_core /vendor/bin/dbvc_atvc_property_set
     class core
@@ -440,11 +443,13 @@ service vendor.cnd /vendor/bin/cnd
     class main
     user system
     group system wifi inet radio wakelock net_admin
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.dpmQmiMgr /vendor/bin/dpmQmiMgr
     class main
     user system
     group radio system
+    writepid /dev/cpuset/system-background/tasks
 
 service vendor.ssr_setup /vendor/bin/ssr_setup
     class late_start
@@ -453,6 +458,7 @@ service vendor.ssr_setup /vendor/bin/ssr_setup
 service vendor.batt_health /vendor/bin/batt_health
     class main
     group oem_5001
+    writepid /dev/cpuset/system-background/tasks
 
 service charger /system/bin/charger
     class charger
@@ -484,6 +490,7 @@ service vendor.adspd /vendor/bin/adspd
    socket adspdsock stream 0660 system audio
    user audio
    group audio input oem_2950
+   writepid /dev/cpuset/system-background/tasks
 
 service vendor.perfd /vendor/bin/perfd
     class main
@@ -498,6 +505,7 @@ service vendor.ppd /vendor/bin/mm-pp-daemon
     user system
     socket pps stream 0660 system system
     group system graphics
+    writepid /dev/cpuset/system-background/tasks
 
 on property:init.svc.surfaceflinger=stopped
     stop vendor.ppd
@@ -515,8 +523,10 @@ service vendor.thermal-engine /vendor/bin/thermal-engine
    socket thermal-recv-client stream 0660 system system
    socket thermal-recv-passive-client stream 0666 system system
    group root
+   writepid /dev/cpuset/system-background/tasks
 
 service vendor.thermal-com /system/vendor/bin/thermal-engine --minimode
    class main
    user root
    disabled
+   writepid /dev/cpuset/system-background/tasks
