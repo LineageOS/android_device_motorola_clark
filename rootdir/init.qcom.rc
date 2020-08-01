@@ -524,3 +524,9 @@ service vendor.thermal-com /system/vendor/bin/thermal-engine --minimode
     user root
     disabled
     writepid /dev/cpuset/system-background/tasks
+
+service vendor.energy-awareness /vendor/bin/energy-awareness
+    class main
+    user root
+    group system
+    oneshot
