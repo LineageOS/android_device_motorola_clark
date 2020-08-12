@@ -92,16 +92,11 @@ on boot
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
 
     #Create QMUX deamon socket area
-    mkdir /dev/socket/qmux_radio 0770 radio radio
-    chmod 2770 /dev/socket/qmux_radio
-    mkdir /dev/socket/qmux_audio 0770 media audio
-    chmod 2770 /dev/socket/qmux_audio
-    mkdir /dev/socket/qmux_bluetooth 0770 bluetooth bluetooth
-    chmod 2770 /dev/socket/qmux_bluetooth
-    mkdir /dev/socket/qmux_gps 0770 gps gps
-    chmod 2770 /dev/socket/qmux_gps
-    mkdir /dev/socket/qmux_nfc 0770 nfc nfc
-    chmod 2770 /dev/socket/qmux_nfc
+    mkdir /dev/socket/qmux_radio 2770 radio radio
+    mkdir /dev/socket/qmux_audio 2770 media audio
+    mkdir /dev/socket/qmux_bluetooth 2770 bluetooth bluetooth
+    mkdir /dev/socket/qmux_gps 2770 gps gps
+    mkdir /dev/socket/qmux_nfc 2770 nfc nfc
 
     #Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
@@ -147,7 +142,6 @@ on post-fs
     mkdir /persist/factory 0755 oem_5004 oem_5004
     mkdir /persist/public 0755 oem_5004 oem_5004
     mkdir /persist/public/atvc 0770 oem_5012 shell
-    chmod 0770 /pds/public/atvc
     mkdir /persist/public/battd 0755 mot_accy oem_5004
     mkdir /persist/public/hiddenmenu 0755 radio radio
     mkdir /persist/public/hiddenmenu/data 0775 system oem_5004
@@ -203,10 +197,8 @@ on post-fs-data
     mkdir /data/misc/iop 0770 root system
 
     # Create PERFD deamon related dirs
-    mkdir /data/misc/perfd 0755 root system
-    chmod 2755 /data/misc/perfd
-    mkdir /data/system/perfd 0770 root system
-    chmod 2770 /data/system/perfd
+    mkdir /data/misc/perfd 2755 root system
+    mkdir /data/system/perfd 2770 root system
     copy /vendor/etc/perfd-preset-values /data/system/perfd/default_values
     start vendor.perfd
     
@@ -253,7 +245,6 @@ on post-fs-data
     mkdir /data/adspd/ 0770 audio oem_2950
     mkdir /data/hardware_revisions 0755 system system
     mkdir /data/connectivity 0771 system system
-    chown system system /data/connectivity
 
     # Create directory for FOTA
     mkdir /data/fota 0771 system system
