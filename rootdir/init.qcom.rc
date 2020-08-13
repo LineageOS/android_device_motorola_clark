@@ -468,11 +468,6 @@ service vendor.motosh /vendor/bin/motosh boot
     group compass misc input oem_5004
     oneshot
 
-service vendor.mmi-touch-sh /vendor/bin/init.mmi.touch.sh synaptics
-    class core
-    user root
-    oneshot
-
 service vendor.hw_revs /vendor/bin/hardware_revisions.sh
     class late_start
     user system
