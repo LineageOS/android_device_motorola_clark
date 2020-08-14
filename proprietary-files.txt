@@ -453,7 +453,6 @@ vendor/lib64/libmm-hdcpmgr.so
 # Motorola
 vendor/bin/batt_health|1567828e308485b8a3307bc1b5a007eb7960b933
 bin/dbvc_atvc_property_set:vendor/bin/dbvc_atvc_property_set
-vendor/bin/hardware_revisions.sh|81a7dcc8b49d9471c73287a106e1725238003b67
 
 # NFC
 etc/firmware/BCM20795A2_001.003.025.0005.0048_Generic_I2C_NCD_Signed_configdata.ncd:vendor/firmware/BCM20795A2_001.003.025.0005.0048_Generic_I2C_NCD_Signed_configdata.ncd
