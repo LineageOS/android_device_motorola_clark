@@ -237,7 +237,6 @@ on post-fs-data
     mkdir /data/power_supply_logger 0750 oem_5001 log
     mkdir /data/system 0775 system system
     mkdir /data/adspd/ 0770 audio oem_2950
-    mkdir /data/hardware_revisions 0755 system system
     mkdir /data/connectivity 0771 system system
 
     # Create directory for FOTA
@@ -466,12 +465,6 @@ service vendor.motosh /vendor/bin/motosh boot
     class late_start
     user compass
     group compass misc input oem_5004
-    oneshot
-
-service vendor.hw_revs /vendor/bin/hardware_revisions.sh
-    class late_start
-    user system
-    group system
     oneshot
 
 service vendor.adspd /vendor/bin/adspd
