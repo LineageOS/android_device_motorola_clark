@@ -309,9 +309,8 @@ service vendor.rfs_access /vendor/bin/rfs_access
 
 service vendor.wcnss_filter /vendor/bin/wcnss_filter
     class late_start
-    user root
-    group bluetooth oem_2950 log system
-    seclabel u:r:moto_wcnss_filter:s0
+    user bluetooth
+    group bluetooth oem_2950 log system wakelock
     disabled
     writepid /dev/cpuset/system-background/tasks
 
