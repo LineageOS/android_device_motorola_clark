@@ -34,10 +34,5 @@
     <!-- Doze: should the pickup sensor be used as a pulse signal? -->
     <bool name="doze_pulse_on_pick_up">true</bool>
 
-    <!-- Doze: pulse parameter - how long does it take to fade in after an intent? -->
-    <integer name="doze_pulse_duration_in_intent">200</integer>
-
-    <!-- Doze: pulse parameter - delay to wait for the screen to wake up after an intent -->
-    <integer name="doze_pulse_delay_in_intent">200</integer>
 </resources>
 
