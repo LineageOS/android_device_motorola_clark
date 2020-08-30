@@ -83,7 +83,7 @@ write /sys/devices/system/cpu/cpu4/cpufreq/interactive/max_freq_hysteresis 80000
 write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 384000
 
 # Configure core_ctl
-write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 1
+write /sys/devices/system/cpu/cpu4/core_ctl/min_cpus 0
 write /sys/devices/system/cpu/cpu4/core_ctl/max_cpus 2
 write /sys/devices/system/cpu/cpu4/core_ctl/busy_up_thres 60
 write /sys/devices/system/cpu/cpu4/core_ctl/busy_down_thres 30
