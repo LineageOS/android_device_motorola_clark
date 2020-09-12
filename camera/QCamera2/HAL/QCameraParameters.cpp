@@ -4820,7 +4820,7 @@ int32_t QCameraParameters::initDefaultParameters()
         // Set default focus mode and update corresponding parameter buf
         const char *focusMode = lookupNameByValue(FOCUS_MODES_MAP,
                 PARAM_MAP_SIZE(FOCUS_MODES_MAP),
-                m_pCapability->supported_focus_modes[0]);
+                m_pCapability->supported_focus_modes[5]);
         if (focusMode != NULL) {
             setFocusMode(focusMode);
         } else {
@@ -5834,7 +5834,11 @@ int32_t QCameraParameters::setBrightness(int brightness)
 int32_t QCameraParameters::setFocusMode(const char *focusMode)
 {
     if (focusMode != NULL) {
-        int32_t value = lookupAttr(FOCUS_MODES_MAP, PARAM_MAP_SIZE(FOCUS_MODES_MAP), focusMode);
+        int32_t value = 0;
+        if (strcmp(focusMode,"auto")==0)
+	  value = lookupAttr(FOCUS_MODES_MAP, PARAM_MAP_SIZE(FOCUS_MODES_MAP), "continuous-picture");
+	else
+	  value = lookupAttr(FOCUS_MODES_MAP, PARAM_MAP_SIZE(FOCUS_MODES_MAP), focusMode);
         if (value != NAME_NOT_FOUND) {
             int32_t rc = NO_ERROR;
             CDBG_HIGH("%s: Setting focus mode %s", __func__, focusMode);
