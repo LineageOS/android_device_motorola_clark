@@ -57,7 +57,9 @@ TARGET_LD_SHIM_LIBS := \
     /system/vendor/lib64/libmdmcutback.so|libqsap_shim.so \
     /system/vendor/lib64/libizat_core.so|libshims_get_process_name.so \
     /system/vendor/lib/libizat_core.so|libshims_get_process_name.so \
-    /system/vendor/lib64/hw/flp.default.so|libshims_get_process_name.so
+    /system/vendor/lib64/hw/flp.default.so|libshims_get_process_name.so \
+    /system/vendor/lib/libril-qc-qmi-1.so|libaudioclient_shim.so \
+    /system/vendor/lib64/libril-qc-qmi-1.so|libaudioclient_shim.so
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
