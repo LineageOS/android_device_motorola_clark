@@ -120,6 +120,9 @@ PRODUCT_PACKAGES += \
     gps.msm8992 \
     libshims_get_process_name
 
+# HIDL
+PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
+
 # IPA Manager
 PRODUCT_PACKAGES += \
     IPACM_cfg.xml \
