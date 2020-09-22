@@ -22,6 +22,10 @@ $(call inherit-product-if-exists, vendor/motorola/clark/clark-vendor.mk)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/ld.config.txt:$(TARGET_COPY_OUT_SYSTEM)/etc/swcodec/ld.config.txt
 
+# ATFWD
+PRODUCT_PACKAGES += \
+    libcutils_shim
+
 # Audio
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/audio/aanc_tuning_mixer.txt:$(TARGET_COPY_OUT_VENDOR)/etc/aanc_tuning_mixer.txt \

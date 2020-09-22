@@ -63,6 +63,10 @@ function blob_fixup() {
         vendor/lib64/libsettings.so)
         "${PATCHELF}" --replace-needed "libprotobuf-cpp-full.so" "libprotobuf-cpp-full-v29.so" "${2}"
             ;;
+	# Patch ATFWD daemon to resolve dropped cutils symbols
+	vendor/bin/ATFWD-daemon)
+        "${PATCHELF}" --add-needed "libcutils_shim.so" "${2}"
+            ;;
     esac
 }
 
