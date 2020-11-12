@@ -964,6 +964,10 @@
 		<path name="camcorder-mic-bf" />
 	</path>
 
+	<path name="handset-stereo-dmic-ef">
+                <path name="voice-dmic-ef"/>
+	</path>
+
 	<!-- TTY devices -->
 	<path name="tty-headphones">
 		<path name="voice-headphones" />
