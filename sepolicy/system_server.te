@@ -1,3 +1,6 @@
 allow system_server sensors_device:chr_file { ioctl open read };
 allow system_server app_zygote:process getpgid;
 allow system_server vfat:dir rw_file_perms;
+
+get_prop(system_server, userspace_reboot_exported_prop);
+get_prop(system_server, userspace_reboot_config_prop);
