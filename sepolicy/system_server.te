@@ -4,3 +4,4 @@ allow system_server vfat:dir rw_file_perms;
 
 get_prop(system_server, userspace_reboot_exported_prop);
 get_prop(system_server, userspace_reboot_config_prop);
+get_prop(system_server, exported_camera_prop);
