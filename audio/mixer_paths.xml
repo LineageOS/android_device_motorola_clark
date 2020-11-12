@@ -52,8 +52,6 @@
 	<ctl name="HDMI_RX Port Mixer MI2S_TX" value="0" />
 	<ctl name="SLIMBUS_0_RX Port Mixer SLIM_0_TX" value="0" />
 	<ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia1" value="0" />
-	<ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia2" value="0" />
-	<ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia3" value="0" />
 	<ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia4" value="0" />
 	<ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia5" value="0" />
 	<ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia6" value="0" />
@@ -148,7 +146,6 @@
 	<ctl name="VOC_EXT_EC MUX" value="NONE" />
 	<!-- usb headset -->
 	<ctl name="AFE_PCM_RX Audio Mixer MultiMedia1" value="0" />
-	<ctl name="AFE_PCM_RX Audio Mixer MultiMedia3" value="0" />
 	<ctl name="AFE_PCM_RX Audio Mixer MultiMedia4" value="0" />
 	<ctl name="AFE_PCM_RX Audio Mixer MultiMedia7" value="0" />
 	<ctl name="AFE_PCM_RX Audio Mixer MultiMedia10" value="0" />
@@ -346,6 +343,10 @@
 		<ctl name="SLIMBUS_0_RX Audio Mixer MultiMedia4" value="1" />
 	</path>
 
+	<path name="compress-offload-playback speaker">
+		<path name="compress-offload-playback" />
+	</path>
+
 	<path name="compress-offload-playback bt-sco">
 		<ctl name="SEC_AUX_PCM_RX Audio Mixer MultiMedia4" value="1" />
 	</path>
@@ -486,6 +487,10 @@
 		<ctl name="Voice2_Tx Mixer SLIM_0_TX_Voice2" value="1" />
 	</path>
 
+	<path name="voice2-call speaker">
+		<path name="voice2-call" />
+	</path>
+
 	<path name="voice2-call bt-sco">
 		<ctl name="SEC_AUX_PCM_RX_Voice Mixer Voice2" value="1" />
 		<ctl name="Voice2_Tx Mixer SEC_AUX_PCM_TX_Voice2" value="1" />
@@ -622,6 +627,10 @@
 		<ctl name="VoLTE_Tx Mixer SLIM_0_TX_VoLTE" value="1" />
 	</path>
 
+	<path name="volte-call speaker">
+		<path name="volte-call" />
+	</path>
+
 	<path name="volte-call bt-sco">
 		<ctl name="SEC_AUX_PCM_RX_Voice Mixer VoLTE" value="1" />
 		<ctl name="VoLTE_Tx Mixer SEC_AUX_PCM_TX_VoLTE" value="1" />
@@ -655,6 +664,10 @@
 	<path name="vowlan-call">
 		<ctl name="SLIM_0_RX_Voice Mixer VoWLAN" value="1" />
 		<ctl name="VoWLAN_Tx Mixer SLIM_0_TX_VoWLAN" value="1" />
+	</path>
+
+	<path name="vowlan-call speaker">
+		<path name="vowlan-call" />
 	</path>
 
 	<path name="vowlan-call bt-sco">
@@ -804,11 +817,20 @@
 	</path>
 
 	<path name="voice-speaker">
-		<path name="speaker" />
+		<ctl name="SLIM_0_RX Channels" value="One" />
+		<ctl name="SLIM_0_TX Channels" value="One" />
+		<!-- select (l + r)/2 -->
+		<ctl name="NXP Right Ch Select" value="3" />
+		<!-- Enable earpiece mode this toggles gpio -->
+		<ctl name="TFA9890 earpiece mode" value="Off" />
+		<ctl name="AIF1TX2 Input 1" value="SLIMRX1" />
+		<ctl name="SLIMTX5 Input 1" value="AIF1RX2" />
+		<ctl name="VOC_EXT_EC MUX" value="SLIMBUS_1_TX" />
+		<ctl name="Left SPK Mux" value="Off" />
 	</path>
 
 	<path name="voice-speaker-mic">
-		<path name="mic4" />
+		<path name="speaker-mic" />
 	</path>
 
 	<path name="voice-headphones">
