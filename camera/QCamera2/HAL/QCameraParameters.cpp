@@ -11215,6 +11215,7 @@ bool QCameraParameters::setStreamConfigure(bool isCapture,
         updatePpFeatureMask(CAM_STREAM_TYPE_PREVIEW);
         stream_config_info.postprocess_mask[stream_config_info.num_streams] =
                 mStreamPpMask[CAM_STREAM_TYPE_PREVIEW];
+	ALOGI("XXXXX Type preview: which one is this? 0x%x", stream_config_info.postprocess_mask[stream_config_info.num_streams] );
         stream_config_info.num_streams++;
 
         stream_config_info.type[stream_config_info.num_streams] =
@@ -11224,6 +11225,7 @@ bool QCameraParameters::setStreamConfigure(bool isCapture,
         updatePpFeatureMask(CAM_STREAM_TYPE_ANALYSIS);
         stream_config_info.postprocess_mask[stream_config_info.num_streams] =
                 mStreamPpMask[CAM_STREAM_TYPE_ANALYSIS];
+	ALOGI("XXXXX Type analysis: which one is this? 0x%x", stream_config_info.postprocess_mask[stream_config_info.num_streams] );
         stream_config_info.num_streams++;
 
         stream_config_info.type[stream_config_info.num_streams] =
@@ -11233,6 +11235,7 @@ bool QCameraParameters::setStreamConfigure(bool isCapture,
         updatePpFeatureMask(CAM_STREAM_TYPE_SNAPSHOT);
         stream_config_info.postprocess_mask[stream_config_info.num_streams] =
                 mStreamPpMask[CAM_STREAM_TYPE_SNAPSHOT];
+	ALOGI("XXXXX Type snapshot: which one is this? 0x%x", stream_config_info.postprocess_mask[stream_config_info.num_streams] );
         stream_config_info.num_streams++;
 
     } else if (!isCapture) {
@@ -11274,6 +11277,7 @@ bool QCameraParameters::setStreamConfigure(bool isCapture,
             updatePpFeatureMask(CAM_STREAM_TYPE_ANALYSIS);
             stream_config_info.postprocess_mask[stream_config_info.num_streams] =
                     mStreamPpMask[CAM_STREAM_TYPE_ANALYSIS];
+	    ALOGI("XXXXX Type analysis: which one is this? 0x%x", stream_config_info.postprocess_mask[stream_config_info.num_streams] );
             stream_config_info.num_streams++;
         }
 
@@ -11284,6 +11288,8 @@ bool QCameraParameters::setStreamConfigure(bool isCapture,
         updatePpFeatureMask(CAM_STREAM_TYPE_PREVIEW);
         stream_config_info.postprocess_mask[stream_config_info.num_streams] =
                 mStreamPpMask[CAM_STREAM_TYPE_PREVIEW];
+	ALOGI("XXXXX Type preview: which one is this? 0x%x", stream_config_info.postprocess_mask[stream_config_info.num_streams] );
+
         stream_config_info.num_streams++;
 
     } else {
@@ -11316,6 +11322,7 @@ bool QCameraParameters::setStreamConfigure(bool isCapture,
                 updatePpFeatureMask(CAM_STREAM_TYPE_POSTVIEW);
                 stream_config_info.postprocess_mask[stream_config_info.num_streams] =
                         mStreamPpMask[CAM_STREAM_TYPE_POSTVIEW];
+		ALOGI("XXXXX Type postview: which one is this? 0x%x", stream_config_info.postprocess_mask[stream_config_info.num_streams] );
                 stream_config_info.num_streams++;
             }
         } else {
@@ -11327,6 +11334,7 @@ bool QCameraParameters::setStreamConfigure(bool isCapture,
             updatePpFeatureMask(CAM_STREAM_TYPE_RAW);
             stream_config_info.postprocess_mask[stream_config_info.num_streams] =
                     mStreamPpMask[CAM_STREAM_TYPE_RAW];
+	    ALOGI("XXXXX Type raw: which one is this? 0x%x", stream_config_info.postprocess_mask[stream_config_info.num_streams] );
             stream_config_info.num_streams++;
         }
     }
@@ -11349,6 +11357,10 @@ bool QCameraParameters::setStreamConfigure(bool isCapture,
                 stream_config_info.stream_sizes[k].width,
                 stream_config_info.stream_sizes[k].height,
                 stream_config_info.postprocess_mask[k]);
+	if (stream_config_info.postprocess_mask[k] == 0x20882) {
+	  ALOGI("XXXXX: Updating to 0x882....");
+	  stream_config_info.postprocess_mask[k] = 0x882;
+	}
     }
 
     rc = sendStreamConfigInfo(stream_config_info);
