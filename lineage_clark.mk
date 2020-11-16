@@ -18,3 +18,8 @@ PRODUCT_DEVICE := clark
 PRODUCT_MODEL := XT1575
 PRODUCT_MANUFACTURER := motorola
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
+
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="clark_retus-user 7.0 NPHS25.200-22-1 1 release-keys"
+
+BUILD_FINGERPRINT := motorola/clark_retus/clark:7.0/NPHS25.200-22-1/1:user/release-keys
