@@ -1,2 +1,3 @@
 allow vold hal_bootctl_hwservice:hwservice_manager find;
 allow vold dm_device:blk_file ioctl;
+allow vold sysfs_mmc_host:file w_file_perms;
