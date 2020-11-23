@@ -96,12 +96,10 @@ TARGET_SCREEN_WIDTH := 1440
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
-    android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.composer@2.1-service \
     android.hardware.graphics.mapper@2.0-impl-2.1 \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
-    copybit.msm8992 \
     gralloc.msm8992 \
     hwcomposer.msm8992 \
     liboverlay \
@@ -141,9 +139,7 @@ PRODUCT_ENFORCE_VINTF_MANIFEST_OVERRIDE := true
 
 PRODUCT_PACKAGES += \
     libhidltransport \
-    libhidltransport.vendor \
-    libhwbinder \
-    libhwbinder.vendor
+    libhwbinder
 
 # IPA Manager
 PRODUCT_PACKAGES += \
@@ -153,7 +149,6 @@ PRODUCT_PACKAGES += \
 # Init
 PRODUCT_PACKAGES += \
     fstab.qcom \
-    init.mmi.touch.sh \
     init.mmi.usb.rc \
     init.qcom.power.rc \
     init.qcom.power.sh \
@@ -188,7 +183,6 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libc2dcolorconvert \
-    libdivxdrmdecrypt \
     libstagefrighthw
 
 # NFC
@@ -239,8 +233,7 @@ PRODUCT_COPY_FILES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power-service-qti \
-    power.msm8992
+    android.hardware.power-service-qti
 
 # Privapp Whitelist
 PRODUCT_COPY_FILES += \
@@ -258,7 +251,6 @@ PRODUCT_PACKAGES += \
     android.hidl.base@1.0 \
     android.hidl.manager@1.0 \
     libcnefeatureconfig \
-    libnl_2 \
     libqsap_sdk \
     libqsap_shim \
     librmnetctl \
