@@ -319,6 +319,15 @@
 	</path>
 
 	<path name="low-latency-playback speaker">
+		<!-- Bottom speaker only -->
+		<!-- Enable Mixers to power up Right IC only -->
+		<ctl name="SLIM_0_RX Channels" value="One" />
+		<ctl name="AIF1TX2 Input 1" value="SLIMRX1" />
+		<!-- Select mono channel on Right IC -->
+		<ctl name="NXP Right Ch Select" value="3" />
+		<!-- Disable earpiece mode this toggles gpio -->
+		<ctl name="TFA9890 earpiece mode" value="Off" />
+		<ctl name="Left SPK Mux" value="Off" />
 		<path name="low-latency-playback" />
 	</path>
 
