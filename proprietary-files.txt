@@ -311,8 +311,6 @@ vendor/lib/libtzdrmgenprov.so
 vendor/lib64/libtzdrmgenprov.so
 # Widevine - from Angler - OPM3.171019.019
 vendor/lib/mediadrm/libwvdrmengine.so|fb276a490ee3d630f9ba5ba751b00397a2f6dca0
-vendor/lib/hw/keystore.msm8992.so
-vendor/lib64/hw/keystore.msm8992.so
 
 # Display tuning
 vendor/lib/libmm-als.so
