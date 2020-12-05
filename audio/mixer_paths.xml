@@ -159,7 +159,6 @@
 	<ctl name="AFE_PCM_RX Audio Mixer MultiMedia5" value="0" />
 	<!-- usb headset end -->
 	<!-- fm -->
-	<ctl name="PRI MI2S LOOPBACK Volume" value="0" />
 	<ctl name="SLIMBUS_0_RX Port Mixer PRI_MI2S_TX" value="0" />
 	<ctl name="SLIMBUS_DL_HL Switch" value="0" />
 	<ctl name="MultiMedia1 Mixer PRI_MI2S_TX" value="0" />
@@ -197,7 +196,6 @@
 	<ctl name="Voice2_Tx Mixer SEC_AUX_PCM_TX_Voice2" value="0" />
 	<!-- Voice2 USB headset -->
 	<ctl name="AFE_PCM_RX_Voice Mixer Voice2" value="0" />
-	<ctl name="Voice2_Tx Mixer AFE_PCM_TX_Voice2" value="0" />
 	<!-- Voice2 end-->
 
 	<!-- VoLTE -->
@@ -382,7 +380,6 @@
 	</path>
 
 	<path name="audio-ull-playback headphones">
-		<ctl name="SLIMBUS_5_RX Audio Mixer MultiMedia3" value="1" />
 	</path>
 
 	<path name="audio-ull-playback speaker-and-headphones">
@@ -446,7 +443,6 @@
 	</path>
 
 	<path name="low-latency-record bt-sco">
-		<ctl name="MultiMedia5 Mixer SEC_AUX_PCM_UL_TX" value="1" />
 	</path>
 
 	<path name="low-latency-record bt-sco-wb">
@@ -511,12 +507,10 @@
 	</path>
 
 	<path name="voice2-call afe-proxy">
-		<ctl name="Voice2_Tx Mixer AFE_PCM_TX_Voice" value="1" />
 		<ctl name="AFE_PCM_RX_Voice Mixer Voice2" value="1" />
 	</path>
 
 	<path name="play-fm">
-		<ctl name="PRI MI2S LOOPBACK Volume" value="1" />
 		<ctl name="SLIMBUS_0_RX Port Mixer PRI_MI2S_TX" value="1" />
 		<ctl name="SLIMBUS_DL_HL Switch" value="1" />
 	</path>
