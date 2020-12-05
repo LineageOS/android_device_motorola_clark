@@ -43,7 +43,6 @@
 		<device name="SND_DEVICE_OUT_VOICE_SPEAKER_PROTECTED" acdb_id="201"/>
 		<device name="SND_DEVICE_OUT_VOICE_TTY_FULL_HEADPHONES" acdb_id="15"/>
 		<device name="SND_DEVICE_OUT_VOICE_TTY_HCO_HANDSET" acdb_id="200"/>
-		<device name="SND_DEVICE_OUT_VOICE_TX" acdb_id="203"/>
 
 	<!-- Input devices -->
 		<device name="SND_DEVICE_IN_CAMCORDER_MIC" acdb_id="61"/>
@@ -59,13 +58,11 @@
 		<device name="SND_DEVICE_IN_VOICE_REC_DMIC_STEREO" acdb_id="35"/>
 		<device name="SND_DEVICE_IN_VOICE_REC_MIC" acdb_id="62"/>
 		<device name="SND_DEVICE_IN_VOICE_REC_MIC_NS" acdb_id="113"/>
-		<device name="SND_DEVICE_IN_VOICE_RX" acdb_id="62"/>
 		<device name="SND_DEVICE_IN_VOICE_SPEAKER_MIC" acdb_id="11"/>
 	</acdb_ids>
 
 	<backend_names>
 		<device name="SND_DEVICE_OUT_SPEAKER" backend="speaker"/>
 		<device name="SND_DEVICE_OUT_VOICE_SPEAKER" backend="speaker"/>
-		<device name="SND_DEVICE_OUT_VOLTE_NB_SPEAKER" backend="speaker"/>
 	</backend_names>
 </audio_platform_info>
