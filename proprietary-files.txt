@@ -37,10 +37,6 @@ vendor/lib/libadiertac.so
 vendor/lib64/libadiertac.so
 vendor/lib/libaudcal.so
 vendor/lib64/libaudcal.so
-vendor/lib/soundfx/libqcbassboost.so
-vendor/lib/soundfx/libqcreverb.so
-vendor/lib/soundfx/libqcvirt.so
-vendor/lib/soundfx/libmmieffectswrapper.so|b6f6e2f0920dea291cc35c90410e913955fc0601
 etc/acdbdata/General_cal.acdb:vendor/etc/acdbdata/General_cal.acdb
 etc/acdbdata/Bluetooth_cal.acdb:vendor/etc/acdbdata/Bluetooth_cal.acdb
 etc/acdbdata/Global_cal.acdb:vendor/etc/acdbdata/Global_cal.acdb
