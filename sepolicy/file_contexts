@@ -1,6 +1,7 @@
 /(vendor|system/vendor)/bin/adspd u:object_r:adspd_exec:s0
 /(vendor|system/vendor)/bin/batt_health u:object_r:batt_health_exec:s0
 /(vendor|system/vendor)/bin/hw/android\.hardware\.light@2\.0-service\.clark u:object_r:hal_light_default_exec:s0
+/(vendor|system/vendor)/bin/hw/android\.hardware\.vibrator@1\.1-service\.clark u:object_r:hal_vibrator_default_exec:s0
 /(vendor|system/vendor)/bin/init\.qcom\.power\.sh u:object_r:qti_init_shell_exec:s0
 /(vendor|system/vendor)/bin/motosh u:object_r:motosh_exec:s0
 /(vendor|system/vendor)/bin/qmi_motext_hook u:object_r:rild_exec:s0
