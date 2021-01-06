@@ -200,5 +200,5 @@ ro.usb.ptp=0x2e83
 ro.usb.ptp_adb=0x2e84
 
 # Wifi Display
-persist.debug.wfd.enable=1
+persist.debug.wfd.enable=0
 persist.sys.wfd.virtual=0
