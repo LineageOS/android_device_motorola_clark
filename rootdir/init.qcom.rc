@@ -401,14 +401,14 @@ service vendor.adsprpcd /vendor/bin/adsprpcd
 service vendor.atvc_core /vendor/bin/dbvc_atvc_property_set
     class core
     user oem_5012
-    seclabel u:r:atvc:s0
+    #seclabel u:r:atvc:s0
     group oem_5007
     oneshot
 
 service vendor.atvc /vendor/bin/dbvc_atvc_property_set
     class late_start
     user oem_5012
-    seclabel u:r:atvc:s0
+    #seclabel u:r:atvc:s0
     group oem_5007
     oneshot
 
@@ -438,7 +438,7 @@ service vendor.ssr_setup /vendor/bin/ssr_setup
 service vendor.batt_health /vendor/bin/batt_health
     class late_start
     group oem_5001
-    seclabel u:r:batt_health:s0
+    #seclabel u:r:batt_health:s0
     writepid /dev/cpuset/system-background/tasks
 
 service charger /system/bin/charger
@@ -446,14 +446,14 @@ service charger /system/bin/charger
     user system
     group system graphics input
     capabilities SYS_BOOT
-    seclabel u:r:charger:s0
+    #seclabel u:r:charger:s0
     writepid /dev/cpuset/system-background/tasks
 
 service vendor.motosh /vendor/bin/motosh boot
     class late_start
     user compass
     group compass misc input oem_5004
-    seclabel u:r:motosh:s0
+    #seclabel u:r:motosh:s0
     oneshot
 
 service vendor.adspd /vendor/bin/adspd
@@ -461,7 +461,7 @@ service vendor.adspd /vendor/bin/adspd
    socket adspdsock stream 0660 system audio
    user audio
    group audio input oem_2950
-   seclabel u:r:adspd:s0
+   #seclabel u:r:adspd:s0
    writepid /dev/cpuset/system-background/tasks
 
 service vendor.perfd /vendor/bin/perfd
