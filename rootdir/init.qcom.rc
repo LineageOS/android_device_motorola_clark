@@ -136,7 +136,7 @@ on post-fs
     mkdir /persist/factory 0755 oem_5004 oem_5004
     mkdir /persist/public 0755 oem_5004 oem_5004
     mkdir /persist/public/atvc 0770 oem_5012 shell
-    mkdir /persist/public/battd 0755 mot_accy oem_5004
+    mkdir /persist/public/battd 0755 oem_5004 oem_5004
     mkdir /persist/public/hiddenmenu 0755 radio radio
     mkdir /persist/public/hiddenmenu/data 0775 system oem_5004
     mkdir /persist/public/locale 0700 system system
@@ -144,7 +144,7 @@ on post-fs
     mkdir /persist/public/svcs 0770 system system
     mkdir /persist/wifi 0755 oem_5004 oem_5004
     mkdir /persist/bt 0755 oem_5004 bluetooth
-    mkdir /persist/wmdrm 0775 mot_drm mot_drm
+    mkdir /persist/wmdrm 0775 oem_5004 oem_5004
     mkdir /persist/batt_health 0755 oem_5001 oem_5001
     mkdir /persist/mdm 0770 radio radio
     mkdir /persist/antcap 0755 oem_5004 oem_5004
