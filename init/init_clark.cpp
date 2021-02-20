@@ -62,8 +62,6 @@ void vendor_load_properties()
     sku = android::base::GetProperty("ro.boot.hardware.sku", "");
     car = android::base::GetProperty("ro.boot.carrier", "");
 
-    property_set("ro.boot.btmacaddr", "00:00:00:00:00:00");
-    
     property_override("ro.product.model", sku.c_str());
     property_override("ro.build.product", "clark");
     property_override("ro.product.device", "clark");
