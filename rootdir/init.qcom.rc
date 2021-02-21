@@ -472,12 +472,13 @@ service vendor.perfd /vendor/bin/perfd
     socket perfd seqpacket 0666 root system
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.ppd /vendor/bin/mm-pp-daemon
-    class late_start
-    user system
-    socket pps stream 0660 system system
-    group system graphics
-    writepid /dev/cpuset/system-background/tasks
+#service vendor.ppd /vendor/bin/mm-pp-daemon
+#service vendor.ppd /system/bin/logwrapper /system/bin/strace -f -o /data/local/tmp/strace/mm-pp-daemon.txt /vendor/bin/mm-pp-daemon
+#    class hal
+#    user system
+#    socket pps stream 0660 system system
+#    group system graphics
+#    writepid /dev/cpuset/system-background/tasks
 
 on property:init.svc.surfaceflinger=stopped
     stop vendor.ppd
