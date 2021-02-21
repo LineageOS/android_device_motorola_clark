@@ -106,7 +106,6 @@ PRODUCT_PACKAGES += \
     libqdMetaData \
     libqdutils \
     memtrack.msm8992 \
-    pp_calib_data_mipi_mot_cmd_inx_QHD_0_570_v0.xml \
     vendor.lineage.livedisplay@2.0-service-sysfs
 
 # Firmware extraction script

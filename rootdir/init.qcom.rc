@@ -465,16 +465,6 @@ service vendor.perfd /vendor/bin/perfd
     socket perfd seqpacket 0666 root system
     writepid /dev/cpuset/system-background/tasks
 
-service vendor.ppd /vendor/bin/mm-pp-daemon
-    class late_start
-    user system
-    socket pps stream 0660 system system
-    group system graphics
-    writepid /dev/cpuset/system-background/tasks
-
-on property:init.svc.surfaceflinger=stopped
-    stop vendor.ppd
-
 on property:apexd.status=ready
     mount none /system/etc/swcodec/ld.config.txt /apex/com.android.media.swcodec/etc/ld.config.txt bind
 
