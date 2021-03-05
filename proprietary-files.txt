@@ -262,21 +262,6 @@ vendor/lib64/libqti-perfd-client.so
 vendor/lib/libthermalclient.so
 vendor/lib64/libthermalclient.so
 
-# DM/Sprint
--app/DMConfigUpdateLight/DMConfigUpdateLight.apk
--app/HiddenMenuLight/HiddenMenuLight.apk
-etc/permissions/com.android.omadm.service.xml
-etc/sysconfig/whitelist_com.android.omadm.service.xml
-lib/libdmengine.so:vendor/lib/libdmengine.so
-lib/libdmjavaplugin.so:vendor/lib/libdmjavaplugin.so
--priv-app/CQATest/CQATest.apk
--priv-app/ConnMO/ConnMO.apk
--priv-app/DCMO/DCMO.apk
--priv-app/DMService/DMService.apk
--priv-app/DiagMon/DiagMon.apk
--priv-app/LifetimeData/LifetimeData.apk
--priv-app/SprintDM/SprintDM.apk
-
 # DRM
 # TZBSP
 bin/qseecomd:vendor/bin/qseecomd
