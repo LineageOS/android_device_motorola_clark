@@ -334,7 +334,7 @@ service vendor.ipacm-diag /vendor/bin/ipacm-diag
     group net_admin oem_2950
     writepid /dev/cpuset/system-background/tasks
 
-service ipacm /system/bin/ipacm
+service vendor.ipacm /vendor/bin/ipacm
     class main
     user net_admin
     group net_admin inet
